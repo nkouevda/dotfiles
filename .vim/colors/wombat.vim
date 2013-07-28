@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2013/07/27
+" 2013/07/28
 
 set background=dark
 
@@ -14,7 +14,7 @@ let g:colors_name = "wombat"
 " General
 hi Title            ctermfg=252                     cterm=none      guifg=#d0d0d0                   gui=none
 hi Normal           ctermfg=252     ctermbg=235     cterm=none      guifg=#d0d0d0   guibg=#262626   gui=none
-hi Visual           ctermfg=251     ctermbg=239     cterm=none      guifg=#c6c6c6   guibg=#4e4e4e   gui=none
+hi Visual           ctermfg=252     ctermbg=239     cterm=none      guifg=#d0d0d0   guibg=#4e4e4e   gui=none
 hi! link VisualNOS Visual
 hi Search           ctermfg=252     ctermbg=240     cterm=none      guifg=#d0d0d0   guibg=#585858   gui=none
 hi! link IncSearch Search
