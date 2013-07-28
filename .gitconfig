@@ -1,0 +1,33 @@
+# Nikita Kouevda
+# 2013/07/03
+
+[user]
+	name = Nikita Kouevda
+	email = nkouevda@gmail.com
+
+[color]
+	ui = auto
+
+[diff]
+	tool = vimdiff
+
+[grep]
+	lineNumber = true
+
+[alias]
+	# Always use git@github.com:USER/REPOSITORY.git remotes
+	clone = clone -p
+
+	# Shortcuts
+	st = status
+	br = branch
+	ci = commit
+	co = checkout
+	rmc = rm --cached
+	df = diff
+	dfv = difftool --no-prompt
+	dfc = diff --cached
+	dfcv = difftool --cached --no-prompt
+	lgd = log --graph --decorate --oneline --date-order
+	lgds = log --graph --decorate --oneline --date-order\
+	--simplify-by-decoration --all

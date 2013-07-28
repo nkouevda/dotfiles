@@ -1,0 +1,12 @@
+# Nikita Kouevda
+# 2013/06/03
+
+# Search history incrementally on up and down
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# List all possible completions on tab
+set show-all-if-ambiguous on
+
+# Ignore case for completion
+set completion-ignore-case on
