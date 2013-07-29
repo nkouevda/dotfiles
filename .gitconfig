@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2013/07/03
+# 2013/07/29
 
 [user]
 	name = Nikita Kouevda
@@ -9,6 +9,7 @@
 	ui = auto
 
 [diff]
+	algorithm = patience
 	tool = vimdiff
 
 [grep]
