@@ -1,8 +1,11 @@
 # Nikita Kouevda
-# 2013/07/28
+# 2013/07/30
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
+
+# Review commands with history expansion before executing
+shopt -s histverify
 
 # Append to the history file instead of overwriting it
 shopt -s histappend
