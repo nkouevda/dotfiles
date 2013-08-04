@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2013/07/27 -->
+<!-- 2013/08/04 -->
 
 # dotfiles
 
@@ -13,12 +13,12 @@ Also note that some information in `.gitconfig` and `.hgrc` is specific to me;
 you probably want to edit those files before use.
 
     git clone https://github.com/nkouevda/dotfiles.git
-    cp -r dotfiles/.{bash*,gitconfig,hgrc,inputrc,*vim*} ~
+    cp -r dotfiles/.{bash_profile,gitconfig,{bash,hg,input,tig,{,g}vim}rc,vim} ~
     rm -rf dotfiles
 
 ## Contents
 
-### [`.bashrc`](.bashrc) and [`.bash_profile`](.bash_profile)
+### [`.bash_profile`](.bash_profile) and [`.bashrc`](.bashrc)
 
 Configuration files for bash.
 
@@ -29,6 +29,10 @@ Configuration files for git and mercurial.
 ### [`.inputrc`](.inputrc)
 
 Configuration file for readline.
+
+### [`.tigrc`](.tigrc)
+
+Configuration file for tig.
 
 ### [`.vimrc`](.vimrc] and [`.gvimrc`](.gvimrc)
 
