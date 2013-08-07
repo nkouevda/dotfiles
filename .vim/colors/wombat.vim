@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2013/07/28
+" 2013/08/07
 
 set background=dark
 
@@ -74,13 +74,13 @@ hi DiffDelete       ctermfg=232     ctermbg=52      cterm=none      guifg=#08080
 hi DiffChange       ctermfg=232     ctermbg=220     cterm=none      guifg=#080808   guibg=#ffd700   gui=none
 hi DiffText         ctermfg=232     ctermbg=202     cterm=none      guifg=#080808   guibg=#ff5f00   gui=none
 
-" Other
+" Miscellaneous
 hi MatchParen       ctermfg=232     ctermbg=242     cterm=none      guifg=#080808   guibg=#6c6c6c   gui=none
 hi Todo             ctermfg=232     ctermbg=208     cterm=none      guifg=#080808   guibg=#ff8700   gui=none
 hi Error            ctermfg=232     ctermbg=124     cterm=none      guifg=#080808   guibg=#af0000   gui=none
 hi! link ColorColumn Error
+hi! link Directory Statement
 hi Underlined       ctermfg=51                      cterm=underline guifg=#00ffff                   gui=underline
-hi Directory        ctermfg=27                      cterm=none      guifg=#005fff                   gui=none
 hi Ignore           ctermfg=242                     cterm=none      guifg=#6c6c6c                   gui=none
 hi NonText          ctermfg=240     ctermbg=232     cterm=none      guifg=#585858   guibg=#080808   gui=none
 hi! link LineNr NonText
