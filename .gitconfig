@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2013/07/29
+# 2013/08/06
 
 [user]
 	name = Nikita Kouevda
@@ -14,6 +14,9 @@
 
 [grep]
 	lineNumber = true
+
+[push]
+	default = upstream
 
 [alias]
 	# Always use git@github.com:USER/REPOSITORY.git remotes
