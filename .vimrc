@@ -127,15 +127,10 @@ endfunction
 
 " Set the given number of spaces per tab without changing the tab type
 command! -nargs=? Indentation call Indentation(<f-args>)
-command! -nargs=? I Indentation <args>
 
-" Set soft tabs with the given number of spaces per tab
+" Set the given number of spaces per tab and switch to either soft or hard tabs
 command! -nargs=? Spaces call Indentation(<f-args>) | setlocal expandtab
-command! -nargs=? S Spaces <args>
-
-" Set hard tabs with the given number of spaces per tab
 command! -nargs=? Tabs call Indentation(<f-args>) | setlocal noexpandtab
-command! -nargs=? T Tabs <args>
 
 " Use soft tabs with 4 spaces per tab by default
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
