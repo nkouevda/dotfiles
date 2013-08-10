@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2013/08/06
+# 2013/08/09
 
 [user]
 	name = Nikita Kouevda
@@ -14,6 +14,9 @@
 
 [grep]
 	lineNumber = true
+
+[branch]
+	autosetuprebase = always
 
 [push]
 	default = upstream
