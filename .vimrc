@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2013/08/13
+" 2013/08/16
 
 " Avoid compatible mode if overriding default vimrc via -u
 set nocompatible
@@ -144,7 +144,7 @@ autocmd FileType css,html,htmldjango,javascript,xml Spaces 2
 autocmd FileType gitconfig,make,sshconfig Tabs 4
 
 " Always use markdown filetype for .md files
-autocmd BufNewFile,BufRead *.md setfiletype markdown
+autocmd BufEnter,BufNewFile,BufRead *.md setfiletype markdown
 
 " Match pairs of angle brackets XML-like formats
 autocmd FileType html,htmldjango,markdown,xml setlocal matchpairs+=<:>
