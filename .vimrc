@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2013/08/16
+" 2013/09/20
 
 " Avoid compatible mode if overriding default vimrc via -u
 set nocompatible
@@ -114,39 +114,21 @@ nnoremap <Leader>8 /\%>80v.\+<CR>
 nnoremap <Leader>w /\s\+$<CR>
 nnoremap <Leader>W :%s/\s\+$//<CR>
 
-" Set the number of spaces per tab in the current buffer only
-function! Indentation(...)
-    " Use the given width if it is positive, otherwise default to 4
-    let l:width = (a:0 > 0 && a:1 > 0) ? a:1 : 4
-
-    " Always treat tabs as l:width spaces wide
-    let &l:tabstop = l:width
-    let &l:softtabstop = l:width
-    let &l:shiftwidth = l:width
-endfunction
-
-" Set the given number of spaces per tab without changing the tab type
-command! -nargs=? Indentation call Indentation(<f-args>)
-
-" Set the given number of spaces per tab and switch to either soft or hard tabs
-command! -nargs=? Spaces call Indentation(<f-args>) | setlocal expandtab
-command! -nargs=? Tabs call Indentation(<f-args>) | setlocal noexpandtab
-
 " Use soft tabs with 4 spaces per tab by default
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 
 " Round to the nearest tab when indenting and copy indentation exactly
 set shiftround
 set autoindent copyindent
 
 " Override default tab settings for certain filetypes
-autocmd FileType css,html,htmldjango,javascript,xml Spaces 2
-autocmd FileType gitconfig,make,sshconfig Tabs 4
+autocmd FileType css,html,htmldjango,javascript,xml setlocal sts=2 sw=2
+autocmd FileType gitconfig,make,sshconfig setlocal sts=8 sw=8 noet
 
 " Always use markdown filetype for .md files
 autocmd BufEnter,BufNewFile,BufRead *.md setfiletype markdown
 
-" Match pairs of angle brackets XML-like formats
+" Match pairs of angle brackets in markup languages
 autocmd FileType html,htmldjango,markdown,xml setlocal matchpairs+=<:>
 
 " Remain in visual mode after indenting
