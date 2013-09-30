@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2013/09/20
+" 2013/09/30
 
 " Avoid compatible mode if overriding default vimrc via -u
 set nocompatible
@@ -59,7 +59,7 @@ noremap ' `
 noremap ` '
 
 " Write with sudo and reload the file
-cnoremap w!! silent execute 'w !sudo tee % > /dev/null' \| edit!
+cnoremap w!! silent execute 'w !sudo tee % >/dev/null' \| edit!
 
 " Use comma as leader but keep its functionality via backslash
 let mapleader = ','
