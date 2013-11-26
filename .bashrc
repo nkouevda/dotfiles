@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2013/10/14
+# 2013/11/25
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -26,11 +26,6 @@ if [[ "$(uname -s)" == "Linux" ]]; then
 else
     alias la="ls -Abhlp -G"
     alias reverse="tail -r"
-fi
-
-# Include GitHub commands, if available
-if [[ -n "$(which hub)" ]]; then
-    alias git="hub"
 fi
 
 # Temporary file for deduplicating the history file
