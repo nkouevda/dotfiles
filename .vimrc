@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2013/09/30
+" 2013/11/30
 
 " Avoid compatible mode if overriding default vimrc via -u
 set nocompatible
@@ -42,8 +42,8 @@ set nostartofline
 " Do not insert 2 spaces between sentences when joining
 set nojoinspaces
 
-" Interact with the X clipboard if possible
-if exists('+clipboard')
+" Interact with the X clipboard if possible, unless under tmux
+if exists('+clipboard') && $TMUX == ''
     set clipboard=unnamed
 endif
 
