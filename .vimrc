@@ -1,11 +1,10 @@
 " Nikita Kouevda
-" 2013/11/30
+" 2013/12/03
 
 " Avoid compatible mode if overriding default vimrc via -u
 set nocompatible
 
 " Syntax highlighting and colors
-set t_Co=256
 syntax enable
 set background=dark
 colorscheme wombat
@@ -115,7 +114,7 @@ nnoremap <Leader>w /\s\+$<CR>
 nnoremap <Leader>W :%s/\s\+$//<CR>
 
 " Use soft tabs with 4 spaces per tab by default
-set tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+set softtabstop=4 shiftwidth=4 expandtab
 
 " Round to the nearest tab when indenting and copy indentation exactly
 set shiftround
