@@ -6,7 +6,6 @@ set nocompatible
 
 " Syntax highlighting and colors
 syntax enable
-set background=dark
 colorscheme wombat
 
 " Save more history; do not use backups in temporary directories
