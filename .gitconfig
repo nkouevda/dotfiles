@@ -18,6 +18,9 @@
 [branch]
 	autosetuprebase = always
 
+[fetch]
+	prune = true
+
 [push]
 	default = upstream
 
