@@ -47,32 +47,32 @@ function sync_history() {
     history -r
 }
 
-# Color escape sequences
-reset_raw="\033[m"
-reset="\[\033[m\]"
-red_raw="\033[31m"
-red="\[\033[31m\]"
-green="\[\033[32m\]"
-yellow="\[\033[33m\]"
-
-# Red user if root, green otherwise
-[[ $UID -eq 0 ]] && user="$red" || user="$green"
-
-# Red @ if display unavailable, green otherwise
-[[ -z "${DISPLAY+set}" ]] && at="$red" || at="$green"
-
-# Red host if connected via ssh, green otherwise
-[[ -n "${SSH_CONNECTION+set}" ]] && host="$red" || host="$green"
-
-# Yellow working directory
-dir="$yellow"
-
-# Red $ or # if non-zero exit status, normal otherwise
-symbol='$([[ $? -ne 0 ]] && printf "%b" "$red_raw" || printf "%b" "$reset_raw")'
-
 # Synchronize history before every prompt
 export PROMPT_COMMAND="sync_history;$PROMPT_COMMAND"
-export PS1="$reset$user\u$at@$host\h $dir\W \[$symbol\]\\$ $reset"
+
+# Color escape sequences
+reset="$(tput sgr0)"
+red="$(tput setaf 1)"
+green="$(tput setaf 2)"
+yellow="$(tput setaf 3)"
+
+# Red user if root, green otherwise
+[[ $UID -eq 0 ]] && user="\[$red\]" || user="\[$green\]"
+
+# Red @ if display unavailable, green otherwise
+[[ -z "${DISPLAY+set}" ]] && at="\[$red\]" || at="\[$green\]"
+
+# Red host if connected via ssh, green otherwise
+[[ -n "${SSH_CONNECTION+set}" ]] && host="\[$red\]" || host="\[$green\]"
+
+# Yellow working directory
+dir="\[$yellow\]"
+
+# Red $ or # if non-zero exit status, normal otherwise
+symbol='$([[ $? -ne 0 ]] && printf "%b" "$red" || printf "%b" "$reset")'
+
+# user@host pwd $
+export PS1="\[$reset\]$user\u$at@$host\h $dir\W \[$symbol\]\\$ \[$reset\]"
 
 # If it exists and is readable, source ~/.bash_local
 [[ -r ~/.bash_local ]] && . ~/.bash_local
