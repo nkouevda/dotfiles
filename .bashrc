@@ -59,10 +59,10 @@ yellow="\[\033[33m\]"
 [[ $UID -eq 0 ]] && user="$red" || user="$green"
 
 # Red @ if display unavailable, green otherwise
-[[ -z "${DISPLAY:+0}" ]] && at="$red" || at="$green"
+[[ -z "${DISPLAY+set}" ]] && at="$red" || at="$green"
 
 # Red host if connected via ssh, green otherwise
-[[ -n "${SSH_CONNECTION:+0}" ]] && host="$red" || host="$green"
+[[ -n "${SSH_CONNECTION+set}" ]] && host="$red" || host="$green"
 
 # Yellow working directory
 dir="$yellow"
