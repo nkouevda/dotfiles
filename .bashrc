@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2013/12/03
+# 2013/12/04
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -74,5 +74,8 @@ symbol='$([[ $? -ne 0 ]] && printf "%b" "$red_raw" || printf "%b" "$reset_raw")'
 export PROMPT_COMMAND="sync_history;$PROMPT_COMMAND"
 export PS1="$reset$user\u$at@$host\h $dir\W \[$symbol\]\\$ $reset"
 
-# If it exists and is readable, source ~/.bash_local; guarantee exit status 0
-[[ -r ~/.bash_local ]] && . ~/.bash_local || :
+# If it exists and is readable, source ~/.bash_local
+[[ -r ~/.bash_local ]] && . ~/.bash_local
+
+# Guarantee exit status 0
+:
