@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2013/11/25
+# 2013/12/03
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -71,7 +71,7 @@ dir="$yellow"
 symbol='$([[ $? -ne 0 ]] && printf "%b" "$red_raw" || printf "%b" "$reset_raw")'
 
 # Synchronize history before every prompt
-export PROMPT_COMMAND='sync_history;'
+export PROMPT_COMMAND="sync_history;$PROMPT_COMMAND"
 export PS1="$reset$user\u$at@$host\h $dir\W \[$symbol\]\\$ $reset"
 
 # If it exists and is readable, source ~/.bash_local; guarantee exit status 0
