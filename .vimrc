@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2013/12/03
+" 2013/12/06
 
 " Avoid compatible mode if overriding default vimrc via -u
 set nocompatible
@@ -64,8 +64,8 @@ let mapleader = ','
 nnoremap \ ,
 
 " Write to black hole register to avoid overwriting copied material
-nnoremap <Leader>d "_
-vnoremap <Leader>d "_
+nnoremap <Leader><Leader> "_
+vnoremap <Leader><Leader> "_
 
 " Navigate buffers, tabs, and splits
 nnoremap <Leader>j :bn<CR>
