@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2013/12/06
+" 2013/12/09
 
 " Avoid compatible mode if overriding default vimrc via -u
 set nocompatible
@@ -137,19 +137,16 @@ vnoremap = =gv
 " Always show the status line
 set laststatus=2
 
-" File name, modified, read-only, help, preview, and file type, if any
+" File name, flags (modified, read-only, help, preview), and file type
 set statusline=%f%m%r%h%w\ %y%{&ft!=''?'\ ':''}
 
-" File format and file encoding, or encoding if no file encoding
-set statusline+=[%{&ff},%{&fenc!=''?&fenc:&enc}]
+" Truncate here; file format and encoding; switch to right alignment here
+set statusline+=%<[%{&ff},%{&fenc!=''?&fenc:&enc}]\ %=
 
-" Switch to right alignment here; cut off parts of what follows if necessary
-set statusline+=%=%<
-
-" Character under cursor in ASCII and in hexadecimal
+" Character under cursor in decimal and hexadecimal
 set statusline+=[\%03b,0x\%02B]
 
-" Line/lines and column, including virtual column if applicable
+" Current line, total lines, column, and virtual column
 set statusline+=\ [%l/%L,%c%V]
 
 " Percent of file in terms of current line and section of file shown
