@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2013/12/13
+" 2013/12/27
 
 " Avoid compatible mode if overriding default vimrc via -u
 set nocompatible
@@ -13,7 +13,7 @@ set history=1000 undolevels=1000
 set backupskip=/tmp/*,/private/tmp/*
 
 " Time out immediately on key codes
-set ttimeout ttimeoutlen=0
+set notimeout ttimeout ttimeoutlen=0
 
 " Backspace always deletes
 set backspace=indent,eol,start
