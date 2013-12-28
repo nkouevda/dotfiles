@@ -12,7 +12,7 @@ colorscheme wombat
 set history=1000 undolevels=1000
 set backupskip=/tmp/*,/private/tmp/*
 
-" Time out immediately on key codes
+" Do not time out on mappings; time out immediately on key codes
 set notimeout ttimeout ttimeoutlen=0
 
 " Backspace always deletes
