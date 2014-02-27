@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2013/12/04
+# 2014/02/27
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -12,6 +12,9 @@ shopt -s histappend
 
 # Ignore commands that start with whitespace; ignore and erase duplicates
 export HISTCONTROL="ignoreboth:erasedups"
+
+# Do not save history for less
+export LESSHISTFILE="/dev/null"
 
 # Use Vim as the default editor
 export EDITOR="vim"
@@ -78,4 +81,4 @@ export PS1="\[$reset\]$user\u$at@$host\h $dir\W \[$symbol\]\\$ \[$reset\]"
 [[ -r ~/.bash_local ]] && . ~/.bash_local
 
 # Guarantee exit status 0
-:
+return 0
