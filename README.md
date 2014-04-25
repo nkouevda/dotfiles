@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2013/08/04 -->
+<!-- 2014/04/25 -->
 
 # dotfiles
 
@@ -8,9 +8,9 @@ My dotfiles, for future reference and reuse.
 ## Setup
 
 The following sequence of commands copies these dotfiles into your home
-directory. Warning: this will overwrite existing files with the same names.
-Also note that some information in `.gitconfig` and `.hgrc` is specific to me;
-you probably want to edit those files before use.
+directory. Warning: this will overwrite existing files with the same names. Also
+note that some information in `.gitconfig` and `.hgrc` is specific to me; you
+probably want to edit those files before use.
 
     git clone https://github.com/nkouevda/dotfiles.git
     cp -r dotfiles/.{bash_profile,gitconfig,{bash,hg,input,tig,{,g}vim}rc,vim} ~
