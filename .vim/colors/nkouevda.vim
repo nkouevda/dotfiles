@@ -1,15 +1,15 @@
 " Nikita Kouevda
-" 2013/08/07
+" 2014/04/27
 
 set background=dark
 
 highlight clear
 
-if exists("syntax_on")
+if exists('syntax_on')
     syntax reset
 endif
 
-let g:colors_name = "wombat"
+let g:colors_name = 'nkouevda'
 
 " General
 hi Title            ctermfg=252                     cterm=none      guifg=#d0d0d0                   gui=none

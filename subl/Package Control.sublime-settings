@@ -1,0 +1,12 @@
+{
+  "auto_upgrade_last_run": null,
+  "installed_packages":
+  [
+    "GitGutter",
+    "Package Control",
+    "SublimeLinter",
+    "Theme - Centurion",
+    "Theme - Soda",
+    "VintageEx"
+  ]
+}

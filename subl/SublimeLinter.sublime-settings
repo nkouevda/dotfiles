@@ -1,0 +1,11 @@
+{
+  "annotations":
+  [
+    "FIXME",
+    "TODO",
+    "XXX"
+  ],
+  "pyflakes_ignore_import_*": false,
+  "sublimelinter_gutter_marks_theme": "hard",
+  "sublimelinter_notes": true
+}

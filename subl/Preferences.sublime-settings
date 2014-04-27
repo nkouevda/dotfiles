@@ -1,0 +1,39 @@
+{
+  "auto_complete_commit_on_tab": true,
+  "auto_complete_with_fields": true,
+  "bold_folder_labels": true,
+  "caret_style": "solid",
+  "color_scheme": "Packages/Color Scheme - Default/Monokai Bright.tmTheme",
+  "detect_indentation": false,
+  "ensure_newline_at_eof_on_save": true,
+  "fade_fold_buttons": false,
+  "font_face": "Menlo",
+  "font_options":
+  [
+    "no_bold",
+    "no_italic"
+  ],
+  "font_size": 14.0,
+  "highlight_modified_tabs": true,
+  "hot_exit": false,
+  "ignored_packages":
+  [
+  ],
+  "indent_guide_options":
+  [
+    "draw_normal",
+    "draw_active"
+  ],
+  "indent_to_bracket": true,
+  "margin": 1,
+  "rulers":
+  [
+    80
+  ],
+  "scroll_past_end": true,
+  "theme": "Centurion.sublime-theme",
+  "translate_tabs_to_spaces": true,
+  "tree_animation_enabled": false,
+  "trim_trailing_white_space_on_save": true,
+  "wrap_width": 80
+}
