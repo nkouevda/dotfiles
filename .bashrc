@@ -1,8 +1,11 @@
 # Nikita Kouevda
-# 2014/02/27
+# 2014/04/27
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
+
+# If it exists and is readable, source ~/.bash_local
+[[ -r ~/.bash_local ]] && . ~/.bash_local
 
 # Review commands with history expansion before executing; retype if failed
 shopt -s histverify histreedit
@@ -13,36 +16,49 @@ shopt -s histappend
 # Ignore commands that start with whitespace; ignore and erase duplicates
 export HISTCONTROL="ignoreboth:erasedups"
 
+# Save more history
+export HISTSIZE=1000
+
 # Do not save history for less
 export LESSHISTFILE="/dev/null"
 
 # Use Vim as the default editor
 export EDITOR="vim"
 
-# Color grep matches by default
+# Color grep output
 export GREP_OPTIONS="--color=auto"
 
-# System-dependent aliases
-if [[ "$(uname -s)" == "Linux" ]]; then
-    alias la="ls -Abhlp --color=auto"
-    alias reverse="tac"
+# Color ls output
+if ls --color=auto &>/dev/null; then
+    alias ls="ls --color=auto"
 else
-    alias la="ls -Abhlp -G"
-    alias reverse="tail -r"
+    alias ls="ls -G"
 fi
 
-# Temporary file for deduplicating the history file
-tmp_histfile="/tmp/.bash_history.$$"
+# Aliases for viewing directory contents
+alias la="ls -Abhlp"
+alias lt="tree -aC -I '.git|node_modules'"
+
+# Alias tac in case coreutils is not installed
+if ! type tac &>/dev/null; then
+    alias tac="tail -r"
+fi
 
 # Synchronize the current history list with the history file
-function sync_history() {
+function sync_history {
     # Append the history list to the history file
     history -a
 
-    # Remove duplicates from the history file, keeping the most recent copies
     if [[ -r "$HISTFILE" ]]; then
-        reverse "$HISTFILE" | awk '!uniq[$0]++' | reverse > "$tmp_histfile"
+        # Temporary file for deduplicating the history file
+        local tmp_histfile=$(mktemp "/tmp/.bash_history.$$.XXXXXX")
+
+        # Keep only the most recent copies of duplicates in the history file
+        tac "$HISTFILE" | awk '!uniq[$0]++' | tac > "$tmp_histfile"
         mv "$tmp_histfile" "$HISTFILE"
+
+        # Remove the temporary file
+        rm -f "$tmp_histfile"
     fi
 
     # Clear the history list and read the history file
@@ -51,7 +67,7 @@ function sync_history() {
 }
 
 # Synchronize history before every prompt
-export PROMPT_COMMAND="sync_history;$PROMPT_COMMAND"
+export PROMPT_COMMAND="sync_history;"
 
 # Color escape sequences
 reset="$(tput sgr0)"
@@ -76,9 +92,6 @@ symbol='$([[ $? -ne 0 ]] && printf "%b" "$red" || printf "%b" "$reset")'
 
 # user@host pwd $
 export PS1="\[$reset\]$user\u$at@$host\h $dir\W \[$symbol\]\\$ \[$reset\]"
-
-# If it exists and is readable, source ~/.bash_local
-[[ -r ~/.bash_local ]] && . ~/.bash_local
 
 # Guarantee exit status 0
 return 0
