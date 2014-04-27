@@ -1,12 +1,9 @@
 # Nikita Kouevda
-# 2013/12/04
+# 2014/04/27
 
 [user]
 	name = Nikita Kouevda
 	email = nkouevda@gmail.com
-
-[color]
-	ui = auto
 
 [diff]
 	algorithm = patience
@@ -25,7 +22,8 @@
 	default = upstream
 
 [alias]
-	st = status
+	st = status -s
+	sta = status
 	br = branch
 	ci = commit
 	co = checkout
