@@ -1,14 +1,9 @@
 # Nikita Kouevda
-# 2013/08/04
-
-# Compact metadata
-set show-date = short
-set show-author = abbreviated
-set author-width = 10
+# 2014/05/02
 
 # Display settings
 set tab-size = 4
-set split-view-height = 80%
+set split-view-height = 75%
 
 # Vim/less-style navigation
 bind generic g move-first-line
@@ -20,50 +15,18 @@ bind generic e scroll-line-down
 bind generic 0 scroll-first-col
 
 # Resolve conflicts with navigation mappings
-bind generic - toggle-rev-graph
+bind generic - :toggle commit-title-graph
 bind generic v view-blob
 bind generic V show-version
 bind generic a view-blame
 bind generic o edit
 
 # Map all views to lowercase
-bind generic x view-branch
+bind generic x view-refs
 bind generic s view-status
 
-# Always move inside focused view
-bind generic Up move-up
-bind generic Down move-down
-
-# Only colorize content
-color   status                  default     default
-color   cursor                  default     black
-color   title-focus             default     black       bold
-color   title-blur              default     black       bold
-
-# Default git colors
-color   id                      yellow      default
-color   mode                    default     default
-color   main-head               cyan        default     bold
-color   main-remote             red         default     bold
-color   main-tracked            red         default     bold
-color   main-tag                yellow      default     bold
-color   main-local-tag          yellow      default     bold
-color   main-ref                green       default     bold
-color   stat-head               cyan        default
-color   stat-section            yellow      default
-color   stat-staged             green       default
-color   stat-unstaged           red         default
-color   stat-untracked          red         default
-color   tree-head               cyan        default
-
-# Better diff colors
-color   commit                  yellow      default
-color   pp-author               green       default
-color   pp-adate                green       default
-color   pp-commit               cyan        default
-color   pp-cdate                cyan        default
-color   diff-stat               default     default
-color   diff-deleted-file-mode  default     default
-color   diff-newmode            default     default
-color   diff-index              default     default
-color   diff-chunk              cyan        default
+# Only color content
+color   status          default     default
+color   cursor          default     black
+color   title-focus     default     black       bold
+color   title-blur      default     black       bold
