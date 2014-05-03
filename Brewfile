@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/04/27
+# 2014/05/02
 
 # Update Homebrew itself and get the newest formulae
 update
@@ -10,6 +10,7 @@ upgrade
 # Install everything
 install bash
 install coreutils
+install findutils --default-names
 install flac
 install git
 install gnu-sed --default-names
