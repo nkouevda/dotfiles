@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/04/27
+# 2014/05/08
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -51,14 +51,14 @@ function sync_history {
 
     if [[ -r "$HISTFILE" ]]; then
         # Temporary file for deduplicating the history file
-        local tmp_histfile=$(mktemp "/tmp/.bash_history.$$.XXXXXX")
+        local tmp_hist=$(mktemp "/tmp/.bash_history.$$.XXXXXX")
 
-        # Keep only the most recent copies of duplicates in the history file
-        tac "$HISTFILE" | awk '!uniq[$0]++' | tac > "$tmp_histfile"
-        mv "$tmp_histfile" "$HISTFILE"
+        # Keep only the most recent copies of duplicates; remove trailing spaces
+        tac "$HISTFILE" | awk '{sub(/ +$/, "")}; !a[$0]++' | tac > "$tmp_hist"
+        mv "$tmp_hist" "$HISTFILE"
 
         # Remove the temporary file
-        rm -f "$tmp_histfile"
+        rm -f "$tmp_hist"
     fi
 
     # Clear the history list and read the history file
