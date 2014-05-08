@@ -53,8 +53,8 @@ function sync_history {
     # Temporary file for deduplicating the history file
     local tmp_hist=$(mktemp "/tmp/.bash_history.$$.XXXXXX")
 
-    # Keep only the most recent copies of duplicates; remove trailing spaces
-    tac "$HISTFILE" | awk '{sub(/ +$/, "")}; !a[$0]++' | tac > "$tmp_hist"
+    # Keep only the most recent copies of duplicates; remove trailing whitespace
+    tac "$HISTFILE" | awk '{sub(/[ \t]+$/, "")} !uniq[$0]++' | tac > "$tmp_hist"
     mv "$tmp_hist" "$HISTFILE"
 
     # Remove the temporary file
