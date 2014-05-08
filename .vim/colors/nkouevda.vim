@@ -1,12 +1,12 @@
 " Nikita Kouevda
-" 2014/04/27
+" 2014/05/08
 
 set background=dark
 
 highlight clear
 
 if exists('syntax_on')
-    syntax reset
+  syntax reset
 endif
 
 let g:colors_name = 'nkouevda'

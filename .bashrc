@@ -30,9 +30,9 @@ export GREP_OPTIONS="--color=auto"
 
 # Color ls output
 if ls --color=auto &>/dev/null; then
-    alias ls="ls --color=auto"
+  alias ls="ls --color=auto"
 else
-    alias ls="ls -G"
+  alias ls="ls -G"
 fi
 
 # Aliases for viewing directory contents
@@ -41,29 +41,29 @@ alias lt="tree -aC -I '.git|node_modules'"
 
 # Alias tac in case coreutils is not installed
 if ! type tac &>/dev/null; then
-    alias tac="tail -r"
+  alias tac="tail -r"
 fi
 
 # Synchronize the current history list with the history file
 function sync_history {
-    # Append the history list to the history file
-    history -a
+  # Append the history list to the history file
+  history -a
 
-    if [[ -r "$HISTFILE" ]]; then
-        # Temporary file for deduplicating the history file
-        local tmp_hist=$(mktemp "/tmp/.bash_history.$$.XXXXXX")
+  if [[ -r "$HISTFILE" ]]; then
+    # Temporary file for deduplicating the history file
+    local tmp_hist=$(mktemp "/tmp/.bash_history.$$.XXXXXX")
 
-        # Keep only the most recent copies of duplicates; remove trailing spaces
-        tac "$HISTFILE" | awk '{sub(/ +$/, "")}; !a[$0]++' | tac > "$tmp_hist"
-        mv "$tmp_hist" "$HISTFILE"
+    # Keep only the most recent copies of duplicates; remove trailing spaces
+    tac "$HISTFILE" | awk '{sub(/ +$/, "")}; !a[$0]++' | tac > "$tmp_hist"
+    mv "$tmp_hist" "$HISTFILE"
 
-        # Remove the temporary file
-        rm -f "$tmp_hist"
-    fi
+    # Remove the temporary file
+    rm -f "$tmp_hist"
+  fi
 
-    # Clear the history list and read the history file
-    history -c
-    history -r
+  # Clear the history list and read the history file
+  history -c
+  history -r
 }
 
 # Synchronize history before every prompt

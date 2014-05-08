@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/04/27
+" 2014/05/08
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -44,8 +44,8 @@ set statusline+=\ [%p%%,%P]
 set number
 
 if exists('+relativenumber')
-    " Use relative line numbers
-    set relativenumber
+  " Use relative line numbers
+  set relativenumber
 endif
 
 " Display parts of wrapped lines that are cut off at the bottom
@@ -61,8 +61,8 @@ set shiftround autoindent copyindent
 set pastetoggle=<F2>
 
 if exists('+clipboard')
-    " Interact with the X clipboard
-    set clipboard=unnamed
+  " Interact with the X clipboard
+  set clipboard=unnamed
 endif
 
 " Always allow backspacing
@@ -130,30 +130,30 @@ syntax enable
 colorscheme nkouevda
 
 augroup vimrc
-    " Remove all autocommands from this group
-    autocmd!
+  " Remove all autocommands from this group
+  autocmd!
 
-    " Disable paste mode when leaving insert mode
-    autocmd InsertLeave * set nopaste
+  " Disable paste mode when leaving insert mode
+  autocmd InsertLeave * set nopaste
 
-    " Always use markdown filetype for .md files
-    autocmd BufEnter *.md setfiletype markdown
+  " Always use markdown filetype for .md files
+  autocmd BufEnter *.md setfiletype markdown
 
-    " Override default tab settings
-    autocmd FileType css,html,javascript,xml setlocal sts=2 sw=2
-    autocmd FileType gitconfig,make,sshconfig setlocal sts=8 sw=8 noet
+  " Override default indentation settings
+  autocmd FileType css,html,javascript,sh,vim,xml setlocal sts=2 sw=2
+  autocmd FileType gitconfig,make,sshconfig setlocal sts=8 sw=8 noet
 
-    " Limit text width
-    autocmd FileType markdown,text setlocal textwidth=80
+  " Limit text width
+  autocmd FileType markdown,text setlocal textwidth=80
 
-    " Match pairs of angle brackets in markup languages
-    autocmd FileType html,markdown,xml setlocal matchpairs+=<:>
+  " Match pairs of angle brackets in markup languages
+  autocmd FileType html,markdown,xml setlocal matchpairs+=<:>
 
-    " Use absolute line numbers and revert to global wrap setting in diff mode
-    autocmd FilterWritePre * if &diff | setlocal number wrap< | endif
+  " Use absolute line numbers and revert to global wrap setting in diff mode
+  autocmd FilterWritePre * if &diff | setlocal number wrap< | endif
 
-    if exists('+relativenumber')
-        " Do not use relative line numbers in diff mode
-        autocmd FilterWritePre * if &diff | setlocal norelativenumber | endif
-    endif
+  if exists('+relativenumber')
+    " Do not use relative line numbers in diff mode
+    autocmd FilterWritePre * if &diff | setlocal norelativenumber | endif
+  endif
 augroup end
