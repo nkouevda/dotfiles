@@ -1,5 +1,8 @@
 # Nikita Kouevda
-# 2014/05/02
+# 2014/05/12
+
+# Add duplicates of OS X software
+tap homebrew/dupes
 
 # Update Homebrew itself and get the newest formulae
 update
@@ -7,26 +10,34 @@ update
 # Upgrade all installed formulae
 upgrade
 
-# Install everything
+# Languages and shells
 install bash
-install coreutils
-install findutils --default-names
-install flac
-install git
-install gnu-sed --default-names
-install macvim
-install mercurial
-install nmap
 install node
 install python
 install python3
+
+# Editors and version control
+install git
+install macvim
+install mercurial
 install tig
+install vim
+
+# GNU utils
+install coreutils
+install findutils --default-names
+install gnu-sed --default-names
+install homebrew/dupes/diffutils
+install homebrew/dupes/grep --default-names
+
+# Other utils
+install flac
+install nmap
 install tree
 install valgrind
-install vim
 install wget
 
-# Override the system openssl
+# Override the default openssl
 link --force openssl
 
 # Link all OS X applications
