@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/05/08
+" 2014/05/13
 
 set background=dark
 
@@ -48,8 +48,7 @@ hi! link WildMenu PmenuSel
 hi Comment          ctermfg=244                     cterm=none      guifg=#808080                   gui=none
 hi Constant         ctermfg=173                     cterm=none      guifg=#d7875f                   gui=none
 hi String           ctermfg=113                     cterm=none      guifg=#87d75f                   gui=none
-hi Function         ctermfg=192                     cterm=none      guifg=#d7ff87                   gui=none
-hi! link Identifier Function
+hi Identifier       ctermfg=192                     cterm=none      guifg=#d7ff87                   gui=none
 hi Statement        ctermfg=111                     cterm=none      guifg=#87afff                   gui=none
 hi PreProc          ctermfg=173                     cterm=none      guifg=#d7875f                   gui=none
 hi Type             ctermfg=186                     cterm=none      guifg=#d7d787                   gui=none
@@ -62,7 +61,7 @@ hi! link SpellLocal SpellCap
 hi! link SpellRare SpellCap
 
 " Messages
-hi ModeMsg          ctermfg=252     ctermbg=235     cterm=none      guifg=#d0d0d0   guibg=#262626   gui=none
+hi! link ModeMsg Normal
 hi MoreMsg          ctermfg=208     ctermbg=235     cterm=none      guifg=#ff8700   guibg=#262626   gui=none
 hi! link WarningMsg MoreMsg
 hi! link Question MoreMsg
