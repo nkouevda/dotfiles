@@ -12,7 +12,6 @@ endif
 let g:colors_name = 'wombat'
 
 " General
-hi Title            ctermfg=252                     cterm=NONE      guifg=#d0d0d0                   gui=NONE
 hi Normal           ctermfg=252     ctermbg=235     cterm=NONE      guifg=#d0d0d0   guibg=#262626   gui=NONE
 hi Visual           ctermfg=252     ctermbg=239     cterm=NONE      guifg=#d0d0d0   guibg=#4e4e4e   gui=NONE
 hi! link VisualNOS Visual
