@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2014/04/27 -->
+<!-- 2014/05/13 -->
 
 # dotfiles
 
@@ -63,7 +63,7 @@ Configuration file for tig.
 
 Configuration files for Vim and gVim.
 
-### [`.vim/colors/nkouevda.vim`](.vim/colors/nkouevda.vim)
+### [`.vim/colors/wombat.vim`](.vim/colors/wombat.vim)
 
 Color scheme for Vim and gVim, based on
 [wombat256mod](http://www.vim.org/scripts/script.php?script_id=2465).

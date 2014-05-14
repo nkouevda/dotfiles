@@ -9,7 +9,7 @@ if exists('syntax_on')
   syntax reset
 endif
 
-let g:colors_name = 'nkouevda'
+let g:colors_name = 'wombat'
 
 " General
 hi Title            ctermfg=252                     cterm=NONE      guifg=#d0d0d0                   gui=NONE
