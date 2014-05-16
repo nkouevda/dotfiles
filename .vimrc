@@ -122,8 +122,8 @@ nnoremap <Leader>w /\s\+$<CR>
 nnoremap <Leader>W :%s/\s\+$//<CR>
 
 " Match all characters past column 79 or 80
-nnoremap <Leader>7 /\%>79v.\+<CR>
-nnoremap <Leader>8 /\%>80v.\+<CR>
+nnoremap <Leader>7 /\%80c.\+<CR>
+nnoremap <Leader>8 /\%81c.\+<CR>
 
 " Enable syntax highlighting and set color scheme
 syntax enable
