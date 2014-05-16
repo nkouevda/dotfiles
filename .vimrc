@@ -1,11 +1,14 @@
 " Nikita Kouevda
-" 2014/05/13
+" 2014/05/15
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
 
 " Do not use backup files in /private/tmp (fixes crontab editing in OS X)
 set backupskip+=/private/tmp/*
+
+" Hide abandoned buffers instead of unloading them
+set hidden
 
 " Shorten all file messages; do not display the intro message
 set shortmess+=aI
