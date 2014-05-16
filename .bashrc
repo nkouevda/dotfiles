@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/05/08
+# 2014/05/15
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -56,9 +56,6 @@ function sync_history {
     # Keep only the most recent copies of duplicates; remove trailing whitespace
     tac "$HISTFILE" | awk '{sub(/[ \t]+$/, "")} !uniq[$0]++' | tac > "$tmp_hist"
     mv "$tmp_hist" "$HISTFILE"
-
-    # Remove the temporary file
-    rm -f "$tmp_hist"
   fi
 
   # Clear the history list and read the history file
