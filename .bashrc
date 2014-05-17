@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/05/15
+# 2014/05/17
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -89,6 +89,3 @@ symbol='$([[ $? -ne 0 ]] && printf "%b" "$red" || printf "%b" "$reset")'
 
 # user@host pwd $
 export PS1="\[$reset\]$user\u$at@$host\h $dir\W \[$symbol\]\\$ \[$reset\]"
-
-# Guarantee exit status 0
-return 0
