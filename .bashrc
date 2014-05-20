@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/05/17
+# 2014/05/19
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -39,7 +39,7 @@ fi
 alias la="ls -Abhlp"
 alias lt="tree -aC -I '.git|node_modules'"
 
-# Alias tac in case coreutils is not installed
+# Alias tac if coreutils is not installed
 if ! type tac &>/dev/null; then
   alias tac="tail -r"
 fi
