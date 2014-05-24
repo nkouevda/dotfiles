@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2014/05/13 -->
+<!-- 2014/05/24 -->
 
 # dotfiles
 
@@ -65,17 +65,18 @@ Configuration files for Vim and gVim.
 
 ### [`.vim/colors/wombat.vim`](.vim/colors/wombat.vim)
 
-Color scheme for Vim and gVim, based on
-[wombat256mod](http://www.vim.org/scripts/script.php?script_id=2465).
+Color scheme for Vim and gVim, based on [wombat256mod][wombat256mod].
 
 ### [`Brewfile`](Brewfile)
 
 Homebrew dependencies.
 
-### [`iterm/nkouevda.itermcolors`](iterm/nkouevda.itermcolors)
+### [`iterm/wombat.itermcolors`](iterm/wombat.itermcolors)
 
-Color scheme for iTerm2.
+Color scheme for iTerm2, vaguely based on [wombat256mod][wombat256mod].
 
 ### [`subl/*`](subl/)
 
 Settings for Sublime Text 2.
+
+[wombat256mod]: http://www.vim.org/scripts/script.php?script_id=2465
