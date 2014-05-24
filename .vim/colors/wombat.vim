@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/05/13
+" 2014/05/24
 
 set background=dark
 
@@ -13,7 +13,7 @@ let g:colors_name = 'wombat'
 
 " General
 hi Normal           ctermfg=252     ctermbg=235     cterm=NONE      guifg=#d0d0d0   guibg=#262626   gui=NONE
-hi Visual           ctermfg=252     ctermbg=239     cterm=NONE      guifg=#d0d0d0   guibg=#4e4e4e   gui=NONE
+hi Visual                           ctermbg=239     cterm=NONE                      guibg=#4e4e4e   gui=NONE
 hi! link VisualNOS Visual
 hi Search           ctermfg=252     ctermbg=240     cterm=NONE      guifg=#d0d0d0   guibg=#585858   gui=NONE
 hi! link IncSearch Search
@@ -52,6 +52,7 @@ hi Statement        ctermfg=111                     cterm=NONE      guifg=#87aff
 hi PreProc          ctermfg=173                     cterm=NONE      guifg=#d7875f                   gui=NONE
 hi Type             ctermfg=186                     cterm=NONE      guifg=#d7d787                   gui=NONE
 hi Special          ctermfg=229                     cterm=NONE      guifg=#ffffaf                   gui=NONE
+hi! link Title Special
 
 " Spelling
 hi SpellBad         ctermfg=232     ctermbg=197     cterm=NONE      guifg=#080808   guibg=#ff005f   gui=NONE
