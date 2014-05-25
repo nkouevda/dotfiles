@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/05/15
+" 2014/05/25
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -130,7 +130,7 @@ nnoremap <Leader>8 /\%81c.\+<CR>
 
 " Enable syntax highlighting and set color scheme
 syntax enable
-colorscheme wombat
+colorscheme monokai
 
 augroup vimrc
   " Remove all autocommands from this group

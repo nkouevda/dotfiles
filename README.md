@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2014/05/24 -->
+<!-- 2014/05/25 -->
 
 # dotfiles
 
@@ -63,9 +63,15 @@ Configuration file for tig.
 
 Configuration files for Vim and gVim.
 
+### [`.vim/colors/monokai.vim`](.vim/colors/monokai.vim)
+
+Color scheme for Vim and gVim, based on
+[Monokai.tmTheme](https://github.com/textmate/monokai.tmbundle).
+
 ### [`.vim/colors/wombat.vim`](.vim/colors/wombat.vim)
 
-Color scheme for Vim and gVim, based on [wombat256mod][wombat256mod].
+Color scheme for Vim and gVim, based on
+[wombat256mod.vim](http://www.vim.org/scripts/script.php?script_id=2465).
 
 ### [`Brewfile`](Brewfile)
 
@@ -73,10 +79,8 @@ Homebrew dependencies.
 
 ### [`iterm/wombat.itermcolors`](iterm/wombat.itermcolors)
 
-Color scheme for iTerm2, vaguely based on [wombat256mod][wombat256mod].
+Color scheme for iTerm2, based on [wombat.vim](.vim/colors/wombat.vim).
 
 ### [`subl/*`](subl/)
 
 Settings for Sublime Text 2.
-
-[wombat256mod]: http://www.vim.org/scripts/script.php?script_id=2465
