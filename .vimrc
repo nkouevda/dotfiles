@@ -143,7 +143,7 @@ augroup vimrc
   autocmd BufEnter *.md setfiletype markdown
 
   " Override default indentation settings
-  autocmd FileType css,html,javascript,sh,vim,xml setlocal sts=2 sw=2
+  autocmd FileType css,html,javascript,sh,vim,xml,yaml setlocal sts=2 sw=2
   autocmd FileType gitconfig,make,sshconfig setlocal sts=8 sw=8 noet
 
   " Limit text width
