@@ -37,8 +37,8 @@ hi! link TabLineFill VertSplit
 
 " Popup menu and command line completion menu
 hi Pmenu            ctermfg=fg      ctermbg=236     cterm=NONE      guifg=fg        guibg=#303030   gui=NONE
-hi PmenuSbar        ctermfg=240     ctermbg=240     cterm=NONE      guifg=#585858   guibg=#585858   gui=NONE
-hi PmenuThumb       ctermfg=248     ctermbg=248     cterm=NONE      guifg=#a8a8a8   guibg=#a8a8a8   gui=NONE
+hi PmenuSbar                        ctermbg=240     cterm=NONE                      guibg=#585858   gui=NONE
+hi PmenuThumb                       ctermbg=248     cterm=NONE                      guibg=#a8a8a8   gui=NONE
 hi PmenuSel         ctermfg=232     ctermbg=226     cterm=NONE      guifg=#080808   guibg=#ffff00   gui=NONE
 hi! link WildMenu PmenuSel
 
