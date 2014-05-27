@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/05/26
+" 2014/05/27
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -85,22 +85,25 @@ set notimeout ttimeout ttimeoutlen=0
 
 " Use comma as leader; keep its functionality via backslash
 let mapleader = ','
-noremap \ ,
+nnoremap \ ,
+xnoremap \ ,
 
 " Prefer jumping directly to marks
 noremap ' `
+sunmap '
 noremap ` '
+sunmap `
 
 " Copy to the end of the line with Y; matches the behavior of C and D
 nnoremap Y y$
 
 " Write to black hole register to avoid overwriting copied material
-noremap <Leader><Leader> "_
+nnoremap <Leader><Leader> "_
+xnoremap <Leader><Leader> "_
 
-" Remain in visual mode after indenting
-vnoremap < <gv
-vnoremap > >gv
-vnoremap = =gv
+" Remain in visual mode after shifting lines
+xnoremap < <gv
+xnoremap > >gv
 
 " Repeat the last change [count] times instead of replacing the original count
 nnoremap . :<C-u>exe 'norm! ' . repeat('.', v:count1)<CR>
