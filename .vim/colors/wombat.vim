@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/05/25
+" 2014/05/30
 
 set background=dark
 
@@ -52,7 +52,7 @@ hi Statement      ctermfg=111                 cterm=NONE        guifg=#87afff   
 hi PreProc        ctermfg=173                 cterm=NONE        guifg=#d7875f                   gui=NONE
 hi Type           ctermfg=186                 cterm=NONE        guifg=#d7d787                   gui=NONE
 hi Special        ctermfg=229                 cterm=NONE        guifg=#ffffaf                   gui=NONE
-hi Underlined     ctermfg=51                  cterm=underline   guifg=#00ffff                   gui=underline
+hi Underlined     ctermfg=111                 cterm=underline   guifg=#87afff                   gui=underline
 hi! link Ignore Comment
 hi Error          ctermfg=232   ctermbg=124   cterm=NONE        guifg=#080808   guibg=#af0000   gui=NONE
 hi Todo           ctermfg=232   ctermbg=208   cterm=NONE        guifg=#080808   guibg=#ff8700   gui=NONE
