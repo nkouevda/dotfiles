@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/05/27
+" 2014/06/03
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -24,6 +24,9 @@ set report=0
 
 " Show partial commands
 set showcmd
+
+" Split below/right instead of above/left
+set splitbelow splitright
 
 " Always show the status line
 set laststatus=2
