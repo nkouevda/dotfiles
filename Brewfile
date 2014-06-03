@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/05/12
+# 2014/06/02
 
 # Add duplicates of OS X software
 tap homebrew/dupes
@@ -33,6 +33,7 @@ install homebrew/dupes/grep --default-names
 # Other utils
 install flac
 install nmap
+install the_silver_searcher
 install tree
 install valgrind
 install wget
