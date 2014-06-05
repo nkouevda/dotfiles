@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/06/03
+" 2014/06/04
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -157,6 +157,7 @@ augroup vimrc
 
   " Limit text width
   autocmd FileType markdown,text setlocal textwidth=80
+  autocmd FileType gitcommit setlocal textwidth=72
 
   " Match pairs of angle brackets in markup languages
   autocmd FileType html,markdown,xml setlocal matchpairs+=<:>
