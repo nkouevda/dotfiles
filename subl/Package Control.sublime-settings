@@ -2,6 +2,8 @@
   "auto_upgrade_last_run": null,
   "installed_packages":
   [
+    "CTags",
+    "Git",
     "GitGutter",
     "Package Control",
     "SublimeLinter",
