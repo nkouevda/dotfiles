@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/06/04
+" 2014/06/06
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -34,8 +34,8 @@ set laststatus=2
 " File name, flags (modified, read-only, help, preview), and file type
 set statusline=%f%m%r%h%w\ %y%{&ft!=''?'\ ':''}
 
-" Truncate if necessary; file format and encoding; switch to right alignment
-set statusline+=%<[%{&ff},%{&fenc!=''?&fenc:&enc}]\ %=
+" File format and encoding; truncate if necessary; switch to right alignment
+set statusline+=[%{&ff},%{&fenc!=''?&fenc:&enc}]\ %<%=
 
 " Character under cursor in decimal and hexadecimal
 set statusline+=[\%03b,0x\%02B]
