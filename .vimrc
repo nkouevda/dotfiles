@@ -111,10 +111,6 @@ xnoremap > >gv
 " Repeat the last change [count] times instead of replacing the original count
 nnoremap . :<C-u>exe 'norm! ' . repeat('.', v:count1)<CR>
 
-" Toggle line numbers and relative line numbers
-nnoremap <Leader>l :set number!<CR>
-nnoremap <Leader>L :set relativenumber!<CR>
-
 " Navigate and close buffers and splits
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>p :bprevious<CR>
@@ -124,6 +120,13 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-c> <C-w>c
+
+" Toggle line numbers and relative line numbers
+nnoremap <Leader>l :set number!<CR>
+nnoremap <Leader>L :set relativenumber!<CR>
+
+" Toggle spell checking
+nnoremap <Leader>s :set spell!<CR>
 
 " Temporarily disable search highlighting; clear the previous regular expression
 nnoremap <Leader>/ :nohlsearch<CR>
