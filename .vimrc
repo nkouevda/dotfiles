@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/06/07
+" 2014/06/08
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -18,6 +18,9 @@ set history=1000
 
 " Search upward for a tags file
 set tags+=tags;
+
+" Ignore temporary and output files
+set wildignore+=*.class,*.o,*.out,*.pyc,*.swp,*~
 
 " Complete to the longest common prefix first, then list all completions
 set wildmode=longest,list
