@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/06/06
+" 2014/06/07
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -15,6 +15,9 @@ set shortmess+=aI
 
 " Save more command-line history
 set history=1000
+
+" Search upward for a tags file
+set tags+=tags;
 
 " Complete to the longest common prefix first, then list all completions
 set wildmode=longest,list
