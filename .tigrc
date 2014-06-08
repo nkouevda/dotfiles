@@ -1,29 +1,13 @@
 # Nikita Kouevda
-# 2014/05/02
+# 2014/06/08
 
 # Display settings
-set tab-size = 4
 set split-view-height = 75%
 
-# Vim/less-style navigation
+# Less-style navigation
 bind generic g move-first-line
 bind generic G move-last-line
-bind generic b scroll-page-up
-bind generic f scroll-page-down
-bind generic y scroll-line-up
-bind generic e scroll-line-down
-bind generic 0 scroll-first-col
-
-# Resolve conflicts with navigation mappings
-bind generic - :toggle commit-title-graph
-bind generic v view-blob
-bind generic V show-version
-bind generic a view-blame
-bind generic o edit
-
-# Map all views to lowercase
-bind generic x view-refs
-bind generic s view-status
+bind main G move-last-line
 
 # Only color content
 color   status          default     default
