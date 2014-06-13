@@ -158,7 +158,7 @@ augroup vimrc
   autocmd InsertLeave * set nopaste
 
   " Always use markdown filetype for .md files
-  autocmd BufEnter *.md setfiletype markdown
+  autocmd BufEnter,BufRead *.md setfiletype markdown
 
   " Override default indentation settings
   autocmd FileType css,html,javascript,sh,vim,xml,yaml setlocal sts=2 sw=2
