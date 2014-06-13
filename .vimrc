@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/06/08
+" 2014/06/13
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -118,8 +118,8 @@ xnoremap > >gv
 nnoremap . :<C-u>exe 'norm! ' . repeat('.', v:count1)<CR>
 
 " Navigate and close buffers and splits
-nnoremap <Leader>n :bnext<CR>
-nnoremap <Leader>p :bprevious<CR>
+nnoremap <Leader>j :bnext<CR>
+nnoremap <Leader>k :bprevious<CR>
 nnoremap <Leader>c :bdelete<CR>
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
