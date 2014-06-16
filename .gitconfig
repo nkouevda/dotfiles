@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/04/27
+# 2014/06/16
 
 [user]
 	name = Nikita Kouevda
@@ -26,7 +26,7 @@
 	br = branch
 	ci = commit
 	co = checkout
-	rmc = rm --cached
+	rb = rebase
 	df = diff
 	dfv = difftool --no-prompt
 	dfc = diff --cached
