@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/06/13
+" 2014/06/20
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -46,10 +46,10 @@ set statusline+=[%{&ff},%{&fenc!=''?&fenc:&enc}]\ %<%=
 " Character under cursor in decimal and hexadecimal
 set statusline+=[\%03b,0x\%02B]
 
-" Current line, total lines, column, and virtual column
-set statusline+=\ [%l/%L,%c%V]
+" Current line, total lines, column, virtual column, and number of columns
+set statusline+=\ [%l/%L,%c%V/%{strlen(getline('.'))}]
 
-" Percent of file (current line) and percent of file (displayed window)
+" Percent of file (line / total lines) and percent of file (displayed window)
 set statusline+=\ [%p%%,%P]
 
 " Show line numbers
