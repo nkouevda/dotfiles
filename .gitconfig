@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/06/16
+# 2014/07/02
 
 [user]
 	name = Nikita Kouevda
@@ -24,13 +24,17 @@
 [alias]
 	st = status
 	br = branch
+	bra = branch -a
 	ci = commit
+	cia = commit --amend
+	cian = commit --amend --no-edit
 	co = checkout
+	cp = cherry-pick
 	rb = rebase
 	df = diff
 	dfv = difftool --no-prompt
 	dfc = diff --cached
-	dfcv = difftool --cached --no-prompt
+	dfcv = difftool --no-prompt --cached
 	lgd = log --graph --decorate --oneline --date-order
-	lgds = log --graph --decorate --oneline --date-order\
-	--simplify-by-decoration --all
+	lgds = log --graph --decorate --oneline --date-order --all \
+	--simplify-by-decoration
