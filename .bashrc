@@ -1,11 +1,15 @@
 # Nikita Kouevda
-# 2014/05/19
+# 2014/07/02
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
 
 # If it exists and is readable, source ~/.bash_local
 [[ -r ~/.bash_local ]] && . ~/.bash_local
+
+# Do not capture ^Q and ^S
+stty start undef
+stty stop undef
 
 # Review commands with history expansion before executing; retype if failed
 shopt -s histverify histreedit
@@ -64,7 +68,7 @@ function sync_history {
 }
 
 # Synchronize history before every prompt
-export PROMPT_COMMAND="sync_history;"
+export PROMPT_COMMAND+="sync_history;"
 
 # Color escape sequences
 reset="$(tput sgr0)"
