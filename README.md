@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2014/05/25 -->
+<!-- 2014/07/12 -->
 
 # dotfiles
 
@@ -77,9 +77,10 @@ Color scheme for Vim and gVim, based on
 
 Homebrew dependencies.
 
-### [`iterm/wombat.itermcolors`](iterm/wombat.itermcolors)
+### [`iterm/wombat256.itermcolors`](iterm/wombat256.itermcolors)
 
-Color scheme for iTerm2, based on [wombat.vim](.vim/colors/wombat.vim).
+Color scheme for iTerm2, based on the `cterm` colors in
+[wombat.vim](.vim/colors/wombat.vim).
 
 ### [`subl/*`](subl/)
 
