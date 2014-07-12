@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/05/25
+" 2014/07/12
 
 set background=dark
 
@@ -15,11 +15,11 @@ let g:colors_name = 'monokai'
 hi Normal         ctermfg=255   ctermbg=235   cterm=NONE        guifg=#f8f8f2   guibg=#272822   gui=NONE
 hi Visual                       ctermbg=238   cterm=NONE                        guibg=#49483e   gui=NONE
 hi! link VisualNOS Visual
-hi Search         ctermfg=232   ctermbg=222   cterm=NONE        guifg=#080808   guibg=#ffe792   gui=NONE
+hi Search         ctermfg=bg    ctermbg=222   cterm=NONE        guifg=bg        guibg=#ffe792   gui=NONE
 hi! link IncSearch Search
 hi Folded         ctermfg=243   ctermbg=238   cterm=NONE        guifg=#75715e   guibg=#49483e   gui=NONE
 hi! link FoldColumn Folded
-hi Cursor         ctermfg=232   ctermbg=fg    cterm=NONE        guifg=#080808   guibg=fg        gui=NONE
+hi Cursor         ctermfg=bg    ctermbg=fg    cterm=NONE        guifg=bg        guibg=fg        gui=NONE
 hi CursorLine                   ctermbg=237   cterm=NONE                        guibg=#3e3d32   gui=NONE
 hi! link CursorColumn CursorLine
 
@@ -39,7 +39,7 @@ hi! link TabLineFill VertSplit
 hi Pmenu          ctermfg=fg    ctermbg=237   cterm=NONE        guifg=fg        guibg=#3e3d32   gui=NONE
 hi PmenuSbar                    ctermbg=238   cterm=NONE                        guibg=#49483e   gui=NONE
 hi PmenuThumb                   ctermbg=243   cterm=NONE                        guibg=#75715e   gui=NONE
-hi PmenuSel       ctermfg=232   ctermbg=185   cterm=NONE        guifg=#080808   guibg=#e6db74   gui=NONE
+hi PmenuSel       ctermfg=bg    ctermbg=185   cterm=NONE        guifg=bg        guibg=#e6db74   gui=NONE
 hi! link WildMenu PmenuSel
 
 " Syntax
@@ -58,12 +58,12 @@ hi! link SpecialChar Constant
 hi! link Delimiter Constant
 hi Underlined     ctermfg=81                  cterm=underline   guifg=#66d9ef                   gui=underline
 hi! link Ignore Comment
-hi Error          ctermfg=232   ctermbg=197   cterm=NONE        guifg=#080808   guibg=#f92672   gui=NONE
-hi Todo           ctermfg=232   ctermbg=208   cterm=NONE        guifg=#080808   guibg=#fd971f   gui=NONE
+hi Error          ctermfg=bg    ctermbg=197   cterm=NONE        guifg=bg        guibg=#f92672   gui=NONE
+hi Todo           ctermfg=bg    ctermbg=208   cterm=NONE        guifg=bg        guibg=#fd971f   gui=NONE
 
 " Spelling
 hi! link SpellBad Error
-hi SpellCap       ctermfg=232   ctermbg=135   cterm=NONE        guifg=#080808   guibg=#ae81ff   gui=NONE
+hi SpellCap       ctermfg=bg    ctermbg=135   cterm=NONE        guifg=bg        guibg=#ae81ff   gui=NONE
 hi! link SpellLocal SpellCap
 hi! link SpellRare SpellCap
 
@@ -75,7 +75,7 @@ hi! link Question MoreMsg
 hi ErrorMsg       ctermfg=197   ctermbg=bg    cterm=NONE        guifg=#f92672   guibg=bg        gui=NONE
 
 " Diff
-hi DiffAdd        ctermfg=232   ctermbg=118   cterm=NONE        guifg=#080808   guibg=#a6e22e   gui=NONE
+hi DiffAdd        ctermfg=bg    ctermbg=118   cterm=NONE        guifg=bg        guibg=#a6e22e   gui=NONE
 hi! link DiffDelete Error
 hi! link DiffChange PmenuSel
 hi! link DiffText Todo
