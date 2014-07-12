@@ -77,6 +77,16 @@ Color scheme for Vim and gVim, based on
 
 Homebrew dependencies.
 
+### [`iterm/monokai.itermcolors`](iterm/monokai.itermcolors)
+
+Color scheme for iTerm2, based on the `gui` colors in
+[monokai.vim](.vim/colors/monokai.vim).
+
+### [`iterm/monokai256.itermcolors`](iterm/monokai256.itermcolors)
+
+Color scheme for iTerm2, based on the `cterm` colors in
+[monokai.vim](.vim/colors/monokai.vim).
+
 ### [`iterm/wombat256.itermcolors`](iterm/wombat256.itermcolors)
 
 Color scheme for iTerm2, based on the `cterm` colors in
