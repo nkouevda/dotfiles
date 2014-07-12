@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/06/08
+# 2014/07/12
 
 # Display settings
 set split-view-height = 75%
@@ -11,6 +11,6 @@ bind main G move-last-line
 
 # Only color content
 color   status          default     default
-color   cursor          default     black
-color   title-focus     default     black       bold
-color   title-blur      default     black       bold
+color   cursor          default     default     bold
+color   title-focus     default     default     bold    reverse
+color   title-blur      default     default     bold    reverse
