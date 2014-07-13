@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/06/02
+# 2014/07/13
 
 # Add duplicates of OS X software
 tap homebrew/dupes
@@ -10,7 +10,7 @@ update
 # Upgrade all installed formulae
 upgrade
 
-# Languages and shells
+# Languages and interpreters
 install bash
 install node
 install python
@@ -31,6 +31,7 @@ install homebrew/dupes/diffutils
 install homebrew/dupes/grep --default-names
 
 # Other utils
+install ctags
 install flac
 install nmap
 install the_silver_searcher
