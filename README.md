@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2014/07/12 -->
+<!-- 2014/07/13 -->
 
 # dotfiles
 
@@ -9,13 +9,21 @@ My dotfiles, for future reference and reuse.
 
 ### Configuration and rc files
 
-To copy all relevant files for Bash, git, Mercurial, tig, and Vim to `~`:
+To copy all files for Bash, git, Mercurial, tig, and Vim to `~`:
 
-    cp -r .{bash_profile,gitconfig,{bash,hg,input,tig,{,g}vim}rc,vim} ~
+    cp -r .{bash_profile,{bash,{g,}vim,hg,input,tig}rc,gitconfig,vim} ~
 
-Note that some information in `.gitconfig` and `.hgrc` is specific to me.
+To instead create symbolic links in `~`:
 
-TODO: symlink.
+    for file in .{bash_profile,{bash,{g,}vim,hg,input,tig}rc,gitconfig}; do
+      ln -fsv "$PWD/$file" ~
+    done
+    mkdir -p ~/.vim/colors/
+    for file in .vim/colors/*.vim; do
+      ln -fsv "$PWD/$file" ~/.vim/colors/
+    done
+
+Note that `.gitconfig` and `.hgrc` contain user information specific to me.
 
 ### Homebrew
 
@@ -34,7 +42,7 @@ To import all `.itermcolors` files in the `iterm/` directory:
 To hard link all `.sublime-settings` files in the `subl/` directory to the
 appropriate settings directory:
 
-    find 'subl/' -type f -name '*.sublime-settings' -exec ln -fv {} \
+    find subl/ -type f -name '*.sublime-settings' -exec ln -fv {} \
         ~/'Library/Application Support/Sublime Text 2/Packages/User/' \;
 
 ## Contents
