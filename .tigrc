@@ -1,7 +1,10 @@
 # Nikita Kouevda
-# 2014/07/12
+# 2014/07/14
 
-# Display settings
+# Ignore case in searches
+set ignore-case = true
+
+# Split view heights 3:1 instead of 2:1
 set split-view-height = 75%
 
 # Less-style navigation
