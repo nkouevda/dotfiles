@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/07/12
+# 2014/07/14
 
 [user]
 	name = Nikita Kouevda
@@ -38,10 +38,8 @@
 	cp = cherry-pick
 	rb = rebase
 	df = diff
-	dfs = diff --stat
 	dfv = difftool
 	dfc = diff --cached
-	dfcs = diff --cached --stat
 	dfcv = difftool --cached
 	lg = log --graph --pretty=name
 	lga = log --graph --pretty=name --all
