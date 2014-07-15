@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/05/30
+" 2014/07/14
 
 set background=dark
 
@@ -81,9 +81,9 @@ hi! link Title Special
 hi! link MatchParen Todo
 hi! link ColorColumn Error
 hi! link Directory Statement
-hi NonText        ctermfg=240   ctermbg=232   cterm=NONE        guifg=#585858   guibg=#080808   gui=NONE
+hi NonText        ctermfg=244   ctermbg=bg    cterm=NONE        guifg=#808080   guibg=bg        gui=NONE
 hi! link Conceal NonText
 hi! link SpecialKey NonText
 hi! link LineNr NonText
-hi CursorLineNr   ctermfg=250   ctermbg=232   cterm=NONE        guifg=#bcbcbc   guibg=#080808   gui=NONE
+hi! link CursorLineNr Normal
 hi! link SignColumn LineNr
