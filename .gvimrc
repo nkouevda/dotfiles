@@ -1,12 +1,11 @@
 " Nikita Kouevda
-" 2012/10/03
+" 2014/07/15
 
-" ------------------------------------------------------------------------------
-" General
-" ------------------------------------------------------------------------------
-
-" Remove the toolbar
+" Do not show the toolbar
 set guioptions-=T
+
+" Never show scrollbars
+set guioptions-=R guioptions-=r guioptions-=L guioptions-=l guioptions-=b
 
 " Use Menlo, size 14
 set guifont=Menlo:h14
