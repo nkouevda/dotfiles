@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2014/07/13 -->
+<!-- 2014/07/17 -->
 
 # dotfiles
 
@@ -76,11 +76,6 @@ Configuration files for Vim and gVim.
 Color scheme for Vim and gVim, based on
 [Monokai.tmTheme](https://github.com/textmate/monokai.tmbundle).
 
-### [`.vim/colors/wombat.vim`](.vim/colors/wombat.vim)
-
-Color scheme for Vim and gVim, based on
-[wombat256mod.vim](http://www.vim.org/scripts/script.php?script_id=2465).
-
 ### [`Brewfile`](Brewfile)
 
 Homebrew dependencies.
@@ -89,16 +84,6 @@ Homebrew dependencies.
 
 Color scheme for iTerm2, based on the `gui` colors in
 [monokai.vim](.vim/colors/monokai.vim).
-
-### [`iterm/monokai256.itermcolors`](iterm/monokai256.itermcolors)
-
-Color scheme for iTerm2, based on the `cterm` colors in
-[monokai.vim](.vim/colors/monokai.vim).
-
-### [`iterm/wombat256.itermcolors`](iterm/wombat256.itermcolors)
-
-Color scheme for iTerm2, based on the `cterm` colors in
-[wombat.vim](.vim/colors/wombat.vim).
 
 ### [`subl/*`](subl/)
 
