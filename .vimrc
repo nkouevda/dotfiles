@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/06/29
+" 2014/08/05
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -72,7 +72,7 @@ set shiftround autoindent copyindent
 " Toggle paste mode
 set pastetoggle=<F2>
 
-if exists('+clipboard')
+if has('clipboard')
   " Interact with the X clipboard
   set clipboard=unnamed
 endif
@@ -98,10 +98,12 @@ nnoremap \ ,
 xnoremap \ ,
 
 " Prefer jumping directly to marks
-noremap ' `
-sunmap '
-noremap ` '
-sunmap `
+nnoremap ' `
+xnoremap ' `
+onoremap ' `
+nnoremap ` '
+xnoremap ` '
+onoremap ` '
 
 " Copy to the end of the line with Y; matches the behavior of C and D
 nnoremap Y y$
@@ -115,12 +117,19 @@ xnoremap < <gv
 xnoremap > >gv
 
 " Repeat the last change [count] times instead of replacing the original count
-nnoremap . :<C-u>exe 'norm! ' . repeat('.', v:count1)<CR>
+nnoremap <silent> . :<C-u>exe 'norm! ' . repeat('.', v:count1)<CR>
 
-" Navigate and close buffers and splits
+" List, switch, create, and delete buffers
+nnoremap <Leader>b :buffers<CR>:b
 nnoremap <Leader>j :bnext<CR>
 nnoremap <Leader>k :bprevious<CR>
+nnoremap <Leader>s :new<CR>
+nnoremap <Leader>S :leftabove new<CR>
+nnoremap <Leader>v :vnew<CR>
+nnoremap <Leader>V :leftabove vnew<CR>
 nnoremap <Leader>c :bdelete<CR>
+
+" Navigate and close windows
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
@@ -128,13 +137,13 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-c> <C-w>c
 
 " Toggle line numbers and relative line numbers
-nnoremap <Leader>l :set number!<CR>
-nnoremap <Leader>L :set relativenumber!<CR>
+nnoremap <Leader>n :set number!<CR>
+nnoremap <Leader>N :set relativenumber!<CR>
 
 " Toggle spell checking
-nnoremap <Leader>s :set spell!<CR>
+nnoremap <Leader>z :set spell!<CR>
 
-" Temporarily disable search highlighting; clear the previous regular expression
+" Temporarily disable search highlighting; clear the previous search pattern
 nnoremap <Leader>/ :nohlsearch<CR>
 nnoremap <Leader>? :let @/ = ''<CR>
 
@@ -150,32 +159,34 @@ nnoremap <Leader>8 /\%81c.\+<CR>
 syntax enable
 colorscheme monokai
 
-augroup vimrc
-  " Remove all autocommands from this group
-  autocmd!
+if has('autocmd')
+  augroup vimrc
+    " Remove all autocommands from this group
+    autocmd!
 
-  " Disable paste mode when leaving insert mode
-  autocmd InsertLeave * set nopaste
+    " Disable paste mode when leaving insert mode
+    autocmd InsertLeave * set nopaste
 
-  " Always use markdown filetype for .md files
-  autocmd BufEnter,BufRead *.md setfiletype markdown
+    " Always use markdown filetype for .md files
+    autocmd BufEnter,BufRead *.md setfiletype markdown
 
-  " Override default indentation settings
-  autocmd FileType css,html,javascript,sh,vim,xml,yaml setlocal sts=2 sw=2
-  autocmd FileType gitconfig,make,sshconfig setlocal sts=8 sw=8 noet
+    " Override default indentation settings
+    autocmd FileType css,html,javascript,sh,vim,xml,yaml setlocal sts=2 sw=2
+    autocmd FileType gitconfig,make,sshconfig setlocal sts=8 sw=8 noet
 
-  " Limit text width
-  autocmd FileType markdown,text setlocal textwidth=80
-  autocmd FileType gitcommit setlocal textwidth=72
+    " Limit text width
+    autocmd FileType markdown,text setlocal textwidth=80
+    autocmd FileType gitcommit setlocal textwidth=72
 
-  " Match pairs of angle brackets in markup languages
-  autocmd FileType html,markdown,xml setlocal matchpairs+=<:>
+    " Match pairs of angle brackets in markup languages
+    autocmd FileType html,markdown,xml setlocal matchpairs+=<:>
 
-  " Use absolute line numbers and revert to global wrap setting in diff mode
-  autocmd FilterWritePre * if &diff | setlocal number wrap< | endif
+    " Use absolute line numbers and revert to global wrap setting in diff mode
+    autocmd FilterWritePre * if &diff | setlocal number wrap< | endif
 
-  if exists('+relativenumber')
-    " Do not use relative line numbers in diff mode
-    autocmd FilterWritePre * if &diff | setlocal norelativenumber | endif
-  endif
-augroup end
+    if exists('+relativenumber')
+      " Do not use relative line numbers in diff mode
+      autocmd FilterWritePre * if &diff | setlocal norelativenumber | endif
+    endif
+  augroup end
+endif
