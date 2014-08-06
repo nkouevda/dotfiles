@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/07/13
+# 2014/08/05
 
 # Add duplicates of OS X software
 tap homebrew/dupes
@@ -21,7 +21,7 @@ install git
 install macvim
 install mercurial
 install tig
-install vim
+install vim --HEAD
 
 # GNU utils
 install coreutils
