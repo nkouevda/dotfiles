@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2014/07/17 -->
+<!-- 2014/08/06 -->
 
 # dotfiles
 
@@ -18,9 +18,12 @@ To instead create symbolic links in `~`:
     for file in .{bash_profile,{bash,{g,}vim,hg,input,tig}rc,gitconfig}; do
       ln -fsv "$PWD/$file" ~
     done
-    mkdir -p ~/.vim/colors/
+    mkdir -p ~/.vim/colors/ ~/.vim/UltiSnips/
     for file in .vim/colors/*.vim; do
       ln -fsv "$PWD/$file" ~/.vim/colors/
+    done
+    for file in .vim/UltiSnips/*.snippets; do
+      ln -fsv "$PWD/$file" ~/.vim/UltiSnips/
     done
 
 Note that `.gitconfig` and `.hgrc` contain user information specific to me.
@@ -75,6 +78,10 @@ Configuration files for Vim and gVim.
 
 Color scheme for Vim and gVim, based on
 [Monokai.tmTheme](https://github.com/textmate/monokai.tmbundle).
+
+### [`.vim/UltiSnips/*`](.vim/UltiSnips/)
+
+UltiSnips snippets for Vim.
 
 ### [`Brewfile`](Brewfile)
 

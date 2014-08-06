@@ -1,0 +1,126 @@
+# Nikita Kouevda
+# 2014/08/06
+
+snippet #! "#!" b
+#!/usr/bin/env python${0:3}
+endsnippet
+
+snippet from "from" b
+from ${1:module} import $0
+endsnippet
+
+snippet main "main" b
+if __name__ == '__main__':
+	${0:main()}
+endsnippet
+
+snippet class "class"
+class ${1:name}(${2:object}):
+	def __init__(self, ${3:params}):
+		${4:super($1, self).__init__($3)}
+		$0
+endsnippet
+
+snippet /(?<!\w)\./ "self." r
+self.
+endsnippet
+
+snippet /(?<!\w)__?/ "__magic__" r
+__${1:init}__$0
+endsnippet
+
+snippet def "def"
+def ${1:name}(`!v indent('.') ? 'self, ' : ''`${2:params}):
+	${0:pass}
+endsnippet
+
+snippet lambda "lambda"
+lambda ${1:params}: ${0:pass}
+endsnippet
+
+snippet doc "docstring"
+"""${1:TODO}
+"""$0
+endsnippet
+
+snippet """ "triple double quotes"
+"""$1"""$0
+endsnippet
+
+snippet ''' "triple single quotes"
+'''$1'''$0
+endsnippet
+
+snippet if "if"
+if ${1:condition}:
+	${0:pass}
+endsnippet
+
+snippet elif "elif"
+elif ${1:condition}:
+	${0:pass}
+endsnippet
+
+snippet else "else"
+else:
+	${0:pass}
+endsnippet
+
+snippet while "while"
+while ${1:condition}:
+	${0:pass}
+endsnippet
+
+snippet for "for"
+for ${1:item} in ${2:iterable}:
+	${0:pass}
+endsnippet
+
+snippet [ "[" w
+[${1:item} for ${2:item} in ${3:iterable}]$0
+endsnippet
+
+snippet set "set" w
+set(${1:item} for ${2:$1} in ${3:iterable})$0
+endsnippet
+
+snippet dict "dict" w
+dict((${1:key}, ${2:value}) for ${3:item} in ${4:iterable})$0
+endsnippet
+
+snippet try "try"
+try:
+	${1:pass}
+except ${2:Exception} as ${3:ex}:
+	${0:raise}
+endsnippet
+
+snippet with "with"
+with ${1:item} as ${3:var}:
+	${0:pass}
+endsnippet
+
+snippet open "open"
+with open(${1:file}, '${2:r}') as ${3:var}:
+	${0:pass}
+endsnippet
+
+snippet /(?<!\w)(?:is)?inst(?:a(?:n(?:c(?:e)?)?)?)?/ "isinstance" r
+isinstance(${1:var}, ${2:class})$0
+endsnippet
+
+snippet uuid "uuid" w
+uuid.uuid4()
+endsnippet
+
+snippet /(?<!\w)%/ "%" r
+'$1' % $0
+endsnippet
+
+snippet /(?<!\S)re\.?/ "re" r
+re.${1:search}(r'${2:pattern}', ${3:string})$0
+endsnippet
+
+snippet /(?<!\S)(?:import )?pdb/ "pdb" r
+import pdb; pdb.set_trace()
+endsnippet

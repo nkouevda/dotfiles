@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/08/05
+" 2014/08/06
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -172,10 +172,11 @@ if has('autocmd')
 
     " Override default indentation settings
     autocmd FileType css,html,javascript,sh,vim,xml,yaml setlocal sts=2 sw=2
-    autocmd FileType gitconfig,make,sshconfig setlocal sts=8 sw=8 noet
+    autocmd FileType gitconfig,make,snippets,sshconfig setlocal sts=8 sw=8 noet
 
     " Limit text width
     autocmd FileType markdown,text setlocal textwidth=80
+    autocmd FileType python setlocal textwidth=79
     autocmd FileType gitcommit setlocal textwidth=72
 
     " Match pairs of angle brackets in markup languages
@@ -189,4 +190,37 @@ if has('autocmd')
       autocmd FilterWritePre * if &diff | setlocal norelativenumber | endif
     endif
   augroup end
+endif
+
+if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
+  set rtp+=~/.vim/bundle/Vundle.vim
+  filetype off
+  call vundle#begin()
+  Plugin 'gmarik/Vundle.vim'
+
+  " Ag
+  let g:agprg = 'ag --column --smart-case'
+  Plugin 'rking/ag.vim'
+
+  " CtrlP
+  let g:ctrlp_clear_cache_on_exit = 0
+  let g:ctrlp_show_hidden = 1
+  let g:ctrlp_working_path_mode = ''
+  let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch'}
+  let g:ctrlp_user_command = ['.git', 'git ls-files %s -co --exclude-standard']
+  Plugin 'kien/ctrlp.vim'
+  Plugin 'FelikZ/ctrlp-py-matcher'
+
+  " Git
+  Plugin 'tpope/vim-fugitive'
+  Plugin 'airblade/vim-gitgutter'
+
+  " UltiSnips
+  let g:UltiSnipsExpandTrigger = '<Tab>'
+  let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+  let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+  Plugin 'SirVer/ultisnips'
+
+  call vundle#end()
+  filetype indent on
 endif
