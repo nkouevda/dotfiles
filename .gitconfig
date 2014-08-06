@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/07/14
+# 2014/08/05
 
 [user]
 	name = Nikita Kouevda
@@ -41,6 +41,8 @@
 	dfv = difftool
 	dfc = diff --cached
 	dfcv = difftool --cached
+	ss = show --stat
+	sv = difftool --cached HEAD^
 	lg = log --graph --pretty=name
 	lga = log --graph --pretty=name --all
 	lgs = log --graph --pretty=name --all --simplify-by-decoration
