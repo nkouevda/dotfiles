@@ -49,5 +49,4 @@ vim:
 	cd "$(ROOT)"; find .vim -type f -exec $(CMD) "$(ROOT)"/{} ~/{} \;
 
 subl:
-	cd "$(ROOT)"/subl; for file in *; do \
-	  $(CMD) "$(ROOT)"/subl/"$$file" "$(ST2)"/"$$file"; done
+	for file in "$(ROOT)"/subl/*; do $(CMD) "$$file" "$(ST2)"; done
