@@ -32,7 +32,7 @@ readline:
 	$(CMD) "$(ROOT)"/.inputrc ~
 
 bash:
-	$(CMD) "$(ROOT)"/.bash{_profile,rc} ~
+	$(CMD) "$(ROOT)"/.bash_profile "$(ROOT)"/.bashrc ~
 
 git:
 	$(CMD) "$(ROOT)"/.gitconfig ~
@@ -44,10 +44,10 @@ hg:
 	$(CMD) "$(ROOT)"/.hgrc ~
 
 vim:
-	$(CMD) "$(ROOT)"/.{g,}vimrc ~
+	$(CMD) "$(ROOT)"/.gvimrc "$(ROOT)"/.vimrc  ~
 	cd "$(ROOT)"; find .vim -type d -exec mkdir -pv ~/{} \;
-	cd "$(ROOT)"; find .vim -type f -exec $(CMD) {"$(ROOT)",~}/{} \;
+	cd "$(ROOT)"; find .vim -type f -exec $(CMD) "$(ROOT)"/{} ~/{} \;
 
 subl:
 	cd "$(ROOT)"/subl; for file in *; do \
-	  $(CMD) {"$(ROOT)"/subl,"$(ST2)"}/"$$file"; done
+	  $(CMD) "$(ROOT)"/subl/"$$file" "$(ST2)"/"$$file"; done
