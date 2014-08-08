@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/07/02
+# 2014/08/08
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -50,12 +50,14 @@ fi
 
 # Synchronize the current history list with the history file
 function sync_history {
+  local tmp_hist
+
   # Append the history list to the history file
   history -a
 
   if [[ -r "$HISTFILE" ]]; then
     # Temporary file for deduplicating the history file
-    local tmp_hist=$(mktemp "/tmp/.bash_history.$$.XXXXXX")
+    tmp_hist=$(mktemp "/tmp/.bash_history.$$.XXXXXX")
 
     # Keep only the most recent copies of duplicates; remove trailing whitespace
     tac "$HISTFILE" | awk '{sub(/[ \t]+$/, "")} !uniq[$0]++' | tac > "$tmp_hist"
@@ -68,28 +70,36 @@ function sync_history {
 }
 
 # Synchronize history before every prompt
-export PROMPT_COMMAND+="sync_history;"
+export PROMPT_COMMAND="sync_history;"
 
-# Color escape sequences
-reset="$(tput sgr0)"
-red="$(tput setaf 1)"
-green="$(tput setaf 2)"
-yellow="$(tput setaf 3)"
+# Construct and export PS1
+function make_ps1 {
+  local reset red green yellow user at host dir stat
 
-# Red user if root, green otherwise
-[[ $UID -eq 0 ]] && user="\[$red\]" || user="\[$green\]"
+  # Color escape sequences
+  reset="$(tput sgr0)"
+  red="$(tput setaf 1)"
+  green="$(tput setaf 2)"
+  yellow="$(tput setaf 3)"
 
-# Red @ if display unavailable, green otherwise
-[[ -z "${DISPLAY+set}" ]] && at="\[$red\]" || at="\[$green\]"
+  # Red user if root, green otherwise
+  [[ $UID -eq 0 ]] && user="\[$red\]" || user="\[$green\]"
 
-# Red host if connected via ssh, green otherwise
-[[ -n "${SSH_CONNECTION+set}" ]] && host="\[$red\]" || host="\[$green\]"
+  # Red @ if display unavailable, green otherwise
+  [[ -z "${DISPLAY+set}" ]] && at="\[$red\]" || at="\[$green\]"
 
-# Yellow working directory
-dir="\[$yellow\]"
+  # Red host if connected via ssh, green otherwise
+  [[ -n "${SSH_CONNECTION+set}" ]] && host="\[$red\]" || host="\[$green\]"
 
-# Red $ or # if non-zero exit status, normal otherwise
-symbol='$([[ $? -ne 0 ]] && printf "%b" "$red" || printf "%b" "$reset")'
+  # Yellow working directory
+  dir="\[$yellow\]"
 
-# user@host pwd $
-export PS1="\[$reset\]$user\u$at@$host\h $dir\W \[$symbol\]\\$ \[$reset\]"
+  # Red $ or # if non-zero exit status, normal otherwise
+  stat='$([[ $? -ne 0 ]] && printf "%b" "'"$red"'" || printf "%b" "'"$reset"'")'
+
+  # user@host pwd $
+  export PS1="\[$reset\]$user\u$at@$host\h $dir\W \[$stat\]\\$ \[$reset\]"
+}
+
+make_ps1
+unset -f make_ps1
