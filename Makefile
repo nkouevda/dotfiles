@@ -12,27 +12,30 @@ endif
 ROOT := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
 # All targets except all
-TARGETS := brew iterm readline bash git tig hg vim
+TARGETS := iterm brew readline bash git tig hg vim ag ranger
 
 # Phony targets
 .PHONY: all $(TARGETS)
 
 all: $(TARGETS)
 
-brew:
-	brew bundle "$(ROOT)"
-
 iterm:
 	open "$(ROOT)"/iterm/*.itermcolors
+
+brew:
+	brew bundle "$(ROOT)"
 
 readline:
 	$(CMD) "$(ROOT)"/.inputrc ~
 
 bash:
-	$(CMD) "$(ROOT)"/.bash_profile "$(ROOT)"/.bashrc ~
+	$(CMD) "$(ROOT)"/.bash_profile ~
+	$(CMD) "$(ROOT)"/.bashrc ~
 
 git:
 	$(CMD) "$(ROOT)"/.gitconfig ~
+	mkdir -pv ~/.config/git
+	$(CMD) "$(ROOT)"/.config/git/ignore ~/.config/git/ignore
 
 tig:
 	$(CMD) "$(ROOT)"/.tigrc ~
@@ -44,3 +47,11 @@ vim:
 	$(CMD) "$(ROOT)"/.gvimrc "$(ROOT)"/.vimrc  ~
 	cd "$(ROOT)"; find .vim -type d -exec mkdir -pv ~/{} \;
 	cd "$(ROOT)"; find .vim -type f -exec $(CMD) "$(ROOT)"/{} ~/{} \;
+	vim +PluginInstall +PluginClean +qa
+
+ag:
+	$(CMD) "$(ROOT)"/.agignore ~
+
+ranger:
+	mkdir -pv ~/.config/ranger
+	$(CMD) "$(ROOT)"/.config/ranger/rc.conf ~/.config/ranger/rc.conf

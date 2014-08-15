@@ -17,6 +17,6 @@ To create symbolic links instead, use `LN=1`:
 
 To install selectively, take a look at the [`Makefile`](Makefile). For example:
 
-    make LN=1 readline bash git tig hg vim
+    make LN=1 readline bash git tig hg vim ag ranger
 
 Note that `.gitconfig` and `.hgrc` contain user-specific information.
