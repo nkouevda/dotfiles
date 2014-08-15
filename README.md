@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2014/08/07 -->
+<!-- 2014/08/15 -->
 
 # dotfiles
 
@@ -13,10 +13,10 @@ To install everything by copying:
 
 To create symbolic links instead, use `LN=1`:
 
-    LN=1 make
+    make LN=1
 
 To install selectively, take a look at the [`Makefile`](Makefile). For example:
 
-    LN=1 make readline bash git tig hg vim
+    make LN=1 readline bash git tig hg vim
 
 Note that `.gitconfig` and `.hgrc` contain user-specific information.
