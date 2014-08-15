@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/08/07
+# 2014/08/15
 
 # Link if LN=1; copy otherwise
 ifeq ($(LN),1)
@@ -11,11 +11,8 @@ endif
 # Location of this file
 ROOT := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
-# Sublime Text 2 settings directory
-ST2 := $(wildcard ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/User)
-
 # All targets except all
-TARGETS := brew iterm readline bash git tig hg vim subl
+TARGETS := brew iterm readline bash git tig hg vim
 
 # Phony targets
 .PHONY: all $(TARGETS)
@@ -47,6 +44,3 @@ vim:
 	$(CMD) "$(ROOT)"/.gvimrc "$(ROOT)"/.vimrc  ~
 	cd "$(ROOT)"; find .vim -type d -exec mkdir -pv ~/{} \;
 	cd "$(ROOT)"; find .vim -type f -exec $(CMD) "$(ROOT)"/{} ~/{} \;
-
-subl:
-	for file in "$(ROOT)"/subl/*; do $(CMD) "$$file" "$(ST2)"; done
