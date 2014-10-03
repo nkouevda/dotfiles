@@ -74,7 +74,7 @@ export PROMPT_COMMAND="sync_history;"
 
 # Construct and export PS1
 make_ps1() {
-  local reset red green yellow user at host dir stat
+  local reset red green yellow user at host dir status
 
   # Color escape sequences
   reset="$(tput sgr0)"
@@ -95,10 +95,10 @@ make_ps1() {
   dir="\[$yellow\]"
 
   # Red $ or # if non-zero exit status, normal otherwise
-  stat='$([[ $? -ne 0 ]] && printf "%b" "'"$red"'" || printf "%b" "'"$reset"'")'
+  status='$((( $? )) && printf "%b" "'"$red"'" || printf "%b" "'"$reset"'")'
 
   # user@host pwd $
-  export PS1="\[$reset\]$user\u$at@$host\h $dir\W \[$stat\]\\$ \[$reset\]"
+  export PS1="\[$reset\]$user\u$at@$host\h $dir\W \[$status\]\\$ \[$reset\]"
 }
 
 make_ps1
