@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/08/15
+# 2014/10/02
 
 # Add duplicates of OS X software
 tap homebrew/dupes
@@ -19,6 +19,7 @@ install diffutils
 install findutils --default-names
 install flac
 install fzf
+install gawk
 install git
 install gnu-sed --default-names
 install grep --default-names
