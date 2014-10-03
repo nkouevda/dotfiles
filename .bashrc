@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/08/08
+# 2014/10/02
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -49,7 +49,7 @@ if ! type tac &>/dev/null; then
 fi
 
 # Synchronize the current history list with the history file
-function sync_history {
+sync_history() {
   local tmp_hist
 
   # Append the history list to the history file
@@ -73,7 +73,7 @@ function sync_history {
 export PROMPT_COMMAND="sync_history;"
 
 # Construct and export PS1
-function make_ps1 {
+make_ps1() {
   local reset red green yellow user at host dir stat
 
   # Color escape sequences
