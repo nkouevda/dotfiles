@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/08/06
+" 2014/10/02
 
 " Disable Vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -214,6 +214,10 @@ if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
   " Git
   Plugin 'tpope/vim-fugitive'
   Plugin 'airblade/vim-gitgutter'
+  hi! link GitGutterAdd Function
+  hi! link GitGutterChange String
+  hi! link GitGutterDelete Statement
+  hi! link GitGutterChangeDelete Identifier
 
   " UltiSnips
   let g:UltiSnipsExpandTrigger = '<Tab>'

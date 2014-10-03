@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/08/07
+" 2014/10/02
 
 " Do not show the toolbar
 set guioptions-=T
@@ -15,9 +15,3 @@ set guicursor+=a:block
 
 " Disable blinking cursor in all modes
 set guicursor+=a:blinkon0
-
-" GitGutter
-hi! link GitGutterAdd Function
-hi! link GitGutterChange String
-hi! link GitGutterDelete Statement
-hi! link GitGutterChangeDelete Identifier
