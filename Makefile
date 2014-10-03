@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/08/20
+# 2014/10/02
 
 # Link if LN=1; copy otherwise
 ifeq ($(LN),1)
@@ -47,7 +47,7 @@ vim:
 	$(CMD) "$(ROOT)"/.gvimrc "$(ROOT)"/.vimrc  ~
 	cd "$(ROOT)"; find .vim -type d -exec mkdir -pv ~/{} \;
 	cd "$(ROOT)"; find .vim -type f -exec $(CMD) "$(ROOT)"/{} ~/{} \;
-	mkdir -pv ~/.vim/bundle
+	mkdir -pv ~/.vim/bundle ~/.vim/tmp/swap
 	cd ~/.vim/bundle; git clone https://github.com/gmarik/Vundle.vim.git
 	vim +PluginInstall +PluginClean +qa
 

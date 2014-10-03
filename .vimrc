@@ -1,11 +1,14 @@
 " Nikita Kouevda
 " 2014/10/02
 
-" Disable Vi compatibility when overriding default vimrc via -u
+" Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
 
 " Do not use backup files in /private/tmp (fixes crontab editing in OS X)
 set backupskip+=/private/tmp/*
+
+" Place all swap files in one location; trailing // ensures uniqueness
+set directory^=~/.vim/tmp/swap//
 
 " Hide abandoned buffers instead of unloading them
 set hidden
