@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/10/02
+" 2014/10/06
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -162,6 +162,9 @@ nnoremap <Leader>8 /\%81c.\+<CR>
 syntax enable
 colorscheme monokai
 
+" Load filetype plugin and indent files
+filetype plugin indent on
+
 if has('autocmd')
   augroup vimrc
     " Remove all autocommands from this group
@@ -195,15 +198,12 @@ if has('autocmd')
   augroup end
 endif
 
-if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
-  set rtp+=~/.vim/bundle/Vundle.vim
-  filetype off
-  call vundle#begin()
-  Plugin 'gmarik/Vundle.vim'
+if filereadable(expand('~/.vim/autoload/plug.vim'))
+  call plug#begin()
 
   " Ag
   let g:agprg = 'ag --column --smart-case'
-  Plugin 'rking/ag.vim'
+  Plug 'rking/ag.vim'
 
   " CtrlP
   let g:ctrlp_clear_cache_on_exit = 0
@@ -211,12 +211,12 @@ if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
   let g:ctrlp_working_path_mode = ''
   let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch'}
   let g:ctrlp_user_command = ['.git', 'git ls-files %s -co --exclude-standard']
-  Plugin 'kien/ctrlp.vim'
-  Plugin 'FelikZ/ctrlp-py-matcher'
+  Plug 'kien/ctrlp.vim'
+  Plug 'FelikZ/ctrlp-py-matcher'
 
   " Git
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
   hi! link GitGutterAdd Function
   hi! link GitGutterChange String
   hi! link GitGutterDelete Statement
@@ -226,8 +226,7 @@ if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
   let g:UltiSnipsExpandTrigger = '<Tab>'
   let g:UltiSnipsJumpForwardTrigger = '<Tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
-  Plugin 'SirVer/ultisnips'
+  Plug 'SirVer/ultisnips'
 
-  call vundle#end()
-  filetype indent on
+  call plug#end()
 endif
