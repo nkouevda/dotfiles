@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/10/08
+" 2014/10/09
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -200,11 +200,11 @@ endif
 if filereadable(expand('~/.vim/autoload/plug.vim'))
   call plug#begin()
 
-  " Ag
+  " Code search
   let g:agprg = 'ag --column --smart-case'
   Plug 'rking/ag.vim'
 
-  " CtrlP
+  " Fuzzy file search
   let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_working_path_mode = ''
@@ -224,7 +224,14 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   " Indentation
   Plug 'tpope/vim-sleuth'
 
-  " UltiSnips
+  " Search
+  let g:oblique#min_length = 0
+  let g:oblique#clear_highlight = 0
+  Plug 'junegunn/vim-pseudocl'
+  Plug 'junegunn/vim-oblique'
+  hi! link ObliqueCurrentMatch None
+
+  " Snippets
   let g:UltiSnipsExpandTrigger = '<Tab>'
   let g:UltiSnipsJumpForwardTrigger = '<Tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
