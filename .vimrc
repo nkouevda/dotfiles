@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/10/06
+" 2014/10/08
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -66,8 +66,8 @@ endif
 " Display parts of wrapped lines that are cut off at the bottom
 set display=lastline
 
-" Use soft tabs with 4 spaces per tab
-set softtabstop=4 shiftwidth=4 expandtab
+" Default to 2 spaces per tab
+set shiftwidth=2 expandtab smarttab
 
 " Round to the nearest tab when indenting; copy indentation exactly
 set shiftround autoindent copyindent
@@ -177,8 +177,7 @@ if has('autocmd')
     autocmd BufEnter,BufRead *.md setfiletype markdown
 
     " Override default indentation settings
-    autocmd FileType css,html,javascript,sh,vim,xml,yaml setlocal sts=2 sw=2
-    autocmd FileType gitconfig,make,snippets,sshconfig setlocal sts=8 sw=8 noet
+    autocmd FileType gitconfig,make,snippets,sshconfig setlocal sw=8 noet
 
     " Limit text width
     autocmd FileType markdown,text setlocal textwidth=80
@@ -221,6 +220,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   hi! link GitGutterChange String
   hi! link GitGutterDelete Statement
   hi! link GitGutterChangeDelete Identifier
+
+  " Indentation
+  Plug 'tpope/vim-sleuth'
 
   " UltiSnips
   let g:UltiSnipsExpandTrigger = '<Tab>'
