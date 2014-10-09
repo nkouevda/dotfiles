@@ -158,6 +158,21 @@ nnoremap <Leader>W :%s/\s\+$//<CR>
 nnoremap <Leader>7 /\%80c.\+<CR>
 nnoremap <Leader>8 /\%81c.\+<CR>
 
+" Update the first instance of what looks like a modification date (YYYY/mm/dd)
+function! s:update_modification_date()
+  let l:winview = winsaveview()
+  try
+    keeppatterns 0s:\_.\{-}\zs\d\@<!\d\{4}/\d\d/\d\d\d\@!:\=strftime('%Y/%m/%d')
+  catch
+    echohl ErrorMsg
+    echo 'E486: Pattern not found: YYYY/mm/dd'
+    echohl None
+  endtry
+  call winrestview(l:winview)
+endfunction
+
+nnoremap <Leader>d :call <SID>update_modification_date()<CR>
+
 " Enable syntax highlighting and set color scheme
 syntax enable
 colorscheme monokai
