@@ -173,23 +173,6 @@ endfunction
 
 nnoremap <Leader>d :call <SID>update_modification_date()<CR>
 
-" Cycle through the location list
-function! s:cycle_location_list()
-  try
-    lnext
-  catch
-    try
-      lrewind
-    catch
-      echohl ErrorMsg
-      echo 'E42: No Errors'
-      echohl None
-    endtry
-  endtry
-endfunction
-
-nnoremap <Leader>l :call <SID>cycle_location_list()<CR>
-
 " Enable syntax highlighting and set color scheme
 syntax enable
 colorscheme monokai
@@ -232,6 +215,12 @@ endif
 if filereadable(expand('~/.vim/autoload/plug.vim'))
   call plug#begin()
 
+  " Various useful commands and functions
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-unimpaired'
+
   " Code search
   let g:agprg = 'ag --column --smart-case'
   Plug 'rking/ag.vim'
@@ -245,7 +234,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'kien/ctrlp.vim'
   Plug 'FelikZ/ctrlp-py-matcher'
 
-  " Git
+  " Git commands and signs
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
   hi! link GitGutterAdd Function
@@ -253,7 +242,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   hi! link GitGutterDelete Statement
   hi! link GitGutterChangeDelete Identifier
 
-  " Indentation
+  " Indentation detection
   Plug 'tpope/vim-sleuth'
 
   " Search
@@ -263,6 +252,12 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'junegunn/vim-oblique'
   hi! link ObliqueCurrentMatch None
 
+  " Snippets
+  let g:UltiSnipsExpandTrigger = '<Tab>'
+  let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+  let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+  Plug 'SirVer/ultisnips'
+
   " Syntax checking
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
@@ -271,12 +266,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['python']}
   let g:syntastic_python_checkers = ['pyflakes']
   Plug 'scrooloose/syntastic'
-
-  " Snippets
-  let g:UltiSnipsExpandTrigger = '<Tab>'
-  let g:UltiSnipsJumpForwardTrigger = '<Tab>'
-  let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
-  Plug 'SirVer/ultisnips'
 
   call plug#end()
 endif
