@@ -173,6 +173,23 @@ endfunction
 
 nnoremap <Leader>d :call <SID>update_modification_date()<CR>
 
+" Cycle through the location list
+function! s:cycle_location_list()
+  try
+    lnext
+  catch
+    try
+      lrewind
+    catch
+      echohl ErrorMsg
+      echo 'E42: No Errors'
+      echohl None
+    endtry
+  endtry
+endfunction
+
+nnoremap <Leader>l :call <SID>cycle_location_list()<CR>
+
 " Enable syntax highlighting and set color scheme
 syntax enable
 colorscheme monokai
@@ -245,6 +262,15 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'junegunn/vim-pseudocl'
   Plug 'junegunn/vim-oblique'
   hi! link ObliqueCurrentMatch None
+
+  " Syntax checking
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_enable_signs = 0
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['python']}
+  let g:syntastic_python_checkers = ['pyflakes']
+  Plug 'scrooloose/syntastic'
 
   " Snippets
   let g:UltiSnipsExpandTrigger = '<Tab>'
