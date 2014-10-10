@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/08/05
+# 2014/10/10
 
 [user]
 	name = Nikita Kouevda
@@ -36,7 +36,13 @@
 	cian = commit --amend --no-edit
 	co = checkout
 	cp = cherry-pick
+	cpc = cherry-pick --continue
+	cpa = cherry-pick --abort
 	rb = rebase
+	rbi = rebase --interactive
+	rbc = rebase --continue
+	rbs = rebase --skip
+	rba = rebase --abort
 	df = diff
 	dfv = difftool
 	dfc = diff --cached
