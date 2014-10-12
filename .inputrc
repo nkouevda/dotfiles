@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2013/06/03
+# 2014/10/12
 
 # Search history incrementally on up and down
 "\e[A": history-search-backward
@@ -10,3 +10,6 @@ set show-all-if-ambiguous on
 
 # Ignore case for completion
 set completion-ignore-case on
+
+# Append slashes when completing symlinked directories
+set mark-symlinked-directories on
