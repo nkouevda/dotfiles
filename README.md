@@ -1,9 +1,9 @@
 <!-- Nikita Kouevda -->
-<!-- 2014/08/15 -->
+<!-- 2014/10/12 -->
 
 # dotfiles
 
-My dotfiles, for future reference and reuse.
+My dotfiles.
 
 ## Installation
 
