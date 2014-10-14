@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/10/09
+" 2014/10/13
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -248,9 +248,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   " Search
   let g:oblique#min_length = 0
   let g:oblique#clear_highlight = 0
+  let g:oblique#incsearch_highlight_all = 1
   Plug 'junegunn/vim-pseudocl'
   Plug 'junegunn/vim-oblique'
-  hi! link ObliqueCurrentMatch None
 
   " Snippets
   let g:UltiSnipsExpandTrigger = '<Tab>'
