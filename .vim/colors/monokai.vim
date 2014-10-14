@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/07/14
+" 2014/10/14
 
 set background=dark
 
@@ -16,7 +16,7 @@ hi Normal         ctermfg=255   ctermbg=235   cterm=NONE        guifg=#f8f8f2   
 hi Visual                       ctermbg=238   cterm=NONE                        guibg=#49483e   gui=NONE
 hi! link VisualNOS Visual
 hi Search         ctermfg=bg    ctermbg=222   cterm=NONE        guifg=bg        guibg=#ffe792   gui=NONE
-hi! link IncSearch Search
+hi IncSearch      ctermfg=bg    ctermbg=208   cterm=NONE        guifg=bg        guibg=#fd971f   gui=NONE
 hi Folded         ctermfg=243   ctermbg=238   cterm=NONE        guifg=#75715e   guibg=#49483e   gui=NONE
 hi! link FoldColumn Folded
 hi Cursor         ctermfg=bg    ctermbg=fg    cterm=NONE        guifg=bg        guibg=fg        gui=NONE
@@ -59,7 +59,7 @@ hi! link Delimiter Constant
 hi Underlined     ctermfg=81                  cterm=underline   guifg=#66d9ef                   gui=underline
 hi! link Ignore Comment
 hi Error          ctermfg=bg    ctermbg=197   cterm=NONE        guifg=bg        guibg=#f92672   gui=NONE
-hi Todo           ctermfg=bg    ctermbg=208   cterm=NONE        guifg=bg        guibg=#fd971f   gui=NONE
+hi! link Todo IncSearch
 
 " Spelling
 hi! link SpellBad Error
@@ -68,24 +68,24 @@ hi! link SpellLocal SpellCap
 hi! link SpellRare SpellCap
 
 " Messages
-hi! link ModeMsg Normal
-hi MoreMsg        ctermfg=208   ctermbg=bg    cterm=NONE        guifg=#fd971f   guibg=bg        gui=NONE
+hi! link ModeMsg Function
+hi! link MoreMsg Identifier
 hi! link WarningMsg MoreMsg
 hi! link Question MoreMsg
-hi ErrorMsg       ctermfg=197   ctermbg=bg    cterm=NONE        guifg=#f92672   guibg=bg        gui=NONE
+hi! link ErrorMsg Statement
 
 " Diff
 hi DiffAdd        ctermfg=bg    ctermbg=118   cterm=NONE        guifg=bg        guibg=#a6e22e   gui=NONE
 hi! link DiffDelete Error
-hi! link DiffChange PmenuSel
-hi! link DiffText Todo
+hi! link DiffChange Visual
+hi! link DiffText PmenuSel
 
 " Miscellaneous
-hi! link Title Special
-hi! link MatchParen Todo
+hi! link Title ModeMsg
+hi! link MatchParen IncSearch
 hi! link ColorColumn Error
 hi! link Directory Statement
-hi NonText        ctermfg=243   ctermbg=bg    cterm=NONE        guifg=#75715e   guibg=bg        gui=NONE
+hi! link NonText Comment
 hi! link Conceal NonText
 hi! link SpecialKey NonText
 hi! link LineNr NonText
