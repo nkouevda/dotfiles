@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/10/13
+" 2014/10/20
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -173,11 +173,7 @@ endfunction
 
 nnoremap <Leader>d :call <SID>update_modification_date()<CR>
 
-" Enable syntax highlighting and set color scheme
-syntax enable
-colorscheme monokai
-
-" Load filetype plugin and indent files
+" Load filetype plugins and indentation files
 filetype plugin indent on
 
 if has('autocmd')
@@ -214,6 +210,9 @@ endif
 
 if filereadable(expand('~/.vim/autoload/plug.vim'))
   call plug#begin()
+
+  " Colors
+  Plug 'nkouevda/vim-monokai'
 
   " Various useful commands and functions
   Plug 'tpope/vim-commentary'
@@ -269,3 +268,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   call plug#end()
 endif
+
+" Enable syntax highlighting and set color scheme
+syntax enable
+colorscheme monokai
