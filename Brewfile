@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/02
+# 2014/10/22
 
 # Add duplicates of OS X software
 tap homebrew/dupes
@@ -34,7 +34,7 @@ install the_silver_searcher
 install tig
 install tree
 install valgrind
-install vim --HEAD
+install vim
 install wget
 
 # Override system openssl
