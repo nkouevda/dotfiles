@@ -1,25 +1,25 @@
 # Nikita Kouevda
-# 2014/08/06
+# 2014/10/23
 
 snippet #! "#!" b
-#!/usr/bin/env ${0:bash}
+#!/usr/bin/env ${1:bash}
 endsnippet
 
-snippet function "function" b
-function ${1:name} {
-	$0
+snippet /\w+\(\)/ "function" r
+`!p snip.rv = match.group()` {
+	$1
 }
 endsnippet
 
 snippet if "if" b
 if ${1:[[ ${2:condition} ]]}; then
-	$0
+	$3
 fi
 endsnippet
 
 snippet elif "elif" b
 elif ${1:[[ ${2:condition} ]]}; then
-	$0
+	$3
 endsnippet
 
 snippet else "else" b
@@ -29,13 +29,13 @@ endsnippet
 
 snippet while "while" b
 while ${1:[[ ${2:condition} ]]}; do
-	$0
+	$3
 done
 endsnippet
 
 snippet for "for" b
-for ${1:i} in ${2:words}; do
-	$0
+for ${1:i} in ${2:"$@"}; do
+	$3
 done
 endsnippet
 
