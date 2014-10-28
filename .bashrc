@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/02
+# 2014/10/27
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -41,6 +41,7 @@ fi
 
 # Aliases for viewing directory contents
 alias la="ls -Abhlp"
+alias lr="la -R"
 alias lt="tree -aC -I '.git|node_modules'"
 
 # Alias tac if coreutils is not installed
