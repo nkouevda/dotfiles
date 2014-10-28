@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/10
+# 2014/10/27
 
 [user]
 	name = Nikita Kouevda
@@ -33,7 +33,9 @@
 	bra = branch --verbose --verbose --all
 	ci = commit
 	cia = commit --amend
+	ciar = commit --amend --reset-author
 	cian = commit --amend --no-edit
+	cianr = commit --amend --no-edit --reset-author
 	co = checkout
 	cp = cherry-pick
 	cpc = cherry-pick --continue
