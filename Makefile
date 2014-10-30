@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/27
+# 2014/10/29
 
 # Link if LN=1; copy otherwise
 ifeq ($(LN),1)
@@ -37,7 +37,7 @@ brew:
 	brew install fzf the_silver_searcher
 	brew install ctags macvim vim
 	brew install node python python3
-	brew install tree ranger
+	brew install ranger tree
 	brew install nmap wget
 	brew install flac lame
 	brew linkapps
