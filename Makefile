@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/06
+# 2014/10/27
 
 # Link if LN=1; copy otherwise
 ifeq ($(LN),1)
@@ -23,7 +23,26 @@ iterm:
 	open "$(ROOT)"/iterm/*.itermcolors
 
 brew:
-	brew bundle "$(ROOT)"
+	brew tap homebrew/dupes
+	brew update
+	brew upgrade
+	brew install openssl
+	brew link --force openssl
+	brew install git mercurial tig
+	brew install bash bash-completion
+	brew install coreutils diffutils gawk
+	brew install findutils --default-names
+	brew install gnu-sed --default-names
+	brew install grep --default-names
+	brew install fzf the_silver_searcher
+	brew install ctags macvim vim
+	brew install node python python3
+	brew install tree ranger
+	brew install nmap wget
+	brew install flac lame
+	brew linkapps
+	brew cleanup -s
+	brew prune
 
 readline:
 	$(CMD) "$(ROOT)"/.inputrc ~
