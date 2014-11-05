@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/10/25
+" 2014/11/04
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -230,7 +230,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   let g:ctrlp_working_path_mode = ''
   let g:ctrlp_match_func = {'match': 'pymatcher#PyMatch'}
   let g:ctrlp_user_command = ['.git', 'git ls-files %s -co --exclude-standard']
-  Plug 'kien/ctrlp.vim'
+  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'FelikZ/ctrlp-py-matcher'
 
   " Git commands and signs
