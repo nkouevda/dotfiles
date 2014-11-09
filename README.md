@@ -1,5 +1,5 @@
 <!-- Nikita Kouevda -->
-<!-- 2014/10/12 -->
+<!-- 2014/11/09 -->
 
 # dotfiles
 
@@ -17,6 +17,6 @@ To create symbolic links instead, use `LN=1`:
 
 To install selectively, take a look at the [`Makefile`](Makefile). For example:
 
-    make LN=1 readline bash git tig hg vim ag ranger
+    make LN=1 ag bash git hg python ranger readline tig vim
 
 Note that `.gitconfig` and `.hgrc` contain user-specific information.
