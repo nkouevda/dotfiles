@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/29
+# 2014/11/09
 
 # Link if LN=1; copy otherwise
 ifeq ($(LN),1)
@@ -12,15 +12,19 @@ endif
 ROOT := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
 # All targets except all
-TARGETS := iterm brew readline bash git tig hg vim ag ranger
+TARGETS := ag bash brew git hg iterm ranger readline tig vim
 
 # Phony targets
 .PHONY: all $(TARGETS)
 
 all: $(TARGETS)
 
-iterm:
-	open "$(ROOT)"/iterm/*.itermcolors
+ag:
+	$(CMD) "$(ROOT)"/.agignore ~
+
+bash:
+	$(CMD) "$(ROOT)"/.bash_profile ~
+	$(CMD) "$(ROOT)"/.bashrc ~
 
 brew:
 	brew tap homebrew/dupes
@@ -44,23 +48,26 @@ brew:
 	brew cleanup -s
 	brew prune
 
-readline:
-	$(CMD) "$(ROOT)"/.inputrc ~
-
-bash:
-	$(CMD) "$(ROOT)"/.bash_profile ~
-	$(CMD) "$(ROOT)"/.bashrc ~
-
 git:
 	$(CMD) "$(ROOT)"/.gitconfig ~
 	mkdir -pv ~/.config/git
 	$(CMD) "$(ROOT)"/.config/git/ignore ~/.config/git/ignore
 
-tig:
-	$(CMD) "$(ROOT)"/.tigrc ~
-
 hg:
 	$(CMD) "$(ROOT)"/.hgrc ~
+
+iterm:
+	open "$(ROOT)"/iterm/*.itermcolors
+
+ranger:
+	mkdir -pv ~/.config/ranger
+	$(CMD) "$(ROOT)"/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+
+readline:
+	$(CMD) "$(ROOT)"/.inputrc ~
+
+tig:
+	$(CMD) "$(ROOT)"/.tigrc ~
 
 vim:
 	$(CMD) "$(ROOT)"/.gvimrc "$(ROOT)"/.vimrc  ~
@@ -70,10 +77,3 @@ vim:
 	curl -sSLo ~/.vim/autoload/plug.vim \
 	  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	vim +PlugInstall +qa
-
-ag:
-	$(CMD) "$(ROOT)"/.agignore ~
-
-ranger:
-	mkdir -pv ~/.config/ranger
-	$(CMD) "$(ROOT)"/.config/ranger/rc.conf ~/.config/ranger/rc.conf
