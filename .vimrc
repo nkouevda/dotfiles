@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/11/04
+" 2014/11/09
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -235,11 +235,11 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " Git commands and signs
   Plug 'tpope/vim-fugitive'
-  Plug 'airblade/vim-gitgutter'
-  hi! link GitGutterAdd Function
-  hi! link GitGutterChange String
-  hi! link GitGutterDelete Statement
-  hi! link GitGutterChangeDelete Identifier
+  Plug 'mhinz/vim-signify'
+  hi! link SignifySignAdd Function
+  hi! link SignifySignChange String
+  hi! link SignifySignDelete Statement
+  hi! link SignifySignChangeDelete Identifier
 
   " Indentation detection
   Plug 'tpope/vim-sleuth'
