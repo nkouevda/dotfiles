@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/27
+# 2014/11/09
 
 [user]
 	name = Nikita Kouevda
@@ -31,26 +31,41 @@
 	st = status
 	br = branch --verbose --verbose
 	bra = branch --verbose --verbose --all
+	sb = show-branch
+	lg = log --graph --pretty=name
+	lga = log --graph --pretty=name --all
+	lgs = log --graph --pretty=name --all --simplify-by-decoration
+	sh = stash
+	shl = stash list
+	shs = stash save
+	sha = stash apply
+	shp = stash pop
+	shd = stash drop
+	shc = stash clear
 	ci = commit
 	cia = commit --amend
 	ciar = commit --amend --reset-author
 	cian = commit --amend --no-edit
 	cianr = commit --amend --no-edit --reset-author
 	co = checkout
+	com = checkout master
+	como = checkout -B master origin/master
 	cp = cherry-pick
 	cpc = cherry-pick --continue
 	cpa = cherry-pick --abort
+	fe = fetch
+	fea = fetch --all
 	rb = rebase
 	rbi = rebase --interactive
 	rbc = rebase --continue
 	rbs = rebase --skip
 	rba = rebase --abort
+	rbm = rebase master
 	df = diff
+	dfs = diff --stat
 	dfv = difftool
 	dfc = diff --cached
+	dfcs = diff --cached --stat
 	dfcv = difftool --cached
 	ss = show --stat
 	sv = difftool --cached HEAD^
-	lg = log --graph --pretty=name
-	lga = log --graph --pretty=name --all
-	lgs = log --graph --pretty=name --all --simplify-by-decoration
