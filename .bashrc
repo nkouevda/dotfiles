@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/27
+# 2014/11/09
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -31,6 +31,9 @@ export EDITOR="vim"
 
 # Color grep output
 export GREP_OPTIONS="--color=auto"
+
+# If it exists and is readable, set python startup file
+[[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
 
 # Color ls output
 if ls --color=auto &>/dev/null; then

@@ -1,0 +1,6 @@
+# Nikita Kouevda
+# 2014/11/09
+
+import readline
+readline.parse_and_bind('tab: complete')
+del readline

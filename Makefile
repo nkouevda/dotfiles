@@ -12,7 +12,7 @@ endif
 ROOT := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
 # All targets except all
-TARGETS := ag bash brew git hg iterm ranger readline tig vim
+TARGETS := ag bash brew git hg iterm python ranger readline tig vim
 
 # Phony targets
 .PHONY: all $(TARGETS)
@@ -58,6 +58,9 @@ hg:
 
 iterm:
 	open "$(ROOT)"/iterm/*.itermcolors
+
+python:
+	$(CMD) "$(ROOT)"/.pystartup ~
 
 ranger:
 	mkdir -pv ~/.config/ranger
