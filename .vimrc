@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/11/09
+" 2014/11/10
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -146,17 +146,15 @@ nnoremap <Leader>N :set relativenumber!<CR>
 " Toggle spell checking
 nnoremap <Leader>z :set spell!<CR>
 
-" Temporarily disable search highlighting; clear the previous search pattern
+" Temporarily disable search highlighting
 nnoremap <Leader>/ :nohlsearch<CR>
-nnoremap <Leader>? :let @/ = ''<CR>
 
-" Match or remove all trailing whitespace
-nnoremap <Leader>w /\s\+$<CR>
-nnoremap <Leader>W :%s/\s\+$//<CR>
+" Remove all trailing whitespace
+nnoremap <Leader>w :%s/\s\+$//<CR>
 
 " Match all characters past column 79 or 80
-nnoremap <Leader>7 /\%80c.\+<CR>
-nnoremap <Leader>8 /\%81c.\+<CR>
+nmap <Leader>7 /\%80c.\+<CR>
+nmap <Leader>8 /\%81c.\+<CR>
 
 " Update the first instance of what looks like a modification date (YYYY/mm/dd)
 function! s:update_modification_date()
