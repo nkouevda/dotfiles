@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/11/10
+" 2014/11/11
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -196,13 +196,8 @@ if has('autocmd')
     " Match pairs of angle brackets in markup languages
     autocmd FileType html,markdown,xml setlocal matchpairs+=<:>
 
-    " Use absolute line numbers and revert to global wrap setting in diff mode
-    autocmd FilterWritePre * if &diff | setlocal number wrap< | endif
-
-    if exists('+relativenumber')
-      " Do not use relative line numbers in diff mode
-      autocmd FilterWritePre * if &diff | setlocal norelativenumber | endif
-    endif
+    " Revert to global wrap setting in diff mode
+    autocmd FilterWritePre * if &diff | setlocal wrap< | endif
   augroup end
 endif
 
