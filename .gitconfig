@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/11/09
+# 2014/11/12
 
 [user]
 	name = Nikita Kouevda
@@ -32,6 +32,7 @@
 	br = branch --verbose --verbose
 	bra = branch --verbose --verbose --all
 	sb = show-branch
+	sba = show-branch --all
 	lg = log --graph --pretty=name
 	lga = log --graph --pretty=name --all
 	lgs = log --graph --pretty=name --all --simplify-by-decoration
