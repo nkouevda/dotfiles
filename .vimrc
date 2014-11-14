@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/11/12
+" 2014/11/13
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -191,9 +191,6 @@ if has('autocmd')
     " Limit text width
     autocmd FileType markdown,text setlocal textwidth=80
     autocmd FileType python setlocal textwidth=79
-
-    " Match pairs of angle brackets in markup languages
-    autocmd FileType html,markdown,xml setlocal matchpairs+=<:>
 
     " Revert to global wrap setting in diff mode
     autocmd FilterWritePre * if &diff | setlocal wrap< | endif
