@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/11/13
+" 2014/11/14
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -194,6 +194,9 @@ if has('autocmd')
 
     " Revert to global wrap setting in diff mode
     autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+
+    " Resize windows when vim is resized
+    autocmd VimResized * wincmd =
   augroup end
 endif
 
