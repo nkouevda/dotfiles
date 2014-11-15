@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/26
+# 2014/11/14
 
 # Ignore case in searches
 set ignore-case = true
@@ -10,6 +10,9 @@ set split-view-height = 75%
 # Show commit ID; show email user instead of author name
 set main-view = id date author:email-user \
                 commit-title:graph:true,refs:true,overflow:true
+
+# Highlight commit titles past character 50
+set diff-view = text:commit-title-overflow:true
 
 # Less-style navigation
 bind generic g move-first-line
