@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/11/14
+" 2014/11/15
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -227,6 +227,10 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " Git commands and signs
   Plug 'tpope/vim-fugitive'
+  nnoremap <Leader>gs :Gstatus<CR>
+  nnoremap <Leader>gb :Gblame<CR>
+  nnoremap <Leader>gd :Gdiff<CR>
+  nnoremap <Leader>gD :Gdiff HEAD^<CR>
   Plug 'mhinz/vim-signify'
   hi! link SignifySignAdd Function
   hi! link SignifySignChange String
