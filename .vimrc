@@ -1,4 +1,4 @@
-" ikita Kouevda
+" Nikita Kouevda
 " 2014/11/17
 
 " Disable vi compatibility when overriding default vimrc via -u
