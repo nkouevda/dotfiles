@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/11/15
+" 2014/11/16
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -153,8 +153,8 @@ nnoremap <Leader>/ :nohlsearch<CR>
 nnoremap <Leader>w :%s/\s\+$//<CR>
 
 " Match all characters past column 79 or 80
-nmap <Leader>7 /\%80c.\+<CR>
-nmap <Leader>8 /\%81c.\+<CR>
+nmap <Leader>7 /\%80v.\+<CR>
+nmap <Leader>8 /\%81v.\+<CR>
 
 " Update the first instance of what looks like a modification date (YYYY/mm/dd)
 function! s:update_modification_date()
