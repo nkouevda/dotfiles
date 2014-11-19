@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/11/12
+# 2014/11/18
 
 [user]
 	name = Nikita Kouevda
@@ -63,10 +63,13 @@
 	rba = rebase --abort
 	rbm = rebase master
 	df = diff
+	dfu = diff -U0
 	dfs = diff --stat
 	dfv = difftool
 	dfc = diff --cached
+	dfcu = diff --cached -U0
 	dfcs = diff --cached --stat
 	dfcv = difftool --cached
+	su = show -U0
 	ss = show --stat
 	sv = difftool --cached HEAD^
