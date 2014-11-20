@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/11/17
+" 2014/11/19
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -79,6 +79,9 @@ if has('clipboard')
   " Interact with the X clipboard
   set clipboard=unnamed
 endif
+
+" Default to # comments, not C-style
+set commentstring=#\ %s
 
 " Always allow backspacing
 set backspace=indent,eol,start
