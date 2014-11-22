@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/11/20
+" 2014/11/21
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -12,6 +12,9 @@ set directory^=~/.vim/tmp/swap//
 
 " Hide abandoned buffers instead of unloading them
 set hidden
+
+" Automatically read files changed outside of vim
+set autoread
 
 " Shorten all file messages; do not display the intro message
 set shortmess+=aI
