@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/11/18
+# 2014/11/24
 
 [user]
 	name = Nikita Kouevda
@@ -51,6 +51,8 @@
 	co = checkout
 	com = checkout master
 	como = checkout -B master origin/master
+	hard = reset --hard HEAD
+	soft = reset --soft HEAD
 	cp = cherry-pick
 	cpc = cherry-pick --continue
 	cpa = cherry-pick --abort
