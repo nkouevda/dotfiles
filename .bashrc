@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/11/09
+# 2014/11/25
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -29,9 +29,6 @@ export LESSHISTFILE="/dev/null"
 # Use Vim as the default editor
 export EDITOR="vim"
 
-# Color grep output
-export GREP_OPTIONS="--color=auto"
-
 # If it exists and is readable, set python startup file
 [[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
 
@@ -46,6 +43,9 @@ fi
 alias la="ls -Abhlp"
 alias lr="la -R"
 alias lt="tree -aC -I '.git|node_modules'"
+
+# Color grep output
+alias grep="grep --color=auto"
 
 # Alias tac if coreutils is not installed
 if ! type tac &>/dev/null; then
