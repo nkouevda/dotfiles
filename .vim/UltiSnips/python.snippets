@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/24
+# 2014/11/28
 
 snippet #! "#!" b
 #!/usr/bin/env python
@@ -18,7 +18,7 @@ if __name__ == '__main__':
 	${1:main()}
 endsnippet
 
-snippet class "class"
+snippet class "class" b
 class ${1:name}(${2:object}):
 	def __init__(self, ${3:params}):
 		${4:super($1, self).__init__(${5:$3})}
@@ -32,7 +32,7 @@ snippet /(?<!\w)__?/ "__magic__" r
 __${1:init}__
 endsnippet
 
-snippet def "def"
+snippet def "def" b
 def ${1:name}(`!v indent('.') ? 'self, ' : ''`${2:params}):
 	${3:pass}
 endsnippet
@@ -41,7 +41,7 @@ snippet lambda "lambda"
 lambda ${1:params}: ${2:pass}
 endsnippet
 
-snippet doc "docstring"
+snippet doc "docstring" b
 """${1:TODO}
 """
 endsnippet
@@ -54,33 +54,37 @@ snippet ''' "triple single quotes"
 '''$1'''
 endsnippet
 
-snippet if "if"
+snippet if "if" b
 if ${1:condition}:
 	${2:pass}
 endsnippet
 
-snippet elif "elif"
+snippet elif "elif" b
 elif ${1:condition}:
 	${2:pass}
 endsnippet
 
-snippet else "else"
+snippet else "else" b
 else:
 	${1:pass}
 endsnippet
 
-snippet while "while"
+snippet while "while" b
 while ${1:condition}:
 	${2:pass}
 endsnippet
 
-snippet for "for"
+snippet for "for" b
 for ${1:item} in ${2:iterable}:
 	${3:pass}
 endsnippet
 
-snippet [ "[" w
+snippet /\[/ "[" r
 [${1:item} for ${2:$1} in ${3:iterable}${4: if ${5:condition}}]
+endsnippet
+
+snippet tuple "tuple" w
+tuple(${1:item} for ${2:$1} in ${3:iterable}${4: if ${5:condition}})
 endsnippet
 
 snippet set "set" w
@@ -91,7 +95,7 @@ snippet dict "dict" w
 dict((${1:key}, ${2:value}) for ${3:$1}, ${4:$2} in ${5:iterable}${6: if ${7:condition}})
 endsnippet
 
-snippet try "try"
+snippet try "try" b
 try:
 	${1:pass}
 except ${2:Exception} as ${3:ex}:
@@ -100,18 +104,22 @@ ${5:finally
 	${6:pass}}
 endsnippet
 
-snippet with "with"
+snippet with "with" b
 with ${1:item} as ${2:identifier}:
 	${3:pass}
 endsnippet
 
-snippet open "open"
+snippet open "open" b
 with open(${1:file}, '${2:r}') as ${3:identifier}:
 	${4:pass}
 endsnippet
 
 snippet /(?<!\w)(?:is)?inst(?:a(?:n(?:c(?:e)?)?)?)?/ "isinstance" r
-isinstance(${1:identifier}, ${2:class})
+isinstance(${1:identifier}, ${2:cls})
+endsnippet
+
+snippet /(?<!\w)(?:is)?sub(?:c(?:l(?:a(?:s(?:s)?)?)?)?)?/ "issubclass" r
+issubclass(${1:cls}, ${2:supercls})
 endsnippet
 
 snippet uuid "uuid" w
@@ -122,10 +130,10 @@ snippet /(?<!\w)%/ "%" r
 '$1' % $0
 endsnippet
 
-snippet /(?<!\S)re\.?/ "re" r
+snippet /(?<!\w)re\.?/ "re" r
 re.${1:search}(r'${2:pattern}', ${3:string})
 endsnippet
 
-snippet /(?<!\S)(?:import )?pdb/ "pdb" r
+snippet /(?:import )?pdb/ "pdb" rb
 import pdb; pdb.set_trace()
 endsnippet

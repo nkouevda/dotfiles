@@ -1,40 +1,40 @@
 # Nikita Kouevda
-# 2014/08/06
+# 2014/11/28
 
 snippet /(?:<?!)?(?<!\w)doctype/ "doctype" r
-<!doctype ${1:html}>$0
+<!doctype ${1:html}>
 endsnippet
 
 snippet /<?!(?:-(?:-)?)?/ "comment" r
-<!-- $1 -->$0
+<!-- $1 -->
 endsnippet
 
 snippet < "tag"
-<$1>$2</${1/\s.+//}>$0
+<$1>$2</${1/\s.+//}>
 endsnippet
 
 snippet /(?<!\w)class=?/ "class" r
-class="$0"
+class="$1"
 endsnippet
 
 snippet /(?<!\w)id=?/ "id" r
-id="$0"
+id="$1"
 endsnippet
 
 snippet /<?(?<!\w)html>?/ "html" r
 <html>
 	$1
-</html>$0
+</html>
 endsnippet
 
 snippet /<?(?<!\w)head>?/ "head" r
 <head>
 	$1
-</head>$0
+</head>
 endsnippet
 
 snippet /(?:<?(?<!\w)meta )?(?<!\w)charset/ "charset" r
-<meta charset="${1:utf-8}" />$0
+<meta charset="${1:utf-8}" />
 endsnippet
 
 snippet /(?:<?(?<!\w)meta )?(?<!\w)http(?:-(?:equiv)?)?/ "meta" r
@@ -42,39 +42,39 @@ snippet /(?:<?(?<!\w)meta )?(?<!\w)http(?:-(?:equiv)?)?/ "meta" r
 endsnippet
 
 snippet /<?(?<!\w)title>?/ "title" r
-<title>$1</title>$0
+<title>$1</title>
 endsnippet
 
 snippet /<?(?<!\w)link>?/ "link" r
-<link href="$1" rel="${2:stylesheet}" type="${3:text/css}" />$0
+<link href="$1" rel="${2:stylesheet}" type="${3:text/css}" />
 endsnippet
 
 snippet /<?(?<!\w)script>?/ "script" r
-<script src="$1" type="${2:text/javascript}">$3</script>$0
+<script src="$1" type="${2:text/javascript}">$3</script>
 endsnippet
 
 snippet /<?(?<!\w)body>?/ "body" r
 <body>
 	$1
-</body>$0
+</body>
 endsnippet
 
 snippet /<?(?<!\w)header>?/ "header" r
 <header>
 	$1
-</header>$0
+</header>
 endsnippet
 
 snippet /<?(?<!\w)section>?/ "section" r
 <section>
 	$1
-</section>$0
+</section>
 endsnippet
 
 snippet /<?(?<!\w)footer>?/ "footer" r
 <footer>
 	$1
-</footer>$0
+</footer>
 endsnippet
 
 snippet /<?(?<!\w)table>?/ "table" r
@@ -85,65 +85,65 @@ snippet /<?(?<!\w)table>?/ "table" r
 	${3:<tbody>
 		$4
 	</tbody>}
-</table>$0
+</table>
 endsnippet
 
 snippet /<?(?<!\w)thead>?/ "thead" r
 <thead>
 	$1
-</thead>$0
+</thead>
 endsnippet
 
 snippet /<?(?<!\w)tbody>?/ "tbody" r
 <tbody>
 	$1
-</tbody>$0
+</tbody>
 endsnippet
 
 snippet /<?(?<!\w)th>?/ "th" r
 <th>
 	$1
-</th>$0
+</th>
 endsnippet
 
 snippet /<?(?<!\w)tr>?/ "tr" r
 <tr>
 	$1
-</tr>$0
+</tr>
 endsnippet
 
 snippet /<?(?<!\w)td>?/ "td" r
-<td>$1</td>$0
+<td>$1</td>
 endsnippet
 
 snippet /<?(?<!\w)div>?/ "div" r
-<div>$1</div>$0
+<div>$1</div>
 endsnippet
 
 snippet /<?(?<!\w)span>?/ "span" r
-<span>$1</span>$0
+<span>$1</span>
 endsnippet
 
 snippet /<?(?<!\w)h1>?/ "h1" r
-<h1>$1</h1>$0
+<h1>$1</h1>
 endsnippet
 
 snippet /<?(?<!\w)h2>?/ "h2" r
-<h2>$1</h2>$0
+<h2>$1</h2>
 endsnippet
 
 snippet /<?(?<!\w)h3>?/ "h3" r
-<h3>$1</h3>$0
+<h3>$1</h3>
 endsnippet
 
 snippet /<?(?<!\w)p>?/ "p" r
-<p>$1</p>$0
+<p>$1</p>
 endsnippet
 
 snippet /<?(?<!\w)a>?/ "a" r
-<a href="$1">$2</a>$0
+<a href="$1">$2</a>
 endsnippet
 
 snippet /<?(?<!\w)img>?/ "img" r
-<img src="$1">$2</img>$0
+<img src="$1">$2</img>
 endsnippet

@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/08/06
+# 2014/11/28
 
 # Allow filetype-specific snippets to override these
 priority -10
@@ -8,10 +8,10 @@ snippet #! "#!" b
 #!/usr/bin/env $0
 endsnippet
 
-snippet /(?<!\S)(?:name|nikita)/ "name" r
+snippet /(?<!\w)(?:name|nikita)/ "name" r
 Nikita Kouevda
 endsnippet
 
-snippet date "date"
+snippet date "date" w
 `date +%Y/%m/%d`
 endsnippet
