@@ -1,0 +1,59 @@
+# Nikita Kouevda
+# 2014/11/29
+
+snippet #< "include system" b
+#include <$1.h>
+endsnippet
+
+snippet #" "include local" b
+#include "$1.h"
+endsnippet
+
+snippet /#?ifdef/ "ifdef" rb
+#ifdef $1
+$2
+#endif
+endsnippet
+
+snippet /#?ifndef/ "ifndef" rb
+#ifndef $1
+$2
+#endif
+endsnippet
+
+snippet if "if" b
+if ($1) {
+	$2
+}
+endsnippet
+
+snippet elif "else if"
+else if ($1) {
+	$2
+}
+endsnippet
+
+snippet else "else"
+else {
+	$1
+}
+endsnippet
+
+snippet for "for" b
+for (${1:i = 0}; $2; ${3:++i}) {
+	$4
+}
+endsnippet
+
+snippet while "while" b
+while ($1) {
+	$2
+}
+endsnippet
+
+snippet main "main" b
+int main(int argc, char *argv[]) {
+	${1:$2
+	return 0;}
+}
+endsnippet
