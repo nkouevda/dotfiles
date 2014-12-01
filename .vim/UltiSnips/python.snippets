@@ -20,6 +20,7 @@ endsnippet
 
 snippet class "class" b
 class ${1:name}(${2:object}):
+
 	def __init__(self, ${3:params}):
 		${4:super($1, self).__init__(${5:$3})}
 endsnippet
@@ -132,6 +133,40 @@ endsnippet
 
 snippet /(?<!\w)re\.?/ "re" r
 re.${1:search}(r'${2:pattern}', ${3:string})
+endsnippet
+
+snippet /([Tt]est)?[Cc]ase/ "unittest.TestCase" rb
+class $1TestCase(unittest.TestCase):
+
+	$0
+endsnippet
+
+snippet /(def )?set[Uu]p/ "setUp" rb
+def setUp(self):
+	super($1, self).setUp()
+	$0
+endsnippet
+
+snippet /(def )?tear([Dd](o(wn?)?)?)?/ "tearDown" rb
+def tearDown(self):
+	$2
+	super($1, self).tearDown()
+endsnippet
+
+snippet /[Tt]rue|assert[Tt](r(ue?)?)?/ "assertTrue" rb
+self.assertTrue($1)
+endsnippet
+
+snippet /[Ff]alse|assert[Ff](a(l(se?)?)?)?/ "assertFalse" rb
+self.assertFalse($1)
+endsnippet
+
+snippet /[Ee]qual|assert[Ee](q(u(al?)?)?)?/ "assertEqual" rb
+self.assertEqual($1, $2)
+endsnippet
+
+snippet /[Nn]ot[Ee]qual|assert[Nn](o(t([Ee](q(u(al?)?)?)?)?)?)?/ "assertNotEqual" rb
+self.assertNotEqual($1, $2)
 endsnippet
 
 snippet /(import )?pdb/ "pdb" rb
