@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/11/28
+# 2014/12/01
 
 snippet #! "#!" b
 #!/usr/bin/env python
@@ -114,11 +114,11 @@ with open(${1:file}, '${2:r}') as ${3:identifier}:
 	${4:pass}
 endsnippet
 
-snippet /(?<!\w)(?:is)?inst(?:a(?:n(?:c(?:e)?)?)?)?/ "isinstance" r
+snippet /(?<!\w)(is)?inst(a(n(ce?)?)?)?/ "isinstance" r
 isinstance(${1:identifier}, ${2:cls})
 endsnippet
 
-snippet /(?<!\w)(?:is)?sub(?:c(?:l(?:a(?:s(?:s)?)?)?)?)?/ "issubclass" r
+snippet /(?<!\w)(is)?sub(c(l(a(ss?)?)?)?)?/ "issubclass" r
 issubclass(${1:cls}, ${2:supercls})
 endsnippet
 
@@ -134,6 +134,6 @@ snippet /(?<!\w)re\.?/ "re" r
 re.${1:search}(r'${2:pattern}', ${3:string})
 endsnippet
 
-snippet /(?:import )?pdb/ "pdb" rb
+snippet /(import )?pdb/ "pdb" rb
 import pdb; pdb.set_trace()
 endsnippet

@@ -1,11 +1,11 @@
 # Nikita Kouevda
-# 2014/11/28
+# 2014/12/01
 
-snippet /(?:<?!)?(?<!\w)doctype/ "doctype" r
+snippet /(<?!)?(?<!\w)doctype/ "doctype" r
 <!doctype ${1:html}>
 endsnippet
 
-snippet /<?!(?:-(?:-)?)?/ "comment" r
+snippet /<?!-{,2}/ "comment" r
 <!-- $1 -->
 endsnippet
 
@@ -33,11 +33,11 @@ snippet /<?(?<!\w)head>?/ "head" r
 </head>
 endsnippet
 
-snippet /(?:<?(?<!\w)meta )?(?<!\w)charset/ "charset" r
+snippet /(<?(?<!\w)meta )?(?<!\w)charset/ "charset" r
 <meta charset="${1:utf-8}" />
 endsnippet
 
-snippet /(?:<?(?<!\w)meta )?(?<!\w)http(?:-(?:equiv)?)?/ "meta" r
+snippet /(<?(?<!\w)meta )?(?<!\w)http(-(equiv)?)?/ "http-equiv" r
 <meta http-equiv="Content-Language" content="en" />
 endsnippet
 
