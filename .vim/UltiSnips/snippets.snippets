@@ -1,8 +1,8 @@
 # Nikita Kouevda
-# 2014/11/30
+# 2014/12/01
 
-snippet snippet "snippet"
+snippet /snip(?:p(?:e(?:t)?)?)?/ "snippet" rb
 snippet $1 "${2:$1}"
-	$3
+$3
 `!p snip.rv = 'endsnippet'`
 endsnippet
