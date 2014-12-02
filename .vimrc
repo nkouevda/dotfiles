@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/11/21
+" 2014/12/02
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -68,6 +68,9 @@ endif
 
 " Display parts of wrapped lines that are cut off at the bottom
 set display=lastline
+
+" Do not split words when wrapping long lines
+set linebreak
 
 " Default to 2 spaces per tab
 set shiftwidth=2 expandtab smarttab
