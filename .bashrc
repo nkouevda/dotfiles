@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/11/25
+# 2014/12/02
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -32,6 +32,11 @@ export EDITOR="vim"
 # If it exists and is readable, set python startup file
 [[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
 
+# Alias tac if coreutils not installed
+if ! type tac &>/dev/null; then
+  alias tac="tail -r"
+fi
+
 # Color ls output
 if ls --color=auto &>/dev/null; then
   alias ls="ls --color=auto"
@@ -47,10 +52,41 @@ alias lt="tree -aC -I '.git|node_modules'"
 # Color grep output
 alias grep="grep --color=auto"
 
-# Alias tac if coreutils is not installed
-if ! type tac &>/dev/null; then
-  alias tac="tail -r"
-fi
+# Colorized cat
+ccat() {
+  if (( ! $# )); then
+    echo "usage: $FUNCNAME file ..." >&2
+    return 1
+  fi
+
+  for file in "$@"; do
+    pygmentize -f terminal256 -O style=monokai -g "$file"
+  done
+}
+
+# Create backup
+bak() {
+  if (( ! $# )); then
+    echo "usage: $FUNCNAME file ..." >&2
+    return 1
+  fi
+
+  for file in "$@"; do
+    cp -v -- "$file"{,.bak}
+  done
+}
+
+# Restore backup
+unbak() {
+  if (( ! $# )); then
+    echo "usage: $FUNCNAME file ..." >&2
+    return 1
+  fi
+
+  for file in "$@"; do
+    mv -v -- "${file%.bak}"{.bak,}
+  done
+}
 
 # Synchronize the current history list with the history file
 sync_history() {
