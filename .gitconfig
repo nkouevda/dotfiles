@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/11/24
+# 2014/12/02
 
 [user]
 	name = Nikita Kouevda
@@ -75,3 +75,5 @@
 	su = show -U0
 	ss = show --stat
 	sv = difftool --cached HEAD^
+	foreach = "!sh -c 'find -- \"$1\" -type d -name \".git\" \
+		-print -execdir \"${@:2}\" \";\"' -"
