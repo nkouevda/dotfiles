@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/02
+# 2014/12/03
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -86,6 +86,21 @@ unbak() {
   for file in "$@"; do
     mv -v -- "${file%.bak}"{.bak,}
   done
+}
+
+# Update brew
+rebrew() {
+  brew update && brew upgrade && brew cleanup -s
+}
+
+# Update vim plugins
+replug() {
+  vim +PlugUpgrade +PlugUpdate +PlugClean! +'helptags ~/.vim/plugged' +qa
+}
+
+# View changes from last vim plugin update
+plugdf() {
+  vim +PlugDiff +only
 }
 
 # Synchronize the current history list with the history file
