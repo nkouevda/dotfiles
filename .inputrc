@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/10/24
+# 2014/12/03
 
 # Search history incrementally on up and down
 "\e[A": history-search-backward
@@ -13,6 +13,3 @@ set completion-ignore-case on
 
 # Do not duplicate existing characters when completing
 set skip-completed-text on
-
-# Append slashes when completing symlinked directories
-set mark-symlinked-directories on
