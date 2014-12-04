@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/03
+# 2014/12/04
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -86,6 +86,16 @@ unbak() {
   for file in "$@"; do
     mv -v -- "${file%.bak}"{.bak,}
   done
+}
+
+# Remove .DS_Store files under the given dirs (default: current dir)
+rmds() {
+  find -- "${@:-.}" -type f -name '.DS_Store' -delete
+}
+
+# Remove compiled python files under the given dirs (default: current dir)
+rmpyc() {
+  find -- "${@:-.}" -type f -name '*.py[co]' -delete
 }
 
 # Update brew
