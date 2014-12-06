@@ -1,13 +1,18 @@
 # Nikita Kouevda
-# 2014/12/04
+# 2014/12/05
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
 
-# If it exists and is readable, source ~/.bash_local
-[[ -r ~/.bash_local ]] && . ~/.bash_local
+# GNU coreutils and gsed
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+  export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+  export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
+fi
 
-# Do not capture ^Q and ^S
+# Do not capture ^Q or ^S
 stty start undef
 stty stop undef
 
@@ -168,3 +173,10 @@ make_ps1() {
 
 make_ps1
 unset -f make_ps1
+
+# Source bash completion and local settings
+[[ -r /usr/local/etc/bash_completion ]] && . /usr/local/etc/bash_completion
+[[ -r ~/.bash_local ]] && . ~/.bash_local
+
+# Guarantee exit status 0
+return 0
