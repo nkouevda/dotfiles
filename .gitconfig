@@ -50,8 +50,12 @@
 	cian = commit --amend --no-edit
 	cianr = commit --amend --no-edit --reset-author
 	co = checkout
+	cob = checkout -b
+	cof = checkout -B
 	com = checkout master
-	como = checkout -B master origin/master
+	cor = "!sh -c '[[ -n \"$1\" ]] && \
+		git checkout -B \"$1\" \"${2:-origin}/$1\"' -"
+	corm = "!sh -c 'git checkout -B master \"${1:-origin}/master\"' -"
 	hard = reset --hard HEAD
 	soft = reset --soft HEAD
 	cp = cherry-pick
