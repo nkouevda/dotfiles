@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/05
+# 2014/12/07
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -65,7 +65,7 @@ ccat() {
   fi
 
   for file in "$@"; do
-    pygmentize -f terminal256 -O style=monokai -g "$file"
+    pygmentize -f terminal256 -O style=monokai -g -- "$file"
   done
 }
 
