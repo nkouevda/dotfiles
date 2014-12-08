@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/07
+# 2014/12/08
 
 [user]
 	name = Nikita Kouevda
@@ -66,15 +66,16 @@
 	rba = rebase --abort
 	rbm = rebase master
 	df = diff
-	dfu = diff -U0
+	dfu = diff --unified=0
 	dfs = diff --stat
 	dfv = difftool
 	dfc = diff --cached
-	dfcu = diff --cached -U0
+	dfcu = diff --cached --unified=0
 	dfcs = diff --cached --stat
 	dfcv = difftool --cached
-	su = show -U0
-	ss = show --stat
-	sv = difftool --cached HEAD^
+	dfo = diff HEAD^ HEAD
+	dfou = diff HEAD^ HEAD --unified=0
+	dfos = diff HEAD^ HEAD --stat
+	dfov = difftool HEAD^ HEAD
 	foreach = "!sh -c 'find -- \"$1\" -type d -name \".git\" \
 		-print -execdir \"${@:2}\" \";\"' -"
