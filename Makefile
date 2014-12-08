@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/11/09
+# 2014/12/07
 
 # Link if LN=1; copy otherwise
 ifeq ($(LN),1)
@@ -30,20 +30,40 @@ brew:
 	brew tap homebrew/dupes
 	brew update
 	brew upgrade
+	brew install bash
+	brew install bash-completion
+	brew install coreutils
+	brew install ctags
+	brew install diffstat
+	brew install diffutils
+	brew install ed --default-names
+	brew install findutils --with-default-names
+	brew install flac
+	brew install fzf
+	brew install gawk
+	brew install gdb
+	brew install git
+	brew install gnu-sed --with-default-names
+	brew install grep --with-default-names
+	brew install gzip
+	brew install lame
+	brew install less
+	brew install macvim
+	brew install mercurial
+	brew install nmap
+	brew install node
 	brew install openssl
+	brew install pv
+	brew install python
+	brew install python3
+	brew install ranger
+	brew install rsync
+	brew install the_silver_searcher
+	brew install tig
+	brew install tree
+	brew install vim
+	brew install wget
 	brew link --force openssl
-	brew install git mercurial tig
-	brew install bash bash-completion
-	brew install coreutils diffutils gawk
-	brew install findutils --default-names
-	brew install gnu-sed --default-names
-	brew install grep --default-names
-	brew install fzf the_silver_searcher
-	brew install ctags macvim vim
-	brew install node python python3
-	brew install ranger tree
-	brew install nmap wget
-	brew install flac lame
 	brew linkapps
 	brew cleanup -s
 	brew prune
