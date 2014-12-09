@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/08
+# 2014/12/09
 
 [user]
 	name = Nikita Kouevda
@@ -35,6 +35,7 @@
 
 [alias]
 	st = status
+	sts = status --short
 	br = branch --verbose --verbose
 	bra = branch --verbose --verbose --all
 	sb = show-branch
@@ -92,5 +93,10 @@
 	dfov = difftool --tool=vimdiff HEAD^ HEAD
 	dfoi = difftool --tool=icdiff HEAD^ HEAD
 	dfoiu = difftool --tool=icdiffu HEAD^ HEAD
+	fzf = "!sh -c 'git \"$@\" $(git status --porcelain | cut -c 4- | \
+		fzf --extended-exact --multi --select-1 --exit-0)' -"
+	fadd = "!sh -c 'git fzf add \"$@\"' -"
+	fco = "!sh -c 'git fzf checkout \"$@\"' -"
+	freset = "!sh -c 'git fzf reset \"$@\"' -"
 	foreach = "!sh -c 'find -- \"$1\" -type d -name \".git\" \
 		-print -execdir \"${@:2}\" \";\"' -"
