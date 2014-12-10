@@ -1,6 +1,8 @@
 # Nikita Kouevda
-# 2014/11/09
+# 2014/12/09
 
 import readline
+import rlcompleter
 readline.parse_and_bind('tab: complete')
 del readline
+del rlcompleter
