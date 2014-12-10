@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/07
+# 2014/12/10
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -31,8 +31,11 @@ export HISTSIZE=1000
 # Do not save history for less
 export LESSHISTFILE="/dev/null"
 
-# Use Vim as the default editor
+# Use vim as the default editor
 export EDITOR="vim"
+
+# Default fzf options
+export FZF_DEFAULT_OPTS="--no-256"
 
 # If it exists and is readable, set python startup file
 [[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
