@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/12/02
+" 2014/12/11
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -15,6 +15,9 @@ set hidden
 
 " Automatically read files changed outside of vim
 set autoread
+
+" Enable mouse in all modes
+set mouse=a
 
 " Shorten all file messages; do not display the intro message
 set shortmess+=aI
