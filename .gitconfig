@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/09
+# 2014/12/12
 
 [user]
 	name = Nikita Kouevda
@@ -19,7 +19,7 @@
 	cmd = "icdiff -- \"$LOCAL\" \"$REMOTE\" | less -R"
 
 [difftool "icdiffu"]
-	cmd = "icdiff --numlines=0 -- \"$LOCAL\" \"$REMOTE\" | less -R"
+	cmd = "icdiff --unified=0 -- \"$LOCAL\" \"$REMOTE\" | less -R"
 
 [fetch]
 	prune = true
