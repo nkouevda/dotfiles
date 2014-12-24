@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/10
+# 2014/12/23
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -63,7 +63,7 @@ alias grep="grep --color=auto"
 # Colorized cat
 ccat() {
   if (( ! $# )); then
-    echo "usage: $FUNCNAME file ..." >&2
+    printf "usage: %s <files>...\n" "$FUNCNAME" >&2
     return 1
   fi
 
@@ -75,7 +75,7 @@ ccat() {
 # Create backup
 bak() {
   if (( ! $# )); then
-    echo "usage: $FUNCNAME file ..." >&2
+    printf "usage: %s <files>...\n" "$FUNCNAME" >&2
     return 1
   fi
 
@@ -87,13 +87,23 @@ bak() {
 # Restore backup
 unbak() {
   if (( ! $# )); then
-    echo "usage: $FUNCNAME file ..." >&2
+    printf "usage: %s <files>...\n" "$FUNCNAME" >&2
     return 1
   fi
 
   for file in "$@"; do
     mv -v -- "${file%.bak}"{.bak,}
   done
+}
+
+# Search dictionary
+dict() {
+  if (( ! $# )); then
+    printf "usage: %s [<options>...] <pattern>\n" "$FUNCNAME" >&2
+    return 1
+  fi
+
+  grep -i "$@" /usr/share/dict/words
 }
 
 # Remove .DS_Store files under the given dirs (default: current dir)
