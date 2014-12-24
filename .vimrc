@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/12/11
+" 2014/12/23
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -205,6 +205,9 @@ if has('autocmd')
 
     " Override default indentation settings
     autocmd FileType gitconfig,make,snippets,sshconfig setlocal sw=8 noet
+
+    " Turn on spell checking for git commits
+    autocmd FileType gitcommit set spell
 
     " Limit text width
     autocmd FileType markdown,text setlocal textwidth=80
