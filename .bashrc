@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/23
+# 2014/12/24
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -94,6 +94,17 @@ unbak() {
   for file in "$@"; do
     mv -v -- "${file%.bak}"{.bak,}
   done
+}
+
+# Print current Unix time or convert given Unix times to dates
+epoch() {
+  if (( ! $# )); then
+    date +%s
+  else
+    for t in "$@"; do
+      date --date=@"$t"
+    done
+  fi
 }
 
 # Search dictionary
