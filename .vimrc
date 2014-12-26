@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/12/23
+" 2014/12/25
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -281,6 +281,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['python']}
   let g:syntastic_python_checkers = ['pyflakes']
   Plug 'scrooloose/syntastic'
+
+  " Syntax highlighting
+  Plug 'nkouevda/vim-thrift'
 
   call plug#end()
 endif
