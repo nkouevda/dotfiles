@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/25
+# 2014/12/26
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -119,7 +119,7 @@ dict() {
 
 # Lowercase uuid
 uuid() {
-  uuidgen | tr '[:upper:]' '[:lower:]'
+  uuidgen | tr 'A-F' 'a-f'
 }
 
 # Remove .DS_Store files under the given dirs (default: current dir)
