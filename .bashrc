@@ -117,6 +117,11 @@ dict() {
   grep -i "$@" /usr/share/dict/words
 }
 
+# Lowercase uuid
+uuid() {
+  uuidgen | tr '[:upper:]' '[:lower:]'
+}
+
 # Remove .DS_Store files under the given dirs (default: current dir)
 rmds() {
   find -- "${@:-.}" -type f -name '.DS_Store' -delete
