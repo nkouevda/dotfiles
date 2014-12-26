@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/24
+# 2014/12/25
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -138,7 +138,7 @@ replug() {
 }
 
 # View changes from last vim plugin update
-plugdf() {
+dfplug() {
   vim +PlugDiff +only
 }
 
