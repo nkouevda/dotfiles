@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/22
+# 2014/12/27
 
 [user]
 	name = Nikita Kouevda
@@ -20,6 +20,9 @@
 
 [difftool "icdiffu"]
 	cmd = "icdiff --unified=0 -- \"$LOCAL\" \"$REMOTE\" | less -R"
+
+[difftool "icdiffw"]
+	cmd = "icdiff --whole-file -- \"$LOCAL\" \"$REMOTE\" | less -R"
 
 [fetch]
 	prune = true
@@ -82,18 +85,21 @@
 	dfv = difftool --tool=vimdiff
 	dfi = difftool --tool=icdiff
 	dfiu = difftool --tool=icdiffu
+	dfiw = difftool --tool=icdiffw
 	dfc = diff --cached
 	dfcu = diff --cached --unified=0
 	dfcs = diff --cached --stat
 	dfcv = difftool --tool=vimdiff --cached
 	dfci = difftool --tool=icdiff --cached
 	dfciu = difftool --tool=icdiffu --cached
+	dfciw = difftool --tool=icdiffw --cached
 	dfo = diff HEAD^ HEAD
 	dfou = diff HEAD^ HEAD --unified=0
 	dfos = diff HEAD^ HEAD --stat
 	dfov = difftool --tool=vimdiff HEAD^ HEAD
 	dfoi = difftool --tool=icdiff HEAD^ HEAD
 	dfoiu = difftool --tool=icdiffu HEAD^ HEAD
+	dfoiw = difftool --tool=icdiffw HEAD^ HEAD
 	fzf = "!sh -c 'git \"$@\" $(git status --porcelain | cut -c 4- | \
 		fzf --extended-exact --multi --select-1 --exit-0)' -"
 	fadd = "!sh -c 'git fzf add \"$@\"' -"
