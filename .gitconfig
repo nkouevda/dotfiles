@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/27
+# 2014/12/28
 
 [user]
 	name = Nikita Kouevda
@@ -10,6 +10,7 @@
 
 [diff]
 	algorithm = patience
+	renames = true
 
 [difftool]
 	prompt = false
