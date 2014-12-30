@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/12/25
+" 2014/12/29
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -201,7 +201,7 @@ if has('autocmd')
     autocmd InsertLeave * set nopaste
 
     " Always use markdown filetype for .md files
-    autocmd BufEnter,BufRead *.md setfiletype markdown
+    autocmd BufNewFile,BufRead *.md setfiletype markdown
 
     " Override default indentation settings
     autocmd FileType gitconfig,make,snippets,sshconfig setlocal sw=8 noet
