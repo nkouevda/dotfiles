@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/12/29
+" 2014/12/30
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -131,8 +131,9 @@ xnoremap <Leader><Leader> "_
 xnoremap < <gv
 xnoremap > >gv
 
-" Update with space
+" Update with space, write with enter
 nnoremap <Space> :update<CR>
+nnoremap <CR> :write<CR>
 
 " Repeat the last change [count] times instead of replacing the original count
 nnoremap <silent> . :<C-u>exe 'norm! ' . repeat('.', v:count1)<CR>
