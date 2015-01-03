@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/26
+# 2015/01/03
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -117,9 +117,24 @@ dict() {
   grep -i "$@" /usr/share/dict/words
 }
 
-# Lowercase uuid
+# Uppercase
+upper() {
+  tr '[:lower:]' '[:upper:]'
+}
+
+# Lowercase
+lower() {
+  tr '[:upper:]' '[:lower:]'
+}
+
+# Lowercase UUID
 uuid() {
-  uuidgen | tr 'A-F' 'a-f'
+  uuidgen | lower
+}
+
+# ROT13
+rot13() {
+  tr 'A-Za-z' 'N-ZA-Mn-za-m'
 }
 
 # Remove .DS_Store files under the given dirs (default: current dir)
