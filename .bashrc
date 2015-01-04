@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/01/03
+# 2015/01/04
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -30,6 +30,18 @@ export HISTSIZE=1000
 
 # Do not save history for less
 export LESSHISTFILE="/dev/null"
+
+# Start blink, bold, reverse, standout, underline
+export LESS_TERMCAP_mb="$(tput bold; tput setaf 1)"
+export LESS_TERMCAP_md="$(tput bold; tput setaf 1)"
+export LESS_TERMCAP_mr="$(tput bold; tput setaf 1)"
+export LESS_TERMCAP_so="$(tput setaf 0; tput setab 3)"
+export LESS_TERMCAP_us="$(tput bold; tput setaf 2)"
+
+# End blink, bold, reverse ('me' ends all 3), standout, underline
+export LESS_TERMCAP_me="$(tput sgr0)"
+export LESS_TERMCAP_se="$(tput sgr0)"
+export LESS_TERMCAP_ue="$(tput sgr0)"
 
 # Use vim as the default editor
 export EDITOR="vim"
