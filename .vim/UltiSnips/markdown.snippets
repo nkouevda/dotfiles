@@ -2,3 +2,23 @@
 # 2015/01/04
 
 extends html
+
+snippet [ "link"
+[${1:link text}](${2:href})
+endsnippet
+
+snippet [[ "link reference"
+[${1:link text}][${2:id}]
+endsnippet
+
+snippet [: "link definition"
+[${1:id}]: $0
+endsnippet
+
+snippet ![ "image"
+![${1:alt text}](${2:href})
+endsnippet
+
+snippet ![[ "image reference"
+![${1:alt text}][${2:id}]
+endsnippet
