@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/01
+# 2015/01/05
 
 snippet #! "#!" b
 #!/usr/bin/env python
@@ -135,38 +135,70 @@ snippet /(?<!\w)re\.?/ "re" r
 re.${1:search}(r'${2:pattern}', ${3:string})
 endsnippet
 
-snippet /([Tt]est)?[Cc]ase/ "unittest.TestCase" rb
+snippet /[Tt]est([Cc]ase)?/ "unittest.TestCase" rb
 class $1TestCase(unittest.TestCase):
 
 	$0
 endsnippet
 
+snippet /(def )?set[Uu]p[Cc]lass/ "setUpClass" rb
+def setUpClass(cls):
+	super($1, cls).setUpClass()
+endsnippet
+
+snippet /(def )?tear[D]own[Cc]lass/ "tearDownClass" rb
+def tearDownClass(cls):
+	super($1, cls).tearDownClass()
+endsnippet
+
 snippet /(def )?set[Uu]p/ "setUp" rb
 def setUp(self):
 	super($1, self).setUp()
-	$0
 endsnippet
 
-snippet /(def )?tear([Dd](o(wn?)?)?)?/ "tearDown" rb
+snippet /(def )?tear[Dd]own/ "tearDown" rb
 def tearDown(self):
-	$2
 	super($1, self).tearDown()
 endsnippet
 
-snippet /[Tt]rue|assert[Tt](r(ue?)?)?/ "assertTrue" rb
+snippet /(assert)?[Tt]rue/ "assertTrue" rb
 self.assertTrue($1)
 endsnippet
 
-snippet /[Ff]alse|assert[Ff](a(l(se?)?)?)?/ "assertFalse" rb
+snippet /(assert)?[Ff]alse/ "assertFalse" rb
 self.assertFalse($1)
 endsnippet
 
-snippet /[Ee]qual|assert[Ee](q(u(al?)?)?)?/ "assertEqual" rb
+snippet /(assert)?[Ee]qual/ "assertEqual" rb
 self.assertEqual($1, $2)
 endsnippet
 
-snippet /[Nn]ot[Ee]qual|assert[Nn](o(t([Ee](q(u(al?)?)?)?)?)?)?/ "assertNotEqual" rb
+snippet /(assert)?[Nn]ot[Ee]qual/ "assertNotEqual" rb
 self.assertNotEqual($1, $2)
+endsnippet
+
+snippet /[Ss]tub([Oo]ut)?/ "StubOutWithMock" rb
+self.mox.StubOutWithMock(${1:obj}, '${2:attr}')
+endsnippet
+
+snippet /(?<!\w)([Cc]reate)?[Mm]ock/ "CreateMock" r
+self.mox.CreateMock(${1:cls})
+endsnippet
+
+snippet /(?<!\w)(([Cc]reate)?[Mm]ock)?[Aa]nything/ "CreateMockAnything" r
+self.mox.CreateMockAnything(${1:cls})
+endsnippet
+
+snippet /(?<!\w)[Ii]gnore([Aa]rg)?/ "IgnoreArg" r
+mox.IgnoreArg()
+endsnippet
+
+snippet /(?<!\w)[Aa]nd([Rr]eturn)?/ "AndReturn" r
+AndReturn($1)
+endsnippet
+
+snippet /[Rr]eplay([Aa]ll)?/ "ReplayAll" rb
+self.mox.ReplayAll()
 endsnippet
 
 snippet /(import )?pdb/ "pdb" rb
