@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/01/06
+# 2015/01/07
 
 [user]
 	name = Nikita Kouevda
@@ -40,6 +40,8 @@
 [alias]
 	st = status
 	sts = status --short --branch
+	rp = rev-parse
+	rpa = rev-parse --abbrev-ref
 	br = branch --verbose --verbose
 	bra = branch --verbose --verbose --all
 	brm = branch --move
