@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2014/12/30
+" 2015/01/08
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -169,7 +169,7 @@ nnoremap <Leader>z :set spell!<CR>
 nnoremap <Leader>/ :nohlsearch<CR>
 
 " Remove all trailing whitespace
-nnoremap <Leader>w :%s/\s\+$//<CR>
+nnoremap <Leader>w :keeppatterns %s/\s\+$//<CR>
 
 " Match all characters past column 79 or 80
 nmap <Leader>7 /\%80v.\+<CR>
