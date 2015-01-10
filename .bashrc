@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/01/04
+# 2015/01/09
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -127,6 +127,11 @@ dict() {
   fi
 
   grep -i "$@" /usr/share/dict/words
+}
+
+# Pretty print JSON
+json() {
+  python -m json.tool
 }
 
 # Uppercase
