@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2015/01/11
+" 2015/01/12
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -286,6 +286,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " Syntax highlighting
   Plug 'nkouevda/vim-thrift'
+  Plug 'Valloric/MatchTagAlways'
 
   call plug#end()
 endif
