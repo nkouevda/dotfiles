@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/01/07
+# 2015/01/14
 
 [user]
 	name = Nikita Kouevda
@@ -99,13 +99,19 @@
 	dfci = difftool --tool=icdiff --cached
 	dfciu = difftool --tool=icdiffu --cached
 	dfciw = difftool --tool=icdiffw --cached
-	dfo = diff HEAD^ HEAD
-	dfou = diff HEAD^ HEAD --unified=0
-	dfos = diff HEAD^ HEAD --stat
-	dfov = difftool --tool=vimdiff HEAD^ HEAD
-	dfoi = difftool --tool=icdiff HEAD^ HEAD
-	dfoiu = difftool --tool=icdiffu HEAD^ HEAD
-	dfoiw = difftool --tool=icdiffw HEAD^ HEAD
+	dfo = "!sh -c 'git diff \"${1:-HEAD}\"~ \"${1:-HEAD}\" \"$@\"' -"
+	dfou = "!sh -c 'git diff \
+		\"${1:-HEAD}\"~ \"${1:-HEAD}\"--unified=0 \"$@\"' -"
+	dfos = "!sh -c 'git diff \
+		\"${1:-HEAD}\"~ \"${1:-HEAD}\" --stat \"$@\"' -"
+	dfov = "!sh -c 'git difftool --tool=vimdiff \
+		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"$@\"' -"
+	dfoi = "!sh -c 'git difftool --tool=icdiff \
+		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"$@\"' -"
+	dfoiu = "!sh -c 'git difftool --tool=icdiffu \
+		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"$@\"' -"
+	dfoiw = "!sh -c 'git difftool --tool=icdiffw \
+		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"$@\"' -"
 	fzf = "!sh -c 'git \"$@\" $(git status --porcelain | cut -c 4- | \
 		fzf --extended-exact --multi --select-1 --exit-0)' -"
 	fadd = "!sh -c 'git fzf add \"$@\"' -"
