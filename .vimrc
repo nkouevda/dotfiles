@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2015/01/12
+" 2015/01/13
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -278,7 +278,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   " Syntax checking
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
-  let g:syntastic_enable_signs = 0
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['python']}
   let g:syntastic_python_checkers = ['pyflakes']
