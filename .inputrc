@@ -1,9 +1,11 @@
 # Nikita Kouevda
-# 2014/12/03
+# 2015/01/15
 
-# Search history incrementally on up and down
+# Search history incrementally on up, ^P, down, ^N
 "\e[A": history-search-backward
+"\C-p": history-search-backward
 "\e[B": history-search-forward
+"\C-n": history-search-forward
 
 # List all possible completions on tab
 set show-all-if-ambiguous on
