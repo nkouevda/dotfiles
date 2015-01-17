@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2015/01/13
+" 2015/01/16
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -226,7 +226,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   call plug#begin()
 
   " Colors
-  let g:monokai_256_colors = 0
+  let g:monokai_256_cterm = 0
   Plug 'nkouevda/vim-monokai'
 
   " Various useful commands and functions
