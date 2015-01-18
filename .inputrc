@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/01/15
+# 2015/01/17
 
 # Search history incrementally on up, ^P, down, ^N
 "\e[A": history-search-backward
@@ -7,7 +7,7 @@
 "\e[B": history-search-forward
 "\C-n": history-search-forward
 
-# List all possible completions on tab
+# List all possible completions on first tab
 set show-all-if-ambiguous on
 
 # Ignore case for completion
@@ -15,3 +15,6 @@ set completion-ignore-case on
 
 # Do not duplicate existing characters when completing
 set skip-completed-text on
+
+# Threshold for 'Display all X possibilities?' prompt
+set completion-query-items 250
