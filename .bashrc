@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/01/09
+# 2015/01/21
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -127,6 +127,11 @@ dict() {
   fi
 
   grep -i "$@" /usr/share/dict/words
+}
+
+# Command line pastebin
+sprunge() {
+  curl -F 'sprunge=<-' 'http://sprunge.us' 2>/dev/null
 }
 
 # Pretty print JSON
