@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/01/19
+# 2015/01/22
 
 [user]
 	name = Nikita Kouevda
@@ -78,7 +78,9 @@
 	cpc = cherry-pick --continue
 	cpa = cherry-pick --abort
 	fe = fetch
+	fet = fetch --tags
 	fea = fetch --all
+	feat = fetch --all --tags
 	rb = rebase
 	rbi = rebase --interactive
 	rbc = rebase --continue
