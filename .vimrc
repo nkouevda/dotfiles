@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2015/01/20
+" 2015/02/28
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -161,10 +161,6 @@ nnoremap <C-c> <C-w>c
 
 " Jump to tag under cursor in split window
 nnoremap <C-\> <C-w>s<C-]>
-
-" Toggle line numbers and relative line numbers
-nnoremap <Leader>n :set number!<CR>
-nnoremap <Leader>N :set relativenumber!<CR>
 
 " Toggle spell checking
 nnoremap <Leader>z :set spell!<CR>
