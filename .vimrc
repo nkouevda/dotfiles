@@ -144,13 +144,12 @@ nnoremap <silent> . :<C-u>exe 'norm! ' . repeat('.', v:count1)<CR>
 
 " List, switch, create, and delete buffers
 nnoremap <Leader>b :buffers<CR>:b
-nnoremap <Leader>j :bnext<CR>
-nnoremap <Leader>k :bprevious<CR>
 nnoremap <Leader>s :new<CR>
 nnoremap <Leader>S :leftabove new<CR>
 nnoremap <Leader>v :vnew<CR>
 nnoremap <Leader>V :leftabove vnew<CR>
 nnoremap <Leader>c :bdelete<CR>
+nnoremap <Leader>C :bdelete!<CR>
 
 " Navigate and close windows
 nnoremap <C-j> <C-w>j
