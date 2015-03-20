@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2014/12/07
+# 2015/03/19
 
 # Link if LN=1; copy otherwise
 ifeq ($(LN),1)
@@ -59,7 +59,7 @@ brew:
 	brew install ranger
 	brew install rsync
 	brew install the_silver_searcher
-	brew install tig
+	brew install tig --with-docs
 	brew install tree
 	brew install vim
 	brew install wget
