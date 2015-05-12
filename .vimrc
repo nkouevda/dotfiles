@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2015/02/28
+" 2015/05/12
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -53,7 +53,7 @@ set statusline=%f%m%r%h%w\ %y%{&ft!=''?'\ ':''}
 set statusline+=[%{&ff},%{&fenc!=''?&fenc:&enc}]\ %<%=
 
 " Character under cursor in decimal and hexadecimal
-set statusline+=[\%03b,0x\%02B]
+set statusline+=[%03b,0x%02B]
 
 " Line, total lines, column, virtual column, and display width
 set statusline+=\ [%l/%L,%c%V/%{strdisplaywidth(getline('.'))}]
