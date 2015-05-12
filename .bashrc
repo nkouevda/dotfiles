@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/01/21
+# 2015/05/11
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -171,7 +171,7 @@ rmpyc() {
 
 # Update brew
 rebrew() {
-  brew update && brew upgrade && brew cleanup -s
+  brew update && brew upgrade --all && brew cleanup -s
 }
 
 # Update vim plugins

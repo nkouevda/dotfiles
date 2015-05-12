@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/03/19
+# 2015/05/11
 
 # Link if LN=1; copy otherwise
 ifeq ($(LN),1)
@@ -29,7 +29,7 @@ bash:
 brew:
 	brew tap homebrew/dupes
 	brew update
-	brew upgrade
+	brew upgrade --all
 	brew install bash
 	brew install bash-completion
 	brew install coreutils
