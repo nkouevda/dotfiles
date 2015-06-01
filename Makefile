@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/05/11
+# 2015/05/31
 
 # Link if LN=1; copy otherwise
 ifeq ($(LN),1)
@@ -38,22 +38,15 @@ brew:
 	brew install diffutils
 	brew install ed --default-names
 	brew install findutils --with-default-names
-	brew install flac
 	brew install fzf
 	brew install gawk
-	brew install gdb
 	brew install git
 	brew install gnu-sed --with-default-names
 	brew install grep --with-default-names
 	brew install gzip
-	brew install lame
 	brew install less
 	brew install macvim
-	brew install mercurial
-	brew install nmap
-	brew install node
 	brew install openssl
-	brew install pv
 	brew install python
 	brew install python3
 	brew install ranger
