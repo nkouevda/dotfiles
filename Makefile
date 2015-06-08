@@ -1,11 +1,11 @@
 # Nikita Kouevda
-# 2015/05/31
+# 2015/06/08
 
-# Link if LN=1; copy otherwise
+# Symlink if LN=1; copy otherwise
 ifeq ($(LN),1)
-  CMD := ln -fsv
+  COPY := ln -fsv
 else
-  CMD := cp -fv
+  COPY := cp -fv
 endif
 
 # Location of this file
@@ -20,11 +20,11 @@ TARGETS := ag bash brew git hg iterm python ranger readline tig vim
 all: $(TARGETS)
 
 ag:
-	$(CMD) "$(ROOT)"/.agignore ~
+	$(COPY) "$(ROOT)"/.agignore ~
 
 bash:
-	$(CMD) "$(ROOT)"/.bash_profile ~
-	$(CMD) "$(ROOT)"/.bashrc ~
+	$(COPY) "$(ROOT)"/.bash_profile ~
+	$(COPY) "$(ROOT)"/.bashrc ~
 
 brew:
 	brew tap homebrew/dupes
@@ -44,8 +44,10 @@ brew:
 	brew install gnu-sed --with-default-names
 	brew install grep --with-default-names
 	brew install gzip
+	brew install htop
 	brew install less
 	brew install macvim
+	brew install moreutils
 	brew install openssl
 	brew install python
 	brew install python3
@@ -62,33 +64,33 @@ brew:
 	brew prune
 
 git:
-	$(CMD) "$(ROOT)"/.gitconfig ~
+	$(COPY) "$(ROOT)"/.gitconfig ~
 	mkdir -pv ~/.config/git
-	$(CMD) "$(ROOT)"/.config/git/ignore ~/.config/git/ignore
+	$(COPY) "$(ROOT)"/.config/git/ignore ~/.config/git/ignore
 
 hg:
-	$(CMD) "$(ROOT)"/.hgrc ~
+	$(COPY) "$(ROOT)"/.hgrc ~
 
 iterm:
 	open "$(ROOT)"/iterm/*.itermcolors
 
 python:
-	$(CMD) "$(ROOT)"/.pystartup ~
+	$(COPY) "$(ROOT)"/.pystartup ~
 
 ranger:
 	mkdir -pv ~/.config/ranger
-	$(CMD) "$(ROOT)"/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+	$(COPY) "$(ROOT)"/.config/ranger/rc.conf ~/.config/ranger/rc.conf
 
 readline:
-	$(CMD) "$(ROOT)"/.inputrc ~
+	$(COPY) "$(ROOT)"/.inputrc ~
 
 tig:
-	$(CMD) "$(ROOT)"/.tigrc ~
+	$(COPY) "$(ROOT)"/.tigrc ~
 
 vim:
-	$(CMD) "$(ROOT)"/.gvimrc "$(ROOT)"/.vimrc  ~
+	$(COPY) "$(ROOT)"/.gvimrc "$(ROOT)"/.vimrc  ~
 	cd "$(ROOT)"; find .vim -type d -exec mkdir -pv ~/{} \;
-	cd "$(ROOT)"; find .vim -type f -exec $(CMD) "$(ROOT)"/{} ~/{} \;
+	cd "$(ROOT)"; find .vim -type f -exec $(COPY) "$(ROOT)"/{} ~/{} \;
 	mkdir -pv ~/.vim/autoload ~/.vim/tmp/swap
 	curl -sSLo ~/.vim/autoload/plug.vim \
 	  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
