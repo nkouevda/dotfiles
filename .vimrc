@@ -1,5 +1,5 @@
 " Nikita Kouevda
-" 2015/06/07
+" 2015/06/08
 
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
@@ -160,9 +160,6 @@ nnoremap <C-c> <C-w>c
 
 " Jump to tag under cursor in split window
 nnoremap <C-\> <C-w>s<C-]>
-
-" Toggle spell checking
-nnoremap <Leader>z :set spell!<CR>
 
 " Temporarily disable search highlighting
 nnoremap <Leader>/ :nohlsearch<CR>
