@@ -1,5 +1,5 @@
 # Nikita Kouevda
-# 2015/05/11
+# 2015/06/08
 
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
@@ -11,6 +11,9 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
   export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
 fi
+
+# User bin
+export PATH=~/bin:"$PATH"
 
 # Do not capture ^Q or ^S
 stty start undef
