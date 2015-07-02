@@ -168,21 +168,6 @@ nnoremap <Leader>w :keeppatterns %s/\s\+$//<CR>
 nmap <Leader>7 /\%80v.\+<CR>
 nmap <Leader>8 /\%81v.\+<CR>
 
-" Update the first instance of what looks like a modification date (YYYY/mm/dd)
-function! s:update_modification_date()
-  let l:winview = winsaveview()
-  try
-    keeppatterns 0s:\_.\{-}\zs\d\@<!\d\{4}/\d\d/\d\d\d\@!:\=strftime('%Y/%m/%d')
-  catch
-    echohl ErrorMsg
-    echo 'E486: Pattern not found: YYYY/mm/dd'
-    echohl None
-  endtry
-  call winrestview(l:winview)
-endfunction
-
-nnoremap <Leader>d :call <SID>update_modification_date()<CR>
-
 " Load filetype plugins and indentation files
 filetype plugin indent on
 
