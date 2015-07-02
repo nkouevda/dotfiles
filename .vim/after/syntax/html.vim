@@ -1,6 +1,3 @@
-" Nikita Kouevda
-" 2014/10/02
-
 " No bold or italic
 hi htmlBold         term=NONE   cterm=NONE  gui=NONE
 hi htmlBoldItalic   term=NONE   cterm=NONE  gui=NONE

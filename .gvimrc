@@ -1,6 +1,3 @@
-" Nikita Kouevda
-" 2014/10/02
-
 " Do not show the toolbar
 set guioptions-=T
 

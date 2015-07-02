@@ -1,6 +1,3 @@
-# Nikita Kouevda
-# 2015/06/08
-
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
 

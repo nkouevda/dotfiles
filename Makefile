@@ -1,6 +1,3 @@
-# Nikita Kouevda
-# 2015/06/08
-
 # Symlink if LN=1; copy otherwise
 ifeq ($(LN),1)
   COPY := ln -fsv

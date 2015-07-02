@@ -1,6 +1,3 @@
-# Nikita Kouevda
-# 2015/01/17
-
 # Search history incrementally on up, ^P, down, ^N
 "\e[A": history-search-backward
 "\C-p": history-search-backward

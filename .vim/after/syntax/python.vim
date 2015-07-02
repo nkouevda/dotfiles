@@ -1,6 +1,3 @@
-" Nikita Kouevda
-" 2014/10/02
-
 " self
 syn keyword   pythonBuiltin   self
 

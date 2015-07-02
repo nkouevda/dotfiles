@@ -1,6 +1,3 @@
-<!-- Nikita Kouevda -->
-<!-- 2014/11/09 -->
-
 # dotfiles
 
 My dotfiles.

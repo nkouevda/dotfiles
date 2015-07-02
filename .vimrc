@@ -1,6 +1,3 @@
-" Nikita Kouevda
-" 2015/06/08
-
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
 
