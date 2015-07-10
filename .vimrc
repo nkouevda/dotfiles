@@ -164,9 +164,10 @@ nnoremap <Leader>/ :nohlsearch<CR>
 " Remove all trailing whitespace
 nnoremap <Leader>w :keeppatterns %s/\s\+$//<CR>
 
-" Match all characters past column 79 or 80
-nmap <Leader>7 /\%80v.\+<CR>
-nmap <Leader>8 /\%81v.\+<CR>
+" Match all characters past column 79 or 80 or 100
+nmap <Leader>7 /\%80c.\+<CR>
+nmap <Leader>8 /\%81c.\+<CR>
+nmap <Leader>0 /\%101c.\+<CR>
 
 " Load filetype plugins and indentation files
 filetype plugin indent on
