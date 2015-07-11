@@ -20,6 +20,7 @@ ag:
 	$(COPY) "$(ROOT)"/.agignore ~
 
 bash:
+	$(COPY) "$(ROOT)"/.bash_functions ~
 	$(COPY) "$(ROOT)"/.bash_profile ~
 	$(COPY) "$(ROOT)"/.bashrc ~
 

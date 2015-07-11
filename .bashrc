@@ -72,118 +72,6 @@ alias lt="tree -aC -I '.git|node_modules'"
 # Color grep output
 alias grep="grep --color=auto"
 
-# Colorized cat
-ccat() {
-  if (( ! $# )); then
-    printf "usage: %s <files>...\n" "$FUNCNAME" >&2
-    return 1
-  fi
-
-  for file in "$@"; do
-    pygmentize -f terminal256 -O style=monokai -g -- "$file"
-  done
-}
-
-# Create backup
-bak() {
-  if (( ! $# )); then
-    printf "usage: %s <files>...\n" "$FUNCNAME" >&2
-    return 1
-  fi
-
-  for file in "$@"; do
-    cp -v -- "$file"{,.bak}
-  done
-}
-
-# Restore backup
-unbak() {
-  if (( ! $# )); then
-    printf "usage: %s <files>...\n" "$FUNCNAME" >&2
-    return 1
-  fi
-
-  for file in "$@"; do
-    mv -v -- "${file%.bak}"{.bak,}
-  done
-}
-
-# Print current Unix time or convert given Unix times to dates
-epoch() {
-  if (( ! $# )); then
-    date +%s
-  else
-    for t in "$@"; do
-      date --date=@"$t"
-    done
-  fi
-}
-
-# Search dictionary
-dict() {
-  if (( ! $# )); then
-    printf "usage: %s [<options>...] <pattern>\n" "$FUNCNAME" >&2
-    return 1
-  fi
-
-  grep -i "$@" /usr/share/dict/words
-}
-
-# Command line pastebin
-sprunge() {
-  curl -F 'sprunge=<-' 'http://sprunge.us' 2>/dev/null
-}
-
-# Pretty print JSON
-json() {
-  python -m json.tool
-}
-
-# Uppercase
-upper() {
-  tr '[:lower:]' '[:upper:]'
-}
-
-# Lowercase
-lower() {
-  tr '[:upper:]' '[:lower:]'
-}
-
-# Lowercase UUID
-uuid() {
-  uuidgen | lower
-}
-
-# ROT13
-rot13() {
-  tr 'A-Za-z' 'N-ZA-Mn-za-m'
-}
-
-# Remove .DS_Store files under the given dirs (default: current dir)
-rmds() {
-  find -- "${@:-.}" -type f -name '.DS_Store' -delete
-}
-
-# Remove compiled python files under the given dirs (default: current dir)
-rmpyc() {
-  find -- "${@:-.}" -type f -name '*.py[co]' -delete
-}
-
-# Update brew
-rebrew() {
-  brew update && brew upgrade --all && brew cleanup -s
-}
-
-# Update vim plugins
-replug() {
-  vim +PlugUpgrade +PlugUpdate +PlugClean! +'helptags ~/.vim/plugged' +qa
-}
-
-# View changes from last vim plugin update
-dfplug() {
-  vim +PlugDiff +only
-}
-
 # Synchronize the current history list with the history file
 sync_history() {
   local tmp_hist
@@ -240,8 +128,9 @@ make_ps1() {
 make_ps1
 unset -f make_ps1
 
-# Source bash completion and local settings
+# Source bash completion, bash functions, and local settings
 [[ -r /usr/local/etc/bash_completion ]] && . /usr/local/etc/bash_completion
+[[ -r ~/.bash_functions ]] && . ~/.bash_functions
 [[ -r ~/.bash_local ]] && . ~/.bash_local
 
 # Guarantee exit status 0
