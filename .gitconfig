@@ -118,3 +118,4 @@
 	freset = "!sh -c 'git fzf reset \"$@\"' -"
 	foreach = "!sh -c 'find -- \"$1\" -type d -name \".git\" \
 		-print -execdir \"${@:2}\" \";\"' -"
+	trace = "!sh -c 'GIT_TRACE=1 git \"$@\"' -"
