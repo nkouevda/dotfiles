@@ -49,7 +49,10 @@ export EDITOR="vim"
 # Default fzf options
 export FZF_DEFAULT_OPTS="--no-256"
 
-# If it exists and is readable, set python startup file
+# Key bindings for fzf
+[[ -r ~/.fzf.bash ]] && . ~/.fzf.bash
+
+# Python startup file
 [[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
 
 # Alias tac if coreutils not installed
