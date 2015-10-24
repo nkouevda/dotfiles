@@ -44,7 +44,7 @@ set splitbelow splitright
 set laststatus=2
 
 " File name, flags (modified, read-only, help, preview), and file type
-set statusline=%f%m%r%h%w\ %y%{&ft!=''?'\ ':''}
+set statusline=%t%m%r%h%w\ %y%{&ft!=''?'\ ':''}
 
 " File format and encoding; truncate if necessary; switch to right alignment
 set statusline+=[%{&ff},%{&fenc!=''?&fenc:&enc}]\ %<%=
