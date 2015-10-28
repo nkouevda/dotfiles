@@ -8,7 +8,7 @@ syn keyword   pythonConstant  False True None NotImplemented Ellipsis __debug__
 syn match     pythonEscape    "%\(([^)]*)\)\?[ #0+-]*\([0-9]\+\|\*\)\?\(\.\([0-9]\+\|\*\)\?\)\?[hlL]\?[diouxXeEfFgGcrs%]" contained
 
 " URL encoding
-syn match     pythonEscape    "%\(25\)*[0-9A-F]\{2}" contained
+syn match     pythonEscape    "%\(25\)*[0-9A-Fa-f]\{2}" contained
 
 " Highlighting
 hi! link      pythonBuiltin   Identifier
