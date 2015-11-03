@@ -211,6 +211,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   " Various useful commands and functions
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-repeat'
+  Plug 'christoomey/vim-sort-motion'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
 
