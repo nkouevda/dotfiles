@@ -180,9 +180,6 @@ if has('autocmd')
     " Disable paste mode when leaving insert mode
     autocmd InsertLeave * set nopaste
 
-    " Always use markdown filetype for .md files
-    autocmd BufNewFile,BufRead *.md setfiletype markdown
-
     " Override default indentation settings
     autocmd FileType gitconfig,make,snippets,sshconfig setlocal sw=8 noet
 
