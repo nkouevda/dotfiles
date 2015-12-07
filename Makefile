@@ -9,12 +9,15 @@ endif
 ROOT := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
 # All targets except all
-TARGETS := bash brew git hg iterm python ranger readline tig vim
+TARGETS := ag bash brew git hg iterm python ranger readline tig vim
 
 # Phony targets
 .PHONY: all $(TARGETS)
 
 all: $(TARGETS)
+
+ag:
+	$(COPY) "$(ROOT)"/.agignore ~
 
 bash:
 	$(COPY) "$(ROOT)"/.bash_functions ~
