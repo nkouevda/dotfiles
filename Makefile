@@ -9,7 +9,7 @@ endif
 ROOT := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
 # All targets except all
-TARGETS := ag bash brew git hg iterm python ranger readline tig vim
+TARGETS := ag bash brew git hg iterm karabiner python ranger readline tig vim
 
 # Phony targets
 .PHONY: all $(TARGETS)
@@ -64,7 +64,7 @@ brew:
 git:
 	$(COPY) "$(ROOT)"/.gitconfig ~
 	mkdir -pv ~/.config/git
-	$(COPY) "$(ROOT)"/.config/git/ignore ~/.config/git/ignore
+	$(COPY) "$(ROOT)"/.config/git/ignore ~/.config/git/
 
 hg:
 	$(COPY) "$(ROOT)"/.hgrc ~
@@ -72,12 +72,16 @@ hg:
 iterm:
 	open "$(ROOT)"/iterm/*.itermcolors
 
+karabiner:
+	$(COPY) "$(ROOT)"/karabiner/private.xml \
+	  ~/Library/Application\ Support/Karabiner/
+
 python:
 	$(COPY) "$(ROOT)"/.pystartup ~
 
 ranger:
 	mkdir -pv ~/.config/ranger
-	$(COPY) "$(ROOT)"/.config/ranger/rc.conf ~/.config/ranger/rc.conf
+	$(COPY) "$(ROOT)"/.config/ranger/rc.conf ~/.config/ranger/
 
 readline:
 	$(COPY) "$(ROOT)"/.inputrc ~

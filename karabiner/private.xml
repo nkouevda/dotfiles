@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<root>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Finder</name>
+    <url type="file">/System/Library/CoreServices/Finder.app</url>
+  </vkopenurldef>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Google_Chrome</name>
+    <url type="file">/Applications/Google Chrome.app</url>
+  </vkopenurldef>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_HipChat</name>
+    <url type="file">/Applications/HipChat.app</url>
+  </vkopenurldef>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_iTerm</name>
+    <url type="file">/Applications/iTerm.app</url>
+  </vkopenurldef>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_iTunes</name>
+    <url type="file">/Applications/iTunes.app</url>
+  </vkopenurldef>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_MacVim</name>
+    <url type="file">/Applications/MacVim.app</url>
+  </vkopenurldef>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Messages</name>
+    <url type="file">/Applications/Messages.app</url>
+  </vkopenurldef>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Slack</name>
+    <url type="file">/Applications/Slack.app</url>
+  </vkopenurldef>
+  <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_System_Preferences</name>
+    <url type="file">/Applications/System Preferences.app</url>
+  </vkopenurldef>
+
+  <item>
+    <name>Change Control + Option + Command + Escape to Sleep Display (Control + Shift + Eject)</name>
+    <identifier>private.control_option_command_escape_to_control_shift_eject</identifier>
+    <autogen>__KeyToKey__ KeyCode::ESCAPE, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::COMMAND_L, ConsumerKeyCode::EJECT, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L</autogen>
+  </item>
+
+  <item>
+    <name>Change Left/Right Scroll Wheel to Move a Space Left/Right (Option + Left/Right Bracket)</name>
+    <identifier>private.scroll_wheel_to_move_space</identifier>
+    <device_not>DeviceVendor::APPLE_COMPUTER, DeviceProduct::ANY</device_not>
+    <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT, KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_L</autogen>
+    <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_L</autogen>
+  </item>
+
+  <item>
+    <name>Change Option + X to Open Application</name>
+    <identifier>private.option_x_to_open_application</identifier>
+    <autogen>__KeyToKey__ KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_OPEN_URL_APP_Messages</autogen>
+    <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_OPEN_URL_APP_Google_Chrome</autogen>
+    <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_OPEN_URL_APP_HipChat</autogen>
+    <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_OPEN_URL_APP_Finder</autogen>
+    <autogen>__KeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_OPEN_URL_APP_Slack</autogen>
+    <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_OPEN_URL_APP_MacVim</autogen>
+    <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_OPEN_URL_APP_iTerm</autogen>
+    <autogen>__KeyToKey__ KeyCode::Z, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_OPEN_URL_APP_iTunes</autogen>
+    <autogen>__KeyToKey__ KeyCode::COMMA, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::VK_OPEN_URL_APP_System_Preferences</autogen>
+  </item>
+</root>
