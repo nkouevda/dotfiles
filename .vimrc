@@ -104,10 +104,8 @@ set incsearch hlsearch ignorecase smartcase
 " Do not time out on mappings; time out immediately on key codes
 set notimeout ttimeout ttimeoutlen=0
 
-" Use comma as leader; keep its functionality via backslash
-let mapleader = ','
-nnoremap \ ,
-xnoremap \ ,
+" Leader
+let mapleader = "\<Space>"
 
 " Prefer jumping directly to marks
 nnoremap ' `
@@ -117,20 +115,19 @@ nnoremap ` '
 xnoremap ` '
 onoremap ` '
 
-" Copy to the end of the line with Y; matches the behavior of C and D
+" Yank until EOL; matches the behavior of C and D
 nnoremap Y y$
 
-" Write to black hole register to avoid overwriting copied material
-nnoremap <Leader><Leader> "_
-xnoremap <Leader><Leader> "_
+" Black hole register
+nnoremap \ "_
+xnoremap \ "_
 
 " Remain in visual mode after shifting lines
 xnoremap < <gv
 xnoremap > >gv
 
-" Update with space, write with enter
-nnoremap <Space> :update<CR>
-nnoremap <CR> :write<CR>
+" Write buffer
+nnoremap <Leader><CR> :write<CR>
 
 " Quit vim without prompting or writing
 nnoremap ZA :quitall!<CR>
@@ -164,9 +161,10 @@ nnoremap <Leader>/ :nohlsearch<CR>
 " Remove all trailing whitespace
 nnoremap <Leader>w :keeppatterns %s/\s\+$//<CR>
 
-" Match all characters past column 79 or 80 or 100
+" Match all characters past column 79 or 80 or 99 or 100
 nmap <Leader>7 /\%80c.\+<CR>
 nmap <Leader>8 /\%81c.\+<CR>
+nmap <Leader>9 /\%100c.\+<CR>
 nmap <Leader>0 /\%101c.\+<CR>
 
 " Load filetype plugins and indentation files
