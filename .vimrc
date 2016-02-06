@@ -211,7 +211,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'tpope/vim-unimpaired'
 
   " Code search
-  let g:agprg = 'ag --column --smart-case'
   Plug 'rking/ag.vim'
 
   " Fuzzy file search
@@ -220,6 +219,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   let g:ctrlp_working_path_mode = ''
   let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
   let g:ctrlp_user_command = ['.git', 'git ls-files %s -co --exclude-standard']
+  let g:ctrlp_lazy_update = 10
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'JazzCore/ctrlp-cmatcher'
 
