@@ -20,7 +20,7 @@ uuid() {
 
 # Random binary; default 16 bytes
 randbin() {
-  dd if=/dev/random bs="${1:-16}" count=1 2>/dev/null
+  dd if=/dev/random iflag=count_bytes count="${1:-16}" 2>/dev/null
 }
 
 # Random hexadecimal; default 16 bytes
