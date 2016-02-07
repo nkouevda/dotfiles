@@ -5,19 +5,115 @@ set ignore-case = true
 set split-view-height = 75%
 
 # Show commit ID; show email user instead of author name
-set main-view = id date author:email-user \
+set main-view = id date author:display:email-user,width:10 \
                 commit-title:graph:true,refs:true,overflow:true
 
 # Highlight commit titles past character 50
 set diff-view = text:commit-title-overflow:true
 
-# Less-style navigation
+# Colors - general
+color   status          default     default
+color   cursor          default     236
+color   title-focus     default     237
+color   title-blur      243         237
+
+# Colors - gerrit
+color   "    Change-Id: "       yellow      default
+color   "    Reviewed-on: "     yellow      default
+
+# Generic bindings - view switching
+bind generic S none
+bind generic <Hash> view-stash
+bind generic * view-grep
+
+# Generic bindings - view manipulation
+bind generic <LessThan> none
+bind generic J none
+bind generic K none
+bind generic , none
+bind generic O none
+bind generic + maximize
+
+# Generic bindings - cursor navigation
+bind generic <Space> none
+bind generic - none
 bind generic g move-first-line
 bind generic G move-last-line
-bind main G move-last-line
 
-# Only color content
-color   status          default     default
-color   cursor          default     default     bold
-color   title-focus     default     default     bold    reverse
-color   title-blur      default     default     bold    reverse
+# Generic bindings - scrolling
+bind generic <Insert> none
+bind generic <Delete> none
+bind generic <C-f> scroll-page-down
+bind generic <C-b> scroll-page-up
+
+# Generic bindings - misc
+bind generic z none
+
+# Generic bindings - option toggling
+bind generic I none
+bind generic i none
+bind generic D none
+bind generic A none
+bind generic ~ none
+bind generic F none
+bind generic W none
+bind generic X none
+bind generic $ none
+bind generic % none
+
+# Generic bindings - external commands
+bind generic y @sh -c 'printf "%s" "%(commit)" | pbcopy'
+bind generic 7 @sh -c 'printf "%.7s" "%(commit)" | pbcopy'
+bind generic w @sh -c 'url="$(git log -1 "%(commit)" | awk \'/^    Reviewed-on: / { print $2 }\')" && [[ -n "$url" ]] && open "$url"'
+bind generic x !sh -c 'git %(prompt git )'
+bind generic E @mvim --remote "%(file)"
+
+# Main bindings - option toggling
+bind main G none
+bind main A :toggle main-options --all
+bind main B :toggle main-options --branches='*'
+
+# Main bindings - external commands
+bind main C none
+bind main O ?git checkout "%(commit)"
+bind main D ?git branch -D "%(branch)"
+bind main F ?git fetch --tags --prune
+bind main T !sh -c 'git tag "%(prompt git tag )" "%(commit)"'
+
+# Diff bindings - internal commands
+bind diff - :/^diff
+
+# Refs bindings - external commands
+bind refs C none
+bind refs O ?git checkout "%(branch)"
+bind refs ! none
+bind refs D ?git branch -D "%(branch)"
+
+# Status bindings - view specific actions
+bind status u none
+bind status A status-update
+bind status ! none
+bind status D status-revert
+bind status M none
+
+# Status bindings - internal commands
+bind status . :/.
+
+# Status bindings - external commands
+bind status C ?git commit --verbose
+
+# Stage bindings - view specific actions
+bind stage u none
+bind stage A status-update
+bind stage ! none
+bind stage D status-revert
+bind stage 1 none
+bind stage \ none
+
+# Stage bindings - internal commands
+bind stage - :?^diff
+
+# Stash bindings - external commands
+bind stash ! none
+bind stash D ?git stash drop "%(stash)"
+bind stash A ?git stash apply "%(stash)"
