@@ -221,7 +221,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   let g:ctrlp_user_command = ['.git', 'git ls-files %s -co --exclude-standard']
   let g:ctrlp_lazy_update = 10
   Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'JazzCore/ctrlp-cmatcher'
+  Plug 'JazzCore/ctrlp-cmatcher', {'do': './install.sh'}
 
   " Git commands and signs
   Plug 'tpope/vim-fugitive'
