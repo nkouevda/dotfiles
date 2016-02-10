@@ -71,8 +71,8 @@
 	cor = "!sh -c '[[ -n \"$1\" ]] && \
 		git checkout -B \"$1\" \"${2:-origin}/$1\"' -"
 	corm = "!sh -c 'git checkout -B master \"${1:-origin}/master\"' -"
-	hard = reset --hard HEAD
-	soft = reset --soft HEAD
+	hard = "!sh -c 'git reset --hard \"${@:-HEAD}\"' -"
+	soft = "!sh -c 'git reset --soft \"${@:-HEAD}\"' -"
 	cp = cherry-pick
 	cpc = cherry-pick --continue
 	cpa = cherry-pick --abort
