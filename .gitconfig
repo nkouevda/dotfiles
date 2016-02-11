@@ -42,9 +42,9 @@
 	br = branch --verbose --verbose
 	bra = branch --verbose --verbose --all
 	brm = branch --move
-	brmf = branch -M
+	brmf = branch --move --force
 	brd = branch --delete
-	brdf = branch -D
+	brdf = branch --delete --force
 	sb = show-branch
 	sba = show-branch --all
 	lg = log --graph --pretty=name
@@ -55,6 +55,7 @@
 	sh = stash
 	shl = stash list
 	shs = stash save
+	shw = stash show --patch
 	sha = stash apply
 	shp = stash pop
 	shd = stash drop
