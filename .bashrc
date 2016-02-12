@@ -60,6 +60,9 @@ if ! type tac &>/dev/null; then
   alias tac="tail -r"
 fi
 
+# Generate and export LS_COLORS
+[[ -r ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
+
 # Color ls output
 if ls --color=auto &>/dev/null; then
   alias ls="ls --color=auto"
