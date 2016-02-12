@@ -1,0 +1,60 @@
+TERM Eterm
+TERM ansi
+TERM color-xterm
+TERM con[0-9]*x[0-9]*
+TERM cons25
+TERM console
+TERM cygwin
+TERM dtterm
+TERM eterm-color
+TERM gnome
+TERM gnome-256color
+TERM hurd
+TERM jfbterm
+TERM konsole
+TERM kterm
+TERM linux
+TERM linux-c
+TERM mach-color
+TERM mach-gnu-color
+TERM mlterm
+TERM putty
+TERM putty-256color
+TERM rxvt*
+TERM screen*
+TERM st
+TERM st-256color
+TERM terminator
+TERM tmux*
+TERM vt100
+TERM xterm*
+
+# Reset, normal, file, directory
+RESET 0
+NORMAL 0
+FILE 0
+DIR 34
+
+# Symlink, hardlink, orphaned symlink, missing target
+LINK 36
+MULTIHARDLINK 36
+ORPHAN 31
+MISSING 31
+
+# Pipe, socket, door, block device, character device
+FIFO 33
+SOCK 33
+DOOR 33
+BLK 33
+CHR 33
+
+# +x, u+s, g+s, capability
+EXEC 32
+SETUID 31
+SETGID 31
+CAPABILITY 31
+
+# +t, o+w, +t o+w
+STICKY 35
+OTHER_WRITABLE 35
+STICKY_OTHER_WRITABLE 35
