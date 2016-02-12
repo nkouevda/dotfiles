@@ -229,6 +229,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>gb :Gblame<CR>
   nnoremap <Leader>gd :Gdiff<CR>
   nnoremap <Leader>gD :Gdiff HEAD^<CR>
+  let g:signify_vcs_cmds = {'git': 'git diff --no-color --no-ext-diff -U0 HEAD^ -- %f'}
   Plug 'mhinz/vim-signify'
   hi! link SignifySignAdd Function
   hi! link SignifySignChange String
