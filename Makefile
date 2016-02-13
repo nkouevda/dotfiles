@@ -9,7 +9,7 @@ endif
 ROOT := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
 # All targets except all
-TARGETS := ag bash brew dircolors git hg iterm karabiner python readline tig vim
+TARGETS := ag bash brew ctags dircolors git hg iterm karabiner python readline tig vim
 
 # Phony targets
 .PHONY: all $(TARGETS)
@@ -59,6 +59,9 @@ brew:
 	brew linkapps
 	brew cleanup -s
 	brew prune
+
+ctags:
+	$(COPY) "$(ROOT)"/.ctags ~
 
 dircolors:
 	$(COPY) "$(ROOT)"/.dircolors ~
