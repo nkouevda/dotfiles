@@ -102,6 +102,9 @@ sync_history() {
 # Synchronize history before every prompt
 export PROMPT_COMMAND="sync_history;"
 
+# Include parent directory in PS1
+export PROMPT_DIRTRIM=2
+
 # Construct and export PS1
 make_ps1() {
   local reset red green yellow user at host dir status
@@ -128,7 +131,7 @@ make_ps1() {
   status='$((( $? )) && printf "%b" "'"$red"'" || printf "%b" "'"$reset"'")'
 
   # user@host pwd $
-  export PS1="\[$reset\]$user\u$at@$host\h $dir\W \[$status\]\\$ \[$reset\]"
+  export PS1="\[$reset\]$user\u$at@$host\h $dir\w \[$status\]\\$ \[$reset\]"
 }
 
 make_ps1
