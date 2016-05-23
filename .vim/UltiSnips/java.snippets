@@ -1,0 +1,66 @@
+snippet if "if" b
+if ($1) {
+	$2
+}
+endsnippet
+
+snippet /(?<!\w)else if/ "else if" r
+else if ($1) {
+	$2
+}
+endsnippet
+
+snippet else "else"
+else {
+	$1
+}
+endsnippet
+
+snippet for "for" b
+for ($1) {
+	$2
+}
+endsnippet
+
+snippet while "while" b
+while ($1) {
+	$2
+}
+endsnippet
+
+snippet try "try" b
+try {
+	$1
+} catch (${2:Exception} as e) {
+	${4:logger.error(e, $5);}
+}
+endsnippet
+
+snippet finally "finally"
+finally {
+	$1
+}
+endsnippet
+
+snippet logger "logger" b
+private static final Logger logger = Logger.get(`!v expand('%:t:r')`.class);
+endsnippet
+
+snippet builder "immutable builder" b
+Immutable$1.Builder<$2> $3Builder = Immutable$1.builder();
+$1<$2> $3 = $3Builder.build();
+endsnippet
+
+snippet equals "equals (singleton)" b
+@Override
+public boolean equals(Object o) {
+	return o instanceof `!v expand('%:t:r')`;
+}
+endsnippet
+
+snippet /hash[Cc]ode/ "hashCode (singleton)" rb
+@Override
+public int hashCode() {
+	return getClass().hashCode();
+}
+endsnippet

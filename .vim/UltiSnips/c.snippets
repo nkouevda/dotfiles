@@ -1,8 +1,8 @@
-snippet #< "include system" b
+snippet #< "include (system)" b
 #include <$1.h>
 endsnippet
 
-snippet #" "include local" b
+snippet #" "include (local)" b
 #include "$1.h"
 endsnippet
 
@@ -24,7 +24,7 @@ if ($1) {
 }
 endsnippet
 
-snippet elif "else if"
+snippet /(?<!\w)else if/ "else if" r
 else if ($1) {
 	$2
 }

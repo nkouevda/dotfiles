@@ -63,14 +63,14 @@ else:
 	${1:pass}
 endsnippet
 
-snippet while "while" b
-while ${1:condition}:
-	${2:pass}
-endsnippet
-
 snippet for "for" b
 for ${1:item} in ${2:iterable}:
 	${3:pass}
+endsnippet
+
+snippet while "while" b
+while ${1:condition}:
+	${2:pass}
 endsnippet
 
 snippet /\[/ "[" r
@@ -94,8 +94,11 @@ try:
 	${1:pass}
 except ${2:Exception} as ${3:ex}:
 	${4:pass}
-${5:finally
-	${6:pass}}
+endsnippet
+
+snippet finally "finally" b
+finally:
+	${1:pass}
 endsnippet
 
 snippet with "with" b
