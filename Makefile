@@ -27,7 +27,7 @@ bash:
 brew:
 	brew tap homebrew/dupes
 	brew update
-	brew upgrade --all
+	brew upgrade
 	brew install bash
 	brew install bash-completion
 	brew install coreutils

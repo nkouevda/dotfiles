@@ -117,7 +117,7 @@ rmds() {
 
 # Update brew
 rebrew() {
-  brew update && brew upgrade --all && brew cleanup -s
+  brew update && brew upgrade && brew cleanup -s
 }
 
 # Update vim plugins
