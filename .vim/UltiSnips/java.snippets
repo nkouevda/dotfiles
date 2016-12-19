@@ -1,3 +1,23 @@
+snippet pr "private" w
+private $0
+endsnippet
+
+snippet po "protected" w
+protected $0
+endsnippet
+
+snippet pu "public" w
+public $0
+endsnippet
+
+snippet st "static" w
+static $0
+endsnippet
+
+snippet fi "final" w
+final $0
+endsnippet
+
 snippet if "if" b
 if ($1) {
 	$2
@@ -10,7 +30,7 @@ else if ($1) {
 }
 endsnippet
 
-snippet else "else"
+snippet else "else" w
 else {
 	$1
 }
@@ -36,7 +56,7 @@ try {
 }
 endsnippet
 
-snippet finally "finally"
+snippet finally "finally" w
 finally {
 	$1
 }
@@ -44,6 +64,22 @@ endsnippet
 
 snippet logger "logger" b
 private static final Logger logger = Logger.get(`!v expand('%:t:r')`.class);
+endsnippet
+
+snippet debug "logger.debug()" b
+logger.debug($1);
+endsnippet
+
+snippet info "logger.info()" b
+logger.info($1);
+endsnippet
+
+snippet warning "logger.warning()" b
+logger.warning($1);
+endsnippet
+
+snippet error "logger.error()" b
+logger.error($1);
 endsnippet
 
 snippet builder "immutable builder" b

@@ -2,6 +2,10 @@ snippet #! "#!" b
 #!/usr/bin/env ${1:bash}
 endsnippet
 
+snippet strict "strict" b
+set -euo pipefail
+endsnippet
+
 snippet /\w+\(\)/ "function" r
 `!p snip.rv = match.group()` {
 	$1
@@ -36,6 +40,6 @@ for ${1:i} in ${2:"$@"}; do
 done
 endsnippet
 
-snippet [[ "[["
+snippet /\[\[/ "[[" r
 [[ ${1:condition} ]] && $0
 endsnippet

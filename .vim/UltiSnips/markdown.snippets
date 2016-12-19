@@ -1,21 +1,21 @@
 extends html
 
-snippet [ "link"
+snippet /(?<!\[)\[/ "link" r
 [${1:link text}](${2:href})
 endsnippet
 
-snippet [[ "link reference"
+snippet /\[\[/ "link reference" r
 [${1:link text}][${2:id}]
 endsnippet
 
-snippet [: "link definition"
+snippet [: "link definition" b
 [${1:id}]: $0
 endsnippet
 
-snippet ![ "image"
+snippet /!\[/ "image" r
 ![${1:alt text}](${2:href})
 endsnippet
 
-snippet ![[ "image reference"
+snippet /!\[\[/ "image reference" r
 ![${1:alt text}][${2:id}]
 endsnippet

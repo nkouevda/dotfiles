@@ -31,7 +31,7 @@ def ${1:name}(`!v indent('.') ? 'self, ' : ''`${2:params}):
 	${3:pass}
 endsnippet
 
-snippet lambda "lambda"
+snippet lambda "lambda" w
 lambda ${1:params}: ${2:pass}
 endsnippet
 
@@ -40,11 +40,11 @@ snippet doc "docstring" b
 """
 endsnippet
 
-snippet """ "triple double quotes"
+snippet /"""/ "triple double quotes" r
 """$1"""
 endsnippet
 
-snippet ''' "triple single quotes"
+snippet /'''/ "triple single quotes" r
 '''$1'''
 endsnippet
 
