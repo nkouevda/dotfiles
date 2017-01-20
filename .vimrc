@@ -214,14 +214,14 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'rking/ag.vim'
 
   " Fuzzy file search
-  let g:ctrlp_clear_cache_on_exit = 0
-  let g:ctrlp_show_hidden = 1
   let g:ctrlp_working_path_mode = ''
-  let g:ctrlp_match_func = {'match': 'matcher#cmatch'}
-  let g:ctrlp_user_command = ['.git', 'git ls-files %s -co --exclude-standard']
+  let g:ctrlp_show_hidden = 1
+  let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_lazy_update = 10
+  let g:ctrlp_user_command = ['.git', 'git ls-files --cached --others --exclude-standard -- %s']
+  let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+  Plug 'nixprime/cpsm', {'do': 'PY3=OFF ./install.sh'}
   Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'JazzCore/ctrlp-cmatcher', {'do': './install.sh'}
 
   " Git commands and signs
   Plug 'tpope/vim-fugitive'
