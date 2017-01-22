@@ -82,11 +82,6 @@ snippet error "logger.error()" b
 logger.error($1);
 endsnippet
 
-snippet builder "immutable builder" b
-Immutable$1.Builder<$2> $3Builder = Immutable$1.builder();
-$1<$2> $3 = $3Builder.build();
-endsnippet
-
 snippet equals "equals (singleton)" b
 @Override
 public boolean equals(Object o) {

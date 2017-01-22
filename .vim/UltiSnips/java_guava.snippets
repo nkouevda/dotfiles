@@ -1,0 +1,16 @@
+snippet ilist "ImmutableList.of()" w
+ImmutableList.of($1)
+endsnippet
+
+snippet imap "ImmutableMap.of()" w
+ImmutableMap.of($1)
+endsnippet
+
+snippet iset "ImmutableSet.of()" w
+ImmutableSet.of($1)
+endsnippet
+
+snippet ibuilder "immutable collection builder" b
+Immutable$1.Builder<$2> $3Builder = Immutable$1.builder();
+$1<$2> $3 = $3Builder.build();
+endsnippet
