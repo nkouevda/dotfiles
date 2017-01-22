@@ -240,10 +240,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'tpope/vim-sleuth'
 
   " Search
-  let g:oblique#min_length = 0
-  let g:oblique#incsearch_highlight_all = 1
-  Plug 'junegunn/vim-pseudocl'
-  Plug 'junegunn/vim-oblique'
+  Plug 'junegunn/vim-slash'
 
   " Snippets
   let g:UltiSnipsExpandTrigger = '<Tab>'
