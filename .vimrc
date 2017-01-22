@@ -204,6 +204,8 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'nkouevda/vim-monokai'
 
   " Various useful commands and functions
+  Plug 'wellle/targets.vim'
+  Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-repeat'
   Plug 'christoomey/vim-sort-motion'
