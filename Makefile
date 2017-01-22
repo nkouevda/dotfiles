@@ -23,6 +23,7 @@ bash:
 	$(COPY) "$(ROOT)"/.bash_functions ~
 	$(COPY) "$(ROOT)"/.bash_profile ~
 	$(COPY) "$(ROOT)"/.bashrc ~
+	$(COPY) "$(ROOT)"/.hushlogin ~
 
 brew:
 	brew tap homebrew/dupes
