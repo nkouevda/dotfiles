@@ -129,8 +129,8 @@ xnoremap > >gv
 " Write buffer
 nnoremap <Leader><CR> :write<CR>
 
-" Quit vim without prompting or writing
-nnoremap ZA :quitall!<CR>
+" "ZZ all" and quit vim with a non-zero exit code, respectively
+nnoremap ZA :xall<CR>
 nnoremap ZC :cquit<CR>
 
 " Repeat the last change [count] times instead of replacing the original count
