@@ -46,8 +46,8 @@ set laststatus=2
 " File name, flags (modified, read-only, help, preview), and file type
 set statusline=%t%m%r%h%w\ %y%{&ft!=''?'\ ':''}
 
-" File format and encoding; truncate if necessary; switch to right alignment
-set statusline+=[%{&ff},%{&fenc!=''?&fenc:&enc}]\ %<%=
+" File format and encoding; noeol; truncate right; switch to right alignment
+set statusline+=[%{&ff},%{&fenc!=''?&fenc:&enc}]%{&eol?'':'\ [noeol]'}\ %<%=
 
 " Character under cursor in decimal and hexadecimal
 set statusline+=[%03b,0x%02B]
@@ -91,6 +91,9 @@ set commentstring=#\ %s
 
 " Always allow backspacing
 set backspace=indent,eol,start
+
+" Do not automatically add EOL at EOF
+set nofixeol
 
 " Insert 1 space (not 2) between sentences when joining
 set nojoinspaces
