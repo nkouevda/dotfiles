@@ -262,12 +262,17 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'scrooloose/syntastic'
 
   " Syntax highlighting
-  Plug 'nkouevda/vim-thrift'
+  Plug 'nkouevda/vim-thrift-syntax'
   Plug 'Valloric/MatchTagAlways'
 
   call plug#end()
 endif
 
-" Enable syntax highlighting and set color scheme
+" Enable syntax highlighting
 syntax enable
-colorscheme monokai
+
+" Set color scheme
+try
+  colorscheme monokai
+catch /^Vim(colorscheme):/
+endtry
