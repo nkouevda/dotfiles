@@ -31,10 +31,14 @@ brew:
 	brew upgrade
 	brew install bash
 	brew install bash-completion
+	brew install boost
+	brew install cmake
 	brew install coreutils
 	brew install ctags
 	brew install diffstat
 	brew install diffutils
+	brew install docker
+	brew install docker-machine
 	brew install ed --default-names
 	brew install findutils --with-default-names
 	brew install fzf
@@ -43,7 +47,6 @@ brew:
 	brew install gnu-sed --with-default-names
 	brew install grep --with-default-names
 	brew install gzip
-	brew install htop
 	brew install less
 	brew install macvim
 	brew install moreutils
@@ -51,6 +54,7 @@ brew:
 	brew install python
 	brew install python3
 	brew install rsync
+	brew install s3cmd
 	brew install the_silver_searcher
 	brew install tig --with-docs
 	brew install tree
