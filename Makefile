@@ -9,7 +9,7 @@ endif
 ROOT := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
 # All targets except all
-TARGETS := ag bash brew ctags dircolors git hg iterm karabiner python readline tig vim
+TARGETS := ag bash brew ctags dircolors git hg iterm karabiner python readline ssh tig vim
 
 # Phony targets
 .PHONY: all $(TARGETS)
@@ -91,6 +91,10 @@ python:
 
 readline:
 	$(COPY) "$(ROOT)"/.inputrc ~
+
+ssh:
+	mkdir -pv ~/.ssh
+	$(COPY) "$(ROOT)"/.ssh/config ~/.ssh/config
 
 tig:
 	$(COPY) "$(ROOT)"/.tigrc ~
