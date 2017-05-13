@@ -25,12 +25,12 @@ randbin() {
 
 # Random hexadecimal; default 16 bytes
 randhex() {
-  randbin "$1" | xxd -p
+  randbin "$1" | xxd -p | tr -d '\n' && printf '\n'
 }
 
 # Random base 64; default 16 bytes
 randb64() {
-  randbin "$1" | base64 -w 0 && echo
+  randbin "$1" | base64 -w 0 && printf '\n'
 }
 
 # Formatted JSON
