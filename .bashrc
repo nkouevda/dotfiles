@@ -107,7 +107,7 @@ export PROMPT_DIRTRIM=2
 
 # Construct and export PS1
 make_ps1() {
-  local reset red green yellow user at host dir status
+  local reset red green yellow user host dir status
 
   # Color escape sequences
   reset="$(tput sgr0)"
@@ -117,9 +117,6 @@ make_ps1() {
 
   # Red user if root, green otherwise
   [[ $UID -eq 0 ]] && user="\[$red\]" || user="\[$green\]"
-
-  # Red @ if display unavailable, green otherwise
-  [[ -z "${DISPLAY+set}" ]] && at="\[$red\]" || at="\[$green\]"
 
   # Red host if connected via ssh, green otherwise
   [[ -n "${SSH_CONNECTION+set}" ]] && host="\[$red\]" || host="\[$green\]"
@@ -131,7 +128,7 @@ make_ps1() {
   status='$((( $? )) && printf "%b" "'"$red"'" || printf "%b" "'"$reset"'")'
 
   # user@host pwd $
-  export PS1="\[$reset\]$user\u$at@$host\h $dir\w \[$status\]\\$ \[$reset\]"
+  export PS1="\[$reset\]$user\u$host@\h $dir\w \[$status\]\\$ \[$reset\]"
 }
 
 make_ps1
