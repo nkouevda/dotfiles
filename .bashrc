@@ -65,15 +65,19 @@ fi
 
 # Color ls output
 if ls --color=auto &>/dev/null; then
-  alias ls="ls --color=auto"
+  alias ls="ls -bp --color=auto"
+elif ls -G &>/dev/null; then
+  alias ls="ls -bGp"
 else
-  alias ls="ls -G"
+  alias ls="ls -bp"
 fi
 
 # Aliases for viewing directory contents
-alias la="ls -Abhlp"
-alias lr="la -R"
-alias lt="tree -aC -I '.git|node_modules'"
+alias ll="ls -hl"
+alias la="ll -A"
+alias lt="tree -CF"
+alias lta="lt -a"
+alias ltg="lta -I .git"
 
 # Color grep output
 alias grep="grep --color=auto"
