@@ -8,6 +8,7 @@
 [diff]
 	algorithm = patience
 	renames = true
+	noprefix = true
 
 [difftool]
 	prompt = false
@@ -39,17 +40,19 @@
 	sts = status --short --branch
 	rp = rev-parse
 	rpa = rev-parse --abbrev-ref
-	br = branch --verbose --verbose
-	bra = branch --verbose --verbose --all
+	br = branch
+	brv = branch --verbose --verbose
+	bra = branch --all
+	brav = branch --all --verbose --verbose
 	brm = branch --move
 	brmf = branch --move --force
 	brd = branch --delete
 	brdf = branch --delete --force
 	sb = show-branch
 	sba = show-branch --all
-	lg = log --graph --pretty=name
-	lga = log --graph --pretty=name --all
-	lgs = log --graph --pretty=name --all --simplify-by-decoration
+	lg = log --pretty=name --graph
+	lgs = log --pretty=name --graph --branches --simplify-by-decoration
+	lgm = "!sh -c 'git log --pretty=name --graph ^master \"${@:-HEAD}\"' -"
 	rmc = rm --cached
 	rmcf = rm --cached --force
 	sh = stash
@@ -114,8 +117,8 @@
 		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
 	dfoiw = "!sh -c 'git difftool --tool=icdiffw \
 		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
-	fzf = "!sh -c 'git \"$@\" $(git status --porcelain | cut -c 4- | \
-		fzf --extended-exact --multi --select-1 --exit-0)' -"
+	fzf = "!sh -c 'git \"$@\" $(git status --porcelain | cut -c 4- \
+		| fzf --exact --multi --select-1 --exit-0)' -"
 	fadd = "!sh -c 'git fzf add \"$@\"' -"
 	fco = "!sh -c 'git fzf checkout \"$@\"' -"
 	freset = "!sh -c 'git fzf reset \"$@\"' -"
