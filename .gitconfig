@@ -2,6 +2,9 @@
 	name = Nikita Kouevda
 	email = nkouevda@gmail.com
 
+[log]
+	date = iso
+
 [grep]
 	lineNumber = true
 
@@ -33,7 +36,7 @@
 	default = upstream
 
 [pretty]
-	name = "%C(yellow)%h%C(auto)%d %C(blue)%aN %C(reset)%s"
+	compact = "%C(auto)%h %C(blue)%ad %C(magenta)%aN%C(auto)%d %C(reset)%s"
 
 [alias]
 	st = status
@@ -50,9 +53,9 @@
 	brdf = branch --delete --force
 	sb = show-branch
 	sba = show-branch --all
-	lg = log --pretty=name --graph
-	lgs = log --pretty=name --graph --branches --simplify-by-decoration
-	lgm = "!sh -c 'git log --pretty=name --graph ^master \"${@:-HEAD}\"' -"
+	lg = log --pretty=compact --graph
+	lgs = log --pretty=compact --graph --branches --simplify-by-decoration
+	lgm = "!sh -c 'git log --pretty=compact --graph ^master \"${@:-HEAD}\"' -"
 	rmc = rm --cached
 	rmcf = rm --cached --force
 	sh = stash
