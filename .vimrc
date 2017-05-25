@@ -262,8 +262,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'scrooloose/syntastic'
 
   " Syntax highlighting
-  Plug 'nkouevda/vim-thrift-syntax'
   Plug 'Valloric/MatchTagAlways'
+  Plug 'pantsbuild/vim-pants'
+  Plug 'nkouevda/vim-thrift-syntax'
 
   call plug#end()
 endif
