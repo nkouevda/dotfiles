@@ -1,3 +1,3 @@
 if has('autocmd')
-  autocmd BufNewFile,BufRead *.{aur,aurora} setf aurora
+  autocmd BufNewFile,BufRead *.{aur,aurora} setfiletype aurora
 endif
