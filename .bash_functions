@@ -33,16 +33,6 @@ randb64() {
   randbin "$1" | base64 -w 0 && printf '\n'
 }
 
-# Formatted JSON
-json() {
-  python -m json.tool
-}
-
-# Colorized formatted JSON
-cjson() {
-  json | pygmentize -l javascript
-}
-
 # Colorized cat
 ccat() {
   if (( ! $# )); then

@@ -47,6 +47,7 @@ brew:
 	brew install gnu-sed --with-default-names
 	brew install grep --with-default-names
 	brew install gzip
+	brew install jq
 	brew install less
 	brew install macvim
 	brew install moreutils
