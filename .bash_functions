@@ -105,6 +105,28 @@ rmds() {
   find -- "${@:-.}" -type f -name '.DS_Store' -delete
 }
 
+# Activate virtualenv, first prompting to create if necessary
+venv() {
+  if (( $# != 1 )); then
+    printf "usage: %s <name>\n" "$FUNCNAME" >&2
+    return 1
+  fi
+
+  if [[ ! -e ~/".virtualenvs/$1" ]]; then
+    read -r -p "Create virtualenv \"$1\"? [y/N]: "
+    case "$REPLY" in
+      Y|y)
+        virtualenv ~/".virtualenvs/$1"
+        ;;
+      *)
+        return 1
+        ;;
+    esac
+  fi
+
+  . ~/".virtualenvs/$1/bin/activate"
+}
+
 # Update brew
 rebrew() {
   brew update && brew upgrade && brew cleanup -s
