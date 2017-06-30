@@ -108,10 +108,10 @@
 	dfciu = difftool --tool=icdiffu --cached
 	dfciw = difftool --tool=icdiffw --cached
 	dfo = "!sh -c 'git diff \"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
-	dfou = "!sh -c 'git diff \
-		\"${1:-HEAD}\"~ \"${1:-HEAD}\" --unified=0 \"${@:2}\"' -"
-	dfos = "!sh -c 'git diff \
-		\"${1:-HEAD}\"~ \"${1:-HEAD}\" --stat \"${@:2}\"' -"
+	dfou = "!sh -c 'git diff --unified=0 \
+		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
+	dfos = "!sh -c 'git diff --stat \
+		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
 	dfov = "!sh -c 'git difftool --tool=vimdiff \
 		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
 	dfoi = "!sh -c 'git difftool --tool=icdiff \
@@ -120,11 +120,10 @@
 		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
 	dfoiw = "!sh -c 'git difftool --tool=icdiffw \
 		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
-	fzf = "!sh -c 'git \"$@\" $(git status --porcelain | cut -c 4- \
-		| fzf --exact --multi --select-1 --exit-0)' -"
-	fadd = "!sh -c 'git fzf add \"$@\"' -"
-	fco = "!sh -c 'git fzf checkout \"$@\"' -"
-	freset = "!sh -c 'git fzf reset \"$@\"' -"
+	fadd = "!sh -c 'git fzf status-unstaged git add --' -"
+	fco = "!sh -c 'git fzf status-unstaged git checkout --' -"
+	freset = "!sh -c 'git fzf status git reset --' -"
+	fbco = "!sh -c 'git fzf branch git checkout' -"
 	foreach = "!sh -c 'find -- \"$1\" -type d -name \".git\" \
 		-print -execdir \"${@:2}\" \";\"' -"
 	trace = "!sh -c 'GIT_TRACE=1 git \"$@\"' -"
