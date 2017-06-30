@@ -52,7 +52,7 @@ snippet try "try" b
 try {
 	$1
 } catch (${2:Exception} as e) {
-	${4:logger.error(e, $5);}
+	${3:logger.error(e, $4);}
 }
 endsnippet
 
@@ -60,6 +60,10 @@ snippet finally "finally" w
 finally {
 	$1
 }
+endsnippet
+
+snippet /print(ln)?/ "System.out.println()" rb
+System.out.println($1);
 endsnippet
 
 snippet logger "logger" b
@@ -82,16 +86,49 @@ snippet error "logger.error()" b
 logger.error($1);
 endsnippet
 
-snippet equals "equals (singleton)" b
+snippet opt "Optional.of()" w
+Optional.of($1)
+endsnippet
+
+snippet optn "Optional.ofNullable()" w
+Optional.ofNullable($1)
+endsnippet
+
+snippet opte "Optional.empty()" w
+Optional.empty()
+endsnippet
+
+snippet equals "equals" b
+@Override
+public boolean equals(Object o) {
+	if (this == o) {
+		return true;
+	}
+	if (!(o instanceof `!v expand('%:t:r')`)) {
+		return false;
+	}
+	`!v expand('%:t:r')` that = (`!v expand('%:t:r')`) o;
+	return Objects.equals($1, that.$1);
+}
+endsnippet
+
+snippet equals1 "equals (singleton)" b
 @Override
 public boolean equals(Object o) {
 	return o instanceof `!v expand('%:t:r')`;
 }
 endsnippet
 
-snippet /hash[Cc]ode/ "hashCode (singleton)" rb
+snippet /hash([Cc]ode)?/ "hashCode" rb
 @Override
 public int hashCode() {
-	return getClass().hashCode();
+	return Objects.hash($1);
+}
+endsnippet
+
+snippet /hash([Cc]ode)?1/ "hashCode (singleton)" rb
+@Override
+public int hashCode() {
+	return `!v expand('%:t:r')`.class.hashCode();
 }
 endsnippet

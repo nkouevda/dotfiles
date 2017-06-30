@@ -6,20 +6,20 @@ snippet strict "strict" b
 set -euo pipefail
 endsnippet
 
-snippet /\w+\(\)/ "function" r
+snippet /\w+\(\)/ "function" rb
 `!p snip.rv = match.group()` {
 	$1
 }
 endsnippet
 
 snippet if "if" b
-if ${1:[[ ${2:condition} ]]}; then
+if ${1:[[ ${2:expression} ]]}; then
 	$3
 fi
 endsnippet
 
 snippet elif "elif" b
-elif ${1:[[ ${2:condition} ]]}; then
+elif ${1:[[ ${2:expression} ]]}; then
 	$3
 endsnippet
 
@@ -29,7 +29,7 @@ else
 endsnippet
 
 snippet while "while" b
-while ${1:[[ ${2:condition} ]]}; do
+while ${1:[[ ${2:expression} ]]}; do
 	$3
 done
 endsnippet
@@ -41,5 +41,5 @@ done
 endsnippet
 
 snippet /\[\[/ "[[" r
-[[ ${1:condition} ]] && $0
+[[ ${1:expression} ]] && $0
 endsnippet
