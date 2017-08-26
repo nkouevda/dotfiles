@@ -36,7 +36,7 @@ randb64() {
 # Colorized cat
 ccat() {
   if (( ! $# )); then
-    printf "usage: %s <files>...\n" "$FUNCNAME" >&2
+    printf "usage: %s <file>...\n" "$FUNCNAME" >&2
     return 1
   fi
 
@@ -48,7 +48,7 @@ ccat() {
 # Create backup
 bak() {
   if (( ! $# )); then
-    printf "usage: %s <files>...\n" "$FUNCNAME" >&2
+    printf "usage: %s <file>...\n" "$FUNCNAME" >&2
     return 1
   fi
 
@@ -60,7 +60,7 @@ bak() {
 # Restore backup
 unbak() {
   if (( ! $# )); then
-    printf "usage: %s <files>...\n" "$FUNCNAME" >&2
+    printf "usage: %s <file>...\n" "$FUNCNAME" >&2
     return 1
   fi
 
@@ -72,10 +72,10 @@ unbak() {
 # Print current Unix time or convert given Unix times to dates
 epoch() {
   if (( ! $# )); then
-    date +%s
+    date +"%s"
   else
     for t in "$@"; do
-      date --date=@"$t"
+      date --date="@$t" +"%Y-%m-%d %H:%M:%S %z"
     done
   fi
 }
@@ -83,7 +83,7 @@ epoch() {
 # Search dictionary
 dict() {
   if (( ! $# )); then
-    printf "usage: %s [<options>...] <pattern>\n" "$FUNCNAME" >&2
+    printf "usage: %s <grep-args>\n" "$FUNCNAME" >&2
     return 1
   fi
 
