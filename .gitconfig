@@ -17,14 +17,8 @@
 	prompt = false
 	trustExitCode = true
 
-[difftool "icdiff"]
-	cmd = "icdiff -- \"$LOCAL\" \"$REMOTE\" | less -R"
-
-[difftool "icdiffu"]
-	cmd = "icdiff --unified=0 -- \"$LOCAL\" \"$REMOTE\" | less -R"
-
-[difftool "icdiffw"]
-	cmd = "icdiff --whole-file -- \"$LOCAL\" \"$REMOTE\" | less -R"
+[difftool "pdiff"]
+	cmd = "pdiff -- \"$LOCAL\" \"$REMOTE\" | less -R"
 
 [fetch]
 	prune = true
@@ -97,16 +91,12 @@
 	dfu = diff --unified=0
 	dfs = diff --stat
 	dfv = difftool --tool=vimdiff
-	dfi = difftool --tool=icdiff
-	dfiu = difftool --tool=icdiffu
-	dfiw = difftool --tool=icdiffw
+	dfp = difftool --tool=pdiff
 	dfc = diff --cached
 	dfcu = diff --cached --unified=0
 	dfcs = diff --cached --stat
 	dfcv = difftool --tool=vimdiff --cached
-	dfci = difftool --tool=icdiff --cached
-	dfciu = difftool --tool=icdiffu --cached
-	dfciw = difftool --tool=icdiffw --cached
+	dfcp = difftool --tool=pdiff --cached
 	dfo = "!sh -c 'git diff \"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
 	dfou = "!sh -c 'git diff --unified=0 \
 		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
@@ -114,16 +104,12 @@
 		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
 	dfov = "!sh -c 'git difftool --tool=vimdiff \
 		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
-	dfoi = "!sh -c 'git difftool --tool=icdiff \
-		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
-	dfoiu = "!sh -c 'git difftool --tool=icdiffu \
-		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
-	dfoiw = "!sh -c 'git difftool --tool=icdiffw \
+	dfop = "!sh -c 'git difftool --tool=pdiff \
 		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
 	fadd = "!sh -c 'git fzf status-unstaged git add \"$@\" --' -"
 	fco = "!sh -c 'git fzf status-unstaged git checkout \"$@\" --' -"
 	freset = "!sh -c 'git fzf status git reset \"$@\" --' -"
 	fbco = "!sh -c 'git fzf branch git checkout \"$@\"' -"
 	foreach = "!sh -c 'find -- \"$1\" -type d -name \".git\" \
-		-print -execdir \"${@:2}\" \";\"' -"
+		-print -execdir \"${@:2}\" \\;' -"
 	trace = "!sh -c 'GIT_TRACE=1 git \"$@\"' -"
