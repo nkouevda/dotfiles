@@ -50,7 +50,7 @@ export EDITOR="vim"
 export FZF_DEFAULT_OPTS="--no-256"
 
 # Key bindings for fzf
-[[ -r ~/.fzf.bash ]] && . ~/.fzf.bash
+[[ -r ~/.fzf.bash ]] && source ~/.fzf.bash
 
 # Python startup file
 [[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
@@ -138,10 +138,11 @@ make_ps1() {
 make_ps1
 unset -f make_ps1
 
-# Source bash completion, bash functions, and local settings
-[[ -r /usr/local/etc/bash_completion ]] && . /usr/local/etc/bash_completion
-[[ -r ~/.bash_functions ]] && . ~/.bash_functions
-[[ -r ~/.bash_local ]] && . ~/.bash_local
+# Source bash completion, functions, and local settings
+[[ -r /usr/local/etc/bash_completion ]] && source /usr/local/etc/bash_completion
+[[ -r ~/.bash_completion ]] && source ~/.bash_completion
+[[ -r ~/.bash_functions ]] && source ~/.bash_functions
+[[ -r ~/.bash_local ]] && source ~/.bash_local
 
 # Guarantee exit status 0
 return 0

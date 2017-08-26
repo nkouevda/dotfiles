@@ -18,6 +18,7 @@ ag:
 	$(install) "$(root)"/.agignore ~
 
 bash:
+	$(install) "$(root)"/.bash_completion ~
 	$(install) "$(root)"/.bash_functions ~
 	$(install) "$(root)"/.bash_profile ~
 	$(install) "$(root)"/.bashrc ~

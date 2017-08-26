@@ -124,7 +124,7 @@ venv() {
     esac
   fi
 
-  . ~/".virtualenvs/$1/bin/activate"
+  source ~/".virtualenvs/$1/bin/activate"
 }
 
 # Update brew
