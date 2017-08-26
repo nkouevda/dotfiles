@@ -1,38 +1,34 @@
+# Location of this file
+root := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
+
 # Symlink if LN=1; copy otherwise
 ifeq ($(LN),1)
-  COPY := ln -fsv
+  install := ln -fs
 else
-  COPY := cp -fv
+  install := cp -f
 endif
 
-# Location of this file
-ROOT := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
+targets := ag bash brew ctags dircolors git hg iterm karabiner python readline ssh tig vim
 
-# All targets except all
-TARGETS := ag bash brew ctags dircolors git hg iterm karabiner python readline ssh tig vim
+.PHONY: all $(targets)
 
-# Phony targets
-.PHONY: all $(TARGETS)
-
-all: $(TARGETS)
+all: $(targets)
 
 ag:
-	$(COPY) "$(ROOT)"/.agignore ~
+	$(install) "$(root)"/.agignore ~
 
 bash:
-	$(COPY) "$(ROOT)"/.bash_functions ~
-	$(COPY) "$(ROOT)"/.bash_profile ~
-	$(COPY) "$(ROOT)"/.bashrc ~
-	$(COPY) "$(ROOT)"/.hushlogin ~
+	$(install) "$(root)"/.bash_functions ~
+	$(install) "$(root)"/.bash_profile ~
+	$(install) "$(root)"/.bashrc ~
+	$(install) "$(root)"/.hushlogin ~
 
 brew:
-	brew tap homebrew/dupes
 	brew update
 	brew upgrade
 	brew install bash
 	brew install bash-completion
 	brew install boost
-	brew install cmake
 	brew install coreutils
 	brew install ctags
 	brew install diffstat
@@ -63,48 +59,52 @@ brew:
 	brew install wget
 	brew link --force openssl
 	brew linkapps
-	brew cleanup -s
+	brew cleanup --prune=0 -s
 	brew prune
 
 ctags:
-	$(COPY) "$(ROOT)"/.ctags ~
+	$(install) "$(root)"/.ctags ~
 
 dircolors:
-	$(COPY) "$(ROOT)"/.dircolors ~
+	$(install) "$(root)"/.dircolors ~
 
 git:
-	$(COPY) "$(ROOT)"/.gitconfig ~
-	mkdir -pv ~/.config/git
-	$(COPY) "$(ROOT)"/.config/git/ignore ~/.config/git/
+	$(install) "$(root)"/.gitconfig ~
+	mkdir -p ~/.config/git
+	$(install) "$(root)"/.config/git/ignore ~/.config/git/
 
 hg:
-	$(COPY) "$(ROOT)"/.hgrc ~
+	$(install) "$(root)"/.hgrc ~
 
 iterm:
-	open "$(ROOT)"/iterm/*.itermcolors
+	open "$(root)"/iterm/*.itermcolors
 
 karabiner:
-	$(COPY) "$(ROOT)"/karabiner/private.xml \
+	$(install) "$(root)"/karabiner/private.xml \
 	  ~/Library/Application\ Support/Karabiner/
 
 python:
-	$(COPY) "$(ROOT)"/.pystartup ~
+	$(install) "$(root)"/.pypirc ~
+	$(install) "$(root)"/.pystartup ~
 
 readline:
-	$(COPY) "$(ROOT)"/.inputrc ~
+	$(install) "$(root)"/.inputrc ~
 
 ssh:
-	mkdir -pv ~/.ssh
-	$(COPY) "$(ROOT)"/.ssh/config ~/.ssh/config
+	mkdir -p ~/.ssh
+	$(install) "$(root)"/.ssh/config ~/.ssh/config
 
 tig:
-	$(COPY) "$(ROOT)"/.tigrc ~
+	$(install) "$(root)"/.tigrc ~
 
 vim:
-	$(COPY) "$(ROOT)"/.gvimrc "$(ROOT)"/.vimrc  ~
-	cd "$(ROOT)"; find .vim -type d -exec mkdir -pv ~/{} \;
-	cd "$(ROOT)"; find .vim -type f -exec $(COPY) "$(ROOT)"/{} ~/{} \;
-	mkdir -pv ~/.vim/autoload ~/.vim/tmp/swap
+	$(install) "$(root)"/.gvimrc ~
+	$(install) "$(root)"/.vimrc ~
+	cd "$(root)" \
+	  && find .vim -type d -exec mkdir -p ~/{} \; \
+	  && find .vim -type f -exec $(install) "$(root)"/{} ~/{} \;
+	mkdir -p ~/.vim/autoload
 	curl -sSLo ~/.vim/autoload/plug.vim \
 	  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	mkdir -p ~/.vim/swap
 	vim +PlugInstall +qa

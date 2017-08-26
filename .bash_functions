@@ -129,7 +129,7 @@ venv() {
 
 # Update brew
 rebrew() {
-  brew update && brew upgrade && brew cleanup -s
+  brew update && brew upgrade && brew cleanup --prune=0 -s
 }
 
 # Update vim plugins

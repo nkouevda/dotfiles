@@ -5,7 +5,7 @@ set nocompatible
 set backupskip+=/private/tmp/*
 
 " Place all swap files in one location; trailing // ensures uniqueness
-set directory^=~/.vim/tmp/swap//
+set directory^=~/.vim/swap//
 
 " Hide abandoned buffers instead of unloading them
 set hidden
