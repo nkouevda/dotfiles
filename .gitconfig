@@ -106,7 +106,7 @@
 	df = diff
 	dfc = diff --cached
 	dfo = "!sh -c 'git diff \"${1:-HEAD}\"~ \"${@:-HEAD}\"' -"
-	dfm = "!sh -c 'git diff \"$(git merge-base master \"${1:-HEAD}\")\" \"${@:2}\"' -"
+	dfm = "!sh -c 'git diff \"$(git merge-base master \"${1:-HEAD}\")\" \"${@:-HEAD}\"' -"
 	dfs = diff --stat
 	dfsc = diff --stat --cached
 	dfso = "!sh -c 'git diff --stat \"${1:-HEAD}\"~ \"${@:-HEAD}\"' -"
@@ -114,7 +114,7 @@
 	dfp = difftool --tool=pdiff
 	dfpc = difftool --tool=pdiff --cached
 	dfpo = "!sh -c 'git difftool --tool=pdiff \"${1:-HEAD}\"~ \"${@:-HEAD}\"' -"
-	dfpm = "!sh -c 'git difftool --tool=pdiff \"$(git merge-base master \"${1:-HEAD}\")\" \"${@:2}\"' -"
+	dfpm = "!sh -c 'git difftool --tool=pdiff \"$(git merge-base master \"${1:-HEAD}\")\" \"${@:-HEAD}\"' -"
 	fadd = "!sh -c 'git fzf status-unstaged git add \"$@\" --' -"
 	fco = "!sh -c 'git fzf status-unstaged git checkout \"$@\" --' -"
 	freset = "!sh -c 'git fzf status git reset \"$@\" --' -"
