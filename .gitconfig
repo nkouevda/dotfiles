@@ -10,14 +10,15 @@
 
 [diff]
 	algorithm = patience
-	renames = true
+	renames = copies
 	noprefix = true
+	wsErrorHighlight = all
 
 [difftool]
 	prompt = false
 	trustExitCode = true
 
-[difftool "pdiff"]
+[difftool.pdiff]
 	cmd = "pdiff -- \"$LOCAL\" \"$REMOTE\" | less -R"
 
 [fetch]
@@ -28,6 +29,13 @@
 
 [push]
 	default = upstream
+
+[advice]
+	statusHints = false
+	detachedHead = false
+
+[color.status]
+	branch = cyan
 
 [pretty]
 	compact = "%C(auto)%h %C(blue)%ad %C(magenta)%aN%C(auto)%d %C(reset)%s"
@@ -48,8 +56,15 @@
 	sb = show-branch
 	sba = show-branch --all
 	lg = log --pretty=compact --graph
-	lgs = log --pretty=compact --graph --branches --simplify-by-decoration
+	lgo = log --pretty=compact --graph -n 1
 	lgm = "!sh -c 'git log --pretty=compact --graph ^master \"${@:-HEAD}\"' -"
+	lgs = log --pretty=compact --graph --branches --simplify-by-decoration
+	lf = log --pretty=fuller --decorate
+	lfo = log --pretty=fuller --decorate -n 1
+	lfm = "!sh -c 'git log --pretty=fuller --decorate ^master \"${@:-HEAD}\"' -"
+	lfs = log --pretty=fuller --decorate --stat
+	lfso = log --pretty=fuller --decorate --stat -n 1
+	lfsm = "!sh -c 'git log --pretty=fuller --decorate --stat ^master \"${@:-HEAD}\"' -"
 	rmc = rm --cached
 	rmcf = rm --cached --force
 	sh = stash
@@ -68,10 +83,10 @@
 	co = checkout
 	cob = checkout -b
 	cobf = checkout -B
+	cod = checkout --detach
 	com = checkout master
-	cor = "!sh -c '[[ -n \"$1\" ]] && \
-		git checkout -B \"$1\" \"${2:-origin}/$1\"' -"
-	corm = "!sh -c 'git checkout -B master \"${1:-origin}/master\"' -"
+	cor = "!sh -c 'git checkout -B \"${1:?unset}\" \"origin/$1\"' -"
+	corm = checkout -B master origin/master
 	hard = "!sh -c 'git reset --hard \"${@:-HEAD}\"' -"
 	soft = "!sh -c 'git reset --soft \"${@:-HEAD}\"' -"
 	cp = cherry-pick
@@ -82,34 +97,26 @@
 	fea = fetch --all
 	feat = fetch --all --tags
 	rb = rebase
+	rbm = rebase master
 	rbi = rebase --interactive
+	rbim = rebase --interactive master
 	rbc = rebase --continue
 	rbs = rebase --skip
 	rba = rebase --abort
-	rbm = rebase master
 	df = diff
-	dfu = diff --unified=0
-	dfs = diff --stat
-	dfv = difftool --tool=vimdiff
-	dfp = difftool --tool=pdiff
 	dfc = diff --cached
-	dfcu = diff --cached --unified=0
-	dfcs = diff --cached --stat
-	dfcv = difftool --tool=vimdiff --cached
-	dfcp = difftool --tool=pdiff --cached
-	dfo = "!sh -c 'git diff \"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
-	dfou = "!sh -c 'git diff --unified=0 \
-		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
-	dfos = "!sh -c 'git diff --stat \
-		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
-	dfov = "!sh -c 'git difftool --tool=vimdiff \
-		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
-	dfop = "!sh -c 'git difftool --tool=pdiff \
-		\"${1:-HEAD}\"~ \"${1:-HEAD}\" \"${@:2}\"' -"
+	dfo = "!sh -c 'git diff \"${1:-HEAD}\"~ \"${@:-HEAD}\"' -"
+	dfm = "!sh -c 'git diff \"$(git merge-base master \"${1:-HEAD}\")\" \"${@:2}\"' -"
+	dfs = diff --stat
+	dfsc = diff --stat --cached
+	dfso = "!sh -c 'git diff --stat \"${1:-HEAD}\"~ \"${@:-HEAD}\"' -"
+	dfsm = "!sh -c 'git diff --stat \"$(git merge-base master \"${1:-HEAD}\")\" \"${@:-HEAD}\"' -"
+	dfp = difftool --tool=pdiff
+	dfpc = difftool --tool=pdiff --cached
+	dfpo = "!sh -c 'git difftool --tool=pdiff \"${1:-HEAD}\"~ \"${@:-HEAD}\"' -"
+	dfpm = "!sh -c 'git difftool --tool=pdiff \"$(git merge-base master \"${1:-HEAD}\")\" \"${@:2}\"' -"
 	fadd = "!sh -c 'git fzf status-unstaged git add \"$@\" --' -"
 	fco = "!sh -c 'git fzf status-unstaged git checkout \"$@\" --' -"
 	freset = "!sh -c 'git fzf status git reset \"$@\" --' -"
 	fbco = "!sh -c 'git fzf branch git checkout \"$@\"' -"
-	foreach = "!sh -c 'find -- \"$1\" -type d -name \".git\" \
-		-print -execdir \"${@:2}\" \\;' -"
 	trace = "!sh -c 'GIT_TRACE=1 git \"$@\"' -"
