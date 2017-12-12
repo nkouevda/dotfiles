@@ -1,1 +1,29 @@
+--recurse
+--totals
+
+--langmap=python:+.aur.aurora
 --python-kinds=-i
+
+--langdef=Scala
+--langmap=Scala:.scala
+--regex-scala=/^[ \t]*package[ \t]+([A-Za-z0-9_.]+)/\1/p,packages/
+--regex-scala=/^[ \t]*((override|private|protected|final|abstract|implicit|sealed)[ \t]+)*(case[ \t]+)?class[ \t]+([A-Za-z0-9_]+)/\4/c,classes/
+--regex-scala=/^[ \t]*((override|private|protected|final|abstract|implicit)[ \t]+)*(case[ \t]+)?object[ \t]+([A-Za-z0-9_]+)/\4/o,objects/
+--regex-scala=/^[ \t]*((override|private|protected|final|abstract|sealed)[ \t]+)*trait[ \t]+([A-Za-z0-9_]+)/\3/t,traits/
+--regex-scala=/^[ \t]*((override|private|protected|final)[ \t]+)*type[ \t]+([A-Za-z0-9_]+)/\3/T,types/
+--regex-scala=/^[ \t]*((override|private|protected|final|implicit)[ \t]+)*def[ \t]+([A-Za-z0-9_]+)/\3/d,defs/
+--regex-scala=/^[ \t]*((override|private|protected|final|implicit|lazy)[ \t]+)*val[ \t]+([A-Za-z0-9_]+)/\3/v,vals/
+--regex-scala=/^[ \t]*((override|private|protected|final|implicit)[ \t]+)*var[ \t]+([A-Za-z0-9_]+)/\3/V,vars/
+
+--langdef=Thrift
+--langmap=Thrift:.thrift
+--regex-thrift=/^[ \t]*const[ \t]+[A-Za-z0-9_<>., \t]+[ \t]+([A-Za-z0-9_]+)[ \t]*=/\1/c,constants/
+--regex-thrift=/^[ \t]*typedef[ \t]+[A-Za-z0-9_<>., \t]+[ \t]+([A-Za-z0-9_]+)/\1/t,typedefs/
+--regex-thrift=/^[ \t]*s?enum[ \t]+([A-Za-z0-9_]+)/\1/e,enums/
+--regex-thrift=/^[ \t]*([A-Za-z0-9_]+)[ \t]*([=,;]|$)/\1/E,enum constants/
+--regex-thrift=/^[ \t]*struct[ \t]+([A-Za-z0-9_]+)/\1/s,structs/
+--regex-thrift=/^[ \t]*union[ \t]+([A-Za-z0-9_]+)/\1/u,unions/
+--regex-thrift=/^[ \t]*exception[ \t]+([A-Za-z0-9_]+)/\1/x,exceptions/
+--regex-thrift=/^[ \t]*service[ \t]+([A-Za-z0-9_]+)/\1/v,services/
+--regex-thrift=/^[ \t]*[A-Za-z0-9_][A-Za-z0-9_<>., \t]*[ \t]+([A-Za-z0-9_]+)[ \t]*\(/\1/f,functions/
+--regex-thrift=/^[ \t]*[0-9]+:[ \t]*((required|optional)[ \t]+)?[A-Za-z0-9_<>., \t]+[ \t]+([A-Za-z0-9_]+)/\3/m,members/
