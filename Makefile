@@ -1,8 +1,8 @@
 # Location of this file
 root := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
-# Symlink if LN=1; copy otherwise
-ifeq ($(LN),1)
+# Symlink if `ln=1`; copy otherwise
+ifeq ($(ln),1)
   install := ln -fs
 else
   install := cp -f
@@ -30,35 +30,34 @@ brew:
 	brew install bash
 	brew install bash-completion
 	brew install boost
+	brew install cmake
 	brew install coreutils
 	brew install ctags
 	brew install diffstat
 	brew install diffutils
-	brew install docker
-	brew install docker-machine
-	brew install ed --default-names
 	brew install findutils --with-default-names
 	brew install fzf
 	brew install gawk
 	brew install git
 	brew install gnu-sed --with-default-names
 	brew install grep --with-default-names
-	brew install gzip
 	brew install jq
 	brew install less
-	brew install macvim
+	brew install macvim --with-python3
+	brew install maven
 	brew install moreutils
 	brew install openssl
+	brew install pv
 	brew install python
 	brew install python3
+	brew install ripgrep
 	brew install rsync
 	brew install s3cmd
-	brew install the_silver_searcher
-	brew install tig --with-docs
+	brew install scala
+	brew install tig
 	brew install tree
-	brew install vim
+	brew install vim --with-python3
 	brew install wget
-	brew link --force openssl
 	brew linkapps
 	brew cleanup --prune=0 -s
 	brew prune
@@ -72,7 +71,7 @@ dircolors:
 git:
 	$(install) "$(root)"/.gitconfig ~
 	mkdir -p ~/.config/git
-	$(install) "$(root)"/.config/git/ignore ~/.config/git/
+	$(install) "$(root)"/.config/git/ignore ~/.config/git/ignore
 
 hg:
 	$(install) "$(root)"/.hgrc ~
