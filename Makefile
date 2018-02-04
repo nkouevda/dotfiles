@@ -81,8 +81,8 @@ iterm:
 	open "$(root)"/iterm/*.itermcolors
 
 karabiner:
-	$(install) "$(root)"/karabiner/private.xml \
-	  ~/Library/Application\ Support/Karabiner/
+	mkdir -p ~/.config/karabiner
+	$(install) "$(root)"/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 
 python:
 	$(install) "$(root)"/.pypirc ~
