@@ -1,12 +1,12 @@
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
 
-# GNU coreutils and gsed
+# Homebrew paths
 if [[ "$(uname -s)" == "Darwin" ]]; then
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-  export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-  export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
+
+  export PATH="/usr/local/opt/openssl/bin:$PATH"
 fi
 
 # User bin
@@ -15,6 +15,12 @@ export PATH=~/bin:"$PATH"
 # Do not capture ^Q or ^S
 stty start undef
 stty stop undef
+
+# Enable `**` expansion
+shopt -s globstar
+
+# Do not attempt completion on an empty line
+shopt -s no_empty_cmd_completion
 
 # Review commands with history expansion before executing; retype if failed
 shopt -s histverify histreedit
@@ -55,15 +61,18 @@ export FZF_DEFAULT_OPTS="--no-256"
 # Python startup file
 [[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
 
+# Homebrew's `python` is `python3`
+alias python2="/usr/bin/python"
+
 # Alias tac if coreutils not installed
 if ! type tac &>/dev/null; then
   alias tac="tail -r"
 fi
 
-# Generate and export LS_COLORS
+# Generate and export `LS_COLORS`
 [[ -r ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
 
-# Color ls output
+# Color `ls` output
 if ls --color=auto &>/dev/null; then
   alias ls="ls -bp --color=auto"
 elif ls -G &>/dev/null; then
@@ -72,7 +81,7 @@ else
   alias ls="ls -bp"
 fi
 
-# Aliases for viewing directory contents
+# Useful `ls` and `tree` variants
 alias ll="ls -hl"
 alias la="ll -A"
 alias lt="tree -CF"
@@ -106,10 +115,10 @@ sync_history() {
 # Synchronize history before every prompt
 export PROMPT_COMMAND="sync_history;"
 
-# Include parent directory in PS1
+# Include parent directory in `PS1`
 export PROMPT_DIRTRIM=2
 
-# Construct and export PS1
+# Construct and export `PS1`
 make_ps1() {
   local reset red green yellow user host dir status
 
@@ -137,6 +146,9 @@ make_ps1() {
 
 make_ps1
 unset -f make_ps1
+
+# For `set -x`
+export PS4='+ $0:$LINENO: '
 
 # Source bash completion, functions, and local settings
 [[ -r /usr/local/etc/bash_completion ]] && source /usr/local/etc/bash_completion

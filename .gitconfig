@@ -43,12 +43,16 @@
 [alias]
 	st = status
 	sts = status --short --branch
-	rp = rev-parse
-	rpa = rev-parse --abbrev-ref
+	rp = "!sh -c 'git rev-parse \"${@:-HEAD}\"' -"
+	rpa = "!sh -c 'git rev-parse --abbrev-ref \"${@:-HEAD}\"' -"
+	root = rev-parse --show-toplevel
+	prefix = rev-parse --show-prefix
 	br = branch
 	brv = branch --verbose --verbose
 	bra = branch --all
 	brav = branch --all --verbose --verbose
+	brf = branch --force
+	brfm = branch --force master origin/master
 	brm = branch --move
 	brmf = branch --move --force
 	brd = branch --delete
@@ -96,27 +100,35 @@
 	fet = fetch --tags
 	fea = fetch --all
 	feat = fetch --all --tags
+	pl = pull
+	pla = pull --tags
+	pla = pull --all
+	plat = pull --all --tags
 	rb = rebase
 	rbm = rebase master
 	rbi = rebase --interactive
 	rbim = rebase --interactive master
+	rbo = rebase --onto
+	rbom = rebase --onto master
 	rbc = rebase --continue
 	rbs = rebase --skip
 	rba = rebase --abort
 	df = diff
 	dfc = diff --cached
-	dfo = "!sh -c 'git diff \"${1:-HEAD}\"~ \"${@:-HEAD}\"' -"
-	dfm = "!sh -c 'git diff \"$(git merge-base master \"${1:-HEAD}\")\" \"${@:-HEAD}\"' -"
+	dfo = "!sh -c 'git diff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
+	dfm = "!sh -c 'git diff \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
 	dfs = diff --stat
 	dfsc = diff --stat --cached
-	dfso = "!sh -c 'git diff --stat \"${1:-HEAD}\"~ \"${@:-HEAD}\"' -"
-	dfsm = "!sh -c 'git diff --stat \"$(git merge-base master \"${1:-HEAD}\")\" \"${@:-HEAD}\"' -"
+	dfso = "!sh -c 'git diff --stat \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
+	dfsm = "!sh -c 'git diff --stat \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
 	dfp = difftool --tool=pdiff
 	dfpc = difftool --tool=pdiff --cached
-	dfpo = "!sh -c 'git difftool --tool=pdiff \"${1:-HEAD}\"~ \"${@:-HEAD}\"' -"
-	dfpm = "!sh -c 'git difftool --tool=pdiff \"$(git merge-base master \"${1:-HEAD}\")\" \"${@:-HEAD}\"' -"
+	dfpo = "!sh -c 'git difftool --tool=pdiff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
+	dfpm = "!sh -c 'git difftool --tool=pdiff \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
 	fadd = "!sh -c 'git fzf status-unstaged git add \"$@\" --' -"
 	fco = "!sh -c 'git fzf status-unstaged git checkout \"$@\" --' -"
+	frm = "!sh -c 'git fzf status-unstaged git rm \"$@\" --' -"
 	freset = "!sh -c 'git fzf status git reset \"$@\" --' -"
-	fbco = "!sh -c 'git fzf branch git checkout \"$@\"' -"
+	fbrco = "!sh -c 'git fzf branch git checkout \"$@\"' -"
+	fbrd = "!sh -c 'git fzf branch git branch --delete \"$@\"' -"
 	trace = "!sh -c 'GIT_TRACE=1 git \"$@\"' -"

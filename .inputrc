@@ -4,6 +4,10 @@
 "\e[B": history-search-forward
 "\C-n": history-search-forward
 
+# {back,for}ward WORD instead of word
+"\C-b": shell-backward-word
+"\C-f": shell-forward-word
+
 # List all possible completions on first tab
 set show-all-if-ambiguous on
 
