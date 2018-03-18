@@ -1,12 +1,15 @@
 # Return if not an interactive shell
 [[ "$-" != *i* ]] && return
 
+set -o pipefail
+
 # Homebrew paths
 if [[ "$(uname -s)" == "Darwin" ]]; then
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
   export PATH="/usr/local/opt/openssl/bin:$PATH"
+  export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 fi
 
 # User bin
@@ -93,18 +96,19 @@ alias grep="grep --color=auto"
 
 # Synchronize the current history list with the history file
 sync_history() {
-  local tmp_hist
+  local tmp_histfile
 
   # Append the history list to the history file
   history -a
 
   if [[ -r "$HISTFILE" ]]; then
-    # Temporary file for deduplicating the history file
-    tmp_hist=$(mktemp "/tmp/.bash_history.$$.XXXXXX")
+    tmp_histfile="$(mktemp "/tmp/.bash_history.$$.XXXXXX")"
 
-    # Keep only the most recent copies of duplicates; remove trailing whitespace
-    tac "$HISTFILE" | awk '{sub(/[ \t]+$/, "")} !uniq[$0]++' | tac > "$tmp_hist"
-    mv "$tmp_hist" "$HISTFILE"
+    # Remove trailing whitespace; keep only the most recent copies of duplicates
+    tac "$HISTFILE" \
+      | awk '{ sub(/[ \t]+$/, "") } !uniq[$0]++' \
+      | tac > "$tmp_histfile"
+    mv "$tmp_histfile" "$HISTFILE"
   fi
 
   # Clear the history list and read the history file
@@ -113,7 +117,12 @@ sync_history() {
 }
 
 # Synchronize history before every prompt
-export PROMPT_COMMAND="sync_history;"
+export PROMPT_COMMAND+="sync_history;"
+
+# Include basename of pwd in iTerm tab name
+if [[ -n "$ITERM_SESSION_ID" ]]; then
+  export PROMPT_COMMAND+='printf "%b" "\033];$(basename "$PWD")\007";'
+fi
 
 # Include parent directory in `PS1`
 export PROMPT_DIRTRIM=2
@@ -132,7 +141,7 @@ make_ps1() {
   [[ $UID -eq 0 ]] && user="\[$red\]" || user="\[$green\]"
 
   # Red host if connected via ssh, green otherwise
-  [[ -n "${SSH_CONNECTION+set}" ]] && host="\[$red\]" || host="\[$green\]"
+  [[ -n "$SSH_CONNECTION" ]] && host="\[$red\]" || host="\[$green\]"
 
   # Yellow working directory
   dir="\[$yellow\]"
@@ -151,7 +160,7 @@ unset -f make_ps1
 export PS4='+ $0:$LINENO: '
 
 # Source bash completion, functions, and local settings
-[[ -r /usr/local/etc/bash_completion ]] && source /usr/local/etc/bash_completion
+[[ -r /usr/local/share/bash-completion/bash_completion ]] && source /usr/local/share/bash-completion/bash_completion
 [[ -r ~/.bash_completion ]] && source ~/.bash_completion
 [[ -r ~/.bash_functions ]] && source ~/.bash_functions
 [[ -r ~/.bash_local ]] && source ~/.bash_local

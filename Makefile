@@ -3,9 +3,9 @@ root := $(shell dirname "$(realpath $(lastword $(MAKEFILE_LIST)))")
 
 # Symlink if `ln=1`; copy otherwise
 ifeq ($(ln),1)
-  install := ln -fs
+  INSTALL := ln -fs
 else
-  install := cp -f
+  INSTALL := cp -f
 endif
 
 targets := bash brew ctags dircolors git hg iterm karabiner python readline ssh tig vim
@@ -15,17 +15,17 @@ targets := bash brew ctags dircolors git hg iterm karabiner python readline ssh 
 all: $(targets)
 
 bash:
-	$(install) "$(root)"/.bash_completion ~
-	$(install) "$(root)"/.bash_functions ~
-	$(install) "$(root)"/.bash_profile ~
-	$(install) "$(root)"/.bashrc ~
-	$(install) "$(root)"/.hushlogin ~
+	$(INSTALL) "$(root)"/.bash_completion ~
+	$(INSTALL) "$(root)"/.bash_functions ~
+	$(INSTALL) "$(root)"/.bash_profile ~
+	$(INSTALL) "$(root)"/.bashrc ~
+	$(INSTALL) "$(root)"/.hushlogin ~
 
 brew:
 	brew update
 	brew upgrade
 	brew install bash
-	brew install bash-completion
+	brew install bash-completion2
 	brew install boost
 	brew install cmake
 	brew install coreutils
@@ -60,46 +60,46 @@ brew:
 	brew prune
 
 ctags:
-	$(install) "$(root)"/.ctags ~
+	$(INSTALL) "$(root)"/.ctags ~
 
 dircolors:
-	$(install) "$(root)"/.dircolors ~
+	$(INSTALL) "$(root)"/.dircolors ~
 
 git:
-	$(install) "$(root)"/.gitconfig ~
+	$(INSTALL) "$(root)"/.gitconfig ~
 	mkdir -p ~/.config/git
-	$(install) "$(root)"/.config/git/ignore ~/.config/git/ignore
+	$(INSTALL) "$(root)"/.config/git/ignore ~/.config/git/ignore
 
 hg:
-	$(install) "$(root)"/.hgrc ~
+	$(INSTALL) "$(root)"/.hgrc ~
 
 iterm:
 	open "$(root)"/iterm/*.itermcolors
 
 karabiner:
 	mkdir -p ~/.config/karabiner
-	$(install) "$(root)"/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+	$(INSTALL) "$(root)"/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 
 python:
-	$(install) "$(root)"/.pypirc ~
-	$(install) "$(root)"/.pystartup ~
+	$(INSTALL) "$(root)"/.pypirc ~
+	$(INSTALL) "$(root)"/.pystartup ~
 
 readline:
-	$(install) "$(root)"/.inputrc ~
+	$(INSTALL) "$(root)"/.inputrc ~
 
 ssh:
 	mkdir -p ~/.ssh
-	$(install) "$(root)"/.ssh/config ~/.ssh/config
+	$(INSTALL) "$(root)"/.ssh/config ~/.ssh/config
 
 tig:
-	$(install) "$(root)"/.tigrc ~
+	$(INSTALL) "$(root)"/.tigrc ~
 
 vim:
-	$(install) "$(root)"/.gvimrc ~
-	$(install) "$(root)"/.vimrc ~
+	$(INSTALL) "$(root)"/.gvimrc ~
+	$(INSTALL) "$(root)"/.vimrc ~
 	cd "$(root)" \
 	  && find .vim -type d -exec mkdir -p ~/{} \; \
-	  && find .vim -type f -exec $(install) "$(root)"/{} ~/{} \;
+	  && find .vim -type f -exec $(INSTALL) "$(root)"/{} ~/{} \;
 	mkdir -p ~/.vim/autoload
 	curl -sSLo ~/.vim/autoload/plug.vim \
 	  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

@@ -20,7 +20,7 @@ uuid() {
 
 # Random binary; default 16 bytes
 randbin() {
-  dd if=/dev/random iflag=count_bytes count="${1:-16}" 2>/dev/null
+  head -c "${1:-16}" /dev/random
 }
 
 # Random hexadecimal; default 16 bytes
@@ -33,16 +33,9 @@ randb64() {
   randbin "$1" | base64 -w 0 && printf '\n'
 }
 
-# Colorized cat
-ccat() {
-  if (( ! $# )); then
-    printf "usage: %s <file>...\n" "$FUNCNAME" >&2
-    return 1
-  fi
-
-  for file in "$@"; do
-    pygmentize -f terminal256 -O style=monokai -g -- "$file"
-  done
+# Pretty `PATH`
+path() {
+  tr ':' '\n' <<<"$PATH"
 }
 
 # Create backup
@@ -97,7 +90,7 @@ sprunge() {
 
 # Remove compiled python files under the given dirs; default current dir
 rmpyc() {
-  find -- "${@:-.}" -type f -name '*.py[co]' -delete
+  find -- "${@:-.}" \( -type d -name __pycache__ -o -type f -name '*.py[co]' \) -delete
 }
 
 # Remove .DS_Store files under the given dirs; default current dir
@@ -112,11 +105,14 @@ venv() {
     return 1
   fi
 
-  if [[ ! -e ~/".virtualenvs/$1" ]]; then
-    read -r -p "Create virtualenv \"$1\"? [y/N]: "
+  local venv_name="$1"
+  local venv_path=~/".virtualenvs/$venv_name"
+
+  if [[ ! -d "$venv_path" ]]; then
+    read -r -p "Create virtualenv \"$venv_name\"? [y/N]: "
     case "$REPLY" in
-      Y|y)
-        virtualenv ~/".virtualenvs/$1"
+      [Yy]|[Yy][Ee][Ss])
+        virtualenv "$venv_path"
         ;;
       *)
         return 1
@@ -124,7 +120,7 @@ venv() {
     esac
   fi
 
-  source ~/".virtualenvs/$1/bin/activate"
+  source "$venv_path/bin/activate"
 }
 
 # Update brew
@@ -135,9 +131,4 @@ rebrew() {
 # Update vim plugins
 replug() {
   vim +PlugUpgrade +PlugUpdate +PlugClean! +'helptags ~/.vim/plugged' +qa
-}
-
-# View changes from last vim plugin update
-dfplug() {
-  vim +PlugDiff +only
 }
