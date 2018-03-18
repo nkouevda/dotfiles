@@ -8,14 +8,11 @@ else
   install := cp -f
 endif
 
-targets := ag bash brew ctags dircolors git hg iterm karabiner python readline ssh tig vim
+targets := bash brew ctags dircolors git hg iterm karabiner python readline ssh tig vim
 
 .PHONY: all $(targets)
 
 all: $(targets)
-
-ag:
-	$(install) "$(root)"/.agignore ~
 
 bash:
 	$(install) "$(root)"/.bash_completion ~

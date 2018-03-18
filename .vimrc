@@ -215,9 +215,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
 
-  " Code search
-  Plug 'rking/ag.vim'
-
   " Fuzzy file search
   let g:ctrlp_working_path_mode = ''
   let g:ctrlp_show_hidden = 1
