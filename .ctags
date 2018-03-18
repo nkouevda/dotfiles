@@ -7,13 +7,13 @@
 --langdef=Scala
 --langmap=Scala:.scala
 --regex-scala=/^[ \t]*package[ \t]+([A-Za-z0-9_.]+)/\1/p,packages/
---regex-scala=/^[ \t]*((override|private|protected|final|abstract|implicit|sealed)[ \t]+)*(case[ \t]+)?class[ \t]+([A-Za-z0-9_]+)/\4/c,classes/
---regex-scala=/^[ \t]*((override|private|protected|final|abstract|implicit)[ \t]+)*(case[ \t]+)?object[ \t]+([A-Za-z0-9_]+)/\4/o,objects/
---regex-scala=/^[ \t]*((override|private|protected|final|abstract|sealed)[ \t]+)*trait[ \t]+([A-Za-z0-9_]+)/\3/t,traits/
---regex-scala=/^[ \t]*((override|private|protected|final)[ \t]+)*type[ \t]+([A-Za-z0-9_]+)/\3/T,types/
---regex-scala=/^[ \t]*((override|private|protected|final|implicit)[ \t]+)*def[ \t]+([A-Za-z0-9_]+)/\3/d,defs/
---regex-scala=/^[ \t]*((override|private|protected|final|implicit|lazy)[ \t]+)*val[ \t]+([A-Za-z0-9_]+)/\3/v,vals/
---regex-scala=/^[ \t]*((override|private|protected|final|implicit)[ \t]+)*var[ \t]+([A-Za-z0-9_]+)/\3/V,vars/
+--regex-scala=/^[ \t]*((override|(private|protected)(\[[A-Za-z0-9_]+\])?|final|abstract|implicit|sealed)[ \t]+)*(case[ \t]+)?class[ \t]+([A-Za-z0-9_]+)/\6/c,classes/
+--regex-scala=/^[ \t]*((override|(private|protected)(\[[A-Za-z0-9_]+\])?|final|abstract|implicit)[ \t]+)*(case[ \t]+)?object[ \t]+([A-Za-z0-9_]+)/\6/o,objects/
+--regex-scala=/^[ \t]*((override|(private|protected)(\[[A-Za-z0-9_]+\])?|final|abstract|sealed)[ \t]+)*trait[ \t]+([A-Za-z0-9_]+)/\5/t,traits/
+--regex-scala=/^[ \t]*((override|(private|protected)(\[[A-Za-z0-9_]+\])?|final)[ \t]+)*type[ \t]+([A-Za-z0-9_]+)/\5/T,types/
+--regex-scala=/^[ \t]*((override|(private|protected)(\[[A-Za-z0-9_]+\])?|final|implicit)[ \t]+)*def[ \t]+([A-Za-z0-9_]+)/\5/d,defs/
+--regex-scala=/^[ \t]*((override|(private|protected)(\[[A-Za-z0-9_]+\])?|final|implicit|lazy)[ \t]+)*val[ \t]+([A-Za-z0-9_]+)/\5/v,vals/
+--regex-scala=/^[ \t]*((override|(private|protected)(\[[A-Za-z0-9_]+\])?|final|implicit)[ \t]+)*var[ \t]+([A-Za-z0-9_]+)/\5/V,vars/
 
 --langdef=Thrift
 --langmap=Thrift:.thrift
