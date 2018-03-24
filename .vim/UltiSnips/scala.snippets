@@ -1,0 +1,95 @@
+snippet ov "override" w
+override $0
+endsnippet
+
+snippet pr "private" w
+private $0
+endsnippet
+
+snippet po "protected" w
+protected $0
+endsnippet
+
+snippet fi "final" w
+final $0
+endsnippet
+
+snippet im "implicit" w
+implicit $0
+endsnippet
+
+snippet la "lazy" w
+lazy $0
+endsnippet
+
+snippet val "val" w
+val $1 = $0
+endsnippet
+
+snippet def "def" w
+def $1($2): $3 = $0
+endsnippet
+
+snippet /\{/ "{" r
+{
+	$1
+}
+endsnippet
+
+snippet if "if" w
+if ($1) {
+	$2
+}
+endsnippet
+
+snippet else "else" w
+else {
+	$1
+}
+endsnippet
+
+snippet for "for" w
+for {
+	$1 <- $2
+} yield $0
+endsnippet
+
+snippet case "case" w
+case $1 => $0
+endsnippet
+
+snippet match "match" w
+match {
+	$1
+}
+endsnippet
+
+snippet map "map" w
+map { $1 =>
+	$2
+}
+endsnippet
+
+snippet flatMap "flatMap" w
+flatMap { $1 =>
+	$2
+}
+endsnippet
+
+snippet filter "filter" w
+filter { $1 =>
+	$2
+}
+endsnippet
+
+snippet /\$/ "interpolated expression" r
+\${$1}
+endsnippet
+
+snippet /print(ln)?/ "println" rb
+println(s"$1")
+endsnippet
+
+snippet /printf/ "printf" rb
+println(f"$1")
+endsnippet
