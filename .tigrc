@@ -4,22 +4,37 @@ set ignore-case = true
 # Split view heights 3:1 instead of 2:1
 set split-view-height = 75%
 
-# Show commit ID; show email user instead of author name
-set main-view = id date author:display:email-user,width:10 \
-                commit-title:graph:true,refs:true,overflow:true
+set main-view-id = true
+set main-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S"
+set main-view-author = display:email-user,width:10
+set main-view-commit-title = overflow:true
 
-# Highlight commit titles past character 50
-set diff-view = text:commit-title-overflow:true
+set diff-view-text = commit-title-overflow:true
+
+set refs-view-id = true
+set refs-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S"
+set refs-view-author = display:email-user,width:10
+
+set tree-view-id = true
+set tree-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S"
+set tree-view-author = display:email-user,width:10
+set tree-view-file-size = units
+
+set blame-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S"
+set blame-view-author = display:email-user,width:10
 
 # Colors - general
-color   status          default     default
-color   cursor          default     236
-color   title-focus     default     237
-color   title-blur      243         237
+color   status          default         default
+color   cursor          default         236
+color   title-focus     default         237
+color   title-blur      243             237
 
-# Colors - gerrit
-color   "    Change-Id: "       yellow      default
-color   "    Reviewed-on: "     yellow      default
+# Colors - code review
+color   "    Change-Id: "               yellow  default
+color   "    Reviewed-on: "             yellow  default
+color   "    Differential Revision: "   yellow  default
+color   "    JIRA: "                    yellow  default
+color   "    JIRA Issues: "             yellow  default
 
 # Generic bindings - view switching
 bind generic S none
@@ -64,30 +79,33 @@ bind generic % none
 # Generic bindings - external commands
 bind generic y @sh -c 'printf "%s" "%(commit)" | pbcopy'
 bind generic 7 @sh -c 'printf "%.7s" "%(commit)" | pbcopy'
-bind generic w @sh -c 'url="$(git log -1 "%(commit)" | awk \'/^    Reviewed-on: / { print $2 }\')" && [[ -n "$url" ]] && open "$url"'
+bind generic w @git browse "%(commit)"
 bind generic x !sh -c 'git %(prompt git )'
 bind generic E @mvim --remote "%(file)"
 
 # Main bindings - option toggling
-bind main G none
+bind main G move-last-line
 bind main A :toggle main-options --all
 bind main B :toggle main-options --branches='*'
+bind main M :toggle main-options ^master HEAD
+bind main R ?git rebase master "%(branch)"
 
 # Main bindings - external commands
 bind main C none
-bind main O ?git checkout "%(commit)"
 bind main D ?git branch -D "%(branch)"
-bind main F ?git fetch --tags --prune
-bind main T !sh -c 'git tag "%(prompt git tag )" "%(commit)"'
+bind main O ?git checkout "%(commit)"
+bind main p !git dfpo "%(commit)"
+bind main F ?git fetch --tags
+bind main T !git tag "%(prompt git tag )" "%(commit)"
 
 # Diff bindings - internal commands
 bind diff - :/^diff
 
 # Refs bindings - external commands
 bind refs C none
+bind refs D ?git branch -D "%(branch)"
 bind refs O ?git checkout "%(branch)"
 bind refs ! none
-bind refs D ?git branch -D "%(branch)"
 
 # Status bindings - view specific actions
 bind status u none
