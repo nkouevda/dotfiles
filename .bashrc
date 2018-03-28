@@ -57,6 +57,7 @@ export EDITOR="vim"
 
 # Default fzf options
 export FZF_DEFAULT_OPTS="--no-256"
+export FZF_CTRL_T_COMMAND="rg --files --hidden --glob '!.git'"
 
 # Key bindings for fzf
 [[ -r ~/.fzf.bash ]] && source ~/.fzf.bash
@@ -72,7 +73,7 @@ fi
 # Generate and export `LS_COLORS`
 [[ -r ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
 
-# Color `ls` output
+# Color ls output
 if ls --color=auto &>/dev/null; then
   alias ls="ls -bp --color=auto"
 elif ls -G &>/dev/null; then
@@ -81,15 +82,16 @@ else
   alias ls="ls -bp"
 fi
 
-# Useful `ls` and `tree` variants
+# Useful ls and tree variants
 alias ll="ls -hl"
 alias la="ll -A"
 alias lt="tree -CF"
 alias lta="lt -a"
 alias ltg="lta -I .git"
 
-# Color grep output
+# Default grep and rg options
 alias grep="grep --color=auto"
+alias rg="rg --hidden --glob '!.git' --smart-case --colors 'line:fg:cyan'"
 
 # Synchronize the current history list with the history file
 sync_history() {

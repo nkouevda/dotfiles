@@ -220,7 +220,12 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_lazy_update = 10
-  let g:ctrlp_user_command = ['.git', 'git ls-files --cached --others --exclude-standard -- %s']
+  let g:ctrlp_user_command = {
+    \ 'types': {
+      \ 1: ['.git', 'git ls-files --cached --others --exclude-standard -- %s'],
+    \ },
+    \ 'fallback': 'rg --files --hidden --glob "!.git" -- %s',
+  \ }
   let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
   Plug 'nixprime/cpsm', {'do': 'PY3=OFF ./install.sh'}
   Plug 'ctrlpvim/ctrlp.vim'
