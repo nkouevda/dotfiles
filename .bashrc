@@ -64,9 +64,6 @@ export FZF_DEFAULT_OPTS="--no-256"
 # Python startup file
 [[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
 
-# Homebrew's `python` is `python3`
-alias python2="/usr/bin/python"
-
 # Alias tac if coreutils not installed
 if ! type tac &>/dev/null; then
   alias tac="tail -r"

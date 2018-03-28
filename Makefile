@@ -46,7 +46,7 @@ brew:
 	brew install openssl
 	brew install pv
 	brew install python
-	brew install python3
+	brew install python@2
 	brew install ripgrep
 	brew install rsync
 	brew install s3cmd
