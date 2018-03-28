@@ -94,7 +94,7 @@ alias grep="grep --color=auto"
 alias rg="rg --hidden --glob '!.git' --smart-case --colors 'line:fg:cyan'"
 
 # Synchronize the current history list with the history file
-sync_history() {
+sync-history() {
   local tmp_histfile
 
   # Append the history list to the history file
@@ -115,19 +115,8 @@ sync_history() {
   history -r
 }
 
-# Synchronize history before every prompt
-export PROMPT_COMMAND+="sync_history;"
-
-# Include basename of pwd in iTerm tab name
-if [[ -n "$ITERM_SESSION_ID" ]]; then
-  export PROMPT_COMMAND+='printf "%b" "\033];$(basename "$PWD")\007";'
-fi
-
-# Include parent directory in `PS1`
-export PROMPT_DIRTRIM=2
-
-# Construct and export `PS1`
-make_ps1() {
+# Reset prompt variables
+reset-prompt() {
   local reset red green yellow user host dir status
 
   # Color escape sequences
@@ -150,13 +139,23 @@ make_ps1() {
 
   # user@host pwd $
   export PS1="\[$reset\]$user\u$host@\h $dir\w \[$status\]\\$ \[$reset\]"
+
+  # Include parent directory in `PS1`
+  export PROMPT_DIRTRIM=2
+
+  # Synchronize history before every prompt
+  export PROMPT_COMMAND="sync-history;"
+
+  # Include basename of pwd in iTerm tab name
+  if [[ -n "$ITERM_SESSION_ID" ]]; then
+    export PROMPT_COMMAND+='printf "%b" "\033];$(basename "$PWD")\007";'
+  fi
+
+  # For `set -x`
+  export PS4='+ $0:$LINENO: '
 }
 
-make_ps1
-unset -f make_ps1
-
-# For `set -x`
-export PS4='+ $0:$LINENO: '
+reset-prompt
 
 # Source bash completion, functions, and local settings
 [[ -r /usr/local/share/bash-completion/bash_completion ]] && source /usr/local/share/bash-completion/bash_completion
