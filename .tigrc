@@ -5,22 +5,22 @@ set ignore-case = true
 set split-view-height = 75%
 
 set main-view-id = true
-set main-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S"
+set main-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S %z"
 set main-view-author = display:email-user,width:10
 set main-view-commit-title = overflow:true
 
 set diff-view-text = commit-title-overflow:true
 
 set refs-view-id = true
-set refs-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S"
+set refs-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S %z"
 set refs-view-author = display:email-user,width:10
 
 set tree-view-id = true
-set tree-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S"
+set tree-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S %z"
 set tree-view-author = display:email-user,width:10
 set tree-view-file-size = units
 
-set blame-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S"
+set blame-view-date = display:custom,format:"%Y-%m-%d %H:%M:%S %z"
 set blame-view-author = display:email-user,width:10
 
 # Colors - general
