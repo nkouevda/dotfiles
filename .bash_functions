@@ -80,12 +80,26 @@ dict() {
     return 1
   fi
 
-  grep -i "$@" /usr/share/dict/words
+  grep --ignore-case "$@" /usr/share/dict/words
 }
 
 # Command line pastebin
 sprunge() {
   curl -F 'sprunge=<-' 'http://sprunge.us' 2>/dev/null
+}
+
+# Find files with unusual names (expected: chars between ` ` and `~`, inclusive)
+find-bad-names() {
+  find -- "${@:-.}" -regex '.*[^ -~].*'
+}
+
+# Find files with unusual permissions (expected: 755 for dirs and 644 for files)
+find-bad-perms() {
+  # TODO(nkouevda): Ignore files in git worktrees, not just in .git dirs
+  find -- "${@:-.}" \
+    -name .git -prune \
+    -o -type d -not -perm 755 -ls \
+    -o -type f -not -perm 644 -ls
 }
 
 # Remove compiled python files under the given dirs; default current dir
@@ -96,6 +110,14 @@ rmpyc() {
 # Remove .DS_Store files under the given dirs; default current dir
 rmds() {
   find -- "${@:-.}" -type f -name '.DS_Store' -delete
+}
+
+# Fuzzy kill
+fkill() {
+  ps aux \
+    | fzf --exact --multi \
+    | awk '{ print $2 }' \
+    | xargs --no-run-if-empty --verbose kill
 }
 
 # Activate virtualenv, first prompting to create if necessary
