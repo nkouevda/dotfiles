@@ -8,7 +8,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash brew ctags dircolors git hg iterm karabiner python readline ssh tig vim
+targets := bash brew ctags dircolors git hg iterm karabiner python readline ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -93,6 +93,9 @@ ssh:
 
 tig:
 	$(INSTALL) "$(root)"/.tigrc ~
+
+tmux:
+	$(INSTALL) "$(root)"/.tmux.conf ~
 
 vim:
 	$(INSTALL) "$(root)"/.gvimrc ~
