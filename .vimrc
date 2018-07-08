@@ -1,6 +1,11 @@
 " Disable vi compatibility when overriding default vimrc via -u
 set nocompatible
 
+" HACK: Suppress DeprecationWarning; see https://github.com/vim/vim/issues/3117
+if has('python3')
+  silent! python3 None
+endif
+
 " Do not use backup files in /private/tmp (fixes crontab editing in OS X)
 set backupskip+=/private/tmp/*
 

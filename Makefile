@@ -40,7 +40,7 @@ brew:
 	brew install grep --with-default-names
 	brew install jq
 	brew install less
-	brew install macvim --with-python3
+	brew install macvim
 	brew install maven
 	brew install moreutils
 	brew install openssl
@@ -53,7 +53,7 @@ brew:
 	brew install scala
 	brew install tig
 	brew install tree
-	brew install vim --with-python3
+	brew install vim
 	brew install wget
 	brew linkapps
 	brew cleanup --prune=0 -s
