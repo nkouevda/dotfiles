@@ -192,6 +192,9 @@ if has('autocmd')
     autocmd FileType c setlocal commentstring=//%s
     autocmd FileType gitconfig setlocal commentstring=#%s
 
+    " Style
+    autocmd Filetype scala let b:argwrap_wrap_closing_brace = 1
+
     " Revert to global wrap setting in diff mode
     autocmd FilterWritePre * if &diff | setlocal wrap< | endif
 
@@ -216,6 +219,11 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
 
+  " Argument wrapping
+  let g:argwrap_wrap_closing_brace = 0
+  Plug 'FooSoft/vim-argwrap'
+  nnoremap <Leader>a :ArgWrap<CR>
+
   " Fuzzy file search
   let g:ctrlp_working_path_mode = ''
   let g:ctrlp_show_hidden = 1
@@ -228,7 +236,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     \ 'fallback': 'rg --files --hidden --glob "!.git" -- %s',
   \ }
   let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
-  Plug 'nixprime/cpsm', {'do': 'PY3=OFF ./install.sh'}
+  Plug 'nkouevda/cpsm', {'branch': 'python-3.7', 'do': 'PY3=ON ./install.sh'}
   Plug 'ctrlpvim/ctrlp.vim'
 
   " Git commands and signs
