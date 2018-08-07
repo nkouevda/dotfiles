@@ -43,16 +43,16 @@ set splitbelow splitright
 " Always show the status line
 set laststatus=2
 
-" File name, flags (modified, read-only, help, preview), and file type
+" File name; flags (modified, read-only, help, preview); filetype
 set statusline=%t%m%r%h%w\ %y%{&ft!=''?'\ ':''}
 
-" File format and encoding; noeol; truncate right; switch to right alignment
+" File format; file encoding; noeol; truncate right; switch to right alignment
 set statusline+=[%{&ff},%{&fenc!=''?&fenc:&enc}]%{&eol?'':'\ [noeol]'}\ %<%=
 
 " Character under cursor in decimal and hexadecimal
 set statusline+=[%03b,0x%02B]
 
-" Line, total lines, column, virtual column, and display width
+" Line; total lines; column; virtual column; display width
 set statusline+=\ [%l/%L,%c%V/%{strdisplaywidth(getline('.'))}]
 
 " Percent of file (line / total lines) and percent of file (displayed window)
@@ -69,6 +69,9 @@ endif
 " Display parts of wrapped lines that are cut off at the bottom
 set display=lastline
 
+" Default to 80 so that `gq` doesn't wrap at 79
+set textwidth=80
+
 " Do not split words when wrapping long lines
 set linebreak
 
@@ -78,16 +81,13 @@ set shiftwidth=2 expandtab smarttab
 " Round to the nearest tab when indenting; copy indentation exactly
 set shiftround autoindent copyindent
 
-" Toggle paste mode
-set pastetoggle=<F2>
-
 if has('clipboard')
   " Interact with the X clipboard
   set clipboard=unnamed
 endif
 
-" Default to # comments, not C-style
-set commentstring=#\ %s
+" Default to `#%s` comments, not `/*%s*/`
+set commentstring=#%s
 
 " Always allow backspacing
 set backspace=indent,eol,start
@@ -156,10 +156,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-c> <C-w>c
 
 " Jump to tag under cursor in split window
-nnoremap <C-\> <C-w>s<C-]>
-
-" Temporarily disable search highlighting
-nnoremap <Leader>/ :nohlsearch<CR>
+nnoremap <C-\> <C-w><C-]>
+nnoremap g<C-\> <C-w>g<C-]>
 
 " Remove all trailing whitespace
 nnoremap <Leader>w :keeppatterns %s/\s\+$//<CR>
@@ -170,6 +168,9 @@ nmap <Leader>8 /\%81c.\+<CR>
 nmap <Leader>9 /\%100c.\+<CR>
 nmap <Leader>0 /\%101c.\+<CR>
 
+" Unset textwidth
+nnoremap <Leader>tw :setlocal textwidth=0<CR>
+
 " Load filetype plugins and indentation files
 filetype plugin indent on
 
@@ -178,18 +179,18 @@ if has('autocmd')
     " Remove all autocommands from this group
     autocmd!
 
-    " Disable paste mode when leaving insert mode
-    autocmd InsertLeave * set nopaste
-
     " Override default indentation settings
     autocmd FileType gitconfig,make,snippets,sshconfig setlocal sw=8 noet
 
     " Turn on spell checking for git commits
-    autocmd FileType gitcommit set spell
+    autocmd FileType gitcommit setlocal spell
 
     " Limit text width
-    autocmd FileType markdown,text setlocal textwidth=80
-    autocmd FileType python setlocal textwidth=79
+    autocmd FileType java,scala setlocal textwidth=100
+
+    " Fix C (doesn't set at all) and gitconfig (`;%s`) comments
+    autocmd FileType c setlocal commentstring=//%s
+    autocmd FileType gitconfig setlocal commentstring=#%s
 
     " Revert to global wrap setting in diff mode
     autocmd FilterWritePre * if &diff | setlocal wrap< | endif
@@ -232,11 +233,10 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " Git commands and signs
   Plug 'tpope/vim-fugitive'
-  nnoremap <Leader>gs :Gstatus<CR>
   nnoremap <Leader>gb :Gblame<CR>
   nnoremap <Leader>gd :Gdiff<CR>
   nnoremap <Leader>gD :Gdiff HEAD^<CR>
-  let g:signify_vcs_cmds = {'git': 'git diff --no-color --no-ext-diff -U0 HEAD^ -- %f'}
+  let g:signify_vcs_cmds = {'git': 'git diff --unified=0 --no-color HEAD^ -- %f'}
   Plug 'mhinz/vim-signify'
   hi! link SignifySignAdd Function
   hi! link SignifySignChange String
@@ -254,14 +254,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   let g:UltiSnipsJumpForwardTrigger = '<Tab>'
   let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
   Plug 'SirVer/ultisnips'
-
-  " Syntax checking
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': ['python']}
-  let g:syntastic_python_checkers = ['pyflakes']
-  Plug 'scrooloose/syntastic'
 
   " Syntax highlighting
   Plug 'Valloric/MatchTagAlways'
