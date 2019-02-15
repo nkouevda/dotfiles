@@ -1,0 +1,9 @@
+--hidden
+
+--glob
+!.git
+
+--smart-case
+
+--colors
+line:fg:cyan

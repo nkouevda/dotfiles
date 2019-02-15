@@ -8,7 +8,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash brew ctags dircolors git hg iterm karabiner python readline ssh tig tmux vim
+targets := bash brew ctags dircolors git hg iterm karabiner python readline ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -51,9 +51,9 @@ brew:
 	brew install rsync
 	brew install s3cmd
 	brew install scala
+	brew install sshrc
 	brew install tig
 	brew install tree
-	brew install vim
 	brew install wget
 	brew linkapps
 	brew cleanup --prune=0 -s
@@ -87,7 +87,11 @@ python:
 readline:
 	$(INSTALL) "$(root)"/.inputrc ~
 
+ripgrep:
+	$(INSTALL) "$(root)"/.ripgreprc ~
+
 ssh:
+	$(INSTALL) "$(root)"/.sshrc ~/.sshrc
 	mkdir -p ~/.ssh
 	$(INSTALL) "$(root)"/.ssh/config ~/.ssh/config
 

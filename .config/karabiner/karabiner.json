@@ -156,6 +156,22 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "i",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open /Applications/iTunes.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "s",
                                     "modifiers": {
                                         "mandatory": [
@@ -213,7 +229,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/iTunes.app"
+                                        "shell_command": "open /Applications/Spotify.app"
                                     }
                                 ],
                                 "type": "basic"

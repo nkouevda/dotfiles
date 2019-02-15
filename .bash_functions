@@ -146,11 +146,11 @@ venv() {
 }
 
 # Update brew
-rebrew() {
+update-brew() {
   brew update && brew upgrade && brew cleanup --prune=0 -s
 }
 
 # Update vim plugins
-replug() {
+update-plug() {
   vim +PlugUpgrade +PlugUpdate +PlugClean! +'helptags ~/.vim/plugged' +qa
 }

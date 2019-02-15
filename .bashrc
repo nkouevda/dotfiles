@@ -13,7 +13,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 fi
 
 # User bin
-export PATH=~/bin:"$PATH"
+export PATH=~/"bin:$PATH"
 
 # Do not capture ^Q or ^S
 stty start undef
@@ -62,13 +62,11 @@ export FZF_CTRL_T_COMMAND="rg --files --hidden --glob '!.git'"
 # Key bindings for fzf
 [[ -r ~/.fzf.bash ]] && source ~/.fzf.bash
 
+# Default rg options
+[[ -r ~/.ripgreprc ]] && export RIPGREP_CONFIG_PATH=~/.ripgreprc
+
 # Python startup file
 [[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
-
-# Alias tac if coreutils not installed
-if ! type tac &>/dev/null; then
-  alias tac="tail -r"
-fi
 
 # Generate and export `LS_COLORS`
 [[ -r ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
@@ -89,9 +87,18 @@ alias lt="tree -CF"
 alias lta="lt -a"
 alias ltg="lta -I .git"
 
-# Default grep and rg options
+# Default grep options
 alias grep="grep --color=auto"
-alias rg="rg --hidden --glob '!.git' --smart-case --colors 'line:fg:cyan'"
+
+# Alias tac if not already available
+if ! type tac &>/dev/null; then
+  alias tac="tail -r"
+fi
+
+# Use sshrc instead of ssh if available
+if type sshrc &>/dev/null; then
+  alias ssh="sshrc"
+fi
 
 # Synchronize the current history list with the history file
 sync-history() {
@@ -117,31 +124,25 @@ sync-history() {
 
 # Reset prompt variables
 reset-prompt() {
-  local reset red green yellow user host dir status
+  local reset red green yellow prefix suffix
 
   # Color escape sequences
-  reset="$(tput sgr0)"
-  red="$(tput setaf 1)"
-  green="$(tput setaf 2)"
-  yellow="$(tput setaf 3)"
+  reset="\[$(tput sgr0)\]"
+  red="\[$(tput setaf 1)\]"
+  green="\[$(tput setaf 2)\]"
+  yellow="\[$(tput setaf 3)\]"
 
-  # Red user if root, green otherwise
-  [[ $UID -eq 0 ]] && user="\[$red\]" || user="\[$green\]"
+  # Red `user@host` if connected via ssh, empty otherwise
+  [[ -n "$SSH_CONNECTION" ]] && prefix="$red\u@\h " || prefix=""
 
-  # Red host if connected via ssh, green otherwise
-  [[ -n "$SSH_CONNECTION" ]] && host="\[$red\]" || host="\[$green\]"
+  # Red `$? >` if non-zero exit status, green `>` otherwise
+  suffix='$(last=$?; (( last )) && printf "%b$last >" "'"$red"'" || printf "%b>" "'"$green"'")'
 
-  # Yellow working directory
-  dir="\[$yellow\]"
+  # `$PWD >`
+  export PS1="$reset$prefix$yellow\w $suffix$reset "
 
-  # Red $ or # if non-zero exit status, normal otherwise
-  status='$((( $? )) && printf "%b" "'"$red"'" || printf "%b" "'"$reset"'")'
-
-  # user@host pwd $
-  export PS1="\[$reset\]$user\u$host@\h $dir\w \[$status\]\\$ \[$reset\]"
-
-  # Include parent directory in `PS1`
-  export PROMPT_DIRTRIM=2
+  # Include parent dirs in `PS1`
+  export PROMPT_DIRTRIM=3
 
   # Synchronize history before every prompt
   export PROMPT_COMMAND="sync-history;"
@@ -157,7 +158,6 @@ reset-prompt() {
 
 reset-prompt
 
-# Source bash completion, functions, and local settings
 [[ -r /usr/local/share/bash-completion/bash_completion ]] && source /usr/local/share/bash-completion/bash_completion
 [[ -r ~/.bash_completion ]] && source ~/.bash_completion
 [[ -r ~/.bash_functions ]] && source ~/.bash_functions
