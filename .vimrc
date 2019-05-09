@@ -179,6 +179,9 @@ if has('autocmd')
     " Remove all autocommands from this group
     autocmd!
 
+    " Open read-only when swap file exists
+    autocmd SwapExists * let v:swapchoice = 'o'
+
     " Override default indentation settings
     autocmd FileType gitconfig,make,snippets,sshconfig setlocal sw=8 noet
 
@@ -188,9 +191,11 @@ if has('autocmd')
     " Limit text width
     autocmd FileType java,scala setlocal textwidth=100
 
-    " Fix C (doesn't set at all) and gitconfig (`;%s`) comments
+    " Fix comment templates
     autocmd FileType c setlocal commentstring=//%s
     autocmd FileType gitconfig setlocal commentstring=#%s
+    autocmd FileType markdown setlocal commentstring=<!--%s-->
+    autocmd FileType sql setlocal commentstring=--%s
 
     " Style
     autocmd Filetype scala let b:argwrap_wrap_closing_brace = 1
@@ -225,6 +230,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>a :ArgWrap<CR>
 
   " Fuzzy file search
+  Plug 'nkouevda/cpsm', {'branch': 'fix-mem-leak', 'do': 'PY3=ON ./install.sh'}
   let g:ctrlp_working_path_mode = ''
   let g:ctrlp_show_hidden = 1
   let g:ctrlp_clear_cache_on_exit = 0
@@ -236,7 +242,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     \ 'fallback': 'rg --files --hidden --glob "!.git" -- %s',
   \ }
   let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
-  Plug 'nkouevda/cpsm', {'branch': 'python-3.7', 'do': 'PY3=ON ./install.sh'}
   Plug 'ctrlpvim/ctrlp.vim'
 
   " Git commands and signs
@@ -265,6 +270,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " Syntax highlighting
   Plug 'Valloric/MatchTagAlways'
+  Plug 'jrozner/vim-antlr'
   Plug 'pantsbuild/vim-pants'
   Plug 'nkouevda/vim-thrift-syntax'
 
