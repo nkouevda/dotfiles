@@ -41,8 +41,7 @@
 	branch = cyan
 
 [pretty]
-	compact = "%C(auto)%h %C(blue)%ad %C(magenta)%aN %C(reset)%s"
-	compact-decorate = "%C(auto)%h %C(blue)%ad %C(magenta)%aN%C(auto)%d %C(reset)%s"
+	compact = "%C(auto)%h %C(blue)%ad %C(magenta)%aN%C(auto)%d %C(reset)%s"
 
 [alias]
 	st = status
@@ -52,46 +51,47 @@
 	root = rev-parse --show-toplevel
 	prefix = rev-parse --show-prefix
 	br = branch
-	brc = branch --verbose --verbose --sort=committerdate
 	brv = branch --verbose --verbose
-	brvc = branch --verbose --verbose --sort=committerdate
+	brc = branch --sort=committerdate
+	brcv = branch --sort=committerdate --verbose --verbose
 	bra = branch --all
-	brac = branch --all --sort=committerdate
 	brav = branch --all --verbose --verbose
-	bravc = branch --all --verbose --verbose --sort=committerdate
+	brac = branch --all --sort=committerdate
+	bracv = branch --all --sort=committerdate --verbose --verbose
 	brf = branch --force
 	brfm = branch --force master origin/master
 	brm = branch --move
 	brmf = branch --move --force
 	brd = branch --delete
 	brdf = branch --delete --force
+	track = "!sh -c 'git branch --set-upstream-to origin/\"$(git rev-parse --abbrev-ref HEAD)\"' -"
+	untrack = branch --unset-upstream
+	pushup = "!sh -c 'git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\"' -"
+	deleteup = "!sh -c 'git push --delete origin \"$(git rev-parse --abbrev-ref HEAD)\"' -"
 	sb = show-branch
 	sba = show-branch --all
+	mb = merge-base
+	mbm = merge-base master
 	lg = log --pretty=compact
-	lgo = log --pretty=compact -n 1
+	lg1 = log --pretty=compact -n 1
 	lgm = "!sh -c 'git log --pretty=compact ^master \"${@:-HEAD}\"' -"
-	lgd = log --pretty=compact-decorate
-	lgdo = log --pretty=compact-decorate -n 1
-	lgdm = "!sh -c 'git log --pretty=compact-decorate ^master \"${@:-HEAD}\"' -"
-	lgg = log --pretty=compact-decorate --graph
-	lggs = log --pretty=compact-decorate --graph --branches --simplify-by-decoration
-	lgf = log --pretty=fuller
-	lgfo = log --pretty=fuller -n 1
-	lgfm = "!sh -c 'git log --pretty=fuller ^master \"${@:-HEAD}\"' -"
+	lgmb = "!sh -c 'git log --pretty=compact ^\"$(git merge-base master \"${1:-HEAD}\")\"^ \"${@:-HEAD}\"' -"
 	lgs = log --pretty=fuller --stat
-	lgso = log --pretty=fuller --stat -n 1
+	lgs1 = log --pretty=fuller --stat -n 1
 	lgsm = "!sh -c 'git log --pretty=fuller --stat ^master \"${@:-HEAD}\"' -"
 	df = diff
 	dfc = diff --cached
-	dfo = "!sh -c 'git diff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
+	df1 = "!sh -c 'git diff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
+	df1n = "!sh -c 'git diff --name-only \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
 	dfm = "!sh -c 'git diff \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
+	dfmn = "!sh -c 'git diff --name-only \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
 	dfs = diff --stat
 	dfsc = diff --stat --cached
-	dfso = "!sh -c 'git diff --stat \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
+	dfs1 = "!sh -c 'git diff --stat \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
 	dfsm = "!sh -c 'git diff --stat \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
 	dfp = difftool --tool=pdiff
 	dfpc = difftool --tool=pdiff --cached
-	dfpo = "!sh -c 'git difftool --tool=pdiff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
+	dfp1 = "!sh -c 'git difftool --tool=pdiff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
 	dfpm = "!sh -c 'git difftool --tool=pdiff \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
 	rmc = rm --cached
 	rmcf = rm --cached --force
@@ -104,10 +104,11 @@
 	shd = stash drop
 	shc = stash clear
 	ci = commit
-	cia = commit --amend
-	ciar = commit --amend --reset-author
-	cian = commit --amend --no-edit
-	cianr = commit --amend --no-edit --reset-author
+	cav = commit --amend --verbose
+	cava = commit --amend --verbose --all
+	can = commit --amend --no-edit
+	cana = commit --amend --no-edit --all
+	canr = commit --amend --no-edit --reset-author
 	co = checkout
 	cob = checkout -b
 	cobf = checkout -B
@@ -128,7 +129,9 @@
 	rbim = rebase --interactive master
 	rbir = rebase --interactive --root
 	rbo = rebase --onto
+	rbo1 = "!sh -c 'git rebase --onto \"${1:?unset}\" \"${2:?unset}\"^ \"${@:2}\"' -"
 	rbom = rebase --onto master
+	rbom1 = "!sh -c 'git rebase --onto master \"${1:?unset}\"^ \"$@\"' -"
 	rbc = rebase --continue
 	rbs = rebase --skip
 	rba = rebase --abort
