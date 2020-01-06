@@ -32,12 +32,12 @@ brew:
 	brew install ctags
 	brew install diffstat
 	brew install diffutils
-	brew install findutils --with-default-names
+	brew install findutils
 	brew install fzf
 	brew install gawk
 	brew install git
-	brew install gnu-sed --with-default-names
-	brew install grep --with-default-names
+	brew install gnu-sed
+	brew install grep
 	brew install jq
 	brew install less
 	brew install macvim
@@ -55,9 +55,7 @@ brew:
 	brew install tig
 	brew install tree
 	brew install wget
-	brew linkapps
 	brew cleanup --prune=0 -s
-	brew prune
 
 ctags:
 	$(INSTALL) "$(root)"/.ctags ~

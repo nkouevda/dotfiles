@@ -6,11 +6,18 @@ set -o pipefail
 # Homebrew paths
 if [[ "$(uname -s)" == "Darwin" ]]; then
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+  export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
   export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+  export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
+  export MANPATH="/usr/local/opt/grep/libexec/gnuman:$MANPATH"
 
   export PATH="/usr/local/opt/openssl/bin:$PATH"
   export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 fi
+
+# Rust
+export PATH=~/".cargo/bin:$PATH"
 
 # User bin
 export PATH=~/"bin:$PATH"
