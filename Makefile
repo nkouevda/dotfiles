@@ -8,7 +8,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash brew ctags dircolors git hg iterm karabiner python readline ripgrep ssh tig tmux vim
+targets := bash brew ctags dircolors git hg iterm karabiner kitty python readline ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -79,6 +79,10 @@ iterm:
 karabiner:
 	mkdir -p ~/.config/karabiner
 	$(INSTALL) "$(root)"/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+
+kitty:
+	mkdir -p ~/.config/kitty
+	$(INSTALL) "$(root)"/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 
 python:
 	$(INSTALL) "$(root)"/.pypirc ~
