@@ -117,7 +117,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open /Applications/Messages.app"
+                                        "shell_command": "open /System/Applications/Messages.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -150,22 +150,6 @@
                                 "to": [
                                     {
                                         "shell_command": "open /System/Library/CoreServices/Finder.app"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "i",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open /Applications/iTunes.app"
                                     }
                                 ],
                                 "type": "basic"
@@ -245,7 +229,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/System Preferences.app'"
+                                        "shell_command": "open '/System/Applications/System Preferences.app'"
                                     }
                                 ],
                                 "type": "basic"
