@@ -26,8 +26,6 @@ brew:
 	brew upgrade
 	brew install bash
 	brew install bash-completion2
-	brew install boost
-	brew install cmake
 	brew install coreutils
 	brew install ctags
 	brew install diffstat

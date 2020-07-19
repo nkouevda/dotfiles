@@ -25,6 +25,9 @@ set history=1000
 " Search upward for a tags file
 set tags+=tags;
 
+" Match tag case
+set tagcase=match
+
 " Ignore temporary and output files
 set wildignore+=*.class,*.o,*.out,*.pyc,*.swp,*~
 
@@ -137,10 +140,9 @@ nnoremap ZA :xall<CR>
 nnoremap ZC :cquit<CR>
 
 " Repeat the last change [count] times instead of replacing the original count
-nnoremap <silent> . :<C-u>exe 'norm! ' . repeat('.', v:count1)<CR>
+nnoremap <silent> . :<C-u>execute 'norm! ' . repeat('.', v:count1)<CR>
 
-" List, switch, create, and delete buffers
-nnoremap <Leader>b :buffers<CR>:b
+" Create and delete buffers
 nnoremap <Leader>s :new<CR>
 nnoremap <Leader>S :leftabove new<CR>
 nnoremap <Leader>v :vnew<CR>
@@ -205,6 +207,9 @@ if has('autocmd')
 
     " Resize windows when vim is resized
     autocmd VimResized * wincmd =
+
+    " Hide fzf statusline
+    autocmd FileType fzf set laststatus=0 | autocmd BufLeave <buffer> set laststatus=2
   augroup end
 endif
 
@@ -229,20 +234,19 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'FooSoft/vim-argwrap'
   nnoremap <Leader>a :ArgWrap<CR>
 
-  " Fuzzy file search
-  Plug 'nkouevda/cpsm', {'branch': 'fix-mem-leak', 'do': 'PY3=ON ./install.sh'}
-  let g:ctrlp_working_path_mode = ''
-  let g:ctrlp_show_hidden = 1
-  let g:ctrlp_clear_cache_on_exit = 0
-  let g:ctrlp_lazy_update = 10
-  let g:ctrlp_user_command = {
-    \ 'types': {
-      \ 1: ['.git', 'git ls-files --cached --others --exclude-standard -- %s'],
-    \ },
-    \ 'fallback': 'rg --files --hidden --glob "!.git" -- %s',
-  \ }
-  let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
-  Plug 'ctrlpvim/ctrlp.vim'
+  " Fuzzy search for files, buffers, etc.
+  let g:fzf_action = {
+    \ 'ctrl-s': 'split',
+    \ 'ctrl-v': 'vsplit'}
+  let g:fzf_history_dir = '~/.cache/fzf/history'
+  Plug 'junegunn/fzf'
+  let g:fzf_buffers_jump = 1
+  let g:fzf_preview_window = ''
+  Plug 'junegunn/fzf.vim'
+  nnoremap <Leader>f :GFiles<CR>
+  nnoremap <Leader>gs :GFiles?<CR>
+  nnoremap <Leader>b :Buffers<CR>
+  nnoremap <Leader>t :GFiles '*.thrift'<CR>
 
   " Git commands and signs
   Plug 'tpope/vim-fugitive'
