@@ -97,7 +97,7 @@ alias lta="lt -a"
 alias ltg="lta -I .git"
 
 # Default grep options
-alias grep="grep --color=auto"
+alias grep="grep --ignore-case --color=auto"
 
 # Alias tac if not already available
 if ! type tac &>/dev/null; then
@@ -110,21 +110,19 @@ if type sshrc &>/dev/null; then
 fi
 
 # Synchronize the current history list with the history file
-sync-history() {
+sync-bash-history() {
   local tmp_histfile
 
   # Append the history list to the history file
   history -a
 
-  if [[ -r "$HISTFILE" ]]; then
-    tmp_histfile="$(mktemp "/tmp/.bash_history.$$.XXXXXX")"
+  tmp_histfile="$(mktemp "/tmp/.bash_history.$$.XXXXXX")"
 
-    # Remove trailing whitespace; keep only the most recent copies of duplicates
-    tac "$HISTFILE" \
-      | awk '{ sub(/[ \t]+$/, "") } !uniq[$0]++' \
-      | tac > "$tmp_histfile"
-    mv "$tmp_histfile" "$HISTFILE"
-  fi
+  # Remove trailing whitespace; keep only the most recent copies of duplicates
+  tac "$HISTFILE" \
+    | awk '{ sub(/[ \t]+$/, "") } !uniq[$0]++' \
+    | tac > "$tmp_histfile"
+  mv "$tmp_histfile" "$HISTFILE"
 
   # Clear the history list and read the history file
   history -c
@@ -154,7 +152,7 @@ reset-prompt() {
   export PROMPT_DIRTRIM=3
 
   # Synchronize history before every prompt
-  export PROMPT_COMMAND="sync-history;"
+  export PROMPT_COMMAND="sync-bash-history;"
 
   # Include basename of pwd in iTerm tab name
   if [[ -n "$ITERM_SESSION_ID" ]]; then
