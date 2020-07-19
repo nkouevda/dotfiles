@@ -37,6 +37,7 @@ brew:
 	brew install gawk
 	brew install git
 	brew install gnu-sed
+	brew install go
 	brew install grep
 	brew install jq
 	brew install less
@@ -46,12 +47,11 @@ brew:
 	brew install openssl
 	brew install pv
 	brew install python
-	brew install python@2
 	brew install ripgrep
 	brew install rsync
 	brew install s3cmd
 	brew install scala
-	brew install sshrc
+	brew install sourcegraph/src-cli/src-cli
 	brew install tig
 	brew install tree
 	brew install wget
@@ -93,7 +93,6 @@ ripgrep:
 	$(INSTALL) "$(root)"/.ripgreprc ~
 
 ssh:
-	$(INSTALL) "$(root)"/.sshrc ~/.sshrc
 	mkdir -p ~/.ssh
 	$(INSTALL) "$(root)"/.ssh/config ~/.ssh/config
 
