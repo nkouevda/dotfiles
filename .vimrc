@@ -173,6 +173,12 @@ nmap <Leader>0 /\%101c.\+<CR>
 " Unset textwidth
 nnoremap <Leader>tw :setlocal textwidth=0<CR>
 
+" `git root`
+function! Groot()
+  let l:root = split(system('git rev-parse --show-toplevel'), '\n')[0]
+  return v:shell_error ? '' : l:root
+endfunction
+
 " Load filetype plugins and indentation files
 filetype plugin indent on
 
@@ -237,16 +243,34 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   " Fuzzy search for files, buffers, etc.
   let g:fzf_action = {
     \ 'ctrl-s': 'split',
-    \ 'ctrl-v': 'vsplit'}
+    \ 'ctrl-v': 'vsplit',
+    \ }
+  let g:fzf_layout = { 'down': '40%' }
   let g:fzf_history_dir = '~/.cache/fzf/history'
   Plug 'junegunn/fzf'
   let g:fzf_buffers_jump = 1
   let g:fzf_preview_window = ''
   Plug 'junegunn/fzf.vim'
-  nnoremap <Leader>f :GFiles<CR>
   nnoremap <Leader>gs :GFiles?<CR>
   nnoremap <Leader>b :Buffers<CR>
   nnoremap <Leader>t :GFiles '*.thrift'<CR>
+
+  function! s:GFilesWithFallback(use_buf_dir)
+    let l:args = {
+      \ 'options': '--multi',
+      \ 'dir': a:use_buf_dir ? expand('%:p:h') : getcwd(),
+      \ }
+
+    " `git ls-files .` if in a repo, else fall back to fzf default
+    if !empty(Groot())
+      let l:args['source'] = 'git ls-files'
+    endif
+
+    return fzf#run(fzf#wrap('GFilesWithFallback', l:args))
+  endfunction
+
+  nnoremap <Leader>f :call <SID>GFilesWithFallback(0)<CR>
+  nnoremap <Leader>d :call <SID>GFilesWithFallback(1)<CR>
 
   " Git commands and signs
   Plug 'tpope/vim-fugitive'
