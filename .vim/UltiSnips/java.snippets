@@ -91,38 +91,3 @@ endsnippet
 snippet opte "Optional.empty()" w
 Optional.empty()
 endsnippet
-
-snippet equals "equals" b
-@Override
-public boolean equals(Object o) {
-	if (this == o) {
-		return true;
-	}
-	if (!(o instanceof `!v expand('%:t:r')`)) {
-		return false;
-	}
-	`!v expand('%:t:r')` that = (`!v expand('%:t:r')`) o;
-	return Objects.equals($1, that.$1);
-}
-endsnippet
-
-snippet equals1 "equals (singleton)" b
-@Override
-public boolean equals(Object o) {
-	return o instanceof `!v expand('%:t:r')`;
-}
-endsnippet
-
-snippet /hash([Cc]ode)?/ "hashCode" rb
-@Override
-public int hashCode() {
-	return Objects.hash($1);
-}
-endsnippet
-
-snippet /hash([Cc]ode)?1/ "hashCode (singleton)" rb
-@Override
-public int hashCode() {
-	return `!v expand('%:t:r')`.class.hashCode();
-}
-endsnippet
