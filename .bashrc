@@ -15,11 +15,11 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 fi
 
-# Rust
-export PATH=~/".cargo/bin:$PATH"
-
 # User bin
 export PATH=~/"bin:$PATH"
+
+# Faster cd
+export CDPATH=:~:~/Documents
 
 # Do not capture ^Q or ^S
 stty start undef
