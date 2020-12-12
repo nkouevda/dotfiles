@@ -255,10 +255,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>gD :Gdiff HEAD^<CR>
   let g:signify_vcs_cmds = {'git': 'git diff --unified=0 --no-color HEAD^ -- %f'}
   Plug 'mhinz/vim-signify'
-  hi! link SignifySignAdd Function
-  hi! link SignifySignChange String
-  hi! link SignifySignDelete Statement
-  hi! link SignifySignChangeDelete Identifier
 
   " Indentation detection
   Plug 'tpope/vim-sleuth'
@@ -289,3 +285,9 @@ try
   colorscheme monokai
 catch /^Vim(colorscheme):/
 endtry
+
+" For `mhinz/vim-signify`; must be after colorscheme, to avoid breaking links
+hi! link SignifySignAdd Function
+hi! link SignifySignChange String
+hi! link SignifySignDelete Statement
+hi! link SignifySignChangeDelete Identifier
