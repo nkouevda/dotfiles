@@ -5,14 +5,11 @@ set -o pipefail
 
 # Homebrew paths
 if [[ "$(uname -s)" == "Darwin" ]]; then
+  # Without g prefix
   export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
   export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-  export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-  export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
-  export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
-  export MANPATH="/usr/local/opt/grep/libexec/gnuman:$MANPATH"
 
   export PATH="/usr/local/opt/openssl/bin:$PATH"
   export PATH="/usr/local/opt/python/libexec/bin:$PATH"
@@ -104,11 +101,6 @@ if ! type tac &>/dev/null; then
   alias tac="tail -r"
 fi
 
-# Use sshrc instead of ssh if available
-if type sshrc &>/dev/null; then
-  alias ssh="sshrc"
-fi
-
 # Synchronize the current history list with the history file
 sync-bash-history() {
   local tmp_histfile
@@ -154,10 +146,8 @@ reset-prompt() {
   # Synchronize history before every prompt
   export PROMPT_COMMAND="sync-bash-history;"
 
-  # Include basename of pwd in iTerm tab name
-  if [[ -n "$ITERM_SESSION_ID" ]]; then
-    export PROMPT_COMMAND+='printf "%b" "\033];$(basename "$PWD")\007";'
-  fi
+  # Set terminal tab title to basename of pwd
+  export PROMPT_COMMAND+='printf "%b" "\033]0;$(basename "$PWD")\007";'
 
   # For `set -x`
   export PS4='+ $0:$LINENO: '
