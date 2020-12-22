@@ -8,7 +8,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash brew ctags dircolors git hg karabiner kitty python readline ripgrep ssh tig tmux vim
+targets := bash brew ctags git hg karabiner kitty python ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -19,13 +19,16 @@ bash:
 	$(INSTALL) "$(root)"/.bash_functions ~
 	$(INSTALL) "$(root)"/.bash_profile ~
 	$(INSTALL) "$(root)"/.bashrc ~
+	$(INSTALL) "$(root)"/.dircolors ~
 	$(INSTALL) "$(root)"/.hushlogin ~
+	$(INSTALL) "$(root)"/.inputrc ~
 
 brew:
 	brew update
 	brew upgrade
 	brew install bash
-	brew install bash-completion2
+	brew install bash-completion@2
+	brew install cabal-install
 	brew install coreutils
 	brew install ctags
 	brew install diffstat
@@ -42,12 +45,14 @@ brew:
 	brew install macvim
 	brew install maven
 	brew install moreutils
-	brew install openssl
+	brew install node
+	brew install openssl@1.1
 	brew install pv
 	brew install python
 	brew install ripgrep
 	brew install rsync
 	brew install s3cmd
+	brew install sbt
 	brew install scala
 	brew install sourcegraph/src-cli/src-cli
 	brew install tig
@@ -57,9 +62,6 @@ brew:
 
 ctags:
 	$(INSTALL) "$(root)"/.ctags ~
-
-dircolors:
-	$(INSTALL) "$(root)"/.dircolors ~
 
 git:
 	$(INSTALL) "$(root)"/.gitconfig ~
@@ -80,9 +82,6 @@ kitty:
 python:
 	$(INSTALL) "$(root)"/.pypirc ~
 	$(INSTALL) "$(root)"/.pystartup ~
-
-readline:
-	$(INSTALL) "$(root)"/.inputrc ~
 
 ripgrep:
 	$(INSTALL) "$(root)"/.ripgreprc ~
