@@ -1,0 +1,53 @@
+snippet /fatal(_warnings)?/ "fatal_warnings" rb
+compiler_option_sets = ["fatal_warnings"],
+endsnippet
+
+snippet /strict(_deps)?/ "strict_deps" rb
+strict_deps = True,
+endsnippet
+
+snippet /java(_library)?/ "java_library" rb
+java_library(
+	sources = ["*.java"],
+	compiler_option_sets = ["fatal_warnings"],
+	strict_deps = True,
+	dependencies = [
+		$1
+	],
+)
+endsnippet
+
+snippet /scala(_library)?/ "scala_library" rb
+scala_library(
+	sources = ["*.scala"],
+	compiler_option_sets = ["fatal_warnings"],
+	strict_deps = True,
+	dependencies = [
+		$1
+	],
+)
+endsnippet
+
+snippet /junit(_tests)?/ "junit_tests" rb
+junit_tests(
+	sources = ["*.${1:java}"],
+	compiler_option_sets = ["fatal_warnings"],
+	strict_deps = True,
+	dependencies = [
+		$2
+	],
+)
+endsnippet
+
+snippet resources "resources" b
+resources(
+	sources = ["*.${1:txt}"],
+)
+endsnippet
+
+snippet scoped "scoped" b
+scoped(
+	$1,
+	scope = "${2:runtime}",
+),
+endsnippet
