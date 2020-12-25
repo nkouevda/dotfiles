@@ -11,8 +11,10 @@
 [diff]
 	algorithm = patience
 	renames = copies
-	noprefix = true
 	wsErrorHighlight = all
+
+[merge]
+	tool = vimdiff
 
 [difftool]
 	prompt = false
@@ -41,7 +43,8 @@
 	branch = cyan
 
 [pretty]
-	compact = "%C(auto)%h %C(blue)%ad %C(magenta)%aN%C(auto)%d %C(reset)%s"
+	compact = "%C(auto)%h %C(blue)%ad %C(magenta)%aN %C(reset)%s"
+	compact-decorate = "%C(auto)%h %C(blue)%ad %C(magenta)%aN%C(auto)%d %C(reset)%s"
 
 [alias]
 	st = status
@@ -73,9 +76,9 @@
 	mb = merge-base
 	mbm = merge-base master
 	lg = log --pretty=compact
-	lg1 = log --pretty=compact -n 1
+	lgd = log --pretty=compact-decorate
 	lgm = "!sh -c 'git log --pretty=compact ^master \"${@:-HEAD}\"' -"
-	lgmb = "!sh -c 'git log --pretty=compact ^\"$(git merge-base master \"${1:-HEAD}\")\"^ \"${@:-HEAD}\"' -"
+	lgdm = "!sh -c 'git log --pretty=compact-decorate ^master \"${@:-HEAD}\"' -"
 	lgs = log --pretty=fuller --stat
 	lgs1 = log --pretty=fuller --stat -n 1
 	lgsm = "!sh -c 'git log --pretty=fuller --stat ^master \"${@:-HEAD}\"' -"
@@ -136,23 +139,18 @@
 	rbs = rebase --skip
 	rba = rebase --abort
 	xdn = clean -xd --dry-run
-	xdnt = clean -xd --dry-run --exclude=tags
+	xdnt = clean -xd --dry-run --exclude=tags --exclude=tags-metadata
 	xdf = clean -xd --force
-	xdft = clean -xd --force --exclude=tags
+	xdft = clean -xd --force --exclude=tags --exclude=tags-metadata
 	rt = remote
 	rtv = remote --verbose
-	fe = fetch
-	fet = fetch --tags
-	fea = fetch --all
-	feat = fetch --all --tags
-	pl = pull
-	plt = pull --tags
-	pla = pull --all
-	plat = pull --all --tags
+	fe = fetch --all --tags
+	pl = pull --all --tags
 	fadd = "!sh -c 'git fzf status-unstaged git add \"$@\" --' -"
 	fco = "!sh -c 'git fzf status-unstaged git checkout \"$@\" --' -"
 	frm = "!sh -c 'git fzf status-unstaged git rm \"$@\" --' -"
 	freset = "!sh -c 'git fzf status git reset \"$@\" --' -"
+	fvim = "!sh -c 'git fzf status-unstaged printf \"%s \" | xargs --open-tty vim \"$@\" --' -"
 	fbr = "!sh -c 'git fzf branch \"$@\"' -"
 	fbrco = "!sh -c 'git fzf branch git checkout \"$@\"' -"
 	fbrd = "!sh -c 'git fzf branch git branch --delete \"$@\"' -"
