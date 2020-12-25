@@ -2,6 +2,11 @@
 	name = Nikita Kouevda
 	email = nkouevda@gmail.com
 
+[core]
+	# This is the same as git's default if LESS is empty (`LESS=FRX less`),
+	# but since LESS is not empty, we need to explicitly set this
+	pager = less --quit-if-one-screen --Raw-control-chars --no-init
+
 [log]
 	date = iso
 
@@ -21,7 +26,7 @@
 	trustExitCode = true
 
 [difftool.pdiff]
-	cmd = "pdiff -- \"$LOCAL\" \"$REMOTE\" | less -R"
+	cmd = "pdiff -- \"$LOCAL\" \"$REMOTE\" | less --Raw-control-chars"
 
 [am]
 	threeWay = true

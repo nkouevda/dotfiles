@@ -43,6 +43,9 @@ export HISTCONTROL="ignoreboth:erasedups"
 # Save more history
 export HISTSIZE=1000
 
+# Case-insensitive search in less, unless the pattern contains uppercase chars
+export LESS="--ignore-case"
+
 # Do not save history for less
 export LESSHISTFILE="/dev/null"
 
