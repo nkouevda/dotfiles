@@ -12,7 +12,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
   export PATH="/usr/local/opt/openssl/bin:$PATH"
-  export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+  export PATH="/usr/local/opt/python@3.9/libexec/bin:$PATH"
 fi
 
 # User bin
