@@ -2,6 +2,8 @@
 
 My dotfiles.
 
+See also [nkouevda/bin](https://github.com/nkouevda/bin).
+
 ## Installation
 
 To `cp` everything to `~`:
