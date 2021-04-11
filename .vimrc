@@ -223,8 +223,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   call plug#begin()
 
   " Colors
-  let g:monokai_256_cterm = 0
-  Plug 'nkouevda/vim-monokai'
+  Plug 'nkouevda/vim-material'
 
   " Various useful commands and functions
   Plug 'wellle/targets.vim'
@@ -306,7 +305,7 @@ syntax enable
 
 " Set color scheme
 try
-  colorscheme monokai
+  colorscheme material
 catch /^Vim(colorscheme):/
 endtry
 
