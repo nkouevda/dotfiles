@@ -9,24 +9,31 @@
 
 [log]
 	date = iso
+	decorate = false
+
+[tag]
+	sort = version:refname
 
 [grep]
 	lineNumber = true
+	patternType = extended
 
 [diff]
 	algorithm = patience
+	colorMoved = true
 	renames = copies
 	wsErrorHighlight = all
-
-[merge]
-	tool = vimdiff
 
 [difftool]
 	prompt = false
 	trustExitCode = true
 
-[difftool.pdiff]
-	cmd = "pdiff -- \"$LOCAL\" \"$REMOTE\" | less --Raw-control-chars"
+[difftool "pdiff"]
+	cmd = "pdiff --background --line-numbers -- \"$LOCAL\" \"$REMOTE\" | less --Raw-control-chars"
+
+[merge]
+	conflictStyle = diff3
+	tool = vimdiff
 
 [am]
 	threeWay = true
@@ -41,10 +48,12 @@
 	default = upstream
 
 [advice]
-	statusHints = false
+	addEmptyPathspec = false
 	detachedHead = false
+	statusHints = false
+	waitingForEditor = false
 
-[color.status]
+[color "status"]
 	branch = cyan
 
 [pretty]
@@ -80,23 +89,25 @@
 	sba = show-branch --all
 	mb = merge-base
 	mbm = merge-base master
+	# Like `--pretty=compact-decorate`, but `%cd` instead of `%ad`
+	rlg = reflog --pretty='%C(auto)%h %C(blue)%cd %C(magenta)%aN%C(auto)%d %C(reset)%s'
 	lg = log --pretty=compact
 	lgd = log --pretty=compact-decorate
 	lgm = "!sh -c 'git log --pretty=compact ^master \"${@:-HEAD}\"' -"
 	lgdm = "!sh -c 'git log --pretty=compact-decorate ^master \"${@:-HEAD}\"' -"
-	lgs = log --pretty=fuller --stat
-	lgs1 = log --pretty=fuller --stat -n 1
-	lgsm = "!sh -c 'git log --pretty=fuller --stat ^master \"${@:-HEAD}\"' -"
+	lgs = log --pretty=fuller --compact-summary
+	lgs1 = log --pretty=fuller --compact-summary -n 1
+	lgsm = "!sh -c 'git log --pretty=fuller --compact-summary ^master \"${@:-HEAD}\"' -"
 	df = diff
 	dfc = diff --cached
 	df1 = "!sh -c 'git diff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
 	df1n = "!sh -c 'git diff --name-only \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
 	dfm = "!sh -c 'git diff \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
 	dfmn = "!sh -c 'git diff --name-only \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
-	dfs = diff --stat
-	dfsc = diff --stat --cached
-	dfs1 = "!sh -c 'git diff --stat \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
-	dfsm = "!sh -c 'git diff --stat \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
+	dfs = diff --compact-summary
+	dfsc = diff --compact-summary --cached
+	dfs1 = "!sh -c 'git diff --compact-summary \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
+	dfsm = "!sh -c 'git diff --compact-summary \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
 	dfp = difftool --tool=pdiff
 	dfpc = difftool --tool=pdiff --cached
 	dfp1 = "!sh -c 'git difftool --tool=pdiff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
