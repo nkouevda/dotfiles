@@ -40,17 +40,24 @@ brew:
 	brew install gnu-sed
 	brew install go
 	brew install grep
+	brew install gron
 	brew install jq
 	brew install less
 	brew install macvim
 	brew install maven
 	brew install moreutils
+	brew install nkouevda/nkouevda/capital-gains
+	brew install nkouevda/nkouevda/estimated-taxes
+	brew install nkouevda/nkouevda/pdiff
+	brew install nkouevda/nkouevda/spongecase
 	brew install node
 	brew install openssl@1.1
+	brew install pipgrip
 	brew install pv
 	brew install python
 	brew install ripgrep
 	brew install rsync
+	brew install ruby
 	brew install s3cmd
 	brew install sbt
 	brew install scala
