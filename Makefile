@@ -26,45 +26,45 @@ bash:
 brew:
 	brew update
 	brew upgrade
-	brew install bash
-	brew install bash-completion@2
-	brew install cabal-install
-	brew install coreutils
-	brew install ctags
-	brew install diffstat
-	brew install diffutils
-	brew install findutils
-	brew install fzf
-	brew install gawk
-	brew install git
-	brew install gnu-sed
-	brew install go
-	brew install grep
-	brew install gron
-	brew install jq
-	brew install less
-	brew install macvim
-	brew install maven
-	brew install moreutils
-	brew install nkouevda/nkouevda/capital-gains
-	brew install nkouevda/nkouevda/estimated-taxes
-	brew install nkouevda/nkouevda/pdiff
-	brew install nkouevda/nkouevda/spongecase
-	brew install node
-	brew install openssl@1.1
-	brew install pipgrip
-	brew install pv
-	brew install python
-	brew install ripgrep
-	brew install rsync
-	brew install ruby
-	brew install s3cmd
-	brew install sbt
-	brew install scala
-	brew install sourcegraph/src-cli/src-cli
-	brew install tig
-	brew install tree
-	brew install wget
+	brew install \
+	  bash \
+	  bash-completion@2 \
+	  cabal-install \
+	  coreutils \
+	  ctags \
+	  diffstat \
+	  diffutils \
+	  findutils \
+	  fzf \
+	  gawk \
+	  git \
+	  gnu-sed \
+	  go \
+	  grep \
+	  gron \
+	  jq \
+	  less \
+	  macvim \
+	  maven \
+	  moreutils \
+	  nkouevda/nkouevda/capital-gains \
+	  nkouevda/nkouevda/estimated-taxes \
+	  nkouevda/nkouevda/pdiff \
+	  nkouevda/nkouevda/spongecase \
+	  node \
+	  openssl@1.1 \
+	  pipgrip \
+	  pv \
+	  python \
+	  ripgrep \
+	  rsync \
+	  ruby \
+	  sbt \
+	  scala \
+	  sourcegraph/src-cli/src-cli \
+	  tig \
+	  tree \
+	  wget
 	brew cleanup --prune=0 -s
 
 ctags:
