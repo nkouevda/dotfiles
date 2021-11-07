@@ -32,7 +32,7 @@ epoch() {
 # Search dictionary
 dict() {
   if (( ! $# )); then
-    printf "usage: %s <grep-args>\n" "$FUNCNAME" >&2
+    printf "usage: %s <grep-args>\n" "${FUNCNAME[0]}" >&2
     return 1
   fi
 
@@ -42,7 +42,7 @@ dict() {
 # Print all versions of the given program
 versions() {
   if (( $# != 1 )); then
-    printf "usage: %s <name>\n" "$FUNCNAME" >&2
+    printf "usage: %s <name>\n" "${FUNCNAME[0]}" >&2
     return 1
   fi
 
@@ -92,12 +92,12 @@ fix-unusual-perms() {
 
 # Remove compiled python files under the given dirs; default current dir
 rmpyc() {
-  find -- "${@:-.}" \( -type d -name __pycache__ -o -type f -name '*.py[co]' \) -delete
+  find -- "${@:-.}" \( -type d -name __pycache__ -o -type f -name '*.py[co]' \) -print -delete
 }
 
 # Remove .DS_Store files under the given dirs; default current dir
 rmds() {
-  find -- "${@:-.}" -type f -name '.DS_Store' -delete
+  find -- "${@:-.}" -type f -name '.DS_Store' -print -delete
 }
 
 # Fuzzy kill
@@ -111,7 +111,7 @@ fkill() {
 # Activate virtualenv, first prompting to create if necessary
 venv() {
   if (( $# != 1 )); then
-    printf "usage: %s <name>\n" "$FUNCNAME" >&2
+    printf "usage: %s <name>\n" "${FUNCNAME[0]}" >&2
     return 1
   fi
 
