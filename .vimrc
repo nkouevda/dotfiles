@@ -293,8 +293,8 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " Syntax highlighting
   Plug 'Valloric/MatchTagAlways'
+  Plug 'bazelbuild/vim-ft-bzl'
   Plug 'jrozner/vim-antlr'
-  Plug 'pantsbuild/vim-pants'
   Plug 'nkouevda/vim-thrift-syntax'
 
   call plug#end()
