@@ -48,18 +48,15 @@ set laststatus=2
 
 " File name; flags (modified, read-only, help, preview); filetype
 set statusline=%t%m%r%h%w\ %y%{&ft!=''?'\ ':''}
-
 " File format; file encoding; noeol; truncate right; switch to right alignment
 set statusline+=[%{&ff},%{&fenc!=''?&fenc:&enc}]%{&eol?'':'\ [noeol]'}\ %<%=
-
-" Character under cursor in decimal and hexadecimal
-set statusline+=[%03b,0x%02B]
-
-" Line; total lines; column; virtual column; display width
-set statusline+=\ [%l/%L,%c%V/%{strdisplaywidth(getline('.'))}]
-
-" Percent of file (line / total lines) and percent of file (displayed window)
-set statusline+=\ [%p%%,%P]
+" Character under cursor in hexadecimal
+set statusline+=[0x%02B]
+" `[line/total]`
+set statusline+=\ [%l/%L]
+" `[col/width]` or `[col/width(virtcol/virtwidth)]`
+set statusline+=\ [%c/%{strwidth(getline('.'))}
+set statusline+=%{strwidth(getline('.'))!=strdisplaywidth(getline('.'))?'('.virtcol('.').'/'.strdisplaywidth(getline('.')).')':''}]
 
 " Show line numbers
 set number
@@ -92,6 +89,9 @@ endif
 " Default to `#%s` comments, not `/*%s*/`
 set commentstring=#%s
 
+" Add `tab:>_` and `trail:<`
+set listchars=eol:$,tab:>_,trail:<
+
 " Always allow backspacing
 set backspace=indent,eol,start
 
@@ -107,11 +107,24 @@ set nostartofline
 " Search incrementally; highlight matches; ignore case iff all lowercase
 set incsearch hlsearch ignorecase smartcase
 
+" Colors in :terminal
+set termguicolors
+
 " Do not time out on mappings; time out immediately on key codes
 set notimeout ttimeout ttimeoutlen=0
 
 " Leader
 let mapleader = "\<Space>"
+
+" Swap {j,k} with g{j,k}
+nnoremap <expr> j v:count ? 'j' : 'gj'
+xnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
+xnoremap <expr> k v:count ? 'k' : 'gk'
+nnoremap gj j
+xnoremap gj j
+nnoremap gk k
+xnoremap gk k
 
 " Prefer jumping directly to marks
 nnoremap ' `
@@ -135,12 +148,15 @@ xnoremap > >gv
 " Write buffer
 nnoremap <Leader><CR> :write<CR>
 
+" Re-edit current file, to discard unsaved changes
+nnoremap <Leader>e :edit!<CR>
+
 " "ZZ all" and quit vim with a non-zero exit code, respectively
 nnoremap ZA :xall<CR>
 nnoremap ZC :cquit<CR>
 
-" Repeat the last change [count] times instead of replacing the original count
-nnoremap <silent> . :<C-u>execute 'norm! ' . repeat('.', v:count1)<CR>
+" Redraw the screen, in case something went wrong
+nnoremap <Leader>r :redraw!<CR>
 
 " Create and delete buffers
 nnoremap <Leader>s :new<CR>
@@ -164,14 +180,16 @@ nnoremap g<C-\> <C-w>g<C-]>
 " Remove all trailing whitespace
 nnoremap <Leader>w :keeppatterns %s/\s\+$//<CR>
 
-" Match all characters past column 79 or 80 or 99 or 100
-nmap <Leader>7 /\%80c.\+<CR>
+" Match all characters past column 72 or 80 or 100
+nmap <Leader>7 /\%73c.\+<CR>
 nmap <Leader>8 /\%81c.\+<CR>
-nmap <Leader>9 /\%100c.\+<CR>
-nmap <Leader>0 /\%101c.\+<CR>
+nmap <Leader>1 /\%101c.\+<CR>
 
-" Unset textwidth
-nnoremap <Leader>tw :setlocal textwidth=0<CR>
+" Set textwidth (h for hard wrap) to 72 or 80 or 100 or none
+nnoremap yoh7 :setlocal textwidth=72<CR>
+nnoremap yoh8 :setlocal textwidth=80<CR>
+nnoremap yoh1 :setlocal textwidth=100<CR>
+nnoremap yoh0 :setlocal textwidth=0<CR>
 
 " `git root`
 function! Groot()
@@ -203,6 +221,7 @@ if has('autocmd')
     autocmd FileType c setlocal commentstring=//%s
     autocmd FileType gitconfig setlocal commentstring=#%s
     autocmd FileType markdown setlocal commentstring=<!--%s-->
+    autocmd FileType sbt setlocal commentstring=//%s
     autocmd FileType sql setlocal commentstring=--%s
 
     " Style
@@ -224,6 +243,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " Colors
   Plug 'nkouevda/vim-material'
+  Plug 'mechatroner/rainbow_csv'
 
   " Various useful commands and functions
   Plug 'wellle/targets.vim'
@@ -252,7 +272,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'junegunn/fzf.vim'
   nnoremap <Leader>gs :GFiles?<CR>
   nnoremap <Leader>b :Buffers<CR>
-  nnoremap <Leader>t :GFiles '*.thrift'<CR>
+  nnoremap <Leader>gt :GFiles '*.thrift'<CR>
 
   function! s:GFilesWithFallback(use_buf_dir)
     let l:args = {
@@ -261,7 +281,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
       \ }
 
     " `git ls-files .` if in a repo, else fall back to fzf default
-    if !empty(Groot())
+    if !a:use_buf_dir && !empty(Groot())
       let l:args['source'] = 'git ls-files'
     endif
 
@@ -273,9 +293,10 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " Git commands and signs
   Plug 'tpope/vim-fugitive'
-  nnoremap <Leader>gb :Gblame<CR>
-  nnoremap <Leader>gd :Gdiff<CR>
-  nnoremap <Leader>gD :Gdiff HEAD^<CR>
+  nnoremap <Leader>gb :Git blame<CR>
+  nnoremap <Leader>1gb :,Git blame<CR>
+  nnoremap <Leader>gd :Git diff %<CR>
+  nnoremap <Leader>gD :Git diff HEAD^ %<CR>
   let g:signify_vcs_cmds = {'git': 'git diff --unified=0 --no-color HEAD^ -- %f'}
   Plug 'mhinz/vim-signify'
 
