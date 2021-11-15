@@ -8,7 +8,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash brew ctags git hg karabiner kitty python ripgrep ssh tig tmux vim
+targets := bash brew ctags git karabiner kitty python ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -74,9 +74,6 @@ git:
 	$(INSTALL) "$(root)"/.gitconfig ~
 	mkdir -p ~/.config/git
 	$(INSTALL) "$(root)"/.config/git/ignore ~/.config/git/ignore
-
-hg:
-	$(INSTALL) "$(root)"/.hgrc ~
 
 karabiner:
 	mkdir -p ~/.config/karabiner

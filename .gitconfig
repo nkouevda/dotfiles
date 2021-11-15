@@ -1,7 +1,3 @@
-[user]
-	name = Nikita Kouevda
-	email = nkouevda@gmail.com
-
 [core]
 	# This is the same as git's default if LESS is empty (`LESS=FRX less`),
 	# but since LESS is not empty, we need to explicitly set this
@@ -171,3 +167,6 @@
 	fbrco = "!sh -c 'git fzf branch git checkout \"$@\"' -"
 	fbrd = "!sh -c 'git fzf branch git branch --delete \"$@\"' -"
 	trace = "!sh -c 'GIT_TRACE=1 git \"$@\"' -"
+
+[include]
+	path = ~/.gitconfig.local
