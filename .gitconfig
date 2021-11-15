@@ -29,7 +29,7 @@
 	trustExitCode = true
 
 [difftool "pdiff"]
-	cmd = "pdiff --background --line-numbers -- \"$LOCAL\" \"$REMOTE\" | less --Raw-control-chars"
+	cmd = "pdiff -- \"$LOCAL\" \"$REMOTE\" | less --Raw-control-chars"
 
 [merge]
 	conflictStyle = diff3
@@ -166,7 +166,7 @@
 	fco = "!sh -c 'git fzf status-unstaged git checkout \"$@\" --' -"
 	frm = "!sh -c 'git fzf status-unstaged git rm \"$@\" --' -"
 	freset = "!sh -c 'git fzf status git reset \"$@\" --' -"
-	fvim = "!sh -c 'git fzf status-unstaged printf \"%s \" | xargs --open-tty vim \"$@\" --' -"
+	fvim = "!sh -c 'git fzf status-unstaged printf \"%s \" | xargs --no-run-if-empty --open-tty vim \"$@\" --' -"
 	fbr = "!sh -c 'git fzf branch \"$@\"' -"
 	fbrco = "!sh -c 'git fzf branch git checkout \"$@\"' -"
 	fbrd = "!sh -c 'git fzf branch git branch --delete \"$@\"' -"

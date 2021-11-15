@@ -161,7 +161,7 @@ reset-prompt
 [[ -r /usr/local/share/bash-completion/bash_completion ]] && source /usr/local/share/bash-completion/bash_completion
 [[ -r ~/.bash_completion ]] && source ~/.bash_completion
 [[ -r ~/.bash_functions ]] && source ~/.bash_functions
-[[ -r ~/.bash_local ]] && source ~/.bash_local
+[[ -r ~/.bashrc.local ]] && source ~/.bashrc.local
 
 # Guarantee exit status 0
 return 0

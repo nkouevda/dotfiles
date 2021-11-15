@@ -57,7 +57,7 @@ versions() {
 
 # Pipe list of files as args to vim
 xvim() {
-  xargs --open-tty vim "$@"
+  xargs --no-run-if-empty --open-tty vim "$@"
 }
 
 # Command line pastebin
