@@ -82,6 +82,8 @@ karabiner:
 kitty:
 	mkdir -p ~/.config/kitty
 	$(INSTALL) "$(root)"/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
+	mkdir -p ~/.config/kitty/themes
+	$(INSTALL) "$(root)"/.config/kitty/themes/material.conf ~/.config/kitty/themes/material.conf
 
 python:
 	$(INSTALL) "$(root)"/.pypirc ~
