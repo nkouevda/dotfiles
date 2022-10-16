@@ -39,12 +39,10 @@ brew:
 	  gawk \
 	  git \
 	  gnu-sed \
-	  go \
 	  grep \
 	  gron \
 	  jq \
 	  less \
-	  macvim \
 	  maven \
 	  moreutils \
 	  nkouevda/nkouevda/capital-gains \
@@ -52,7 +50,6 @@ brew:
 	  nkouevda/nkouevda/pdiff \
 	  nkouevda/nkouevda/spongecase \
 	  node \
-	  openssl@1.1 \
 	  pipgrip \
 	  pv \
 	  python \
@@ -64,8 +61,9 @@ brew:
 	  sourcegraph/src-cli/src-cli \
 	  tig \
 	  tree \
+	  vim \
 	  wget
-	brew cleanup --prune=0 -s
+	brew cleanup --prune=all
 
 ctags:
 	$(INSTALL) "$(root)"/.ctags ~
