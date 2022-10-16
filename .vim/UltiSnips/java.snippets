@@ -60,26 +60,6 @@ snippet /print(ln)?/ "System.out.println()" rb
 System.out.println($1);
 endsnippet
 
-snippet logger "logger" b
-private static final Logger logger = Logger.get(`!v expand('%:t:r')`.class);
-endsnippet
-
-snippet debug "logger.debug()" b
-logger.debug($1);
-endsnippet
-
-snippet info "logger.info()" b
-logger.info($1);
-endsnippet
-
-snippet warning "logger.warning()" b
-logger.warning($1);
-endsnippet
-
-snippet error "logger.error()" b
-logger.error($1);
-endsnippet
-
 snippet opt "Optional.of()" w
 Optional.of($1)
 endsnippet
@@ -90,4 +70,16 @@ endsnippet
 
 snippet opte "Optional.empty()" w
 Optional.empty()
+endsnippet
+
+snippet ctl ".collect(Collectors.toList())" w
+.collect(Collectors.toList())
+endsnippet
+
+snippet cts ".collect(Collectors.toSet())" w
+.collect(Collectors.toSet())
+endsnippet
+
+snippet ctm ".collect(Collectors.toMap())" w
+.collect(Collectors.toMap($1, $2))
 endsnippet

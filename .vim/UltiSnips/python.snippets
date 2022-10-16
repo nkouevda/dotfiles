@@ -131,6 +131,10 @@ snippet /(?<!\w)re\.?/ "re" r
 re.${1:search}(r'${2:pattern}', ${3:string})
 endsnippet
 
+snippet printf "print(f'{=}')" w
+print(f'{$1=}')
+endsnippet
+
 snippet /(import )?pdb/ "pdb" rb
 import pdb; pdb.set_trace()
 endsnippet
