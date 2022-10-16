@@ -12,7 +12,8 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
 
   export PATH="/usr/local/opt/openssl/bin:$PATH"
-  export PATH="/usr/local/opt/python@3.9/libexec/bin:$PATH"
+  export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+  export PATH="/usr/local/opt/ruby/bin:$PATH"
 fi
 
 # User bin
@@ -66,7 +67,7 @@ export EDITOR="vim"
 
 # Default fzf options
 export FZF_DEFAULT_OPTS="--no-256"
-export FZF_CTRL_T_COMMAND="rg --files --hidden --glob '!.git'"
+export FZF_CTRL_T_COMMAND="git ls-files 2>/dev/null || rg --files --hidden --glob '!.git'"
 
 # Key bindings for fzf
 [[ -r ~/.fzf.bash ]] && source ~/.fzf.bash
@@ -78,7 +79,7 @@ export FZF_CTRL_T_COMMAND="rg --files --hidden --glob '!.git'"
 [[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
 
 # Generate and export `LS_COLORS`
-[[ -r ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
+[[ -r ~/.dircolors ]] && source <(dircolors ~/.dircolors)
 
 # Color ls output
 if ls --color=auto &>/dev/null; then
@@ -92,9 +93,8 @@ fi
 # Useful ls and tree variants
 alias ll="ls -hl"
 alias la="ll -A"
-alias lt="tree -CF"
-alias lta="lt -a"
-alias ltg="lta -I .git"
+alias lt="tree -a -F -C"
+alias ltg="lt -I .git"
 
 # Default grep options
 alias grep="grep --ignore-case --color=auto"
@@ -104,20 +104,19 @@ if ! type tac &>/dev/null; then
   alias tac="tail -r"
 fi
 
+# For `sync-bash-history`
+export tmp_histfile="/tmp/.bash_history.$$"
+
 # Synchronize the current history list with the history file
 sync-bash-history() {
-  local tmp_histfile
-
   # Append the history list to the history file
   history -a
-
-  tmp_histfile="$(mktemp "/tmp/.bash_history.$$.XXXXXX")"
 
   # Remove trailing whitespace; keep only the most recent copies of duplicates
   tac "$HISTFILE" \
     | awk '{ sub(/[ \t]+$/, "") } !uniq[$0]++' \
-    | tac > "$tmp_histfile"
-  mv "$tmp_histfile" "$HISTFILE"
+    > "$tmp_histfile"
+  tac "$tmp_histfile" > "$HISTFILE"
 
   # Clear the history list and read the history file
   history -c

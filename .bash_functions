@@ -84,10 +84,10 @@ fix-unusual-perms() {
   # TODO(nkouevda): Ignore files in git worktrees, not just in .git dirs
   find -- "${@:-.}" \
     -name .git -prune \
-    -o -type d -not -perm 755 -exec chmod 755 {} +
+    -o -type d -not -perm 755 -print -exec chmod 755 {} +
   find -- "${@:-.}" \
     -name .git -prune \
-    -o -type f -not -perm 644 -exec chmod 644 {} +
+    -o -type f -not -perm 644 -print -exec chmod 644 {} +
 }
 
 # Remove compiled python files under the given dirs; default current dir
@@ -137,7 +137,7 @@ venv() {
 update-brew() {
   brew update
   brew upgrade
-  brew cleanup --prune=0 -s
+  brew cleanup --prune=all
 }
 
 # Update vim plugins
