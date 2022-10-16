@@ -27,3 +27,9 @@
 --regex-thrift=/^[ \t]*service[ \t]+([A-Za-z0-9_]+)/\1/v,services/
 --regex-thrift=/^[ \t]*[A-Za-z0-9_][A-Za-z0-9_<>., \t]*[ \t]+([A-Za-z0-9_]+)[ \t]*\(/\1/f,functions/
 --regex-thrift=/^[ \t]*[0-9]+:[ \t]*((required|optional)[ \t]+)?[A-Za-z0-9_<>., \t]+[ \t]+([A-Za-z0-9_]+)/\3/m,members/
+
+--java-kinds=-egp
+--scala-kinds=-pvV
+--thrift-kinds=-cEmt
+
+--languages=Java,Scala,Thrift
