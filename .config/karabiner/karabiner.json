@@ -191,7 +191,7 @@
                         ]
                     },
                     {
-                        "description": "Left Option + P -> Clear clipboard",
+                        "description": "left_option + p -> Clear clipboard",
                         "manipulators": [
                             {
                                 "from": {
@@ -212,11 +212,11 @@
                         ]
                     },
                     {
-                        "description": "Left Option + Y -> Copy date to clipboard",
+                        "description": "left_option + d -> Copy date to clipboard",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "y",
+                                    "key_code": "d",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_option"
@@ -233,7 +233,7 @@
                         ]
                     },
                     {
-                        "description": "Left Option + <letter> -> Open application",
+                        "description": "left_option + <letter> -> Open application",
                         "manipulators": [
                             {
                                 "from": {
@@ -295,22 +295,6 @@
                                 "to": [
                                     {
                                         "shell_command": "open /Applications/Slack.app"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "v",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "open /usr/local/Cellar/macvim/*/MacVim.app"
                                     }
                                 ],
                                 "type": "basic"
