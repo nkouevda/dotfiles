@@ -97,9 +97,11 @@
 	df = diff
 	dfc = diff --cached
 	df1 = "!sh -c 'git diff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
-	df1n = "!sh -c 'git diff --name-only \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
 	dfm = "!sh -c 'git diff \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
-	dfmn = "!sh -c 'git diff --name-only \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
+	dfn = diff --name-only
+	dfnc = diff --name-only --cached
+	dfn1 = "!sh -c 'git diff --name-only \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
+	dfnm = "!sh -c 'git diff --name-only \"$(git merge-base master \"${1:-HEAD}\")\" \"$@\"' -"
 	dfs = diff --compact-summary
 	dfsc = diff --compact-summary --cached
 	dfs1 = "!sh -c 'git diff --compact-summary \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
