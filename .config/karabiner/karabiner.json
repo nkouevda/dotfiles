@@ -342,7 +342,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/System/Applications/System Preferences.app'"
+                                        "shell_command": "open '/System/Applications/System Settings.app'"
                                     }
                                 ],
                                 "type": "basic"
