@@ -85,7 +85,6 @@ kitty:
 
 python:
 	$(INSTALL) "$(root)"/.pypirc ~
-	$(INSTALL) "$(root)"/.pystartup ~
 
 ripgrep:
 	$(INSTALL) "$(root)"/.ripgreprc ~

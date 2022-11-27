@@ -75,9 +75,6 @@ export FZF_CTRL_T_COMMAND="git ls-files 2>/dev/null || rg --files --hidden --glo
 # Default rg options
 [[ -r ~/.ripgreprc ]] && export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
-# Python startup file
-[[ -r ~/.pystartup ]] && export PYTHONSTARTUP=~/.pystartup
-
 # Generate and export `LS_COLORS`
 [[ -r ~/.dircolors ]] && source <(dircolors ~/.dircolors)
 
