@@ -82,7 +82,6 @@ bind generic y @sh -c 'printf "%s" "%(commit)" | pbcopy'
 bind generic 7 @sh -c 'printf "%.7s" "%(commit)" | pbcopy'
 bind generic w @git browse "%(commit)"
 bind generic x !sh -c 'git %(prompt git )'
-bind generic E @mvim --remote "%(file)"
 
 # Main bindings - option toggling
 bind main G move-last-line
@@ -95,7 +94,7 @@ bind main R ?git rebase master "%(branch)"
 bind main C none
 bind main D ?git branch -D "%(branch)"
 bind main O ?git checkout "%(commit)"
-bind main p !git dfpo "%(commit)"
+bind main p !git dfp1 "%(commit)"
 bind main F ?git fetch --tags
 bind main T !git tag "%(prompt git tag )" "%(commit)"
 
