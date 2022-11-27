@@ -46,6 +46,7 @@
 [advice]
 	addEmptyPathspec = false
 	detachedHead = false
+	skippedCherryPicks = false
 	statusHints = false
 	waitingForEditor = false
 
