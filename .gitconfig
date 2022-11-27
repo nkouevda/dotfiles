@@ -144,6 +144,7 @@
 	rbm = rebase master
 	rbi = rebase --interactive
 	rbim = rebase --interactive master
+	rbimbm = "!sh -c 'git rebase --interactive \"$(git merge-base master HEAD)\"' -"
 	rbir = rebase --interactive --root
 	rbo = rebase --onto
 	rbo1 = "!sh -c 'git rebase --onto \"${1:?unset}\" \"${2:?unset}\"^ \"${@:2}\"' -"
