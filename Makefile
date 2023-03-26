@@ -8,7 +8,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash brew ctags git karabiner kitty python readline ripgrep ssh tig tmux vim
+targets := bash brew ctags git karabiner kitty readline ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -81,9 +81,6 @@ kitty:
 	$(INSTALL) "$(root)"/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
 	mkdir -p ~/.config/kitty/themes
 	$(INSTALL) "$(root)"/.config/kitty/themes/material.conf ~/.config/kitty/themes/material.conf
-
-python:
-	$(INSTALL) "$(root)"/.pypirc ~
 
 readline:
 	mkdir -p ~/.config/readline
