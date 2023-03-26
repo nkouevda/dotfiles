@@ -7,6 +7,8 @@ set -o pipefail
 stty start undef
 stty stop undef
 
+export INPUTRC=~/.config/readline/inputrc
+
 # Enable `**` expansion
 shopt -s globstar
 
@@ -22,7 +24,6 @@ export HISTCONTROL="ignoreboth:erasedups"
 # Save more history
 export HISTSIZE=1000
 
-# Homebrew config
 export HOMEBREW_AUTOREMOVE=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_ENV_HINTS=1

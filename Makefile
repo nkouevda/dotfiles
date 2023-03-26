@@ -8,7 +8,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash brew ctags git karabiner kitty python ripgrep ssh tig tmux vim
+targets := bash brew ctags git karabiner kitty python readline ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -21,7 +21,6 @@ bash:
 	$(INSTALL) "$(root)"/.bashrc ~
 	$(INSTALL) "$(root)"/.dircolors ~
 	$(INSTALL) "$(root)"/.hushlogin ~
-	$(INSTALL) "$(root)"/.inputrc ~
 
 brew:
 	brew update
@@ -85,6 +84,10 @@ kitty:
 
 python:
 	$(INSTALL) "$(root)"/.pypirc ~
+
+readline:
+	mkdir -p ~/.config/readline
+	$(INSTALL) "$(root)"/.config/readline/inputrc ~/.config/readline/inputrc
 
 ripgrep:
 	mkdir -p ~/.config/ripgrep
