@@ -69,7 +69,7 @@ alias ltg="lt -I .git"
 # Default grep options
 alias grep="grep --ignore-case --color=auto"
 # Default rg options
-[[ -r ~/.ripgreprc ]] && export RIPGREP_CONFIG_PATH=~/.ripgreprc
+[[ -r ~/.config/ripgrep/config ]] && export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 
 # Default fzf options
 export FZF_DEFAULT_OPTS="--no-256"

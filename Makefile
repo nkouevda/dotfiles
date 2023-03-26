@@ -69,8 +69,8 @@ ctags:
 	$(INSTALL) "$(root)"/.ctags ~
 
 git:
-	$(INSTALL) "$(root)"/.gitconfig ~
 	mkdir -p ~/.config/git
+	$(INSTALL) "$(root)"/.config/git/config ~/.config/git/config
 	$(INSTALL) "$(root)"/.config/git/ignore ~/.config/git/ignore
 
 karabiner:
@@ -87,17 +87,20 @@ python:
 	$(INSTALL) "$(root)"/.pypirc ~
 
 ripgrep:
-	$(INSTALL) "$(root)"/.ripgreprc ~
+	mkdir -p ~/.config/ripgrep
+	$(INSTALL) "$(root)"/.config/ripgrep/config ~/.config/ripgrep/config
 
 ssh:
 	mkdir -p ~/.ssh
 	$(INSTALL) "$(root)"/.ssh/config ~/.ssh/config
 
 tig:
-	$(INSTALL) "$(root)"/.tigrc ~
+	mkdir -p ~/.config/tig
+	$(INSTALL) "$(root)"/.config/tig/config ~/.config/tig/config
 
 tmux:
-	$(INSTALL) "$(root)"/.tmux.conf ~
+	mkdir -p ~/.config/tmux
+	$(INSTALL) "$(root)"/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf
 
 vim:
 	$(INSTALL) "$(root)"/.gvimrc ~

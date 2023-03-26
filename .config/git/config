@@ -173,4 +173,4 @@
 	trace = "!sh -c 'GIT_TRACE=1 git \"$@\"' -"
 
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.config/git/config.local
