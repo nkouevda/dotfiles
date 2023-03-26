@@ -103,8 +103,6 @@ tmux:
 	$(INSTALL) "$(root)"/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf
 
 vim:
-	$(INSTALL) "$(root)"/.gvimrc ~
-	$(INSTALL) "$(root)"/.vimrc ~
 	cd "$(root)" \
 	  && find .vim -type d -exec mkdir -p ~/{} \; \
 	  && find .vim -type f -exec $(INSTALL) "$(root)"/{} ~/{} \;
