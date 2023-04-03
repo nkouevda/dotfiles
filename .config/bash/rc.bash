@@ -21,7 +21,9 @@ shopt -s histverify histreedit
 shopt -s histappend
 # Ignore commands that start with whitespace; ignore and erase duplicates
 export HISTCONTROL="ignoreboth:erasedups"
+export HISTFILE=~/.local/state/bash/history
 # Save more history
+export HISTFILESIZE=1000
 export HISTSIZE=1000
 
 export HOMEBREW_AUTOREMOVE=1
