@@ -1,1 +1,1 @@
-[[ -r ~/.config/bash/rc.sh ]] && source ~/.config/bash/rc.sh
+[[ -r ~/.config/bash/rc.bash ]] && source ~/.config/bash/rc.bash

@@ -152,9 +152,9 @@ reset-prompt() {
 reset-prompt
 
 [[ -r /usr/local/share/bash-completion/bash_completion ]] && source /usr/local/share/bash-completion/bash_completion
-[[ -r ~/.config/bash/completion.sh ]] && source ~/.config/bash/completion.sh
-[[ -r ~/.config/bash/functions.sh ]] && source ~/.config/bash/functions.sh
-[[ -r ~/.config/bash/local.sh ]] && source ~/.config/bash/local.sh
+[[ -r ~/.config/bash/completion.bash ]] && source ~/.config/bash/completion.bash
+[[ -r ~/.config/bash/functions.bash ]] && source ~/.config/bash/functions.bash
+[[ -r ~/.config/bash/local.bash ]] && source ~/.config/bash/local.bash
 
 # Guarantee exit status 0
 return 0
