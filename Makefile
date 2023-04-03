@@ -17,7 +17,7 @@ all: $(targets)
 bash:
 	$(INSTALL) "$(root)"/.bash_profile ~
 	$(INSTALL) "$(root)"/.bashrc ~
-	$(INSTALL) "$(root)"/.hushlogin ~
+	touch ~/.hushlogin 
 	cd "$(root)" \
 	  && find .config/bash -type d -exec mkdir -p ~/{} \; \
 	  && find .config/bash -type f -exec $(INSTALL) "$(root)"/{} ~/{} \;
