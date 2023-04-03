@@ -16,4 +16,4 @@ To create symbolic links instead of copying, use `ln=1`:
 
 To install selectively, see `targets` in [`Makefile`](Makefile). For example:
 
-    make ln=1 bash ctags git ripgrep ssh tig vim
+    make ln=1 bash ctags dircolors fzf git karabiner kitty readline ripgrep ssh tig vim
