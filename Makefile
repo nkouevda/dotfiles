@@ -8,19 +8,19 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash brew ctags git karabiner kitty readline ripgrep ssh tig tmux vim
+targets := bash brew ctags dircolors fzf git karabiner kitty readline ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
 all: $(targets)
 
 bash:
-	$(INSTALL) "$(root)"/.bash_completion ~
-	$(INSTALL) "$(root)"/.bash_functions ~
 	$(INSTALL) "$(root)"/.bash_profile ~
 	$(INSTALL) "$(root)"/.bashrc ~
-	$(INSTALL) "$(root)"/.dircolors ~
 	$(INSTALL) "$(root)"/.hushlogin ~
+	cd "$(root)" \
+	  && find .config/bash -type d -exec mkdir -p ~/{} \; \
+	  && find .config/bash -type f -exec $(INSTALL) "$(root)"/{} ~/{} \;
 
 brew:
 	brew update
@@ -66,6 +66,13 @@ brew:
 
 ctags:
 	$(INSTALL) "$(root)"/.ctags ~
+
+dircolors:
+	mkdir -p ~/.config
+	$(INSTALL) "$(root)"/.config/dircolors ~/.config/dircolors
+
+fzf:
+	"$(shell brew --prefix)"/opt/fzf/install --xdg --key-bindings --no-completion --no-update-rc
 
 git:
 	mkdir -p ~/.config/git
