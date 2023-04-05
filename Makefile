@@ -17,7 +17,7 @@ all: $(targets)
 bash:
 	$(INSTALL) "$(root)"/.bash_profile ~
 	$(INSTALL) "$(root)"/.bashrc ~
-	touch ~/.hushlogin 
+	touch ~/.hushlogin
 	cd "$(root)" \
 	  && find .config/bash -type d -exec mkdir -p ~/{} \; \
 	  && find .config/bash -type f -exec $(INSTALL) "$(root)"/{} ~/{} \;
@@ -104,6 +104,8 @@ ssh:
 tig:
 	mkdir -p ~/.config/tig
 	$(INSTALL) "$(root)"/.config/tig/config ~/.config/tig/config
+	# ~/.local/share/tig/history instead of ~/.tig_history
+	mkdir -p ~/.local/share/tig
 
 tmux:
 	mkdir -p ~/.config/tmux
