@@ -126,7 +126,7 @@ vtype() {
     yes-no "Skip non-files and edit file(s)?" || return 1
   fi
 
-  type -a -P "$@" \
+  type -a -p "$name" \
     | fzf --select-1 --multi \
     | xvim
 }
@@ -158,7 +158,7 @@ versions() {
   while read -r path; do
     version="$("$path" --version 2>&1)"
     printf '%s: %s\n' "$path" "$version"
-  done < <(type -a -P "$name")
+  done < <(type -a -p "$name")
 }
 
 # Command line pastebin
