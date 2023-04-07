@@ -27,7 +27,7 @@ split:() {
 
 # Change `\n`-separated into `:`-separated, e.g. to reconstruct `$PATH`
 join:() {
-  tr '\n' ':'
+  paste -s -d ':'
 }
 
 ### Dates
