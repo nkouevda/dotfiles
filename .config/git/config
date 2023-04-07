@@ -3,6 +3,9 @@
 	# but since LESS is not empty, we need to explicitly set this
 	pager = less --quit-if-one-screen --Raw-control-chars --no-init
 
+[init]
+	defaultBranch = main
+
 [log]
 	date = iso
 	decorate = false
@@ -113,14 +116,6 @@
 	dfpm = "!sh -c 'git difftool --tool=pdiff \"$(git merge-base main \"${1:-HEAD}\")\" \"$@\"' -"
 	rmc = rm --cached
 	rmcf = rm --cached --force
-	sh = stash
-	shl = stash list
-	shs = stash save
-	shw = stash show --patch
-	sha = stash apply
-	shp = stash pop
-	shd = stash drop
-	shc = stash clear
 	ci = commit
 	cav = commit --amend --verbose
 	cava = commit --amend --verbose --all
@@ -162,6 +157,7 @@
 	rtv = remote --verbose
 	fe = fetch --all --tags
 	pl = pull --all --tags
+	clonehub = "!sh -c 'git clone git@github.com:\"${1:?missing author/repo}\".git' -"
 	fadd = "!sh -c 'git fzf status-unstaged git add \"$@\" --' -"
 	fco = "!sh -c 'git fzf status-unstaged git checkout \"$@\" --' -"
 	frm = "!sh -c 'git fzf status-unstaged git rm \"$@\" --' -"
