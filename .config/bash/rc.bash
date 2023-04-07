@@ -59,20 +59,26 @@ export CDPATH=:~:~/Documents
 # Generate and export `LS_COLORS`
 [[ -r ~/.config/dircolors ]] && source <(dircolors ~/.config/dircolors)
 
-# Color ls output
-if ls --color=auto &>/dev/null; then
-  alias ls="ls -bp --color=auto"
-elif ls -G &>/dev/null; then
-  alias ls="ls -bGp"
+# Inconsistent options between coreutils ls and mac os ls
+if ls --version | rg --quiet coreutils &>/dev/null; then
+  alias ls="ls --escape --indicator-style=slash --color=auto"
+  alias ll="ls -lh --time-style='+%F %T'"
 else
-  alias ls="ls -bp"
+  alias ls="ls -bpG"
+  alias ll="ls -lh -D '%F %T'"
 fi
 
-# Useful ls and tree variants
-alias ll="ls -hl"
 alias la="ll -A"
-alias lt="tree -a -F -C"
-alias ltg="lt -I .git"
+
+# coreutils ls does not support -@ or -e, so this must be via mac os ls
+while read -r path; do
+  if "$path" -@e &>/dev/null; then
+    alias le="$path -bpG -lh -D '%F %T' -A -@e"
+  fi
+done < <(type -a -p ls)
+
+alias lt="tree -a -F -C -I .git --gitignore --noreport"
+alias ltl="lt -pugDh --timefmt='%F %T' --metafirst -fi"
 
 # Default grep options
 alias grep="grep --ignore-case --color=auto"
