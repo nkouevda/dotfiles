@@ -87,8 +87,6 @@ export FZF_CTRL_T_COMMAND="git ls-files 2>/dev/null || rg --files --hidden --glo
 
 # Case-insensitive search in less, unless the pattern contains uppercase chars
 export LESS="--ignore-case"
-# Do not save history for less
-export LESSHISTFILE="/dev/null"
 # Start blink, bold, reverse, standout, underline
 export LESS_TERMCAP_mb="$(tput bold; tput setaf 1)"
 export LESS_TERMCAP_md="$(tput bold; tput setaf 1)"
@@ -108,9 +106,6 @@ if ! type tac &>/dev/null; then
   alias tac="tail -r"
 fi
 
-# For `sync-bash-history`
-export tmp_histfile="/tmp/.bash_history.$$"
-
 # Synchronize the current history list with the history file
 sync-bash-history() {
   # Append the history list to the history file
@@ -119,8 +114,8 @@ sync-bash-history() {
   # Remove trailing whitespace; keep only the most recent copies of duplicates
   tac "$HISTFILE" \
     | awk '{ sub(/[ \t]+$/, "") } !uniq[$0]++' \
-    > "$tmp_histfile"
-  tac "$tmp_histfile" > "$HISTFILE"
+    | tac \
+    | sponge "$HISTFILE"
 
   # Clear the history list and read the history file
   history -c
