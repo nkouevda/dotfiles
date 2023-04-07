@@ -87,8 +87,8 @@ bind generic x !sh -c 'git %(prompt git )'
 bind main G move-last-line
 bind main A :toggle main-options --all
 bind main B :toggle main-options --branches='*'
-bind main M :toggle main-options ^master HEAD
-bind main R ?git rebase master "%(branch)"
+bind main M :toggle main-options ^main HEAD
+bind main R ?git rebase main "%(branch)"
 
 # Main bindings - external commands
 bind main C none
