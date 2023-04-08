@@ -130,28 +130,37 @@ sync-bash-history() {
 
 # Reset prompt variables
 reset-prompt() {
-  local reset red green yellow prefix suffix
+  local tput_reset="\[$(tput sgr0)\]"
+  local tput_red="\[$(tput setaf 1)\]"
+  local tput_green="\[$(tput setaf 2)\]"
+  local tput_yellow="\[$(tput setaf 3)\]"
+  local tput_blue="\[$(tput setaf 4)\]"
 
-  # Color escape sequences
-  reset="\[$(tput sgr0)\]"
-  red="\[$(tput setaf 1)\]"
-  green="\[$(tput setaf 2)\]"
-  yellow="\[$(tput setaf 3)\]"
+  # Start timer before command execution; HACK: set ps_start via side effect of arithmetic evaluation
+  export PS0='${PS0:ps_start=SECONDS, 0:0}'
 
-  # Red `user@host` if connected via ssh, empty otherwise
-  [[ -n "$SSH_CONNECTION" ]] && prefix="$red\u@\h " || prefix=""
+  # Save `$?`, stop timer, and sync history after command execution
+  export PROMPT_COMMAND='exit_status=$?; ps_end=$SECONDS; sync-bash-history;'
 
-  # Red `$? >` if non-zero exit status, green `>` otherwise
-  suffix='$(last=$?; (( last )) && printf "%b$last >" "'"$red"'" || printf "%b>" "'"$green"'")'
+  PS1="$tput_reset"
+  # Include `$USER@$HOSTNAME ` if connected via ssh
+  [[ -n "$SSH_CONNECTION" ]] && PS1+="$tput_red\u@\h "
+  # pwd
+  PS1+="$tput_yellow\w"
+  # Include duration of previous command in seconds if non-zero
+  PS1+="$tput_blue"'$( (( ps_start >= 0 && ps_end > ps_start )) && echo " $(( ps_end - ps_start ))s" )'
+  # Include exit status of previous command if non-zero
+  PS1+="$tput_red"'$( (( ps_start >= 0 && exit_status )) && echo " $exit_status >" )'
+  PS1+="$tput_green"'$( (( ps_start < 0 || ! exit_status )) && echo " >" )'
+  # Set ps_start to -1 until next time PS0 is evaluated, to not show duration after empty commands
+  PS1+="$tput_reset "'${PS0:ps_start=-1, 0:0}'
+  export PS1
 
-  # `$PWD >`
-  export PS1="$reset$prefix$yellow\w $suffix$reset "
-
-  # Include parent dirs in `PS1`
+  # Max number of dirs to show in PS1's `\w`
   export PROMPT_DIRTRIM=3
 
-  # Synchronize history before every prompt
-  export PROMPT_COMMAND="sync-bash-history;"
+  # Same as default `> `, but colored
+  export PS2="$tput_green>$tput_reset "
 
   # For `set -x`
   export PS4='+ $0:$LINENO: '
