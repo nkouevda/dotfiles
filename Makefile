@@ -21,6 +21,7 @@ bash:
 	cd "$(root)" \
 	  && find .config/bash -type d -exec mkdir -p ~/{} \; \
 	  && find .config/bash -type f -exec $(INSTALL) "$(root)"/{} ~/{} \;
+	mkdir -p ~/.local/state/bash
 
 brew:
 	brew update
