@@ -262,7 +262,7 @@ update-brew() {
 
 # Update vim plugins
 update-plug() {
-  vim +PlugUpgrade +PlugUpdate +PlugClean! +'helptags ~/.vim/plugged' +qa
+  vim +PlugUpgrade +PlugUpdate +'PlugClean!' +qa
 }
 
 update-deps() {
