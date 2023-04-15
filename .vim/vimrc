@@ -263,7 +263,13 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>a :ArgWrap<CR>
 
   " Fuzzy search for files, buffers, etc.
+  function! s:fzf_location_list(lines)
+    call setloclist(0, map(copy(a:lines), '{ "filename": v:val }'))
+    lopen
+    ll
+  endfunction
   let g:fzf_action = {
+    \ 'ctrl-l': function('s:fzf_location_list'),
     \ 'ctrl-s': 'split',
     \ 'ctrl-v': 'vsplit',
     \ }
@@ -275,7 +281,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'junegunn/fzf.vim'
   nnoremap <Leader>gs :GFiles?<CR>
   nnoremap <Leader>b :Buffers<CR>
-  nnoremap <Leader>gt :GFiles '*.thrift'<CR>
 
   function! s:GFilesWithFallback(use_buf_dir)
     let l:args = {
