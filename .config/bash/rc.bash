@@ -56,7 +56,7 @@ export PATH=~/"bin:$PATH"
 # Faster cd
 export CDPATH=:~:~/Documents
 
-# Generate and export `LS_COLORS`
+# Generate and export LS_COLORS
 [[ -r ~/.config/dircolors ]] && source <(dircolors ~/.config/dircolors)
 
 # Inconsistent options between coreutils ls and mac os ls
@@ -135,6 +135,7 @@ reset-prompt() {
   local tput_green="\[$(tput setaf 2)\]"
   local tput_yellow="\[$(tput setaf 3)\]"
   local tput_blue="\[$(tput setaf 4)\]"
+  local tput_magenta="\[$(tput setaf 5)\]"
 
   # Start timer before command execution; HACK: set ps_start via side effect of arithmetic evaluation
   export PS0='${PS0:ps_start=SECONDS, 0:0}'
@@ -162,8 +163,8 @@ reset-prompt() {
   # Same as default `> `, but colored
   export PS2="$tput_green>$tput_reset "
 
-  # For `set -x`
-  export PS4='+ $0:$LINENO: '
+  # For `set -x`, with colors like grep/rg
+  export PS4="+ $tput_magenta\$0$tput_reset:$tput_green\$LINENO$tput_reset:"
 }
 
 reset-prompt
