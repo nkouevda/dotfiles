@@ -306,6 +306,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>gd :Git diff %<CR>
   nnoremap <Leader>gD :Git diff HEAD^ %<CR>
   let g:signify_vcs_cmds = {'git': 'git diff --unified=0 --no-color HEAD^ -- %f'}
+  nnoremap <Leader>gh :let g:signify_vcs_cmds['git'] = 'git diff --unified=0 --no-color HEAD -- %f'<CR>
+  nnoremap <Leader>gH :let g:signify_vcs_cmds['git'] = 'git diff --unified=0 --no-color HEAD^ -- %f'<CR>
+  nnoremap <Leader>gm :let g:signify_vcs_cmds['git'] = 'git diff --unified=0 --no-color "$(git merge-base "$(git main)" HEAD)" -- %f'<CR>
   Plug 'mhinz/vim-signify'
 
   " Indentation detection
