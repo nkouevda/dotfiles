@@ -67,6 +67,8 @@
 	rpa = "!sh -c 'git rev-parse --abbrev-ref \"${@:-HEAD}\"' -"
 	root = rev-parse --show-toplevel
 	prefix = rev-parse --show-prefix
+	# main branch, which might not be called main; if no origin, default to main
+	main = "!sh -c '{ git rpa --verify --quiet origin/HEAD || echo main; } | cut -d / -f 2' -"
 	br = branch
 	brv = branch --verbose --verbose
 	brc = branch --sort=committerdate
@@ -76,44 +78,44 @@
 	brac = branch --all --sort=committerdate
 	bracv = branch --all --sort=committerdate --verbose --verbose
 	brf = branch --force
-	brfm = branch --force main origin/main
+	brfm = "!sh -c 'git branch --force \"$(git main)\" origin/\"$(git main)\"' -"
 	brm = branch --move
 	brmf = branch --move --force
 	brd = branch --delete
 	brdf = branch --delete --force
-	track = "!sh -c 'git branch --set-upstream-to origin/\"$(git rev-parse --abbrev-ref HEAD)\"' -"
+	track = "!sh -c 'git branch --set-upstream-to origin/\"$(git rpa)\"' -"
 	untrack = branch --unset-upstream
-	pushup = "!sh -c 'git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\"' -"
-	deleteup = "!sh -c 'git push --delete origin \"$(git rev-parse --abbrev-ref HEAD)\"' -"
+	pushup = "!sh -c 'git push --set-upstream origin \"$(git rpa)\"' -"
+	deleteup = "!sh -c 'git push --delete origin \"$(git rpa)\"' -"
 	sb = show-branch
 	sba = show-branch --all
 	mb = merge-base
-	mbm = merge-base main
+	mbm = "!sh -c 'git merge-base \"$(git main)\" \"${@:-HEAD}\"' -"
 	# Like `--pretty=compact-decorate`, but `%cd` instead of `%ad`
 	rlg = reflog --pretty='%C(auto)%h %C(blue)%cd %C(magenta)%aN%C(auto)%d %C(reset)%s'
 	lg = log --pretty=compact
 	lgd = log --pretty=compact-decorate
-	lgm = "!sh -c 'git log --pretty=compact ^main \"${@:-HEAD}\"' -"
-	lgdm = "!sh -c 'git log --pretty=compact-decorate ^main \"${@:-HEAD}\"' -"
+	lgm = "!sh -c 'git log --pretty=compact ^\"$(git main)\" \"${@:-HEAD}\"' -"
+	lgdm = "!sh -c 'git log --pretty=compact-decorate ^\"$(git main)\" \"${@:-HEAD}\"' -"
 	lgs = log --pretty=fuller --compact-summary
 	lgs1 = log --pretty=fuller --compact-summary -n 1
-	lgsm = "!sh -c 'git log --pretty=fuller --compact-summary ^main \"${@:-HEAD}\"' -"
+	lgsm = "!sh -c 'git log --pretty=fuller --compact-summary ^\"$(git main)\" \"${@:-HEAD}\"' -"
 	df = diff
 	dfc = diff --cached
 	df1 = "!sh -c 'git diff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
-	dfm = "!sh -c 'git diff \"$(git merge-base main \"${1:-HEAD}\")\" \"$@\"' -"
+	dfm = "!sh -c 'git diff \"$(git mbm \"${1:-HEAD}\")\" \"$@\"' -"
 	dfn = diff --name-only
 	dfnc = diff --name-only --cached
 	dfn1 = "!sh -c 'git diff --name-only \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
-	dfnm = "!sh -c 'git diff --name-only \"$(git merge-base main \"${1:-HEAD}\")\" \"$@\"' -"
+	dfnm = "!sh -c 'git diff --name-only \"$(git mbm \"${1:-HEAD}\")\" \"$@\"' -"
 	dfs = diff --compact-summary
 	dfsc = diff --compact-summary --cached
 	dfs1 = "!sh -c 'git diff --compact-summary \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
-	dfsm = "!sh -c 'git diff --compact-summary \"$(git merge-base main \"${1:-HEAD}\")\" \"$@\"' -"
+	dfsm = "!sh -c 'git diff --compact-summary \"$(git mbm \"${1:-HEAD}\")\" \"$@\"' -"
 	dfp = difftool --tool=pdiff
 	dfpc = difftool --tool=pdiff --cached
 	dfp1 = "!sh -c 'git difftool --tool=pdiff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
-	dfpm = "!sh -c 'git difftool --tool=pdiff \"$(git merge-base main \"${1:-HEAD}\")\" \"$@\"' -"
+	dfpm = "!sh -c 'git difftool --tool=pdiff \"$(git mbm \"${1:-HEAD}\")\" \"$@\"' -"
 	rmc = rm --cached
 	rmcf = rm --cached --force
 	ci = commit
@@ -126,9 +128,9 @@
 	cob = checkout -b
 	cobf = checkout -B
 	cod = checkout --detach
-	com = checkout main
+	com = "!sh -c 'git checkout \"$(git main)\"' -"
 	cor = "!sh -c 'git checkout -B \"${1:?unset}\" \"origin/$1\"' -"
-	corm = checkout -B main origin/main
+	corm = "!sh -c 'git checkout -B \"$(git main)\" origin/\"$(git main)\"' -"
 	hard = "!sh -c 'git reset --hard \"${@:-HEAD}\"' -"
 	soft = "!sh -c 'git reset --soft \"${@:-HEAD}\"' -"
 	cp = cherry-pick
@@ -137,15 +139,15 @@
 	amc = am --continue
 	ama = am --abort
 	rb = rebase
-	rbm = rebase main
+	rbm = "!sh -c 'git rebase \"$(git main)\" \"$@\"' -"
 	rbi = rebase --interactive
-	rbim = rebase --interactive main
-	rbimbm = "!sh -c 'git rebase --interactive \"$(git merge-base main HEAD)\"' -"
+	rbim = "!sh -c 'git rebase --interactive \"$(git main)\" \"$@\"' -"
+	rbimbm = "!sh -c 'git rebase --interactive \"$(git mbm)\"' -"
 	rbir = rebase --interactive --root
 	rbo = rebase --onto
 	rbo1 = "!sh -c 'git rebase --onto \"${1:?unset}\" \"${2:?unset}\"^ \"${@:2}\"' -"
-	rbom = rebase --onto main
-	rbom1 = "!sh -c 'git rebase --onto main \"${1:?unset}\"^ \"$@\"' -"
+	rbom = "!sh -c 'git rebase --onto \"$(git main)\"' -"
+	rbom1 = "!sh -c 'git rebase --onto \"$(git main)\" \"${1:?unset}\"^ \"$@\"' -"
 	rbc = rebase --continue
 	rbs = rebase --skip
 	rba = rebase --abort
