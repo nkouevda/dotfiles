@@ -16,7 +16,7 @@
                 },
                 "rules": [
                     {
-                        "description": "fn + h -> Left",
+                        "description": "fn + h -> left_arrow",
                         "manipulators": [
                             {
                                 "from": {
@@ -37,7 +37,7 @@
                         ]
                     },
                     {
-                        "description": "fn + j -> Down",
+                        "description": "fn + j -> down_arrow",
                         "manipulators": [
                             {
                                 "from": {
@@ -58,7 +58,7 @@
                         ]
                     },
                     {
-                        "description": "fn + k -> Up",
+                        "description": "fn + k -> up_arrow",
                         "manipulators": [
                             {
                                 "from": {
@@ -79,7 +79,7 @@
                         ]
                     },
                     {
-                        "description": "fn + l -> Right",
+                        "description": "fn + l -> right_arrow",
                         "manipulators": [
                             {
                                 "from": {
@@ -100,7 +100,7 @@
                         ]
                     },
                     {
-                        "description": "fn + Play/Pause -> Fast Forward",
+                        "description": "fn + play_or_pause -> fastforward",
                         "manipulators": [
                             {
                                 "from": {
@@ -121,7 +121,7 @@
                         ]
                     },
                     {
-                        "description": "fn + Left Shift + Play/Pause -> Rewind",
+                        "description": "fn + left_shift + play_or_pause -> rewind",
                         "manipulators": [
                             {
                                 "from": {
@@ -143,7 +143,7 @@
                         ]
                     },
                     {
-                        "description": "Left Control + Left Option + Left Command + Escape -> Lock",
+                        "description": "left_control + left_option + left_command + escape -> Lock",
                         "manipulators": [
                             {
                                 "from": {
@@ -163,27 +163,6 @@
                                             "left_option",
                                             "left_command"
                                         ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Left Option + Fast Forward -> Rewind",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "fastforward",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "rewind"
                                     }
                                 ],
                                 "type": "basic"
