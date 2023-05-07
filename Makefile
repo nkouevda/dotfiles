@@ -40,6 +40,7 @@ brew:
 	  ctags \
 	  diffstat \
 	  diffutils \
+	  exiftool \
 	  findutils \
 	  fzf \
 	  gawk \
@@ -56,15 +57,16 @@ brew:
 	  nkouevda/nkouevda/pdiff \
 	  nkouevda/nkouevda/spongecase \
 	  node \
-	  pipgrip \
+	  pdfgrep \
 	  pv \
 	  python \
+	  qlmarkdown \
 	  ripgrep \
 	  rsync \
 	  ruby \
 	  sbt \
 	  scala \
-	  sourcegraph/src-cli/src-cli \
+	  switchaudio-osx \
 	  tig \
 	  tree \
 	  vim \
