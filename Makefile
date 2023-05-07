@@ -8,7 +8,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash brew ctags dircolors fzf git karabiner kitty readline ripgrep ssh tig tmux vim
+targets := bash bat brew ctags dircolors fzf git karabiner kitty readline ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -23,12 +23,18 @@ bash:
 	  && find .config/bash -type f -exec $(INSTALL) "$(root)"/{} ~/{} \;
 	mkdir -p ~/.local/state/bash
 
+bat:
+	cd "$(root)" \
+	  && find .config/bat -type d -exec mkdir -p ~/{} \; \
+	  && find .config/bat -type f -exec $(INSTALL) "$(root)"/{} ~/{} \;
+
 brew:
 	brew update
 	brew upgrade
 	brew install \
 	  bash \
 	  bash-completion@2 \
+	  bat \
 	  cabal-install \
 	  coreutils \
 	  ctags \
