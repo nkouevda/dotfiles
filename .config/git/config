@@ -146,7 +146,7 @@
 	rbir = rebase --interactive --root
 	rbo = rebase --onto
 	rbo1 = "!sh -c 'git rebase --onto \"${1:?unset}\" \"${2:?unset}\"^ \"${@:2}\"' -"
-	rbom = "!sh -c 'git rebase --onto \"$(git main)\"' -"
+	rbom = "!sh -c 'git rebase --onto \"$(git main)\" \"$@\"' -"
 	rbom1 = "!sh -c 'git rebase --onto \"$(git main)\" \"${1:?unset}\"^ \"$@\"' -"
 	rbc = rebase --continue
 	rbs = rebase --skip
