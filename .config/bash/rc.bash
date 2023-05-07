@@ -93,6 +93,12 @@ export FZF_CTRL_T_COMMAND="git ls-files 2>/dev/null || rg --files --hidden --glo
 
 # Case-insensitive search in less, unless the pattern contains uppercase chars
 export LESS="--ignore-case"
+# When the entire file fits on one screen, and -F/--quit-if-one-screen is not specified, show the
+# file at the top of the screen, not at the bottom; this applies to less >= v618:
+# https://github.com/gwsw/less/commit/98782c194f16ba93088d1033702172c3c00f0a61
+# Adding -c/--clear-screen to LESS would have a similar effect, but that results in undesirable
+# behavior when used in combination with -F/--quit-if-one-screen
+export LESS_TERMCAP_NR=1
 # Start blink, bold, reverse, standout, underline
 export LESS_TERMCAP_mb="$(tput bold; tput setaf 1)"
 export LESS_TERMCAP_md="$(tput bold; tput setaf 1)"
