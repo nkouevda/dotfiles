@@ -20,5 +20,6 @@ set skip-completed-text on
 # Threshold for 'Display all X possibilities?' prompt
 set completion-query-items 250
 
-# Color common prefix for possible completions
+# Color completions
+set colored-stats on
 set colored-completion-prefix on
