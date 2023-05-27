@@ -8,7 +8,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash bat brew ctags dircolors fzf git karabiner kitty readline ripgrep ssh tig tmux vim
+targets := bash bat brew ctags dig dircolors fzf git karabiner kitty readline ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -75,6 +75,9 @@ brew:
 
 ctags:
 	$(INSTALL) "$(root)"/.ctags ~
+
+dig:
+	$(INSTALL) "$(root)"/.digrc ~
 
 dircolors:
 	mkdir -p ~/.config
