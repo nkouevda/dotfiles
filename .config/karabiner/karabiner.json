@@ -329,7 +329,7 @@
                         ]
                     },
                     {
-                        "description": "Spotify: left_command + *_bracket -> left_option + *_arrow",
+                        "description": "Spotify: *_command + *_bracket -> *_option + *_arrow",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -380,6 +380,60 @@
                                         "key_code": "right_arrow",
                                         "modifiers": [
                                             "left_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "^com\\.spotify\\.client$"
+                                        ]
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "open_bracket",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": [
+                                            "right_option"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "^com\\.spotify\\.client$"
+                                        ]
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "close_bracket",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": [
+                                            "right_option"
                                         ]
                                     }
                                 ],
