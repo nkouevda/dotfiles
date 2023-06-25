@@ -28,7 +28,7 @@
 --regex-thrift=/^[ \t]*[A-Za-z0-9_][A-Za-z0-9_<>., \t]*[ \t]+([A-Za-z0-9_]+)[ \t]*\(/\1/f,functions/
 --regex-thrift=/^[ \t]*[0-9]+:[ \t]*((required|optional)[ \t]+)?[A-Za-z0-9_<>., \t]+[ \t]+([A-Za-z0-9_]+)/\3/m,members/
 
---java-kinds=-egp
+--java-kinds=-efgp
 --scala-kinds=-pvV
 --thrift-kinds=-cEmt
 
