@@ -5,22 +5,14 @@ snippet #! "#!" b
 #!/usr/bin/env $0
 endsnippet
 
-snippet /(?<!\w)(name|nikita)/ "Nikita Kouevda" r
-Nikita Kouevda
-endsnippet
-
-snippet nk "nkouevda" w
-nkouevda
-endsnippet
-
 snippet date "date" w
-`date +%Y-%m-%d`
+`date +%F`
 endsnippet
 
 snippet time "time" w
-`date +%H:%M`
+`date +%T`
 endsnippet
 
 snippet /(?i)(?<!\w)todo/ "TODO" r
-TODO(nkouevda): $0
+TODO(${1:nkouevda}): $0
 endsnippet
