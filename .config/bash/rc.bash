@@ -56,6 +56,10 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   export PATH="$brew_prefix/opt/ruby/bin:$PATH"
   export PATH="$(gem environment home)/bin:$PATH"
 
+  bash_completion="$brew_prefix/etc/profile.d/bash_completion.sh"
+  [[ -r "$bash_completion" ]] && source "$bash_completion"
+  unset bash_completion
+
   unset brew_prefix
 fi
 
@@ -186,7 +190,6 @@ reset-prompt() {
 
 reset-prompt
 
-[[ -r /usr/local/share/bash-completion/bash_completion ]] && source /usr/local/share/bash-completion/bash_completion
 [[ -r ~/.config/bash/completion.bash ]] && source ~/.config/bash/completion.bash
 [[ -r ~/.config/bash/functions.bash ]] && source ~/.config/bash/functions.bash
 [[ -r ~/.config/bash/local.bash ]] && source ~/.config/bash/local.bash
