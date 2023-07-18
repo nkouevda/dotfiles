@@ -66,10 +66,12 @@ export PATH=~/"bin:$PATH"
 export CDPATH=:~:~/Documents
 
 # Generate and export LS_COLORS
-[[ -r ~/.config/dircolors ]] && source <(dircolors ~/.config/dircolors)
+if type dircolors &>/dev/null; then
+  [[ -r ~/.config/dircolors ]] && source <(dircolors ~/.config/dircolors)
+fi
 
 # Inconsistent options between coreutils ls and mac os ls
-if ls --version | rg --quiet coreutils &>/dev/null; then
+if ls --version 2>/dev/null | rg --quiet coreutils &>/dev/null; then
   alias ls="ls --escape --indicator-style=slash --color=auto"
   alias ll="ls -lh --time-style='+%F %T'"
 else
