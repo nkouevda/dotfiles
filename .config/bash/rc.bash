@@ -26,28 +26,37 @@ export HISTFILE=~/.local/state/bash/history
 export HISTFILESIZE=1000
 export HISTSIZE=1000
 
-export HOMEBREW_AUTOREMOVE=1
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_NO_ENV_HINTS=1
-
-# Homebrew paths
+# Homebrew
 if [[ "$(uname -s)" == "Darwin" ]]; then
-  # Without g prefix
-  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-  export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
-  export PATH="/usr/local/opt/gawk/libexec/gnubin:$PATH"
-  export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-  export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
-  export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-  export MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
-  export MANPATH="/usr/local/opt/gawk/libexec/gnuman:$MANPATH"
-  export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
-  export MANPATH="/usr/local/opt/grep/libexec/gnuman:$MANPATH"
+  export HOMEBREW_AUTOREMOVE=1
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  export HOMEBREW_NO_ENV_HINTS=1
 
-  export PATH="/usr/local/opt/openssl/bin:$PATH"
-  export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-  export PATH="/usr/local/opt/ruby/bin:$PATH"
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    brew_prefix="/opt/homebrew"
+    export PATH="$brew_prefix/bin:$PATH"
+  else
+    brew_prefix="/usr/local"
+  fi
+
+  # Without g prefix
+  export PATH="$brew_prefix/opt/coreutils/libexec/gnubin:$PATH"
+  export PATH="$brew_prefix/opt/findutils/libexec/gnubin:$PATH"
+  export PATH="$brew_prefix/opt/gawk/libexec/gnubin:$PATH"
+  export PATH="$brew_prefix/opt/gnu-sed/libexec/gnubin:$PATH"
+  export PATH="$brew_prefix/opt/grep/libexec/gnubin:$PATH"
+  export MANPATH="$brew_prefix/opt/coreutils/libexec/gnuman:$MANPATH"
+  export MANPATH="$brew_prefix/opt/findutils/libexec/gnuman:$MANPATH"
+  export MANPATH="$brew_prefix/opt/gawk/libexec/gnuman:$MANPATH"
+  export MANPATH="$brew_prefix/opt/gnu-sed/libexec/gnuman:$MANPATH"
+  export MANPATH="$brew_prefix/opt/grep/libexec/gnuman:$MANPATH"
+
+  export PATH="$brew_prefix/opt/openssl/bin:$PATH"
+  export PATH="$brew_prefix/opt/python/libexec/bin:$PATH"
+  export PATH="$brew_prefix/opt/ruby/bin:$PATH"
   export PATH="$(gem environment home)/bin:$PATH"
+
+  unset brew_prefix
 fi
 
 # User bin
