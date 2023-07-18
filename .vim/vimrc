@@ -116,6 +116,9 @@ set termguicolors
 " Do not time out on mappings; time out immediately on key codes
 set notimeout ttimeout ttimeoutlen=0
 
+" Delay before writing the swap file, and before updating `airblade/vim-gitgutter` signs
+set updatetime=100
+
 " Leader
 let mapleader = "\<Space>"
 
@@ -238,6 +241,13 @@ if has('autocmd')
 
     " Hide fzf statusline
     autocmd FileType fzf set laststatus=0 | autocmd BufLeave <buffer> set laststatus=2
+
+    " Disable `airblade/vim-gitgutter` for large files
+    autocmd BufEnter * if line('$') >= 10000 | GitGutterBufferDisable | endif
+    " For consistency with colorscheme
+    autocmd ColorScheme * hi! link GitGutterAdd Function
+                        \ | hi! link GitGutterChange String
+                        \ | hi! link GitGutterDelete Statement
   augroup end
 endif
 
@@ -305,11 +315,11 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>1gb :,Git blame<CR>
   nnoremap <Leader>gd :Git diff %<CR>
   nnoremap <Leader>gD :Git diff HEAD^ %<CR>
-  let g:signify_vcs_cmds = {'git': 'git diff --unified=0 --no-color HEAD^ -- %f'}
-  nnoremap <Leader>gh :let g:signify_vcs_cmds['git'] = 'git diff --unified=0 --no-color HEAD -- %f'<CR>
-  nnoremap <Leader>gH :let g:signify_vcs_cmds['git'] = 'git diff --unified=0 --no-color HEAD^ -- %f'<CR>
-  nnoremap <Leader>gm :let g:signify_vcs_cmds['git'] = 'git diff --unified=0 --no-color "$(git merge-base "$(git main)" HEAD)" -- %f'<CR>
-  Plug 'mhinz/vim-signify'
+  let g:gitgutter_diff_base = 'HEAD^'
+  Plug 'airblade/vim-gitgutter'
+  nnoremap <Leader>gh :let g:gitgutter_diff_base = 'HEAD'<CR>
+  nnoremap <Leader>gH :let g:gitgutter_diff_base = 'HEAD^'<CR>
+  nnoremap <Leader>gm :let g:gitgutter_diff_base = '"$(git merge-base "$(git main)" HEAD)"'<CR>
 
   " Indentation detection
   Plug 'tpope/vim-sleuth'
@@ -340,9 +350,3 @@ try
   colorscheme material
 catch /^Vim(colorscheme):/
 endtry
-
-" For `mhinz/vim-signify`; must be after colorscheme, to avoid breaking links
-hi! link SignifySignAdd Function
-hi! link SignifySignChange String
-hi! link SignifySignDelete Statement
-hi! link SignifySignChangeDelete Identifier
