@@ -75,7 +75,7 @@ if type dircolors &>/dev/null; then
 fi
 
 # Inconsistent options between coreutils ls and mac os ls
-if ls --version 2>/dev/null | rg --quiet coreutils &>/dev/null; then
+if ls --version 2>/dev/null | grep --quiet coreutils; then
   alias ls="ls --escape --indicator-style=slash --color=auto"
   alias ll="ls -lh --time-style='+%F %T'"
 else
@@ -86,14 +86,12 @@ fi
 alias la="ll -A"
 
 # coreutils ls does not support -@ or -e, so this must be via mac os ls
-while read -r path; do
-  if "$path" -@e &>/dev/null; then
-    alias le="$path -bpG -lh -D '%F %T' -A -@e"
-  fi
-done < <(type -a -p ls)
+if /bin/ls -@e &>/dev/null; then
+  alias le="/bin/ls -bpG -lh -D '%F %T' -A -@e"
+fi
 
 # --gitignore and --metafirst were both added in tree 2.0.0
-if tree --gitignore &>/dev/null; then
+if tree --help 2>/dev/null | grep --quiet -- --gitignore; then
   alias lt="tree -a -F -C -I .git --gitignore --noreport"
   alias ltl="lt -pugDh --timefmt='%F %T' --metafirst -fi"
   alias lta="tree -a -F -C --noreport"
