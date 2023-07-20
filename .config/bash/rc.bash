@@ -92,8 +92,18 @@ while read -r path; do
   fi
 done < <(type -a -p ls)
 
-alias lt="tree -a -F -C -I .git --gitignore --noreport"
-alias ltl="lt -pugDh --timefmt='%F %T' --metafirst -fi"
+# --gitignore and --metafirst were both added in tree 2.0.0
+if tree --gitignore &>/dev/null; then
+  alias lt="tree -a -F -C -I .git --gitignore --noreport"
+  alias ltl="lt -pugDh --timefmt='%F %T' --metafirst -fi"
+  alias lta="tree -a -F -C --noreport"
+  alias ltal="lta -pugDh --timefmt='%F %T' --metafirst -fi"
+else
+  alias lt="tree -a -F -C -I .git --noreport"
+  alias ltl="lt -pugDh --timefmt='%F %T' -fi"
+  alias lta="tree -a -F -C --noreport"
+  alias ltal="lta -pugDh --timefmt='%F %T' -fi"
+fi
 
 # Default grep options
 alias grep="grep --ignore-case --color=auto"
