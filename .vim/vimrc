@@ -84,9 +84,13 @@ set shiftwidth=2 expandtab smarttab
 " Round to the nearest tab when indenting; copy indentation exactly
 set shiftround autoindent copyindent
 
+" Use the system clipboard
 if has('clipboard')
-  " Interact with the X clipboard
-  set clipboard=unnamed
+  if has('unnamedplus')
+    set clipboard=unnamedplus
+  else
+    set clipboard=unnamed
+  endif
 endif
 
 " Default to `#%s` comments, not `/*%s*/`
