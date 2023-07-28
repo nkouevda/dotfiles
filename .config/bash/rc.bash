@@ -198,6 +198,7 @@ reset-prompt() {
 
 reset-prompt
 
+[[ -r /usr/share/bash-completion/bash_completion ]] && source /usr/share/bash-completion/bash_completion
 [[ -r ~/.config/bash/completion.bash ]] && source ~/.config/bash/completion.bash
 [[ -r ~/.config/bash/functions.bash ]] && source ~/.config/bash/functions.bash
 [[ -r ~/.config/bash/local.bash ]] && source ~/.config/bash/local.bash

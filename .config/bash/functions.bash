@@ -1,11 +1,19 @@
 ### Strings
 
-# Uppercase
+if [[ "$(uname -s)" == "Linux" ]]; then
+  pbcopy() {
+    xclip -selection clipboard -in
+  }
+
+  pbpaste() {
+    xclip -selection clipboard -out
+  }
+fi
+
 upper() {
   tr '[:lower:]' '[:upper:]'
 }
 
-# Lowercase
 lower() {
   tr '[:upper:]' '[:lower:]'
 }
