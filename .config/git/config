@@ -128,7 +128,7 @@
 	cob = checkout -b
 	cobf = checkout -B
 	cod = checkout --detach
-	com = "!sh -c 'git checkout \"$(git main)\"' -"
+	com = "!sh -c 'git checkout \"$(git main)\" \"$@\"' -"
 	cor = "!sh -c 'git checkout -B \"${1:?unset}\" \"origin/$1\"' -"
 	corm = "!sh -c 'git checkout -B \"$(git main)\" origin/\"$(git main)\"' -"
 	hard = "!sh -c 'git reset --hard \"${@:-HEAD}\"' -"
