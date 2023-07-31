@@ -67,7 +67,7 @@ fi
 export PATH=~/"bin:$PATH"
 
 # Faster cd
-export CDPATH=:~:~/Documents
+export CDPATH=.:~
 
 # Generate and export LS_COLORS
 if type dircolors &>/dev/null; then
@@ -113,6 +113,7 @@ export FZF_DEFAULT_OPTS="--no-256"
 export FZF_CTRL_T_COMMAND="git ls-files 2>/dev/null || rg --files --hidden --glob '!.git' 2>/dev/null"
 # Key bindings for fzf
 [[ -r ~/.config/fzf/fzf.bash ]] && source ~/.config/fzf/fzf.bash
+[[ -r ~/.config/fzf/fzf-git.sh ]] && source ~/.config/fzf/fzf-git.sh
 
 # Case-insensitive search in less, unless the pattern contains uppercase chars
 export LESS="--ignore-case"

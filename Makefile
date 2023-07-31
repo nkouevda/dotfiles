@@ -35,7 +35,6 @@ brew:
 	  bash \
 	  bash-completion@2 \
 	  bat \
-	  cabal-install \
 	  coreutils \
 	  ctags \
 	  diffstat \
@@ -58,7 +57,6 @@ brew:
 	  nkouevda/nkouevda/spongecase \
 	  node \
 	  pdfgrep \
-	  pv \
 	  python \
 	  qlmarkdown \
 	  ripgrep \
@@ -85,6 +83,8 @@ dircolors:
 
 fzf:
 	"$(shell brew --prefix)"/opt/fzf/install --xdg --key-bindings --no-completion --no-update-rc
+	curl -sSLo ~/.config/fzf/fzf-git.sh \
+	  https://raw.githubusercontent.com/junegunn/fzf-git.sh/main/fzf-git.sh
 
 git:
 	mkdir -p ~/.config/git
