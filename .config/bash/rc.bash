@@ -7,6 +7,9 @@ set -o pipefail
 stty start undef
 stty stop undef
 
+# e.g. curl does not default to ~/.config if this is unset
+export XDG_CONFIG_HOME=~/.config
+
 export INPUTRC=~/.config/readline/inputrc
 
 # Enable `**` expansion

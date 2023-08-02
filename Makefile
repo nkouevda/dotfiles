@@ -8,7 +8,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash bat brew ctags dig dircolors fzf git karabiner kitty readline ripgrep ssh tig tmux vim
+targets := bash bat brew ctags curl dig dircolors fzf git karabiner kitty readline ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -72,10 +72,16 @@ brew:
 	brew cleanup --prune=all
 
 ctags:
-	$(INSTALL) "$(root)"/.ctags ~
+	# Does not support XDG_CONFIG_HOME
+	$(INSTALL) "$(root)"/.ctags ~/.ctags
+
+curl:
+	mkdir -p ~/.config
+	$(INSTALL) "$(root)"/.config/.curlrc ~/.config/.curlrc
 
 dig:
-	$(INSTALL) "$(root)"/.digrc ~
+	# Does not support XDG_CONFIG_HOME
+	$(INSTALL) "$(root)"/.digrc ~/.digrc
 
 dircolors:
 	mkdir -p ~/.config
@@ -83,7 +89,8 @@ dircolors:
 
 fzf:
 	"$(shell brew --prefix)"/opt/fzf/install --xdg --key-bindings --no-completion --no-update-rc
-	curl -sSLo ~/.config/fzf/fzf-git.sh \
+	mkdir -p ~/.config/fzf
+	curl -fLSso ~/.config/fzf/fzf-git.sh \
 	  https://raw.githubusercontent.com/junegunn/fzf-git.sh/main/fzf-git.sh
 
 git:
@@ -128,7 +135,7 @@ vim:
 	  && find .vim -type d -exec mkdir -p ~/{} \; \
 	  && find .vim -type f -exec $(INSTALL) "$(root)"/{} ~/{} \;
 	mkdir -p ~/.vim/autoload
-	curl -sSLo ~/.vim/autoload/plug.vim \
+	curl -fLSso ~/.vim/autoload/plug.vim \
 	  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	mkdir -p ~/.vim/swap
 	vim +PlugInstall +qa
