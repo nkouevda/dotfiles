@@ -201,12 +201,6 @@ nnoremap yoh8 :setlocal textwidth=80<CR>
 nnoremap yoh1 :setlocal textwidth=100<CR>
 nnoremap yoh0 :setlocal textwidth=0<CR>
 
-" `git root`
-function! Groot()
-  let l:root = split(system('git rev-parse --show-toplevel'), '\n')[0]
-  return v:shell_error ? '' : l:root
-endfunction
-
 " Load filetype plugins and indentation files
 filetype plugin indent on
 
@@ -303,7 +297,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
       \ }
 
     " `git ls-files .` if in a repo, else fall back to fzf default
-    if !a:use_buf_dir && !empty(Groot())
+    if !a:use_buf_dir && !empty(FugitiveGitDir())
       let l:args['source'] = 'git ls-files'
     endif
 
