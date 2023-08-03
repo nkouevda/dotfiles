@@ -147,6 +147,14 @@ onoremap ` '
 " Yank until EOL; matches the behavior of C and D
 nnoremap Y y$
 
+" Another way to search
+nmap Q g*
+xmap Q *
+
+" "Upward J"
+nnoremap K kJ
+xnoremap K kJ
+
 " Black hole register
 nnoremap \ "_
 xnoremap \ "_
