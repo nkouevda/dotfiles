@@ -64,19 +64,6 @@ epoch() {
   fi
 }
 
-### Helper functions
-
-# Prompt yes/no and return 0 if response was "y" or "yes", ignoring case
-yes-no() {
-  local prompt="[y/N]: "
-  if (( $# )); then
-    prompt="$@ $prompt"
-  fi
-
-  read -r -p "$prompt"
-  [[ "$REPLY" =~ ^[Yy]([Ee][Ss])?$ ]]
-}
-
 ### Search
 
 # Highlight
@@ -131,7 +118,7 @@ vtype() {
     printf 'error: not a file\n\n' >&2
     type -a "$name" >&2
     printf '\n' >&2
-    yes-no "Skip non-files and edit file(s)?" || return 1
+    prompt-yes-no "Skip non-file(s) and edit file(s)?" || return 1
   fi
 
   type -a -p "$name" \
@@ -254,7 +241,7 @@ venv() {
   local venv_path=~/".virtualenvs/$venv_name"
 
   if [[ ! -d "$venv_path" ]]; then
-    yes-no "Create virtualenv \"$venv_name\"?" || return 1
+    prompt-yes-no "Create virtualenv \"$venv_name\"?" || return 1
   fi
 
   virtualenv "$venv_path"
