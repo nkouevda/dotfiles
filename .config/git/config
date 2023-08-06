@@ -119,10 +119,8 @@
 	rmc = rm --cached
 	rmcf = rm --cached --force
 	ci = commit
-	cav = commit --amend --verbose
-	cava = commit --amend --verbose --all
+	ca = commit --amend
 	can = commit --amend --no-edit
-	cana = commit --amend --no-edit --all
 	canr = commit --amend --no-edit --reset-author
 	co = checkout
 	cob = checkout -b
