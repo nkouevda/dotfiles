@@ -248,19 +248,19 @@ venv() {
   source "$venv_path/bin/activate"
 }
 
-# Update brew
-update-brew() {
+brew-upgrade() {
   brew update
   brew upgrade
   brew cleanup --prune=all
 }
 
-# Update vim plugins
-update-plug() {
+plug-update() {
   vim +PlugUpgrade +PlugUpdate +'PlugClean!' +qa
 }
 
-update-deps() {
-  update-brew
-  update-plug
+upgrade-deps() {
+  brew-upgrade
+  pip-upgrade
+  gem update
+  plug-update
 }
