@@ -126,7 +126,13 @@ vtype() {
     | xvim
 }
 
-### Files
+### Files and dirs
+
+# cd git root
+cdg() {
+  local dir="$(git rev-parse --show-toplevel)"
+  [[ -n "$dir" ]] && cd "$dir"
+}
 
 # Similar to `git diff --no-index`
 diff() {
