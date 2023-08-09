@@ -264,6 +264,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'mechatroner/rainbow_csv'
 
   " Various useful commands and functions
+  Plug 'rhysd/conflict-marker.vim'
   Plug 'wellle/targets.vim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
@@ -333,6 +334,11 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>gh :let g:gitgutter_diff_base = 'HEAD'<CR>
   nnoremap <Leader>gH :let g:gitgutter_diff_base = 'HEAD^'<CR>
   nnoremap <Leader>gm :let g:gitgutter_diff_base = '"$(git merge-base "$(git main)" HEAD)"'<CR>
+
+  " GitHub links
+  Plug 'knsh14/vim-github-link'
+  nnoremap <Leader>yg :GetCurrentBranchLink<CR>
+  xnoremap <Leader>yg :GetCurrentBranchLink<CR>
 
   " Indentation detection
   Plug 'tpope/vim-sleuth'
