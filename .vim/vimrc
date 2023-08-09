@@ -301,6 +301,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'junegunn/fzf.vim'
   nnoremap <Leader>gs :GFiles?<CR>
   nnoremap <Leader>b :Buffers<CR>
+  nnoremap <Leader>h :History<CR>
+  nnoremap <Leader>q :Rg <C-r><C-w><CR>
+  nnoremap <Leader>* :Rg \b<C-r><C-w>\b<CR>
 
   function! s:GFilesWithFallback(use_buf_dir)
     let l:args = {
