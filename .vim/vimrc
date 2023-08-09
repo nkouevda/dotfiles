@@ -364,8 +364,11 @@ endif
 " Enable syntax highlighting
 syntax enable
 
-" Set color scheme
 try
   colorscheme material
 catch /^Vim(colorscheme):/
 endtry
+
+if filereadable(expand('~/.vim/vimrc.local'))
+  source ~/.vim/vimrc.local
+endif
