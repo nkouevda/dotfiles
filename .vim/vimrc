@@ -224,14 +224,8 @@ if has('autocmd')
     " Open read-only when swap file exists
     autocmd SwapExists * let v:swapchoice = 'o'
 
-    " Override default indentation settings
-    autocmd FileType gitconfig,make,snippets,sshconfig setlocal sw=8 noet
-
     " Turn on spell checking for git commits
     autocmd FileType gitcommit setlocal spell
-
-    " Limit text width
-    autocmd FileType java,scala setlocal textwidth=100
 
     " Fix comment templates
     autocmd FileType c setlocal commentstring=//%s
@@ -241,6 +235,7 @@ if has('autocmd')
     autocmd FileType sql setlocal commentstring=--%s
 
     " Style
+    autocmd FileType java,scala setlocal textwidth=100
     autocmd Filetype scala let b:argwrap_wrap_closing_brace = 1
 
     " Revert to global wrap setting in diff mode
