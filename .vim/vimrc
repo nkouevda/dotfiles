@@ -319,14 +319,19 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>f :call <SID>GFilesWithFallback(0)<CR>
   nnoremap <Leader>d :call <SID>GFilesWithFallback(1)<CR>
 
-  " Git commands and signs
+  " Git commands
   Plug 'tpope/vim-fugitive'
   nnoremap <Leader>gb :Git blame<CR>
-  nnoremap <Leader>1gb :,Git blame<CR>
+  nnoremap <Leader>g1b :,Git blame<CR>
   nnoremap <Leader>gd :Git diff %<CR>
   nnoremap <Leader>gD :Git diff HEAD^ %<CR>
+
+  " Git signs
   let g:gitgutter_diff_base = 'HEAD^'
+  let g:gitgutter_map_keys = 0
   Plug 'airblade/vim-gitgutter'
+  nnoremap [c <Plug>(GitGutterPrevHunk)
+  nnoremap ]c <Plug>(GitGutterNextHunk)
   nnoremap <Leader>gh :let g:gitgutter_diff_base = 'HEAD'<CR>
   nnoremap <Leader>gH :let g:gitgutter_diff_base = 'HEAD^'<CR>
   nnoremap <Leader>gm :let g:gitgutter_diff_base = '"$(git merge-base "$(git main)" HEAD)"'<CR>
