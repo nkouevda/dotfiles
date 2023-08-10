@@ -158,14 +158,6 @@
 	fe = fetch --all --tags
 	pl = pull --all --tags
 	clonehub = "!sh -c 'git clone git@github.com:\"${1:?missing author/repo}\".git' -"
-	fadd = "!sh -c 'git fzf status-unstaged git add \"$@\" --' -"
-	fco = "!sh -c 'git fzf status-unstaged git checkout \"$@\" --' -"
-	frm = "!sh -c 'git fzf status-unstaged git rm \"$@\" --' -"
-	freset = "!sh -c 'git fzf status git reset \"$@\" --' -"
-	fvim = "!sh -c 'git fzf status-unstaged printf \"%s \" | xargs --no-run-if-empty --open-tty vim \"$@\" --' -"
-	fbr = "!sh -c 'git fzf branch \"$@\"' -"
-	fbrco = "!sh -c 'git fzf branch git checkout \"$@\"' -"
-	fbrd = "!sh -c 'git fzf branch git branch --delete \"$@\"' -"
 	trace = "!sh -c 'GIT_TRACE=1 git \"$@\"' -"
 
 [include]
