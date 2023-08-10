@@ -163,11 +163,11 @@ xnoremap \ "_
 xnoremap < <gv
 xnoremap > >gv
 
-" Write buffer
-nnoremap <Leader><CR> :write<CR>
+" Write file, only if buffer has been modified
+nnoremap <Leader><CR> :update<CR>
 
-" Re-edit current file, to discard unsaved changes
-nnoremap <Leader>e :edit!<CR>
+" Re-edit current file, e.g. to discard unsaved changes
+nnoremap <Leader>e :let view = winsaveview() \| edit! \| call winrestview(view)<CR>
 
 " "ZZ all" and quit vim with a non-zero exit code, respectively
 nnoremap ZA :xall<CR>
