@@ -298,6 +298,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>gs :GFiles?<CR>
   nnoremap <Leader>b :Buffers<CR>
   nnoremap <Leader>h :History<CR>
+  nnoremap <Leader>t :Tags<CR>
   nnoremap <Leader>q :Rg <C-r><C-w><CR>
   nnoremap <Leader>* :Rg \b<C-r><C-w>\b<CR>
 
