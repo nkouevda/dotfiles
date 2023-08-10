@@ -280,6 +280,22 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "v",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "open /Applications/zoom.us.app"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "x",
                                     "modifiers": {
                                         "mandatory": [
