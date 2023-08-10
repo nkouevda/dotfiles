@@ -63,6 +63,7 @@ brew:
 	  ruby \
 	  sbt \
 	  scala \
+	  shellcheck \
 	  switchaudio-osx \
 	  tig \
 	  tree \
