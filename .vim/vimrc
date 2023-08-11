@@ -72,9 +72,6 @@ endif
 " Display parts of wrapped lines that are cut off at the bottom
 set display=lastline
 
-" Default to 80 so that `gq` doesn't wrap at 79
-set textwidth=80
-
 " Do not split words when wrapping long lines
 set linebreak
 
