@@ -348,13 +348,17 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'junegunn/vim-slash'
 
   " Snippets
-  let g:UltiSnipsExpandTrigger = '<Tab>'
-  let g:UltiSnipsJumpForwardTrigger = '<Tab>'
-  let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
-  Plug 'SirVer/ultisnips'
+  if has('python3')
+    let g:UltiSnipsExpandTrigger = '<Tab>'
+    let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+    let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+    Plug 'SirVer/ultisnips'
+  endif
 
   " Syntax highlighting
-  Plug 'Valloric/MatchTagAlways'
+  if has('python') || has('python3')
+    Plug 'Valloric/MatchTagAlways'
+  endif
   Plug 'bazelbuild/vim-ft-bzl'
   Plug 'jrozner/vim-antlr'
   Plug 'nkouevda/vim-thrift-syntax'
