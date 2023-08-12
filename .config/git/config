@@ -59,6 +59,7 @@
 [pretty]
 	compact = "%C(auto)%h %C(blue)%ad %C(magenta)%aN %C(reset)%s"
 	compact-decorate = "%C(auto)%h %C(blue)%ad %C(magenta)%aN%C(auto)%d %C(reset)%s"
+	compact-committer = "%C(auto)%h %C(blue)%cd %C(magenta)%aN %C(reset)%s"
 
 [alias]
 	st = status
@@ -91,15 +92,16 @@
 	sba = show-branch --all
 	mb = merge-base
 	mbm = "!sh -c 'git merge-base \"$(git main)\" \"${@:-HEAD}\"' -"
-	# Like `--pretty=compact-decorate`, but `%cd` instead of `%ad`
-	rlg = reflog --pretty='%C(auto)%h %C(blue)%cd %C(magenta)%aN%C(auto)%d %C(reset)%s'
 	lg = log --pretty=compact
-	lgd = log --pretty=compact-decorate
 	lgm = "!sh -c 'git log --pretty=compact ^\"$(git main)\" \"${@:-HEAD}\"' -"
+	lgd = log --pretty=compact-decorate
 	lgdm = "!sh -c 'git log --pretty=compact-decorate ^\"$(git main)\" \"${@:-HEAD}\"' -"
 	lgs = log --pretty=fuller --compact-summary
 	lgs1 = log --pretty=fuller --compact-summary -n 1
 	lgsm = "!sh -c 'git log --pretty=fuller --compact-summary ^\"$(git main)\" \"${@:-HEAD}\"' -"
+	lga = "!sh -c 'git log --pretty=compact --author=\"${1:?unset}\" \"${@:2}\"' -"
+	lgau = "!sh -c 'git log --pretty=compact --author=\"$(git config --get user.email)\" \"$@\"' -"
+	rlg = reflog --pretty=compact-committer
 	df = diff
 	dfc = diff --cached
 	df1 = "!sh -c 'git diff \"${1:-HEAD}\"^ \"${@:-HEAD}\"' -"
