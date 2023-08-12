@@ -113,7 +113,11 @@ alias grep="grep --ignore-case --color=auto"
 
 # Default fzf options
 export FZF_DEFAULT_OPTS="--no-256"
-export FZF_CTRL_T_COMMAND="git ls-files 2>/dev/null || rg --files --hidden --glob '!.git' 2>/dev/null"
+# `git ls-files` is much faster in large repos; fall back to `rg --files`
+export FZF_DEFAULT_COMMAND="git ls-files 2>/dev/null || rg --files --follow --hidden --glob '!.git' 2>/dev/null"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Prune .git but not other dotdirs
+export FZF_ALT_C_COMMAND="find -L . -mindepth 1 -name .git -prune -o -type d -print 2>/dev/null | cut -c 3-"
 # Key bindings for fzf
 [[ -r ~/.config/fzf/fzf.bash ]] && source ~/.config/fzf/fzf.bash
 [[ -r ~/.config/fzf/fzf-git.sh ]] && source ~/.config/fzf/fzf-git.sh
