@@ -79,7 +79,7 @@
 	brac = branch --all --sort=committerdate
 	bracv = branch --all --sort=committerdate --verbose --verbose
 	brf = branch --force
-	brfm = "!f() { git branch --force \"$(git main)\" \"${1:-origin}/$(git main)\"; }; f"
+	brfm = "!f() { local main=\"$(git main)\"; git branch --force \"$main\" \"${1:-origin}/$main\"; }; f"
 	brm = branch --move
 	brmf = branch --move --force
 	brd = branch --delete
@@ -130,7 +130,7 @@
 	cod = checkout --detach
 	com = "!f() { git checkout \"$(git main)\" \"$@\"; }; f"
 	cor = "!f() { git checkout -B \"${1:?missing <branch>}\" \"${2:-origin}/$1\"; }; f"
-	corm = "!f() { git checkout -B \"$(git main)\" \"${1:-origin}/$(git main)\"; }; f"
+	corm = "!f() { local main=\"$(git main)\"; git checkout -B \"$main\" \"${1:-origin}/$main\"; }; f"
 	hard = "!f() { git reset --hard \"${@:-HEAD}\"; }; f"
 	soft = "!f() { git reset --soft \"${@:-HEAD}\"; }; f"
 	cp = cherry-pick
