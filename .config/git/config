@@ -68,8 +68,8 @@
 	rpa = "!f() { git rev-parse --abbrev-ref \"${@:-HEAD}\"; }; f"
 	root = rev-parse --show-toplevel
 	prefix = rev-parse --show-prefix
-	# main branch, which might not be called main; if no origin, default to main
-	main = "!f() { { git rpa --verify --quiet origin/HEAD || echo main; } | cut -d / -f 2; }; f"
+	# main branch, which might not be called main; default to main
+	main = "!f() { { git rpa --verify --quiet \"${1:-origin}/HEAD\" || echo main; } | cut -d / -f 2; }; f"
 	br = branch
 	brv = branch --verbose --verbose
 	brc = branch --sort=committerdate
@@ -79,15 +79,15 @@
 	brac = branch --all --sort=committerdate
 	bracv = branch --all --sort=committerdate --verbose --verbose
 	brf = branch --force
-	brfm = "!f() { git branch --force \"$(git main)\" origin/\"$(git main)\"; }; f"
+	brfm = "!f() { git branch --force \"$(git main)\" \"${1:-origin}/$(git main)\"; }; f"
 	brm = branch --move
 	brmf = branch --move --force
 	brd = branch --delete
 	brdf = branch --delete --force
-	track = "!f() { git branch --set-upstream-to origin/\"$(git rpa)\"; }; f"
+	track = "!f() { git branch --set-upstream-to \"${1:-origin}/$(git rpa)\"; }; f"
 	untrack = branch --unset-upstream
-	pushup = "!f() { git push --set-upstream origin \"$(git rpa)\"; }; f"
-	deleteup = "!f() { git push --delete origin \"$(git rpa)\"; }; f"
+	pushup = "!f() { git push --set-upstream \"${1:-origin}\" \"$(git rpa)\"; }; f"
+	deleteup = "!f() { git push --delete \"${1:-origin}\" \"$(git rpa)\"; }; f"
 	sb = show-branch
 	sba = show-branch --all
 	mb = merge-base
@@ -129,8 +129,8 @@
 	cobf = checkout -B
 	cod = checkout --detach
 	com = "!f() { git checkout \"$(git main)\" \"$@\"; }; f"
-	cor = "!f() { git checkout -B \"${1:?missing <branch>}\" \"origin/$1\"; }; f"
-	corm = "!f() { git checkout -B \"$(git main)\" origin/\"$(git main)\"; }; f"
+	cor = "!f() { git checkout -B \"${1:?missing <branch>}\" \"${2:-origin}/$1\"; }; f"
+	corm = "!f() { git checkout -B \"$(git main)\" \"${1:-origin}/$(git main)\"; }; f"
 	hard = "!f() { git reset --hard \"${@:-HEAD}\"; }; f"
 	soft = "!f() { git reset --soft \"${@:-HEAD}\"; }; f"
 	cp = cherry-pick
