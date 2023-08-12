@@ -99,7 +99,7 @@
 	lgs = log --pretty=fuller --compact-summary
 	lgs1 = log --pretty=fuller --compact-summary -n 1
 	lgsm = "!sh -c 'git log --pretty=fuller --compact-summary ^\"$(git main)\" \"${@:-HEAD}\"' -"
-	lga = "!sh -c 'git log --pretty=compact --author=\"${1:?unset}\" \"${@:2}\"' -"
+	lga = "!sh -c 'git log --pretty=compact --author=\"${1:?missing <author>}\" \"${@:2}\"' -"
 	lgau = "!sh -c 'git log --pretty=compact --author=\"$(git config --get user.email)\" \"$@\"' -"
 	rlg = reflog --pretty=compact-committer
 	df = diff
@@ -129,7 +129,7 @@
 	cobf = checkout -B
 	cod = checkout --detach
 	com = "!sh -c 'git checkout \"$(git main)\" \"$@\"' -"
-	cor = "!sh -c 'git checkout -B \"${1:?unset}\" \"origin/$1\"' -"
+	cor = "!sh -c 'git checkout -B \"${1:?missing <branch>}\" \"origin/$1\"' -"
 	corm = "!sh -c 'git checkout -B \"$(git main)\" origin/\"$(git main)\"' -"
 	hard = "!sh -c 'git reset --hard \"${@:-HEAD}\"' -"
 	soft = "!sh -c 'git reset --soft \"${@:-HEAD}\"' -"
@@ -145,9 +145,9 @@
 	rbimbm = "!sh -c 'git rebase --interactive \"$(git mbm)\"' -"
 	rbir = rebase --interactive --root
 	rbo = rebase --onto
-	rbo1 = "!sh -c 'git rebase --onto \"${1:?unset}\" \"${2:?unset}\"^ \"${@:2}\"' -"
+	rbo1 = "!sh -c 'git rebase --onto \"${1:?missing <newbase>}\" \"${2:?missing <upstream>}\"^ \"${@:2}\"' -"
 	rbom = "!sh -c 'git rebase --onto \"$(git main)\" \"$@\"' -"
-	rbom1 = "!sh -c 'git rebase --onto \"$(git main)\" \"${1:?unset}\"^ \"$@\"' -"
+	rbom1 = "!sh -c 'git rebase --onto \"$(git main)\" \"${1:?missing <upstream>}\"^ \"$@\"' -"
 	rbc = rebase --continue
 	rbs = rebase --skip
 	rba = rebase --abort
@@ -159,7 +159,7 @@
 	rtv = remote --verbose
 	fe = fetch --all --tags
 	pl = pull --all --tags
-	clonehub = "!sh -c 'git clone git@github.com:\"${1:?missing author/repo}\".git' -"
+	clonehub = "!sh -c 'git clone git@github.com:\"${1:?missing <author/repo>}\".git' -"
 	trace = "!sh -c 'GIT_TRACE=1 git \"$@\"' -"
 
 [include]
