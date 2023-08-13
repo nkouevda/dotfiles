@@ -53,16 +53,14 @@ bind generic + maximize
 # Generic bindings - cursor navigation
 bind generic <Space> none
 bind generic - none
+bind generic <Ctrl-B> move-page-up
+bind generic <Ctrl-F> move-page-down
 bind generic g move-first-line
 bind generic G move-last-line
 
 # Generic bindings - scrolling
 bind generic <Insert> none
 bind generic <Delete> none
-bind generic <C-F> scroll-page-down
-bind generic <C-B> scroll-page-up
-bind generic <C-D> scroll-half-page-down
-bind generic <C-U> scroll-half-page-up
 
 # Generic bindings - misc
 bind generic z none
