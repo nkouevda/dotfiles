@@ -61,6 +61,9 @@
 	compact-decorate = "%C(auto)%h %C(blue)%ad %C(magenta)%aN%C(auto)%d %C(reset)%s"
 	compact-committer = "%C(auto)%h %C(blue)%cd %C(magenta)%aN %C(reset)%s"
 
+[format]
+	pretty = fuller
+
 [alias]
 	st = status
 	sts = status --short --branch
@@ -96,9 +99,9 @@
 	lgm = "!f() { git log --pretty=compact ^\"$(git main)\" \"${@:-HEAD}\"; }; f"
 	lgd = log --pretty=compact-decorate
 	lgdm = "!f() { git log --pretty=compact-decorate ^\"$(git main)\" \"${@:-HEAD}\"; }; f"
-	lgs = log --pretty=fuller --compact-summary
-	lgs1 = log --pretty=fuller --compact-summary -n 1
-	lgsm = "!f() { git log --pretty=fuller --compact-summary ^\"$(git main)\" \"${@:-HEAD}\"; }; f"
+	lgs = log --compact-summary
+	lgs1 = log --compact-summary -n 1
+	lgsm = "!f() { git log --compact-summary ^\"$(git main)\" \"${@:-HEAD}\"; }; f"
 	lga = "!bash -c 'git log --pretty=compact --author=\"${1:?missing <author>}\" \"${@:2}\"' -"
 	lgau = "!f() { git log --pretty=compact --author=\"$(git config --get user.email)\" \"$@\"; }; f"
 	rlg = reflog --pretty=compact-committer
