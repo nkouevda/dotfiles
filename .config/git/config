@@ -95,12 +95,12 @@
 	sba = show-branch --all
 	mb = merge-base
 	mbm = "!f() { git merge-base \"$(git main)\" \"${@:-HEAD}\"; }; f"
+	sc = show --compact-summary
 	lg = log --pretty=compact
 	lgm = "!f() { git log --pretty=compact ^\"$(git main)\" \"${@:-HEAD}\"; }; f"
 	lgd = log --pretty=compact-decorate
 	lgdm = "!f() { git log --pretty=compact-decorate ^\"$(git main)\" \"${@:-HEAD}\"; }; f"
 	lgs = log --compact-summary
-	lgs1 = log --compact-summary -n 1
 	lgsm = "!f() { git log --compact-summary ^\"$(git main)\" \"${@:-HEAD}\"; }; f"
 	lga = "!bash -c 'git log --pretty=compact --author=\"${1:?missing <author>}\" \"${@:2}\"' -"
 	lgau = "!f() { git log --pretty=compact --author=\"$(git config --get user.email)\" \"$@\"; }; f"
