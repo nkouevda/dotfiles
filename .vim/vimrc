@@ -195,15 +195,17 @@ nnoremap g<C-\> <C-w>g<C-]>
 " Remove all trailing whitespace
 nnoremap <Leader>w :keeppatterns %s/\s\+$//<CR>
 
-" Match all characters past column 72 or 80 or 100
+" Match all characters past column 72, 80, 100, or 120
 nmap <Leader>7 /\%73c.\+<CR>
 nmap <Leader>8 /\%81c.\+<CR>
 nmap <Leader>1 /\%101c.\+<CR>
+nmap <Leader>2 /\%121c.\+<CR>
 
-" Set textwidth (h for hard wrap) to 72 or 80 or 100 or none
+" Set textwidth (h for hard wrap) to 72, 80, 100, 120, or none
 nnoremap yoh7 :setlocal textwidth=72<CR>
 nnoremap yoh8 :setlocal textwidth=80<CR>
 nnoremap yoh1 :setlocal textwidth=100<CR>
+nnoremap yoh2 :setlocal textwidth=120<CR>
 nnoremap yoh0 :setlocal textwidth=0<CR>
 
 " Yank file name, or only the dir
