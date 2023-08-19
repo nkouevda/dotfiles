@@ -177,23 +177,19 @@ find-unusual-names() {
   find -- "${@:-.}" -regex '.*[^ -~].*'
 }
 
-# Find files with unusual permissions (expected: 755 for dirs and 644 for files)
+# Find unusual permissions (expected: 755 for dirs and 644 for files), excluding git repos
 find-unusual-perms() {
-  # TODO(nkouevda): Ignore files in git worktrees, not just in .git dirs
   find -- "${@:-.}" \
-    -name .git -prune \
+    -type d -exec [ -d {}/.git ] \; -prune \
     -o -type d -not -perm 755 -ls \
     -o -type f -not -perm 644 -ls
 }
 
-# Fix files with unusual permissions (expected: 755 for dirs and 644 for files)
+# Fix unusual permissions (expected: 755 for dirs and 644 for files), excluding git repos
 fix-unusual-perms() {
-  # TODO(nkouevda): Ignore files in git worktrees, not just in .git dirs
   find -- "${@:-.}" \
-    -name .git -prune \
-    -o -type d -not -perm 755 -print -exec chmod 755 {} +
-  find -- "${@:-.}" \
-    -name .git -prune \
+    -type d -exec [ -d {}/.git ] \; -prune \
+    -o -type d -not -perm 755 -print -exec chmod 755 {} + \
     -o -type f -not -perm 644 -print -exec chmod 644 {} +
 }
 
