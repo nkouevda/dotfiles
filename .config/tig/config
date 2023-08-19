@@ -93,12 +93,11 @@ bind main M :toggle main-options ^main HEAD
 
 # Main bindings - external commands
 bind main C none
-bind main B ?git branch --force "%(prompt git branch --force )" "%(commit)"
+bind main F ?git branch --force "%(prompt git branch --force )" "%(commit)"
 bind main D ?git branch --delete --force "%(branch)"
 bind main p !git dfp1 "%(commit)"
 bind main O ?git checkout "%(commit)"
 bind main R ?git rebase main "%(branch)"
-bind main F ?git fetch --tags
 bind main T !git tag "%(prompt git tag )" "%(commit)"
 
 # Diff bindings - internal commands
