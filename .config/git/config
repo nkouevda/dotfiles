@@ -162,7 +162,8 @@
 	rtv = remote --verbose
 	fe = fetch --all --tags
 	pl = pull --all --tags
-	clonehub = "!f() { git clone git@github.com:\"${1:?missing <author/repo>}\".git; }; f"
+	clonegh = "!f() { git clone \"git@github.com:${1:?missing <author/repo>}.git\"; }; f"
+	cloneghh = "!f() { git clone \"https://github.com/${1:?missing <author/repo>}.git\"; }; f"
 	trace = "!f() { GIT_TRACE=1 git \"$@\"; }; f"
 
 [include]
