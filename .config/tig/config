@@ -34,8 +34,8 @@ color   title-blur      243             237
 color   "    Change-Id: "               yellow  default
 color   "    Reviewed-on: "             yellow  default
 color   "    Differential Revision: "   yellow  default
-color   "    JIRA: "                    yellow  default
-color   "    JIRA Issues: "             yellow  default
+color   "    Jira: "                    yellow  default
+color   "    Jira Issues: "             yellow  default
 
 # Generic bindings - view switching
 bind generic S none
