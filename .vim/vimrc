@@ -288,40 +288,39 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     \ 'ctrl-s': 'split',
     \ 'ctrl-v': 'vsplit',
     \ }
-  let g:fzf_layout = { 'down': '40%' }
+  let g:fzf_layout = { 'down': '70%' }
   let g:fzf_history_dir = '~/.cache/fzf/history'
   Plug 'junegunn/fzf'
   let g:fzf_buffers_jump = 1
-  let g:fzf_preview_window = ''
+  let g:fzf_preview_window = []
   Plug 'junegunn/fzf.vim'
-  nnoremap <Leader>gs :GFiles?<CR>
   nnoremap <Leader>b :Buffers<CR>
   nnoremap <Leader>h :History<CR>
   nnoremap <Leader>t :Tags<CR>
   nnoremap <Leader>q :Rg <C-r><C-w><CR>
   nnoremap <Leader>* :Rg \b<C-r><C-w>\b<CR>
 
-  function! s:GFilesWithFallback(use_buf_dir)
-    let l:args = {
-      \ 'options': '--multi',
-      \ 'dir': a:use_buf_dir ? expand('%:p:h') : getcwd(),
-      \ }
+  " `git ls-files` is much faster in large repos; fall back to `rg --files`
+  nnoremap <Leader>f :call fzf#run(fzf#wrap('files', {
+      \ 'source': $FZF_DEFAULT_COMMAND,
+      \ 'options': $FZF_CTRL_T_OPTS,
+      \ }))<CR>
+  nnoremap <Leader>d :call fzf#run(fzf#wrap('files', {
+      \ 'source': $FZF_DEFAULT_COMMAND,
+      \ 'options': $FZF_CTRL_T_OPTS,
+      \ 'dir': expand('%:p:h'),
+      \ }))<CR>
 
-    " `git ls-files .` if in a repo, else fall back to fzf default
-    if !a:use_buf_dir && !empty(FugitiveGitDir())
-      let l:args['source'] = 'git ls-files'
-    endif
-
-    return fzf#run(fzf#wrap('GFilesWithFallback', l:args))
-  endfunction
-
-  nnoremap <Leader>f :call <SID>GFilesWithFallback(0)<CR>
-  nnoremap <Leader>d :call <SID>GFilesWithFallback(1)<CR>
+  " `git diff --name-only` and variants: `--cached`, `HEAD^`, `merge-base main HEAD`
+  nnoremap <Leader>gn :call fzf#run(fzf#wrap('files', { 'source': 'git dfn' }))<CR>
+  nnoremap <Leader>gc :call fzf#run(fzf#wrap('files', { 'source': 'git dfnc' }))<CR>
+  nnoremap <Leader>g1 :call fzf#run(fzf#wrap('files', { 'source': 'git dfn1' }))<CR>
+  nnoremap <Leader>gm :call fzf#run(fzf#wrap('files', { 'source': 'git dfnm' }))<CR>
 
   " Git commands
   Plug 'tpope/vim-fugitive'
   nnoremap <Leader>gb :Git blame<CR>
-  nnoremap <Leader>g1b :,Git blame<CR>
+  nnoremap <Leader>g_b :,Git blame<CR>
   nnoremap <Leader>gd :Git diff %<CR>
   nnoremap <Leader>gD :Git diff HEAD^ %<CR>
 
@@ -331,9 +330,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'airblade/vim-gitgutter'
   nnoremap [c <Plug>(GitGutterPrevHunk)
   nnoremap ]c <Plug>(GitGutterNextHunk)
-  nnoremap <Leader>gh :let g:gitgutter_diff_base = 'HEAD'<CR>
-  nnoremap <Leader>gH :let g:gitgutter_diff_base = 'HEAD^'<CR>
-  nnoremap <Leader>gm :let g:gitgutter_diff_base = '"$(git merge-base "$(git main)" HEAD)"'<CR>
+  nnoremap <Leader>ggh :let g:gitgutter_diff_base = 'HEAD'<CR>
+  nnoremap <Leader>gg1 :let g:gitgutter_diff_base = 'HEAD^'<CR>
+  nnoremap <Leader>ggm :let g:gitgutter_diff_base = '"$(git mbm)"'<CR>
 
   " GitHub links
   Plug 'knsh14/vim-github-link'

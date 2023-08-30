@@ -111,11 +111,21 @@ alias grep="grep --ignore-case --color=auto"
 # Default rg options
 [[ -r ~/.config/ripgrep/config ]] && export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 
-# Default fzf options
-export FZF_DEFAULT_OPTS="--no-256"
 # `git ls-files` is much faster in large repos; fall back to `rg --files`
 export FZF_DEFAULT_COMMAND="git ls-files 2>/dev/null || rg --files --follow --hidden --glob '!.git' 2>/dev/null"
+export FZF_DEFAULT_OPTS="\
+--bind 'alt-enter:toggle-all' \
+--height 100% \
+--color '16,hl:1,hl+:1' \
+"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# Allow switching between `git ls-files` and `rg --files`
+export FZF_CTRL_T_OPTS="\
+--bind 'start:transform-prompt(git rpa &>/dev/null && printf \"git > \" || printf \"rg > \")' \
+--bind 'ctrl-g:change-prompt(git > )+reload(git ls-files 2>/dev/null)' \
+--bind 'ctrl-r:change-prompt(rg > )+reload(rg --files --follow --hidden --glob \"!.git\" 2>/dev/null)' \
+--multi \
+"
 # Prune .git but not other dotdirs
 export FZF_ALT_C_COMMAND="find -L . -mindepth 1 -name .git -prune -o -type d -print 2>/dev/null | cut -c 3-"
 # Key bindings for fzf
