@@ -78,10 +78,10 @@ bind generic $ none
 bind generic % none
 
 # Generic bindings - external commands
-bind generic y @sh -c 'printf "%s" "%(commit)" | pbcopy'
-bind generic 7 @sh -c 'printf "%.7s" "%(commit)" | pbcopy'
+bind generic y +bash -c 'printf "copied: "; printf "%s" "%(commit)" | tee >(pbcopy)'
+bind generic 7 +bash -c 'printf "copied: "; printf "%.7s" "%(commit)" | tee >(pbcopy)'
 bind generic w @git browse "%(commit)"
-bind generic x !sh -c 'git %(prompt git )'
+bind generic x !bash -c 'git %(prompt git )'
 
 # Main bindings - cursor navigation
 bind main G move-last-line
