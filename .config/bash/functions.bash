@@ -4,10 +4,12 @@ if [[ "$(uname -s)" == "Linux" ]]; then
   pbcopy() {
     xclip -selection clipboard -in
   }
+  export -f pbcopy
 
   pbpaste() {
     xclip -selection clipboard -out
   }
+  export -f pbpaste
 fi
 
 upper() {
