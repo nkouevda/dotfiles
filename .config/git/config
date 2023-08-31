@@ -60,6 +60,7 @@
 	compact = "%C(auto)%h %C(blue)%ad %C(magenta)%aN %C(reset)%s"
 	compact-decorate = "%C(auto)%h %C(blue)%ad %C(magenta)%aN%C(auto)%d %C(reset)%s"
 	compact-committer = "%C(auto)%h %C(blue)%cd %C(magenta)%aN %C(reset)%s"
+	compact-committer-decorate = "%C(auto)%h %C(blue)%cd %C(magenta)%aN%C(auto)%d %C(reset)%s"
 
 [format]
 	pretty = fuller
@@ -107,6 +108,7 @@
 	lgsa = "!bash -c 'git log --compact-summary --author=\"${1:?missing <author>}\" \"${@:2}\"' -"
 	lgsau = "!f() { git log --compact-summary --author=\"$(git config --get user.email)\" \"$@\"; }; f"
 	rlg = reflog --pretty=compact-committer
+	rlgd = reflog --pretty=compact-committer-decorate
 	df = diff
 	dfc = diff --cached
 	df1 = "!f() { git diff \"${1:-HEAD}\"^ \"${@:-HEAD}\"; }; f"
@@ -168,8 +170,10 @@
 	rtv = remote --verbose
 	fe = fetch --all --tags
 	pl = pull --all --tags
-	clonegh = "!f() { git clone \"git@github.com:${1:?missing <author/repo>}.git\"; }; f"
+	plm = "!f() { git pl; [[ \"$(git rpa)\" != \"$(git main)\" ]] && git brfm; }; f"
+	cloneghs = "!f() { git clone \"git@github.com:${1:?missing <author/repo>}.git\"; }; f"
 	cloneghh = "!f() { git clone \"https://github.com/${1:?missing <author/repo>}.git\"; }; f"
+	gca = -c gc.reflogExpire=now -c gc.reflogExpireUnreachable=now gc --aggressive --prune=now
 	trace = "!f() { GIT_TRACE=1 git \"$@\"; }; f"
 
 [include]
