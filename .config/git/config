@@ -170,7 +170,7 @@
 	rtv = remote --verbose
 	fe = fetch --all --tags
 	pl = pull --all --tags
-	plm = "!f() { git pl; [[ \"$(git rpa)\" != \"$(git main)\" ]] && git brfm; }; f"
+	plm = "!f() { git pl \"$@\" && [[ \"$(git rpa)\" != \"$(git main)\" ]] && git brfm; }; f"
 	cloneghs = "!f() { git clone \"git@github.com:${1:?missing <author/repo>}.git\"; }; f"
 	cloneghh = "!f() { git clone \"https://github.com/${1:?missing <author/repo>}.git\"; }; f"
 	gca = -c gc.reflogExpire=now -c gc.reflogExpireUnreachable=now gc --aggressive --prune=now
