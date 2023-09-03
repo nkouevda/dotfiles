@@ -217,14 +217,30 @@ rm-ds() {
 
 ### Processes
 
-psg() {
-  ps aux | rg "$@"
+# `ps aux` minus some columns
+psa() {
+  command ps -e -r -o 'user,pid,%cpu,%mem,cputime,command' "$@"
 }
+export -f psa
+
+# Default to psa if no args
+ps() {
+  if (( ! $# )); then
+    psa
+  else
+    command ps "$@"
+  fi
+}
+export -f ps
 
 # Fuzzy kill
 fkill() {
-  ps aux \
-    | fzf --exact --multi \
+  ps \
+    | fzf \
+      --header-lines 1 \
+      --reverse \
+      --bind 'ctrl-r:reload(ps)' \
+      --multi \
     | awk '{ print $2 }' \
     | xargs --no-run-if-empty --verbose kill
 }
