@@ -293,7 +293,8 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'junegunn/fzf'
   let g:fzf_buffers_jump = 1
   let g:fzf_preview_window = []
-  Plug 'junegunn/fzf.vim'
+  let g:fzf_use_location_list = 1
+  Plug 'nkouevda/fzf.vim', { 'branch' : 'nk/location-list' }
   nnoremap <Leader>b :Buffers<CR>
   nnoremap <Leader>h :History<CR>
   nnoremap <Leader>t :Tags<CR>
