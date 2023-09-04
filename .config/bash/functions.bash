@@ -95,16 +95,6 @@ xvim() {
   xargs --no-run-if-empty --open-tty vim "$@"
 }
 
-# Edit search results via quickfix list
-vrg() {
-  if (( ! $# )); then
-    printf "usage: %s <rg-args>\n" "${FUNCNAME[0]}" >&2
-    return 1
-  fi
-
-  vim -q <(rg --vimgrep "$@")
-}
-
 # Edit the given program if it's a file
 vtype() {
   if (( $# != 1 )); then
@@ -162,11 +152,6 @@ versions() {
     version="$("$path" --version 2>&1)"
     printf '%s: %s\n' "$path" "$version"
   done < <(type -a -p "$name")
-}
-
-# Command line pastebin
-sprunge() {
-  curl -F 'sprunge=<-' 'http://sprunge.us' 2>/dev/null
 }
 
 find-recently-modified() {

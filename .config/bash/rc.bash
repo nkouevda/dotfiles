@@ -25,7 +25,6 @@ shopt -s histappend
 # Ignore commands that start with whitespace; ignore and erase duplicates
 export HISTCONTROL="ignoreboth:erasedups"
 export HISTFILE=~/.local/state/bash/history
-# Save more history
 export HISTFILESIZE=1000
 export HISTSIZE=1000
 
@@ -66,7 +65,6 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   unset brew_prefix
 fi
 
-# User bin
 export PATH=~/"bin:$PATH"
 
 # Faster cd
@@ -114,7 +112,7 @@ alias grep="grep --ignore-case --color=auto"
 # `git ls-files` is much faster in large repos; fall back to `rg --files`
 export FZF_DEFAULT_COMMAND="git ls-files 2>/dev/null || rg --files --follow --hidden --glob '!.git' 2>/dev/null"
 export FZF_DEFAULT_OPTS="\
---bind 'alt-enter:toggle-all' \
+--bind 'ctrl-t:toggle-all' \
 --height 100% \
 --color '16,hl:1,hl+:1' \
 "
@@ -151,20 +149,18 @@ export LESS_TERMCAP_me="$(tput sgr0)"
 export LESS_TERMCAP_se="$(tput sgr0)"
 export LESS_TERMCAP_ue="$(tput sgr0)"
 
-# Use vim as the default editor
 export EDITOR="vim"
 
-# Alias tac if not already available
 if ! type tac &>/dev/null; then
   alias tac="tail -r"
 fi
 
-# Synchronize the current history list with the history file
+# Merge the history list into the history file, removing duplicates
 sync-bash-history() {
   # Append the history list to the history file
   history -a
 
-  # Remove trailing whitespace; keep only the most recent copies of duplicates
+  # Remove trailing whitespace, and keep only the most recent instance of duplicates
   tac "$HISTFILE" \
     | awk '{ sub(/[ \t]+$/, "") } !uniq[$0]++' \
     | tac \
@@ -175,7 +171,7 @@ sync-bash-history() {
   history -r
 }
 
-# Reset prompt variables
+# Reset `$PS*` and `$PROMPT_*`
 reset-prompt() {
   local tput_reset="\[$(tput sgr0)\]"
   local tput_red="\[$(tput setaf 1)\]"
@@ -221,5 +217,4 @@ reset-prompt
 [[ -r ~/.config/bash/functions.bash ]] && source ~/.config/bash/functions.bash
 [[ -r ~/.config/bash/local.bash ]] && source ~/.config/bash/local.bash
 
-# Guarantee exit status 0
 return 0
