@@ -281,7 +281,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   function! s:fzf_location_list(lines)
     call setloclist(0, map(copy(a:lines), '{ "filename": v:val }'))
     lopen
-    ll
+    lfirst
   endfunction
   let g:fzf_action = {
     \ 'ctrl-l': function('s:fzf_location_list'),
@@ -298,19 +298,22 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>b :Buffers<CR>
   nnoremap <Leader>h :History<CR>
   nnoremap <Leader>t :Tags<CR>
-  nnoremap <Leader>q :Rg <C-r><C-w><CR>
-  nnoremap <Leader>* :Rg \b<C-r><C-w>\b<CR>
 
-  " `git ls-files` is much faster in large repos; fall back to `rg --files`
-  nnoremap <Leader>f :call fzf#run(fzf#wrap('files', {
-      \ 'source': $FZF_DEFAULT_COMMAND,
-      \ 'options': $FZF_CTRL_T_OPTS,
-      \ }))<CR>
-  nnoremap <Leader>d :call fzf#run(fzf#wrap('files', {
-      \ 'source': $FZF_DEFAULT_COMMAND,
-      \ 'options': $FZF_CTRL_T_OPTS,
-      \ 'dir': expand('%:p:h'),
-      \ }))<CR>
+  " Like default `:Files`, plus allow switching between `git ls-files` and `rg --files`
+  command -bang -nargs=* Files call fzf#vim#files(
+    \ <q-args>,
+    \ { 'options': $FZF_CTRL_T_OPTS },
+    \ <bang>0)
+  nnoremap <Leader>f :Files<CR>
+  nnoremap <expr> <Leader>d ':Files ' .. expand('%:p:h') .. '<CR>'
+
+  " Like default `:Rg`, but `--reverse`
+  command -bang -nargs=* Rg call fzf#vim#grep(
+    \ 'rg --no-heading --line-number --column --color=always -- ' .. shellescape(<q-args>),
+    \ { 'options': '--reverse' },
+    \ <bang>0)
+  nnoremap <expr> <Leader>q ':Rg ' .. expand('<cword>') .. '<CR>'
+  nnoremap <expr> <Leader>* ':Rg \b' .. expand('<cword>') .. '\b<CR>'
 
   " `git diff --name-only` and variants: `--cached`, `HEAD^`, `merge-base main HEAD`
   nnoremap <Leader>gn :call fzf#run(fzf#wrap('files', { 'source': 'git dfn' }))<CR>
