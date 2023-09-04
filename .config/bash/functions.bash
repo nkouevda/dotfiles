@@ -217,32 +217,35 @@ rm-ds() {
 
 ### Processes
 
-# `ps aux` minus some columns
-psa() {
-  command ps -e -r -o 'user,pid,%cpu,%mem,cputime,command' "$@"
+# `ps u` minus some columns; also default to `-A`, a.k.a. `-e` or `-ax` or `ax`
+psu() {
+  command ps -r -o 'user,pid,%cpu,%mem,cputime,command' "${@:--A}"
 }
-export -f psa
+export -f psu
 
-# Default to psa if no args
+# Default to `psu` if no args
 ps() {
   if (( ! $# )); then
-    psa
+    psu
   else
     command ps "$@"
   fi
 }
-export -f ps
 
 # Fuzzy kill
 fkill() {
-  ps \
+  local pids
+  mapfile -t pids < <(psu \
     | fzf \
       --header-lines 1 \
       --reverse \
-      --bind 'ctrl-r:reload(ps)' \
+      --bind 'ctrl-r:reload(psu)' \
       --multi \
-    | awk '{ print $2 }' \
-    | xargs --no-run-if-empty --verbose kill
+    | awk '{ print $2 }')
+
+  psu -ww -p "${pids[@]}"
+  echo
+  prompt-yes-no kill "${pids[@]}" && kill "${pids[@]}"
 }
 
 reset-dns() {
