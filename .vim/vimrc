@@ -291,10 +291,11 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   let g:fzf_layout = { 'down': '70%' }
   let g:fzf_history_dir = '~/.cache/fzf/history'
   Plug 'junegunn/fzf'
-  let g:fzf_buffers_jump = 1
-  let g:fzf_preview_window = []
-  let g:fzf_use_location_list = 1
-  Plug 'nkouevda/fzf.vim', { 'branch' : 'nk/location-list' }
+  let g:fzf_vim = {}
+  let g:fzf_vim.buffers_jump = 1
+  let g:fzf_vim.listproc = { list -> fzf#vim#listproc#location(list) }
+  let g:fzf_vim.preview_window = []
+  Plug 'junegunn/fzf.vim'
   nnoremap <Leader>b :Buffers<CR>
   nnoremap <Leader>h :History<CR>
   nnoremap <Leader>t :Tags<CR>
