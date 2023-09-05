@@ -143,7 +143,7 @@
                         ]
                     },
                     {
-                        "description": "left_control + left_option + left_command + escape -> Lock",
+                        "description": "left_control + left_option + left_command + escape -> Sleep",
                         "manipulators": [
                             {
                                 "from": {
@@ -158,11 +158,11 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "power",
-                                        "modifiers": [
-                                            "left_option",
-                                            "left_command"
-                                        ]
+                                        "software_function": {
+                                            "iokit_power_management_sleep_system": {
+                                                "delay_milliseconds": 100
+                                            }
+                                        }
                                     }
                                 ],
                                 "type": "basic"
