@@ -1,9 +1,3 @@
---recurse
---totals
-
---langmap=python:+.aur.aurora
---python-kinds=-i
-
 --langdef=Scala
 --langmap=Scala:.scala
 --regex-scala=/^[ \t]*package[ \t]+([A-Za-z0-9_.]+)/\1/p,packages/
@@ -29,7 +23,11 @@
 --regex-thrift=/^[ \t]*[0-9]+:[ \t]*((required|optional)[ \t]+)?[A-Za-z0-9_<>., \t]+[ \t]+([A-Za-z0-9_]+)/\3/m,members/
 
 --java-kinds=-efgp
+--python-kinds=-i
 --scala-kinds=-pvV
 --thrift-kinds=-cEmt
 
---languages=Java,Scala,Thrift
+--exclude=venv
+--languages=Java,Python,Scala,Thrift
+--recurse
+--totals
