@@ -74,6 +74,14 @@ snippet /(std)?err/ "printf >&2" rb
 printf "%s\n" "$1" >&2
 endsnippet
 
+snippet pushd "pushd and popd" b
+{
+	pushd "$1" >/dev/null
+	$2
+	popd >/dev/null
+}
+endsnippet
+
 snippet usage "usage" b
 usage() {
 	cat <<EOF

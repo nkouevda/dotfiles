@@ -73,7 +73,7 @@ while ${1:condition}:
 	${2:pass}
 endsnippet
 
-snippet /\[/ "[" r
+snippet /list|\[/ "list" r
 [${1:item} for ${2:$1} in ${3:iterable}${4: if ${5:condition}}]
 endsnippet
 
@@ -82,11 +82,11 @@ tuple(${1:item} for ${2:$1} in ${3:iterable}${4: if ${5:condition}})
 endsnippet
 
 snippet set "set" w
-set(${1:item} for ${2:$1} in ${3:iterable}${4: if ${5:condition}})
+{${1:item} for ${2:$1} in ${3:iterable}${4: if ${5:condition}}}
 endsnippet
 
-snippet dict "dict" w
-dict((${1:key}, ${2:value}) for ${3:$1}, ${4:$2} in ${5:iterable}${6: if ${7:condition}})
+snippet /dict|\{/ "dict" r
+{${1:key}: ${2:value} for ${3:$1}, ${4:$2} in ${5:iterable}${6: if ${7:condition}}}
 endsnippet
 
 snippet try "try" b
@@ -119,20 +119,20 @@ snippet /(?<!\w)issub(class)?/ "issubclass" r
 issubclass(${1:cls}, ${2:supercls})
 endsnippet
 
-snippet uuid "uuid" w
-uuid.uuid4()
-endsnippet
-
-snippet /(?<!\w)%/ "%" r
-'$1' % $0
-endsnippet
-
 snippet /(?<!\w)re\.?/ "re" r
 re.${1:search}(r'${2:pattern}', ${3:string})
 endsnippet
 
-snippet printf "print(f'{=}')" w
-print(f'{$1=}')
+snippet printf "print f-string" w
+print(f'$1')
+endsnippet
+
+snippet f "f-string" w
+f'$1'
+endsnippet
+
+snippet /=/ "f-string {var=}" r
+{$1=}
 endsnippet
 
 snippet /(import )?pdb/ "pdb" rb
