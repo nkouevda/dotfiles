@@ -25,8 +25,8 @@ set shortmess+=aI
 " Save more command-line history
 set history=1000
 
-" Search upward for a tags file
-set tags+=tags;
+" Search for tags files upward from the current file
+set tags^=./tags;
 
 " Match tag case
 set tagcase=match
@@ -147,6 +147,9 @@ nnoremap Y y$
 " Another way to search
 nmap Q g*
 xmap Q *
+
+" Print the number of matches
+nnoremap <Leader>N :let view = winsaveview() \| :%s///ng \| call winrestview(view)<CR>
 
 " "Upward J"
 nnoremap K kJ
@@ -303,7 +306,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   " Like default `:Files`, plus allow switching between `git ls-files` and `rg --files`
   command -bang -nargs=* Files call fzf#vim#files(
     \ <q-args>,
-    \ { 'options': $FZF_CTRL_T_OPTS },
+    \ fzf#vim#with_preview({ 'options': $FZF_CTRL_T_OPTS }),
     \ <bang>0)
   nnoremap <Leader>f :Files<CR>
   nnoremap <expr> <Leader>d ':Files ' .. expand('%:p:h') .. '<CR>'
@@ -311,7 +314,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   " Like default `:Rg`, but `--reverse`
   command -bang -nargs=* Rg call fzf#vim#grep(
     \ 'rg --no-heading --line-number --column --color=always -- ' .. shellescape(<q-args>),
-    \ { 'options': '--reverse' },
+    \ fzf#vim#with_preview({ 'options': '--reverse' }),
     \ <bang>0)
   nnoremap <expr> <Leader>q ':Rg ' .. expand('<cword>') .. '<CR>'
   nnoremap <expr> <Leader>* ':Rg \b' .. expand('<cword>') .. '\b<CR>'
