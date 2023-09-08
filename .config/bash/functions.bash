@@ -203,9 +203,16 @@ rm-ds() {
 ### Processes
 
 # `ps u` minus some columns; also default to `-A`, a.k.a. `-e` or `-ax` or `ax`
-psu() {
-  command ps -r -o 'user,pid,%cpu,%mem,cputime,command' "${@:--A}"
-}
+# Inconsistent options between procps and mac os ps
+if ps --version 2>/dev/null | grep --quiet procps; then
+  psu() {
+    command ps -o 'user,pid,%cpu,%mem,cputime,command' --sort '-%cpu' "${@:--A}"
+  }
+else
+  psu() {
+    command ps -o 'user,pid,%cpu,%mem,cputime,command' -r "${@:--A}"
+  }
+fi
 export -f psu
 
 # Default to `psu` if no args
@@ -217,16 +224,19 @@ ps() {
   fi
 }
 
+fps() {
+  psu | fzf \
+    --header-lines 1 \
+    --reverse \
+    --bind 'ctrl-r:reload(psu)' \
+    --multi
+}
+
 # Fuzzy kill
 fkill() {
   local pids
-  mapfile -t pids < <(psu \
-    | fzf \
-      --header-lines 1 \
-      --reverse \
-      --bind 'ctrl-r:reload(psu)' \
-      --multi \
-    | awk '{ print $2 }')
+  mapfile -t pids < <(fps | awk '{ print $2 }')
+  (( ! "${#pids[@]}" )) && return 1
 
   psu -ww -p "${pids[@]}"
   echo
