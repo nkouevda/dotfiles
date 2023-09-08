@@ -135,12 +135,13 @@
 	ca = commit --amend
 	can = commit --amend --no-edit
 	canr = commit --amend --no-edit --reset-author
+	unci = "!f() { git reset HEAD^ -- \"${@:?missing <path>}\"; git can; }; f"
 	co = checkout
 	cob = checkout -b
 	cobf = checkout -B
 	cod = checkout --detach
 	com = "!f() { git checkout \"$(git main)\" \"$@\"; }; f"
-	cor = "!f() { git checkout -B \"${1:?missing <branch>}\" \"${2:-origin}/$1\"; }; f"
+	cor = "!f() { git checkout -B \"${2:?missing <branch>}\" \"${1:-origin}/$2\"; }; f"
 	corm = "!f() { local main=\"$(git main)\"; git checkout -B \"$main\" \"${1:-origin}/$main\"; }; f"
 	hard = "!f() { git reset --hard \"${@:-HEAD}\"; }; f"
 	soft = "!f() { git reset --soft \"${@:-HEAD}\"; }; f"
@@ -168,11 +169,13 @@
 	xdft = clean -xd --force --exclude=tags --exclude=tags-metadata
 	rt = remote
 	rtv = remote --verbose
+	rtaghs = "!bash -c 'git remote add \"${1:?missing <name>}\" \"git@github.com:${2:?missing <author/repo>}.git\" \"${@:3}\"' -"
+	rtaghh = "!bash -c 'git remote add \"${1:?missing <name>}\" \"https://github.com/${2:?missing <author/repo>}.git\" \"${@:3}\"' -"
 	fe = fetch --all --tags
 	pl = pull --all --tags
-	plm = "!f() { git pl \"$@\" && [[ \"$(git rpa)\" != \"$(git main)\" ]] && git brfm; }; f"
-	cloneghs = "!f() { git clone \"git@github.com:${1:?missing <author/repo>}.git\"; }; f"
-	cloneghh = "!f() { git clone \"https://github.com/${1:?missing <author/repo>}.git\"; }; f"
+	plm = "!bash -c 'git pl \"$@\" && [[ \"$(git rpa)\" != \"$(git main)\" ]] && git brfm' -"
+	cloneghs = "!bash -c 'git clone \"git@github.com:${1:?missing <author/repo>}.git\" \"${@:2}\"' -"
+	cloneghh = "!bash -c 'git clone \"https://github.com/${1:?missing <author/repo>}.git\" \"${@:2}\"' -"
 	gca = -c gc.reflogExpire=now -c gc.reflogExpireUnreachable=now gc --aggressive --prune=now
 	trace = "!f() { GIT_TRACE=1 git \"$@\"; }; f"
 
