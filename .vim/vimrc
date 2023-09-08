@@ -344,8 +344,8 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " GitHub links
   Plug 'knsh14/vim-github-link'
-  nnoremap <Leader>yg :GetCurrentBranchLink<CR>
-  xnoremap <Leader>yg :GetCurrentBranchLink<CR>
+  nnoremap <Leader>yg :GetCurrentCommitLink<CR>
+  xnoremap <Leader>yg :GetCurrentCommitLink<CR>
 
   " Indentation detection
   Plug 'tpope/vim-sleuth'
