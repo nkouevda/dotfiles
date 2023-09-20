@@ -66,6 +66,20 @@ epoch() {
   fi
 }
 
+### Helper functions
+
+# Prompt yes/no and return 0 if response was "y" or "yes", ignoring case
+prompt-yes-no() {
+  local prompt='[y/N]: '
+  if (( $# )); then
+    prompt="$* $prompt"
+  fi
+
+  read -r -p "$prompt"
+  [[ "$REPLY" =~ ^[Yy]([Ee][Ss])?$ ]]
+}
+export -f prompt-yes-no
+
 ### Search
 
 # Highlight
