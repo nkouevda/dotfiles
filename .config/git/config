@@ -173,7 +173,7 @@
 	rtaghh = "!bash -c 'git remote add \"${1:?missing <name>}\" \"https://github.com/${2:?missing <author/repo>}.git\" \"${@:3}\"' -"
 	fe = fetch --all --tags
 	pl = pull --all --tags
-	plm = "!bash -c 'git pl \"$@\" && [[ \"$(git rpa)\" != \"$(git main)\" ]] && git brfm' -"
+	plm = "!bash -c 'main=\"$(git main)\"; if [[ \"$(git rpa)\" == \"$main\" ]]; then git pl; else git fe && git brf \"$main\" \"${1:-origin}/$main\"; fi' -"
 	cloneghs = "!bash -c 'git clone \"git@github.com:${1:?missing <author/repo>}.git\" \"${@:2}\"' -"
 	cloneghh = "!bash -c 'git clone \"https://github.com/${1:?missing <author/repo>}.git\" \"${@:2}\"' -"
 	gca = -c gc.reflogExpire=now -c gc.reflogExpireUnreachable=now gc --aggressive --prune=now
