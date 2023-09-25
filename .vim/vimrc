@@ -336,8 +336,8 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   let g:gitgutter_diff_base = 'HEAD^'
   let g:gitgutter_map_keys = 0
   Plug 'airblade/vim-gitgutter'
-  nnoremap [c <Plug>(GitGutterPrevHunk)
-  nnoremap ]c <Plug>(GitGutterNextHunk)
+  nmap [c <Plug>(GitGutterPrevHunk)
+  nmap ]c <Plug>(GitGutterNextHunk)
   nnoremap <Leader>ggh :let g:gitgutter_diff_base = 'HEAD'<CR>
   nnoremap <Leader>gg1 :let g:gitgutter_diff_base = 'HEAD^'<CR>
   nnoremap <Leader>ggm :let g:gitgutter_diff_base = '"$(git mbm)"'<CR>
