@@ -46,8 +46,8 @@ set showcmd
 " Split below/right instead of above/left
 set splitbelow splitright
 
-" Always show the status line
-set laststatus=2
+" Never show ruler; always show status line
+set noruler laststatus=2
 
 " File name; flags (modified, read-only, help, preview); filetype
 set statusline=%t%m%r%h%w\ %y%{&ft!=''?'\ ':''}
