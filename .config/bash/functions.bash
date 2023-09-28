@@ -68,6 +68,15 @@ epoch() {
 
 ### Helper functions
 
+# Count args and print each separately, to debug bash quoting issues
+debug-args() {
+  printf "count: %s\n" "$#"
+  for (( i = 1; i <= $#; ++i )); do
+    printf "%s: %q\n" "$i" "${!i}"
+  done
+}
+export -f debug-args
+
 # Prompt yes/no and return 0 if response was "y" or "yes", ignoring case
 prompt-yes-no() {
   local prompt='[y/N]: '
