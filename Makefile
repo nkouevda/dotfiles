@@ -35,7 +35,6 @@ brew:
 	  bash-completion@2 \
 	  bat \
 	  coreutils \
-	  ctags \
 	  diffstat \
 	  diffutils \
 	  exiftool \
@@ -69,11 +68,12 @@ brew:
 	  tree \
 	  vim \
 	  wget
+	brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 	brew cleanup --prune=all
 
 ctags:
-	# Does not support XDG_CONFIG_HOME
-	$(INSTALL) "$(base_dir)"/.ctags ~/.ctags
+	mkdir -p ~/.config/ctags
+	$(INSTALL) "$(base_dir)"/.config/ctags/config.ctags ~/.config/ctags/config.ctags
 
 curl:
 	mkdir -p ~/.config
