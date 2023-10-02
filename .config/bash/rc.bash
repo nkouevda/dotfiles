@@ -113,7 +113,7 @@ alias grep="grep --ignore-case --color=auto"
 export FZF_DEFAULT_COMMAND="git ls-files 2>/dev/null || rg --files --follow --hidden --glob '!.git' 2>/dev/null"
 export FZF_DEFAULT_OPTS="\
 --bind 'ctrl-t:toggle-all' \
---height 100% \
+--height 70% \
 --color '16,hl:1,hl+:1' \
 "
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
