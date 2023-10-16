@@ -193,7 +193,9 @@ nnoremap <C-c> <C-w>c
 
 " Jump to tag under cursor in split window
 nnoremap <C-\> <C-w><C-]>
+xnoremap <C-\> <C-w><C-]>
 nnoremap g<C-\> <C-w>g<C-]>
+xnoremap g<C-\> <C-w>g<C-]>
 
 " Remove all trailing whitespace
 nnoremap <Leader>w :keeppatterns %s/\s\+$//<CR>
@@ -317,7 +319,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     \ fzf#vim#with_preview({ 'options': '--reverse' }),
     \ <bang>0)
   nnoremap <expr> <Leader>q ':Rg ' .. expand('<cword>') .. '<CR>'
+  xnoremap <Leader>q y:Rg <C-r>"<CR>
   nnoremap <expr> <Leader>* ':Rg \b' .. expand('<cword>') .. '\b<CR>'
+  xnoremap <Leader>* y:Rg \b<C-r>"\b<CR>
 
   " `git diff --name-only` and variants: `--cached`, `HEAD^`, `merge-base main HEAD`
   nnoremap <Leader>gn :call fzf#run(fzf#wrap('files', { 'source': 'git dfn' }))<CR>
