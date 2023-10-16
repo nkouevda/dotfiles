@@ -318,9 +318,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     \ 'rg --no-heading --line-number --column --color=always -- ' .. shellescape(<q-args>),
     \ fzf#vim#with_preview({ 'options': '--reverse' }),
     \ <bang>0)
-  nnoremap <expr> <Leader>q ':Rg ' .. expand('<cword>') .. '<CR>'
+  nnoremap <Leader>q :Rg <C-r><C-w><CR>
   xnoremap <Leader>q y:Rg <C-r>"<CR>
-  nnoremap <expr> <Leader>* ':Rg \b' .. expand('<cword>') .. '\b<CR>'
+  nnoremap <Leader>* :Rg \b<C-r><C-w>\b<CR>
   xnoremap <Leader>* y:Rg \b<C-r>"\b<CR>
 
   " `git diff --name-only` and variants: `--cached`, `HEAD^`, `merge-base main HEAD`
