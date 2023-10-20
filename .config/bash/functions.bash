@@ -298,7 +298,7 @@ brew-upgrade() {
 }
 
 plug-update() {
-  vim +PlugUpgrade +PlugUpdate +'PlugClean!' +qa
+  vim -c PlugUpgrade -c PlugUpdate -c 'PlugClean!' -c qa
 }
 
 upgrade-deps() {

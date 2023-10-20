@@ -138,4 +138,4 @@ vim:
 	curl -fLSso ~/.vim/autoload/plug.vim \
 	  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	mkdir -p ~/.vim/swap
-	vim +PlugInstall +qa
+	vim -c PlugInstall -c qa
