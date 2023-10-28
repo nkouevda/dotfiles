@@ -131,6 +131,7 @@
 	dffm = "!bash -c 'q_args=\"$(printf \"%q \" \"${@:-HEAD}\")\"; git dfnm \"${@:-HEAD}\" -z | fzf --read0 --bind \"enter:execute(git dfpm $q_args {})\";' -"
 	rmc = rm --cached
 	rmcf = rm --cached --force
+	a = "!f() { git add \"${@:--A}\"; }; f"
 	ci = commit
 	ca = commit --amend
 	can = commit --amend --no-edit
