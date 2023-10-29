@@ -143,6 +143,27 @@
                         ]
                     },
                     {
+                        "description": "left_option + o -> Toggle audio output",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/Users/nkouevda/dev/sources/bin/bin/toggle-audio-output"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "left_control + left_option + left_command + escape -> Sleep",
                         "manipulators": [
                             {
