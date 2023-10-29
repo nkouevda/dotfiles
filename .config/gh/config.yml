@@ -1,0 +1,4 @@
+git_protocol: ssh
+aliases:
+    prs: search prs --author @me --state open
+    prs-all: search prs --author @me
