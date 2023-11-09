@@ -19,7 +19,7 @@
 
 [diff]
 	algorithm = patience
-	colorMoved = true
+	colorMoved = plain
 	renames = copies
 	wsErrorHighlight = all
 
