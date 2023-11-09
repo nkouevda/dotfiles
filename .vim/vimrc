@@ -120,8 +120,8 @@ set notimeout ttimeout ttimeoutlen=0
 " Delay before writing the swap file, and before updating `airblade/vim-gitgutter` signs
 set updatetime=100
 
-" Leader
-let mapleader = "\<Space>"
+" <Leader>
+let g:mapleader = "\<Space>"
 
 " Swap {j,k} with g{j,k}
 nnoremap <expr> j v:count ? 'j' : 'gj'
