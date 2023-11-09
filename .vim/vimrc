@@ -267,19 +267,16 @@ endif
 if filereadable(expand('~/.vim/autoload/plug.vim'))
   call plug#begin()
 
-  " Colors
-  Plug 'nkouevda/vim-material'
-  Plug 'mechatroner/rainbow_csv'
-
   " Various useful commands and functions
+  Plug 'christoomey/vim-sort-motion'
   Plug 'rhysd/conflict-marker.vim'
-  Plug 'wellle/targets.vim'
   Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-repeat'
-  Plug 'christoomey/vim-sort-motion'
+  Plug 'tpope/vim-sleuth'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-unimpaired'
+  Plug 'wellle/targets.vim'
 
   " Argument wrapping
   let g:argwrap_wrap_closing_brace = 0
@@ -356,9 +353,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>yg :GetCurrentCommitLink<CR>
   xnoremap <Leader>yg :GetCurrentCommitLink<CR>
 
-  " Indentation detection
-  Plug 'tpope/vim-sleuth'
-
   " netrw
   let g:netrw_liststyle = 3
   Plug 'tpope/vim-vinegar'
@@ -374,13 +368,15 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     Plug 'SirVer/ultisnips'
   endif
 
-  " Syntax highlighting
+  " Syntax highlighting and colors
   if has('python') || has('python3')
     Plug 'Valloric/MatchTagAlways'
   endif
-  Plug 'jrozner/vim-antlr'
   Plug 'bazelbuild/vim-ft-bzl'
   Plug 'hashivim/vim-terraform'
+  Plug 'jrozner/vim-antlr'
+  Plug 'mechatroner/rainbow_csv'
+  Plug 'nkouevda/vim-material'
   Plug 'nkouevda/vim-thrift-syntax'
 
   call plug#end()
