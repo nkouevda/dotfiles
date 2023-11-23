@@ -304,6 +304,5 @@ plug-update() {
 upgrade-deps() {
   brew-upgrade
   pip-upgrade
-  gem update
   plug-update
 }
