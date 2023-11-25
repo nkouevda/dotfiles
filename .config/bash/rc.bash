@@ -104,9 +104,7 @@ else
   alias ltal="lta -pugDh --timefmt='%F %T' -fi"
 fi
 
-# Default grep options
 alias grep="grep --ignore-case --color=auto"
-# Default rg options
 [[ -r ~/.config/ripgrep/config ]] && export RIPGREP_CONFIG_PATH=~/.config/ripgrep/config
 
 # `git ls-files` is much faster in large repos; fall back to `rg --files`
@@ -148,6 +146,9 @@ export LESS_TERMCAP_us="$(tput bold; tput setaf 2)"
 export LESS_TERMCAP_me="$(tput sgr0)"
 export LESS_TERMCAP_se="$(tput sgr0)"
 export LESS_TERMCAP_ue="$(tput sgr0)"
+
+# Defaults to /usr/bin/less; prefer brew less if available
+export MANPAGER="less"
 
 export EDITOR="vim"
 
