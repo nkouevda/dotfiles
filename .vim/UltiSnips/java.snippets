@@ -60,6 +60,14 @@ snippet /print(ln)?/ "System.out.println()" rb
 System.out.println($1);
 endsnippet
 
+snippet printf "System.out.println(String.format())" b
+System.out.println(String.format("$1", $2));
+endsnippet
+
+snippet f "String.format()" w
+String.format("$1", $2)
+endsnippet
+
 snippet opt "Optional.of()" w
 Optional.of($1)
 endsnippet
@@ -72,14 +80,14 @@ snippet opte "Optional.empty()" w
 Optional.empty()
 endsnippet
 
-snippet ctl ".collect(Collectors.toList())" w
-.collect(Collectors.toList())
+snippet ctl "collect(Collectors.toList())" w
+collect(Collectors.toList())
 endsnippet
 
-snippet cts ".collect(Collectors.toSet())" w
-.collect(Collectors.toSet())
+snippet cts "collect(Collectors.toSet())" w
+collect(Collectors.toSet())
 endsnippet
 
-snippet ctm ".collect(Collectors.toMap())" w
-.collect(Collectors.toMap($1, $2))
+snippet ctm "collect(Collectors.toMap())" w
+collect(Collectors.toMap($1, $2))
 endsnippet
