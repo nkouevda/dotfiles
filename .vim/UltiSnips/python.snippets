@@ -135,12 +135,16 @@ snippet /=/ "f-string {var=}" r
 {$1=}
 endsnippet
 
-snippet /(import )?pdb/ "pdb" rb
+snippet /bp|breakpoint/ "breakpoint" rb
+breakpoint()
+endsnippet
+
+snippet pdb "pdb" b
 import pdb
 pdb.set_trace()
 endsnippet
 
-snippet /(import )?ipdb/ "ipdb" rb
+snippet ipdb "ipdb" b
 import ipdb
 ipdb.set_trace()
 endsnippet
