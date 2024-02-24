@@ -27,8 +27,8 @@ __${1:init}__
 endsnippet
 
 snippet def "def" b
-def ${1:name}(`!v indent('.') ? 'self, ' : ''`${2:params}):
-	${3:pass}
+def ${1:name}(${2:params}) -> ${3:None}:
+	${4:pass}
 endsnippet
 
 snippet lambda "lambda" w
