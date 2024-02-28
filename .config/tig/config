@@ -88,29 +88,31 @@ bind main G move-last-line
 
 # Main bindings - option toggling
 bind main A :toggle main-options --all
-bind main B :toggle main-options --branches='*'
-bind main M :toggle main-options ^main HEAD
+bind main B :toggle main-options --branches HEAD
+# TODO(nkouevda): `^"$(git main)"^` instead of `^origin/HEAD^`
+bind main M :toggle main-options --branches HEAD ^origin/HEAD^
 
 # Main bindings - external commands
 bind main C none
-bind main F ?git branch --force "%(prompt git branch --force )" "%(commit)"
-bind main D ?git branch --delete --force "%(branch)"
-bind main p !git dfp1 "%(commit)"
-bind main O ?git checkout "%(commit)"
-bind main R ?git rebase main "%(branch)"
-bind main T !git tag "%(prompt git tag )" "%(commit)"
+bind main F !>git branch --force "%(prompt git branch --force )" "%(commit)"
+bind main D ?>git branch --delete --force "%(branch)"
+bind main p !>git dfp1 "%(commit)"
+bind main O ?>git checkout "%(commit)"
+# TODO(nkouevda): `"$(git main)"` instead of `main`
+bind main R ?>git rebase main "%(branch)"
+bind main T !>git tag "%(prompt git tag )" "%(commit)"
 
 # Diff bindings - internal commands
 bind diff - :/^diff
 
 # Diff bindings - external commands
-bind diff p !git dfp1 "%(commit)"
+bind diff p !>git dfp1 "%(commit)"
 
 # Refs bindings - external commands
 bind refs C none
 bind refs ! none
-bind refs D ?git branch --delete --force "%(branch)"
-bind refs O ?git checkout "%(branch)"
+bind refs D ?>git branch --delete --force "%(branch)"
+bind refs O ?>git checkout "%(branch)"
 
 # Status bindings - view-specific actions
 bind status u none
@@ -123,8 +125,8 @@ bind status M none
 bind status . :/.
 
 # Status bindings - external commands
-bind status p !git dfp @ "%(file)"
-bind status C ?git commit --verbose
+bind status p !>git dfp @ "%(file)"
+bind status C ?>git commit --verbose
 
 # Stage bindings - view specific actions
 bind stage u none
@@ -143,4 +145,4 @@ bind stage p !git dfp @ "%(file)"
 
 # Stash bindings - external commands
 bind stash ! none
-bind stash D ?git stash drop "%(stash)"
+bind stash D ?>git stash drop "%(stash)"
