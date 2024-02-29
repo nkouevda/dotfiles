@@ -89,8 +89,8 @@ bind main G move-last-line
 # Main bindings - option toggling
 bind main A :toggle main-options --all
 bind main B :toggle main-options --branches HEAD
-# TODO(nkouevda): `^"$(git main)"^` instead of `^origin/HEAD^`
-bind main M :toggle main-options --branches HEAD ^origin/HEAD^
+# TODO(nkouevda): `^"$(git main)"` instead of `^origin/HEAD`
+bind main M :toggle main-options HEAD ^origin/HEAD
 
 # Main bindings - external commands
 bind main C none
