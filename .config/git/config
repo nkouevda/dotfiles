@@ -137,6 +137,8 @@
 	can = commit --amend --no-edit
 	canr = commit --amend --no-edit --reset-author
 	unci = "!f() { git reset HEAD^ -- \"${@:?missing <path>}\"; git can; }; f"
+	rv = revert
+	rvn = revert --no-edit
 	co = checkout
 	cob = checkout -b
 	cobf = checkout -B
