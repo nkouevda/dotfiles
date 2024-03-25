@@ -366,7 +366,7 @@
                         ]
                     },
                     {
-                        "description": "Fix Slack navigation: cmd+shift+d = ctrl+1, cmd+shift+s = ctrl+4",
+                        "description": "Fix Slack navigation: cmd+shift+d = ctrl+1, cmd+shift+s = ctrl+3",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -416,7 +416,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "4",
+                                        "key_code": "3",
                                         "modifiers": [
                                             "left_control"
                                         ]
