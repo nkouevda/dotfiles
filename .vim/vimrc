@@ -149,7 +149,7 @@ nmap Q g*
 xmap Q *
 
 " Print the number of matches
-nnoremap <Leader>N :let view = winsaveview() \| :%s///ng \| call winrestview(view)<CR>
+nnoremap <Leader>N :let view = winsaveview() \| %s///ng \| call winrestview(view)<CR>
 
 " "Upward J"
 nnoremap K kJ
@@ -259,8 +259,8 @@ if has('autocmd')
     autocmd BufEnter * if line('$') >= 10000 | GitGutterBufferDisable | endif
     " For consistency with colorscheme
     autocmd ColorScheme * hi! link GitGutterAdd Function
-                        \ | hi! link GitGutterChange String
-                        \ | hi! link GitGutterDelete Statement
+      \ | hi! link GitGutterChange String
+      \ | hi! link GitGutterDelete Statement
   augroup end
 endif
 
@@ -286,7 +286,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " Fuzzy search for files, buffers, etc.
   function! s:fzf_location_list(lines)
-    call setloclist(0, map(copy(a:lines), '{ "filename": v:val }'))
+    call setloclist(0, map(copy(a:lines), {i, val -> {'filename': val}}))
     lopen
     lfirst
   endfunction
@@ -295,12 +295,12 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     \ 'ctrl-s': 'split',
     \ 'ctrl-v': 'vsplit',
     \ }
-  let g:fzf_layout = { 'down': '70%' }
+  let g:fzf_layout = {'down': '70%'}
   let g:fzf_history_dir = '~/.cache/fzf/history'
   Plug 'junegunn/fzf'
   let g:fzf_vim = {}
   let g:fzf_vim.buffers_jump = 1
-  let g:fzf_vim.listproc = { list -> fzf#vim#listproc#location(list) }
+  let g:fzf_vim.listproc = {list -> fzf#vim#listproc#location(list)}
   let g:fzf_vim.preview_window = []
   Plug 'junegunn/fzf.vim'
   nnoremap <Leader>b :Buffers<CR>
@@ -310,7 +310,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   " Like default `:Files`, plus allow switching between `git ls-files` and `rg --files`
   command -bang -nargs=* Files call fzf#vim#files(
     \ <q-args>,
-    \ fzf#vim#with_preview({ 'options': $FZF_CTRL_T_OPTS }),
+    \ fzf#vim#with_preview({'options': $FZF_CTRL_T_OPTS}),
     \ <bang>0)
   nnoremap <Leader>f :Files<CR>
   nnoremap <expr> <Leader>d ':Files ' . expand('%:p:h') . '<CR>'
@@ -318,7 +318,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   " Like default `:Rg`, but `--reverse`
   command -bang -nargs=* Rg call fzf#vim#grep(
     \ 'rg --no-heading --line-number --column --color=always -- ' . shellescape(<q-args>),
-    \ fzf#vim#with_preview({ 'options': '--reverse' }),
+    \ fzf#vim#with_preview({'options': '--reverse'}),
     \ <bang>0)
   nnoremap <Leader>Q :Rg<CR>
   nnoremap <Leader>q :Rg <C-r><C-w><CR>
@@ -327,10 +327,10 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   xnoremap <Leader>* y:Rg \b<C-r>"\b<CR>
 
   " `git diff --name-only` and variants: `--cached`, `HEAD^`, `merge-base main HEAD`
-  nnoremap <Leader>gn :call fzf#run(fzf#wrap('files', { 'source': 'git dfn', 'options': '--multi' }))<CR>
-  nnoremap <Leader>gc :call fzf#run(fzf#wrap('files', { 'source': 'git dfnc', 'options': '--multi' }))<CR>
-  nnoremap <Leader>g1 :call fzf#run(fzf#wrap('files', { 'source': 'git dfn1', 'options': '--multi' }))<CR>
-  nnoremap <Leader>gm :call fzf#run(fzf#wrap('files', { 'source': 'git dfnm', 'options': '--multi' }))<CR>
+  nnoremap <Leader>gn :call fzf#run(fzf#wrap('files', {'source': 'git dfn', 'options': '--multi'}))<CR>
+  nnoremap <Leader>gc :call fzf#run(fzf#wrap('files', {'source': 'git dfnc', 'options': '--multi'}))<CR>
+  nnoremap <Leader>g1 :call fzf#run(fzf#wrap('files', {'source': 'git dfn1', 'options': '--multi'}))<CR>
+  nnoremap <Leader>gm :call fzf#run(fzf#wrap('files', {'source': 'git dfnm', 'options': '--multi'}))<CR>
 
   " Git commands
   Plug 'tpope/vim-fugitive'
@@ -359,7 +359,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'tpope/vim-vinegar'
 
   " Search
-  Plug 'nkouevda/vim-slash', { 'branch': 'nk/topline' }
+  Plug 'nkouevda/vim-slash', {'branch': 'nk/topline'}
 
   " Snippets
   if has('python3')
