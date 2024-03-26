@@ -31,6 +31,9 @@ set tags^=./tags;
 " Match tag case
 set tagcase=match
 
+" Do not insert completion matches while selecting
+set completeopt+=noinsert
+
 " Ignore temporary and output files
 set wildignore+=*.class,*.o,*.out,*.pyc,*.swp,*~
 
@@ -325,6 +328,16 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   xnoremap <Leader>q y:Rg <C-r>"<CR>
   nnoremap <Leader>* :Rg \b<C-r><C-w>\b<CR>
   xnoremap <Leader>* y:Rg \b<C-r>"\b<CR>
+
+  " Insert mode completion: paths, lines, and tags
+  imap <C-x><C-f> <Plug>(fzf-complete-path)
+  imap <C-x><C-l> <Plug>(fzf-complete-line)
+  inoremap <expr> <C-x><C-]> fzf#vim#complete(fzf#wrap('tags', {'source': "grep '^[^!]' tags \| cut -f 1 \| uniq"}))
+
+  " Invoke fzf with completion matches
+  inoremap <expr> <C-f> fzf#vim#complete(fzf#wrap('completion', {'source': map(complete_info().items, {i, val -> val.word}), 'options': '--select-1'}))
+  " Empty `<Cmd><CR>` is necessary for `complete_info()` to work after `<C-n>` in a mapping
+  imap <C-p> <C-n><Cmd><CR><C-f>
 
   " `git diff --name-only` and variants: `--cached`, `HEAD^`, `merge-base main HEAD`
   nnoremap <Leader>gn :call fzf#run(fzf#wrap('files', {'source': 'git dfn', 'options': '--multi'}))<CR>
