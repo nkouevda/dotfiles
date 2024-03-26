@@ -151,8 +151,6 @@
 	cp = cherry-pick
 	cpc = cherry-pick --continue
 	cpa = cherry-pick --abort
-	amc = am --continue
-	ama = am --abort
 	rb = rebase
 	rbm = "!f() { git rebase \"$(git main)\" \"$@\"; }; f"
 	rbi = rebase --interactive
@@ -174,6 +172,7 @@
 	rtv = remote --verbose
 	rtaghs = "!bash -c 'git remote add \"${1:?missing <name>}\" \"git@github.com:${2:?missing <author/repo>}.git\" \"${@:3}\"' -"
 	rtaghh = "!bash -c 'git remote add \"${1:?missing <name>}\" \"https://github.com/${2:?missing <author/repo>}.git\" \"${@:3}\"' -"
+	open = "!f() { open \"$(git link \"$@\")\"; }; f"
 	fe = fetch --all --tags
 	pl = pull --all --tags
 	plm = "!bash -c 'main=\"$(git main)\"; if [[ \"$(git rpa)\" == \"$main\" ]]; then git pl; else git fe && git brf \"$main\" \"${1:-origin}/$main\"; fi' -"

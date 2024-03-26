@@ -47,7 +47,6 @@ bind generic <LessThan> none
 bind generic J none
 bind generic K none
 bind generic , none
-bind generic O none
 bind generic + maximize
 
 # Generic bindings - cursor navigation
@@ -79,8 +78,8 @@ bind generic % none
 
 # Generic bindings - external commands
 bind generic y +bash -c 'printf "copied: "; printf "%s" "%(commit)" | tee >(pbcopy)'
-bind generic 7 +bash -c 'printf "copied: "; printf "%.7s" "%(commit)" | tee >(pbcopy)'
-bind generic w @git browse "%(commit)"
+bind generic Y +bash -c 'printf "copied: "; git link "%(commit)" | tee >(pbcopy)'
+bind generic O @git open "%(commit)"
 bind generic x !bash -c 'git %(prompt git )'
 
 # Main bindings - cursor navigation
@@ -98,7 +97,6 @@ bind main C none
 bind main F !>git branch --force "%(prompt git branch --force )" "%(commit)"
 bind main D ?>git branch --delete --force "%(branch)"
 bind main p !>git dfp1 "%(commit)"
-bind main O ?>git checkout "%(commit)"
 # TODO(nkouevda): `"$(git main)"` instead of `main`
 bind main R ?>git rebase main "%(branch)"
 bind main T !>git tag "%(prompt git tag )" "%(commit)"
