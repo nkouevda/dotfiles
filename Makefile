@@ -67,9 +67,9 @@ brew:
 	  switchaudio-osx \
 	  tig \
 	  tree \
+	  universal-ctags \
 	  vim \
 	  wget
-	brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 	brew cleanup --prune=all
 
 ctags:
