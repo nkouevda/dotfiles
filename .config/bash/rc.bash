@@ -127,6 +127,10 @@ export FZF_ALT_C_COMMAND="find -L . -mindepth 1 -name .git -prune -o -type d -pr
 # Key bindings for fzf
 [[ -r ~/.config/fzf/fzf.bash ]] && source ~/.config/fzf/fzf.bash
 [[ -r ~/.config/fzf/fzf-git.sh ]] && source ~/.config/fzf/fzf-git.sh
+# No border or other fancy options
+_fzf_git_fzf() {
+  fzf --multi "$@"
+}
 
 # Case-insensitive search in less, unless the pattern contains uppercase chars
 export LESS="--ignore-case"
