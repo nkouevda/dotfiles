@@ -7,8 +7,9 @@ set -o pipefail
 stty start undef
 stty stop undef
 
-# e.g. curl does not default to ~/.config if this is unset
+# curl does not default to ~/.config if XDG_CONFIG_HOME is unset
 export XDG_CONFIG_HOME=~/.config
+export XDG_STATE_HOME=~/.local/state
 
 export INPUTRC=~/.config/readline/inputrc
 
@@ -24,7 +25,7 @@ shopt -s histverify histreedit
 shopt -s histappend
 # Ignore commands that start with whitespace; ignore and erase duplicates
 export HISTCONTROL="ignoreboth:erasedups"
-export HISTFILE=~/.local/state/bash/history
+export HISTFILE="$XDG_STATE_HOME/bash/history"
 export HISTFILESIZE=1000
 export HISTSIZE=1000
 
@@ -134,6 +135,9 @@ _fzf_git_fzf() {
 
 # Case-insensitive search in less, unless the pattern contains uppercase chars
 export LESS="--ignore-case"
+# less >= v598 uses XDG_STATE_HOME for lesshst, but older versions use either XDG_DATA_HOME (if set)
+# or ~/.lesshst; avoid this inconsistency by explicitly setting LESSHISTFILE
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 # When the entire file fits on one screen, and -F/--quit-if-one-screen is not specified, show the
 # file at the top of the screen, not at the bottom; this applies to less >= v618:
 # https://github.com/gwsw/less/commit/98782c194f16ba93088d1033702172c3c00f0a61

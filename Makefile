@@ -7,7 +7,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash bat brew ctags curl dig dircolors fzf gh git karabiner kitty readline ripgrep ssh tig tmux vim
+targets := bash bat brew ctags curl dig dircolors fzf gh git karabiner kitty less readline ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -113,6 +113,9 @@ kitty:
 	mkdir -p ~/.config/kitty/themes
 	$(INSTALL) "$(base_dir)"/.config/kitty/themes/material.conf ~/.config/kitty/themes/material.conf
 
+less:
+	mkdir -p ~/.local/state/less
+
 readline:
 	mkdir -p ~/.config/readline
 	$(INSTALL) "$(base_dir)"/.config/readline/inputrc ~/.config/readline/inputrc
@@ -128,7 +131,7 @@ ssh:
 tig:
 	mkdir -p ~/.config/tig
 	$(INSTALL) "$(base_dir)"/.config/tig/config ~/.config/tig/config
-	# ~/.local/share/tig/history instead of ~/.tig_history
+	# Unfortunately tig uses XDG_DATA_HOME instead of XDG_STATE_HOME; still better than ~/.tig_history
 	mkdir -p ~/.local/share/tig
 
 tmux:
