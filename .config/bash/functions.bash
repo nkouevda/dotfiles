@@ -303,6 +303,5 @@ plug-update() {
 
 upgrade-deps() {
   brew-upgrade
-  pip-upgrade
   plug-update
 }
