@@ -196,8 +196,8 @@ reset-prompt() {
   export PROMPT_COMMAND='exit_status=$?; ps_end=$SECONDS; sync-bash-history;'
 
   PS1="$tput_reset"
-  # Include `$USER@$HOSTNAME ` if connected via ssh
-  [[ -n "$SSH_CONNECTION" ]] && PS1+="$tput_red\u@\h "
+  # Include `$USER@$HOSTNAME ` if connected via ssh, or if running under sudo and/or su
+  [[ -n "$SSH_CONNECTION" || "$(whoami)" != "$(logname)" ]] && PS1+="$tput_red\u@\h "
   # pwd
   PS1+="$tput_yellow\w"
   # Include duration of previous command in seconds if non-zero
