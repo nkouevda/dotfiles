@@ -307,9 +307,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   let g:fzf_vim.preview_window = []
   Plug 'junegunn/fzf.vim'
   nnoremap <Leader>b :Buffers<CR>
-  nnoremap <Leader>B :History<CR>
+  nnoremap <Leader>h :History<CR>
   nnoremap <Leader>t :Tags<CR>
-  nnoremap <Leader>h :Helptags<CR>
+  nnoremap <Leader>T :Helptags<CR>
 
   " Like default `:Files`, plus allow switching between `git ls-files` and `rg --files`
   command -bang -nargs=* Files call fzf#vim#files(
