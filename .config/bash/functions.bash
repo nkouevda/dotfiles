@@ -113,6 +113,16 @@ dict() {
 
 ### Edit
 
+# Edit search results via quickfix list
+vrg() {
+  if (( ! $# )); then
+    printf "usage: %s <rg-args>\n" "${FUNCNAME[0]}" >&2
+    return 1
+  fi
+
+  vim -q <(rg --vimgrep "$@")
+}
+
 # Use stdin as args to vim
 xvim() {
   xargs --no-run-if-empty --open-tty vim "$@"
