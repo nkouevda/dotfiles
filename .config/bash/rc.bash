@@ -31,7 +31,6 @@ export HISTSIZE=1000
 
 # Homebrew
 if [[ "$(uname -s)" == "Darwin" ]]; then
-  export HOMEBREW_AUTOREMOVE=1
   export HOMEBREW_NO_AUTO_UPDATE=1
   export HOMEBREW_NO_ENV_HINTS=1
 
