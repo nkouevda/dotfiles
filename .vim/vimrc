@@ -139,7 +139,7 @@ xnoremap gj j
 nnoremap gk k
 xnoremap gk k
 
-" Prefer jumping directly to marks
+" Swap ' with `; prefer jumping directly to marks
 nnoremap ' `
 xnoremap ' `
 onoremap ' `
@@ -149,6 +149,10 @@ onoremap ` '
 
 " Yank until EOL; matches the behavior of C and D
 nnoremap Y y$
+
+" Swap p with P in visual mode; prefer put without changing clipboard
+xnoremap p P
+xnoremap P p
 
 " Another way to search
 nmap Q g*
