@@ -380,10 +380,6 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>yg :GetCurrentCommitLink<CR>
   xnoremap <Leader>yg :GetCurrentCommitLink<CR>
 
-  " netrw
-  let g:netrw_liststyle = 3
-  Plug 'tpope/vim-vinegar'
-
   " Search
   Plug 'nkouevda/vim-slash', {'branch': 'nk/topline'}
 
