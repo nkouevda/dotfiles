@@ -118,6 +118,7 @@
 	dfnc = diff --name-only --cached
 	dfn1 = "!f() { git diff --name-only \"${1:-HEAD}\"^ \"${@:-HEAD}\"; }; f"
 	dfnm = "!f() { git diff --name-only \"$(git mbm \"${1:-HEAD}\")\" \"$@\"; }; f"
+	dfnu = diff --name-only --diff-filter=U
 	dfs = diff --compact-summary
 	dfsc = diff --compact-summary --cached
 	dfs1 = "!f() { git diff --compact-summary \"${1:-HEAD}\"^ \"${@:-HEAD}\"; }; f"
