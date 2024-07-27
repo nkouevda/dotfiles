@@ -7,7 +7,7 @@ else
   INSTALL := cp -f
 endif
 
-targets := bash bat brew ctags curl dig dircolors fzf gh git karabiner kitty less readline ripgrep ssh tig tmux vim
+targets := bash bat brew ctags curl dig dircolors fzf git karabiner kitty less readline ripgrep ssh tig tmux vim
 
 .PHONY: all $(targets)
 
@@ -41,7 +41,6 @@ brew:
 	  findutils \
 	  fzf \
 	  gawk \
-	  gh \
 	  git \
 	  gnu-sed \
 	  grep \
@@ -93,10 +92,6 @@ fzf:
 	mkdir -p ~/.config/fzf
 	curl -fLSso ~/.config/fzf/fzf-git.sh \
 	  https://raw.githubusercontent.com/junegunn/fzf-git.sh/main/fzf-git.sh
-
-gh:
-	mkdir -p ~/.config/gh
-	$(INSTALL) "$(base_dir)"/.config/gh/config.yml ~/.config/gh/config.yml
 
 git:
 	mkdir -p ~/.config/git
