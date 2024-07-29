@@ -5,12 +5,12 @@ snippet #! "#!" b
 #!/usr/bin/env $0
 endsnippet
 
-snippet date "date" w
+snippet /\bd(ate)?/ "date" r
 `date +%F`
 endsnippet
 
-snippet time "time" w
-`date +%T`
+snippet /\bt(ime)?/ "time" r
+`date +%H:%M`
 endsnippet
 
 snippet /(?i)(?<!\w)todo/ "TODO" r
