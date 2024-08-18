@@ -143,7 +143,7 @@
                         ]
                     },
                     {
-                        "description": "left_option + o -> Toggle audio output",
+                        "description": "left_option + o -> Switch audio output",
                         "manipulators": [
                             {
                                 "from": {
@@ -156,7 +156,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/Users/nkouevda/dev/sources/bin/bin/toggle-audio-output"
+                                        "shell_command": "/Users/nkouevda/dev/sources/bin/bin/switch-audio-output"
                                     }
                                 ],
                                 "type": "basic"
