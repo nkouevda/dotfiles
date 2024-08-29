@@ -127,10 +127,10 @@
 	dfpc = difftool --tool=pdiff --cached
 	dfp1 = "!f() { git difftool --tool=pdiff \"${1:-HEAD}\"^ \"${@:-HEAD}\"; }; f"
 	dfpm = "!f() { git difftool --tool=pdiff \"$(git mbm \"${1:-HEAD}\")\" \"$@\"; }; f"
-	dff = "!bash -c 'q_args=\"$(printf \"%q \" \"${@:---}\")\"; git dfn \"$@\" -z | fzf --read0 --bind \"enter:execute(git dfp $q_args {})\";' -"
-	dffc = "!bash -c 'q_args=\"$(printf \"%q \" \"${@:---}\")\"; git dfnc \"$@\" -z | fzf --read0 --bind \"enter:execute(git dfpc $q_args {})\";' -"
-	dff1 = "!bash -c 'q_args=\"$(printf \"%q \" \"${@:-HEAD}\")\"; git dfn1 \"${@:-HEAD}\" -z | fzf --read0 --bind \"enter:execute(git dfp1 $q_args {})\";' -"
-	dffm = "!bash -c 'q_args=\"$(printf \"%q \" \"${@:-HEAD}\")\"; git dfnm \"${@:-HEAD}\" -z | fzf --read0 --bind \"enter:execute(git dfpm $q_args {})\";' -"
+	dff = "!bash -c 'q_args=\"$(printf \"%q \" \"${@:---}\")\"; git dfn \"$@\" -z | fzf --read0 --bind \"enter:execute(git dfp $q_args {})\"' -"
+	dffc = "!bash -c 'q_args=\"$(printf \"%q \" \"${@:---}\")\"; git dfnc \"$@\" -z | fzf --read0 --bind \"enter:execute(git dfpc $q_args {})\"' -"
+	dff1 = "!bash -c 'q_args=\"$(printf \"%q \" \"${@:-HEAD}\")\"; git dfn1 \"${@:-HEAD}\" -z | fzf --read0 --bind \"enter:execute(git dfp1 $q_args {})\"' -"
+	dffm = "!bash -c 'q_args=\"$(printf \"%q \" \"${@:-HEAD}\")\"; git dfnm \"${@:-HEAD}\" -z | fzf --read0 --bind \"enter:execute(git dfpm $q_args {})\"' -"
 	rmc = rm --cached
 	rmcf = rm --cached --force
 	a = "!f() { git add \"${@:--A}\"; }; f"
