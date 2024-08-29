@@ -7,7 +7,7 @@ from ${1:module} import $0
 endsnippet
 
 snippet main "main" b
-if __name__ == '__main__':
+if __name__ == "__main__":
 	${1:main()}
 endsnippet
 
@@ -107,7 +107,7 @@ with ${1:item} as ${2:identifier}:
 endsnippet
 
 snippet open "open" b
-with open(${1:file}, '${2:r}') as ${3:identifier}:
+with open(${1:file}, "${2:r}") as ${3:identifier}:
 	${4:pass}
 endsnippet
 
@@ -120,15 +120,15 @@ issubclass(${1:cls}, ${2:supercls})
 endsnippet
 
 snippet /(?<!\w)re\.?/ "re" r
-re.${1:search}(r'${2:pattern}', ${3:string})
+re.${1:search}(r"${2:pattern}", ${3:string})
 endsnippet
 
 snippet printf "print f-string" w
-print(f'$1')
+print(f"$1")
 endsnippet
 
 snippet f "f-string" w
-f'$1'
+f"$1"
 endsnippet
 
 snippet /=/ "f-string {var=}" r
