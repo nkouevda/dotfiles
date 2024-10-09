@@ -60,6 +60,7 @@ epoch() {
   if (( ! $# )); then
     command date '+%s'
   else
+    local t
     for t in "$@"; do
       date-rfc-3339 --date="@$t"
     done
@@ -71,6 +72,7 @@ epoch() {
 # Count args and print each separately, to debug bash quoting issues
 debug-args() {
   printf "count: %s\n" "$#"
+  local i
   for (( i = 1; i <= $#; ++i )); do
     printf "%s: %q\n" "$i" "${!i}"
   done
@@ -99,6 +101,36 @@ hl() {
 # Sorted
 rgs() {
   rg --sort path "$@"
+}
+
+replace-all() {
+  if (( $# != 2 )); then
+    printf "usage: %s <pattern> <replacement>\n" "${FUNCNAME[0]}" >&2
+    return 1
+  fi
+
+  local pattern="$1"
+  local replacement="$2"
+
+  # GNU sed allows `-i` or `-i''` but not `-i ''`; BSD sed allows `-i ''` but not `-i` or `-i''`
+  if sed --version &>/dev/null; then
+    local in_place=('-i')
+  else
+    local in_place=('-i' '')
+  fi
+
+  # Try different delimiters, in case pattern or replacement contain these chars
+  local d
+  for d in '/' '@' '#' ';' ':'; do
+    if [[ "$pattern" != *"$d"* && "$replacement" != *"$d"* ]]; then
+      # xargs without `--no-run-if-empty` so that we get `sed: no input files`
+      rg -l "$pattern" | xargs sed "${in_place[@]}" -E "s$d$pattern$d$replacement${d}g"
+      return "$?"
+    fi
+  done
+
+  printf "error: Failed to find a suitable delimiter\n" >&2
+  return 1
 }
 
 # Search dictionary
