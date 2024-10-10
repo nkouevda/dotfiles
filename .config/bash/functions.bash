@@ -124,7 +124,7 @@ replace-all() {
   for d in '/' '@' '#' ';' ':'; do
     if [[ "$pattern" != *"$d"* && "$replacement" != *"$d"* ]]; then
       # xargs without `--no-run-if-empty` so that we get `sed: no input files`
-      rg -l "$pattern" | xargs sed "${in_place[@]}" -E "s$d$pattern$d$replacement${d}g"
+      rg -l -- "$pattern" | xargs sed "${in_place[@]}" -E "s$d$pattern$d$replacement${d}g"
       return "$?"
     fi
   done
