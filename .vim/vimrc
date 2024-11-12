@@ -356,7 +356,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   imap <C-n> <C-p><Cmd><CR><C-f>
 
   " `git diff --name-only` and variants: `--cached`, `HEAD^`, `merge-base main HEAD`
-  nnoremap <Leader>gnn :call fzf#run(fzf#wrap('files', {'source': 'git dfn', 'options': '--multi'}))<CR>
+  nnoremap <Leader>gnh :call fzf#run(fzf#wrap('files', {'source': 'git dfn', 'options': '--multi'}))<CR>
   nnoremap <Leader>gnc :call fzf#run(fzf#wrap('files', {'source': 'git dfnc', 'options': '--multi'}))<CR>
   nnoremap <Leader>gn1 :call fzf#run(fzf#wrap('files', {'source': 'git dfn1', 'options': '--multi'}))<CR>
   nnoremap <Leader>gnm :call fzf#run(fzf#wrap('files', {'source': 'git dfnm', 'options': '--multi'}))<CR>
@@ -365,8 +365,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   Plug 'tpope/vim-fugitive'
   nnoremap <Leader>gb :Git blame<CR>
   nnoremap <Leader>g_b :,Git blame<CR>
-  nnoremap <Leader>gd :Git diff %<CR>
-  nnoremap <Leader>gD :Git diff HEAD^ %<CR>
+  nnoremap <Leader>gph :!git dfp %<CR><CR>
+  nnoremap <Leader>gp1 :!git dfp1 HEAD %<CR><CR>
+  nnoremap <Leader>gpm :!git dfpm HEAD %<CR><CR>
 
   " Git signs
   let g:gitgutter_diff_base = 'HEAD^'
