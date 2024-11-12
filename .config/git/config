@@ -28,7 +28,7 @@
 	trustExitCode = true
 
 [difftool "pdiff"]
-	cmd = "pdiff -- \"$LOCAL\" \"$REMOTE\" | less --Raw-control-chars"
+	cmd = "pdiff -- \"$LOCAL\" \"$REMOTE\" | less --Raw-control-chars --quit-on-intr"
 
 [merge]
 	conflictStyle = diff3
