@@ -221,7 +221,7 @@ versions() {
 
 find-recently-modified() {
   find -- "${@:-.}" -type f -printf '%T+ %p\n' \
-    | sort --numeric-sort --reverse
+    | sort -nr
 }
 
 # Find files with unusual names (expected: chars between ` ` and `~`, inclusive)
