@@ -83,6 +83,7 @@
 	brav = branch --all --verbose --verbose
 	brac = branch --all --sort=committerdate
 	bracv = branch --all --sort=committerdate --verbose --verbose
+	brnk = branch --list --all --verbose --verbose 'nk/*' '*/nk/*'
 	brf = branch --force
 	brfm = "!f() { local main=\"$(git main)\"; git branch --force \"$main\" \"${1:-origin}/$main\"; }; f"
 	brm = branch --move
@@ -181,6 +182,8 @@
 	cloneghs = "!bash -c 'git clone \"git@github.com:${1:?missing <author/repo>}.git\" \"${@:2}\"' -"
 	cloneghh = "!bash -c 'git clone \"https://github.com/${1:?missing <author/repo>}.git\" \"${@:2}\"' -"
 	gca = -c gc.reflogExpire=now -c gc.reflogExpireUnreachable=now gc --aggressive --prune=now
+	largest = "!f() { git ls-files -z | xargs -0 du --bytes | sort -nr; }; f"
+	longest = "!f() { git ls-files -z | xargs -0 wc -l --total=never 2>/dev/null | sort -nr; }; f"
 	trace = "!f() { GIT_TRACE=1 git \"$@\"; }; f"
 
 [include]
