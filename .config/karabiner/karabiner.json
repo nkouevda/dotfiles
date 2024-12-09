@@ -391,7 +391,7 @@
                                     },
                                     {
                                         "key_code": "vk_none",
-                                        "hold_down_milliseconds": 75
+                                        "hold_down_milliseconds": 100
                                     },
                                     {
                                         "key_code": "v",
