@@ -13,7 +13,7 @@
 --python-kinds=-i
 --scala-kinds=-pvV
 
---exclude=venv
+--exclude=venv*
 --languages=Java,Python,Scala
 --recurse
 --totals
