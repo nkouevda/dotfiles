@@ -83,7 +83,7 @@
 	brav = branch --all --verbose --verbose
 	brac = branch --all --sort=committerdate
 	bracv = branch --all --sort=committerdate --verbose --verbose
-	brnk = branch --list --all --verbose --verbose 'nk/*' '*/nk/*'
+	brnk = branch --list --all --verbose --verbose 'nk[/.]*' '*/nk[/.]*'
 	brf = branch --force
 	brfm = "!f() { local main=\"$(git main)\"; git branch --force \"$main\" \"${1:-origin}/$main\"; }; f"
 	brm = branch --move
