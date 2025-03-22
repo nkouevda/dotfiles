@@ -262,7 +262,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open '/Applications/Google Chrome.app'"
+                                        "shell_command": "open '/Applications/Firefox.app'"
                                     }
                                 ],
                                 "type": "basic"
@@ -417,6 +417,39 @@
                                     },
                                     {
                                         "shell_command": "value=\"$(pbpaste)\"; if grep -Eq '^\\. https?://.* \\.$' <<<\"$value\"; then printf '%s' \"$value\" | sed 's/^\\. //; s/ \\.$//' | pbcopy; fi"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Fix Firefox cmd+enter: cmd+enter = opt+shift+enter",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "^org\\.mozilla\\.firefox$"
+                                        ]
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "return_or_enter",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "return_or_enter",
+                                        "modifiers": [
+                                            "left_option",
+                                            "left_shift"
+                                        ]
                                     }
                                 ],
                                 "type": "basic"
