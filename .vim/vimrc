@@ -324,7 +324,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
     \ fzf#vim#with_preview({'options': $FZF_CTRL_T_OPTS}),
     \ <bang>0)
   nnoremap <Leader>f :Files<CR>
-  nnoremap <expr> <Leader>d ':Files ' . expand('%:p:h') . '<CR>'
+  nnoremap <silent> <expr> <Leader>d ':Files ' . expand('%:p:h') . '<CR>'
 
   " Like default `:Rg`, but `--reverse`
   command -bang -nargs=* Rg call fzf#vim#grep(
@@ -356,10 +356,10 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   imap <C-n> <C-p><Cmd><CR><C-f>
 
   " `git diff --name-only` and variants: `--cached`, `HEAD^`, `merge-base main HEAD`
-  nnoremap <Leader>gnh :call fzf#run(fzf#wrap('files', {'source': 'git dfn', 'options': '--multi'}))<CR>
-  nnoremap <Leader>gnc :call fzf#run(fzf#wrap('files', {'source': 'git dfnc', 'options': '--multi'}))<CR>
-  nnoremap <Leader>gn1 :call fzf#run(fzf#wrap('files', {'source': 'git dfn1', 'options': '--multi'}))<CR>
-  nnoremap <Leader>gnm :call fzf#run(fzf#wrap('files', {'source': 'git dfnm', 'options': '--multi'}))<CR>
+  nnoremap <silent> <Leader>gnh :call fzf#run(fzf#wrap('files', {'source': 'git dfn', 'options': '--multi'}))<CR>
+  nnoremap <silent> <Leader>gnc :call fzf#run(fzf#wrap('files', {'source': 'git dfnc', 'options': '--multi'}))<CR>
+  nnoremap <silent> <Leader>gn1 :call fzf#run(fzf#wrap('files', {'source': 'git dfn1', 'options': '--multi'}))<CR>
+  nnoremap <silent> <Leader>gnm :call fzf#run(fzf#wrap('files', {'source': 'git dfnm', 'options': '--multi'}))<CR>
 
   " Git commands
   Plug 'tpope/vim-fugitive'
