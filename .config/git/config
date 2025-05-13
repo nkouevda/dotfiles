@@ -173,14 +173,12 @@
 	xdft = clean -xd --force --exclude=tags --exclude=tags-metadata
 	rt = remote
 	rtv = remote --verbose
-	rtaghs = "!bash -c 'git remote add \"${1:?missing <name>}\" \"git@github.com:${2:?missing <author/repo>}.git\" \"${@:3}\"' -"
-	rtaghh = "!bash -c 'git remote add \"${1:?missing <name>}\" \"https://github.com/${2:?missing <author/repo>}.git\" \"${@:3}\"' -"
+	rtagh = "!bash -c 'git remote add \"${1:?missing <name>}\" \"git@github.com:${2:?missing <author/repo>}.git\" \"${@:3}\"' -"
 	open = "!f() { open \"$(git link \"$@\")\"; }; f"
 	fe = fetch --all --tags
 	pl = pull --all --tags
 	plm = "!bash -c 'main=\"$(git main)\"; if [[ \"$(git rpa)\" == \"$main\" ]]; then git pl; else git fe && git brf \"$main\" \"${1:-origin}/$main\"; fi' -"
-	cloneghs = "!bash -c 'git clone \"git@github.com:${1:?missing <author/repo>}.git\" \"${@:2}\"' -"
-	cloneghh = "!bash -c 'git clone \"https://github.com/${1:?missing <author/repo>}.git\" \"${@:2}\"' -"
+	clonegh = "!bash -c 'git clone \"git@github.com:${1:?missing <author/repo>}.git\" \"${@:2}\"' -"
 	gca = -c gc.reflogExpire=now -c gc.reflogExpireUnreachable=now gc --aggressive --prune=now
 	largest = "!f() { git ls-files -z | xargs -0 du --bytes | sort -nr; }; f"
 	longest = "!f() { git ls-files -z | xargs -0 wc -l --total=never 2>/dev/null | sort -nr; }; f"
