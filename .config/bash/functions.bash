@@ -91,6 +91,11 @@ prompt-yes-no() {
 }
 export -f prompt-yes-no
 
+# ruff
+rr() {
+  ruff check --fix "$@" && ruff format "$@"
+}
+
 ### Search
 
 # Highlight
