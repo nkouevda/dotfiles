@@ -206,6 +206,11 @@ diff() {
   fi
 }
 
+pdiff() {
+  command pdiff "$@" \
+    | less --quit-if-one-screen --Raw-control-chars --no-init
+}
+
 # Print all versions of the given program
 versions() {
   if (( $# != 1 )); then
