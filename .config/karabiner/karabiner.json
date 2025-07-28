@@ -382,48 +382,6 @@
                         ]
                     },
                     {
-                        "description": "Fix Messages link previews: command + v -> Paste link",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "type": "frontmost_application_if",
-                                        "bundle_identifiers": [
-                                            "^com\\.apple\\.MobileSMS$"
-                                        ]
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "v",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_command"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "value=\"$(pbpaste)\"; if grep -Eq '^https?://' <<<\"$value\"; then printf '. %s .' \"$value\" | pbcopy; fi"
-                                    },
-                                    {
-                                        "key_code": "vk_none",
-                                        "hold_down_milliseconds": 100
-                                    },
-                                    {
-                                        "key_code": "v",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    },
-                                    {
-                                        "shell_command": "value=\"$(pbpaste)\"; if grep -Eq '^\\. https?://.* \\.$' <<<\"$value\"; then printf '%s' \"$value\" | sed 's/^\\. //; s/ \\.$//' | pbcopy; fi"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Fix Firefox cmd+enter: cmd+enter = opt+shift+enter",
                         "manipulators": [
                             {
