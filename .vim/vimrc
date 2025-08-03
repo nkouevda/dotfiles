@@ -228,6 +228,9 @@ nnoremap <Leader>yf :let @+ = expand('%') \| echomsg 'copied: ' . @+<CR>
 nnoremap <Leader>yh :let @+ = expand('%:h') \| echomsg 'copied: ' . @+<CR>
 nnoremap <Leader>yt :let @+ = expand('%:t') \| echomsg 'copied: ' . @+<CR>
 
+" Format JSON
+nnoremap <Leader>j :setfiletype json \| %!jq .<CR>
+
 " Load filetype plugins and indentation files
 filetype plugin indent on
 
