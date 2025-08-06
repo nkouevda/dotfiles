@@ -337,7 +337,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>Q :Rg<CR>
   nnoremap <Leader>q :Rg <C-r><C-w><CR>
   xnoremap <Leader>q y:Rg <C-r>"<CR>
-  nnoremap <Leader>* :Rg \b<C-r><C-w>\b<CR>
+  nnoremap <expr> <Leader>* ':Rg \b' . expand('<cword>') . '\b<CR>'
   xnoremap <Leader>* y:Rg \b<C-r>"\b<CR>
 
   " Insert mode completion: paths, lines, and tags
