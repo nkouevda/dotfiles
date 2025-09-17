@@ -26,6 +26,7 @@ set blame-view-author = display:email-user,width:10
 # Colors - general
 color   status          default         default
 color   cursor          default         236
+color   cursor-blur     default         236
 color   search-result   black           yellow
 color   title-focus     default         237
 color   title-blur      243             237
