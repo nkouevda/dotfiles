@@ -112,7 +112,7 @@ export FZF_DEFAULT_COMMAND="git ls-files 2>/dev/null || rg --files --follow --hi
 export FZF_DEFAULT_OPTS="\
 --bind 'ctrl-t:toggle-all' \
 --height 70% \
---color '16,hl:1,hl+:1' \
+--color 'base16,hl:1,current-hl:1,current-bg:236' \
 "
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # Allow switching between `git ls-files` and `rg --files`
