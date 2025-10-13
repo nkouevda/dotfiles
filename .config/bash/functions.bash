@@ -325,21 +325,20 @@ reset-dns() {
 
 ### Dependencies
 
-# Activate virtualenv, first prompting to create if necessary
+# Activate venv, first prompting to create if necessary
 venv() {
-  if (( $# != 1 )); then
-    printf "usage: %s <name>\n" "${FUNCNAME[0]}" >&2
+  if (( $# )); then
+    printf "usage: %s\n" "${FUNCNAME[0]}" >&2
     return 1
   fi
 
-  local venv_name="$1"
-  local venv_path=~/".virtualenvs/$venv_name"
+  local venv_path=.venv
 
   if [[ ! -d "$venv_path" ]]; then
-    prompt-yes-no "Create virtualenv \"$venv_name\"?" || return 1
+    prompt-yes-no "Create venv \"$venv_path\"?" || return 1
   fi
 
-  virtualenv "$venv_path"
+  python -m venv --prompt venv "$venv_path"
   source "$venv_path/bin/activate"
 }
 
