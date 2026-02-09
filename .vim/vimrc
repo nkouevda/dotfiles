@@ -158,6 +158,9 @@ xnoremap P p
 nmap Q g*
 xmap Q *
 
+" Print all matches
+nnoremap <Leader>/ :let view = winsaveview() \| g//p \| call winrestview(view)<CR>
+
 " Print the number of matches
 nnoremap <Leader>N :let view = winsaveview() \| %s///ng \| call winrestview(view)<CR>
 
