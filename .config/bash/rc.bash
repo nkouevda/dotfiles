@@ -172,7 +172,8 @@ sync-bash-history() {
   tac "$HISTFILE" \
     | awk '{ sub(/[ \t]+$/, "") } !uniq[$0]++' \
     | tac \
-    | sponge "$HISTFILE"
+    > "$HISTFILE.$$" \
+    && mv "$HISTFILE.$$" "$HISTFILE"
 
   # Clear the history list and read the history file
   history -c
