@@ -6,14 +6,10 @@ See also [nkouevda/bin](https://github.com/nkouevda/bin).
 
 ## Installation
 
-To `cp` everything to `~`:
+See [`Makefile`](Makefile) for available targets. For example:
 
-    make
+    make bash bat ctags curl dig dircolors fzf git karabiner kitty less readline ripgrep ssh tig vim
 
-To create symbolic links instead of copying, use `ln=1`:
+To copy instead of symlinking, use `cp=1`:
 
-    make ln=1
-
-To install selectively, see `targets` in [`Makefile`](Makefile). For example:
-
-    make ln=1 bash bat ctags curl dig dircolors fzf git karabiner kitty less readline ripgrep ssh tig vim
+    make cp=1 ...
