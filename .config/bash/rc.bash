@@ -159,6 +159,10 @@ export MANPAGER="less"
 
 export EDITOR="vim"
 
+if type nvim &>/dev/null; then
+  alias vim=nvim
+fi
+
 if ! type tac &>/dev/null; then
   alias tac="tail -r"
 fi

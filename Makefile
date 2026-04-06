@@ -51,6 +51,7 @@ brew:
 	  less \
 	  maven \
 	  moreutils \
+	  neovim \
 	  nkouevda/nkouevda/capital-gains \
 	  nkouevda/nkouevda/estimated-taxes \
 	  nkouevda/nkouevda/pdiff \
@@ -121,6 +122,18 @@ kitty:
 .PHONY: less
 less:
 	mkdir -p ~/.local/state/less
+
+.PHONY: nvim
+nvim:
+	mkdir -p ~/.config/nvim
+	$(INSTALL) "$(base_dir)"/.config/nvim/init.lua ~/.config/nvim/init.lua
+	cd "$(base_dir)"/.vim \
+	  && find . -type d -exec mkdir -p ~/.config/nvim/{} \; \
+	  && find . -type f -exec $(INSTALL) "$(base_dir)"/.vim/{} ~/.config/nvim/{} \;
+	mkdir -p ~/.local/share/nvim/site/autoload
+	curl -fLSso ~/.local/share/nvim/site/autoload/plug.vim \
+	  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	pip install pynvim python-lsp-server
 
 .PHONY: readline
 readline:

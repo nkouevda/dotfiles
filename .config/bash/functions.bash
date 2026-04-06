@@ -157,7 +157,12 @@ vrg() {
     return 1
   fi
 
-  vim -q <(rg --vimgrep "$@")
+  # nvim doesn't support process substitution, and vim doesn't support -q from stdin
+  if vim --version | grep --quiet ^nvim; then
+    rg --vimgrep "$@" | vim -q -
+  else
+    vim -q <(rg --vimgrep "$@")
+  fi
 }
 
 # Use stdin as args to vim

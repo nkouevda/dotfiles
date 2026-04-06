@@ -390,6 +390,9 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <Leader>yg :GetCurrentCommitLink<CR>
   xnoremap <Leader>yg :GetCurrentCommitLink<CR>
 
+  " LSP
+  Plug 'neovim/nvim-lspconfig'
+
   " Search
   Plug 'nkouevda/vim-slash', {'branch': 'nk/topline'}
 
