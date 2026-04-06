@@ -17,4 +17,13 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- LSP
+vim.lsp.config('pylsp', {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = { enabled = false },
+      },
+    },
+  },
+})
 vim.lsp.enable('pylsp')
