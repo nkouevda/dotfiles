@@ -133,7 +133,9 @@ nvim:
 	mkdir -p ~/.local/share/nvim/site/autoload
 	curl -fLSso ~/.local/share/nvim/site/autoload/plug.vim \
 	  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	mkdir -p ~/.vim/swap
 	pip install pynvim python-lsp-server
+	nvim -c PlugInstall -c qa
 
 .PHONY: readline
 readline:
