@@ -1,3 +1,5 @@
+--map-syntax '*.jsonl:JSON'
+--map-syntax '*.mdc:Markdown'
 --style plain
 --color always
 --theme base16
