@@ -8,7 +8,7 @@ else
 endif
 
 .PHONY: all
-all: 
+all:
 	@echo error: no targets specified
 	@exit 1
 
