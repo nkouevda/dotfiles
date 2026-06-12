@@ -349,7 +349,7 @@ venv() {
 
 brew-upgrade() {
   brew update
-  brew upgrade
+  brew upgrade --no-ask
   brew cleanup --prune=all
 }
 
