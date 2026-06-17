@@ -161,9 +161,9 @@
 	rbimbm = "!f() { git rebase --interactive \"$(git mbm)\"; }; f"
 	rbir = rebase --interactive --root
 	rbo = rebase --onto
-	rbo1 = "!bash -c 'git rebase --onto \"${1:?missing <newbase>}\" \"${2:?missing <upstream>}\"^ \"${@:2}\"' -"
+	rboc = "!bash -c 'git rebase --onto \"${1:?missing <newbase>}\" \"${2:?missing <upstream>}~${3:?missing <count>}\" \"$2\" \"${@:4}\"' -"
 	rbom = "!f() { git rebase --onto \"$(git main)\" \"$@\"; }; f"
-	rbom1 = "!f() { git rebase --onto \"$(git main)\" \"${1:?missing <upstream>}\"^ \"$@\"; }; f"
+	rbomc = "!bash -c 'git rebase --onto \"$(git main)\" \"${1:?missing <upstream>}~${2:?missing <count>}\" \"$1\" \"${@:3}\"' -"
 	rbc = rebase --continue
 	rbs = rebase --skip
 	rba = rebase --abort
