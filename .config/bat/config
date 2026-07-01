@@ -1,5 +1,6 @@
 --map-syntax '*.jsonl:JSON'
 --map-syntax '*.mdc:Markdown'
+--pager 'less -FRX'
 --style plain
 --color always
 --theme base16
