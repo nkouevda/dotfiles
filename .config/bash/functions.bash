@@ -150,6 +150,16 @@ dict() {
 
 ### Edit
 
+# man in nvim
+vman() {
+  if (( ! $# )); then
+    printf "usage: %s <args>\n" "${FUNCNAME[0]}" >&2
+    return 1
+  fi
+
+  nvim -c "hide Man $@"
+}
+
 # Edit search results via quickfix list
 vrg() {
   if (( ! $# )); then
