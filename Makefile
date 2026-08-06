@@ -71,7 +71,8 @@ brew:
 	  tree \
 	  universal-ctags \
 	  vim \
-	  wget
+	  wget \
+	  yq
 	brew cleanup --prune=all
 
 .PHONY: ctags
