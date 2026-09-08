@@ -398,6 +398,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
 
   " Snippets
   if has('python3')
+    let g:UltiSnipsAutoTrigger = 0
     let g:UltiSnipsExpandTrigger = '<Tab>'
     let g:UltiSnipsJumpForwardTrigger = '<Tab>'
     let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
