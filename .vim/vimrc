@@ -368,7 +368,7 @@ if filereadable(expand('~/.vim/autoload/plug.vim'))
   nnoremap <silent> <Leader>gnm :call fzf#run(fzf#wrap('files', {'source': 'git dfnm', 'options': '--multi'}))<CR>
 
   " Git commands
-  Plug 'tpope/vim-fugitive'
+  Plug 'nkouevda/vim-fugitive', {'branch': 'blame-date-colors'}
   nnoremap <Leader>gb :Git blame<CR>
   nnoremap <Leader>g_b :,Git blame<CR>
   nnoremap <Leader>gph :!git dfp %<CR><CR>
