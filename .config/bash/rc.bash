@@ -53,6 +53,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   export MANPATH="$brew_prefix/opt/gnu-sed/libexec/gnuman:$MANPATH"
   export MANPATH="$brew_prefix/opt/grep/libexec/gnuman:$MANPATH"
 
+  export PATH="$brew_prefix/opt/curl/bin:$PATH"
   export PATH="$brew_prefix/opt/openssl/bin:$PATH"
   export PATH="$brew_prefix/opt/python/libexec/bin:$PATH"
   export PATH="$brew_prefix/opt/ruby/bin:$PATH"
