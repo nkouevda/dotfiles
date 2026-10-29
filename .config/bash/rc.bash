@@ -156,12 +156,13 @@ export LESS_TERMCAP_se="$(tput sgr0)"
 export LESS_TERMCAP_ue="$(tput sgr0)"
 
 # Defaults to /usr/bin/less; prefer brew less if available
-export MANPAGER="less"
-
-export EDITOR="vim"
+export MANPAGER=less
 
 if type nvim &>/dev/null; then
+  export EDITOR=nvim
   alias vim=nvim
+else
+  export EDITOR=vim
 fi
 
 if ! type tac &>/dev/null; then
