@@ -226,10 +226,9 @@ nnoremap yoh1 :setlocal textwidth=100<CR>
 nnoremap yoh2 :setlocal textwidth=120<CR>
 nnoremap yoh0 :setlocal textwidth=0<CR>
 
-" Yank file name, or only the head (dir), or only the tail (base)
-nnoremap <Leader>yf :let @+ = expand('%') \| echomsg 'copied: ' . @+<CR>
-nnoremap <Leader>yh :let @+ = expand('%:h') \| echomsg 'copied: ' . @+<CR>
-nnoremap <Leader>yt :let @+ = expand('%:t') \| echomsg 'copied: ' . @+<CR>
+" Yank file name relative to current dir, or full path (relative to ~ if applicable)
+nnoremap <Leader>yf :let @+ = expand('%:.') \| echomsg 'copied: ' . @+<CR>
+nnoremap <Leader>yF :let @+ = expand('%:~') \| echomsg 'copied: ' . @+<CR>
 
 " Format JSON
 nnoremap <Leader>j :setfiletype json \| %!jq .<CR>
