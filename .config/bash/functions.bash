@@ -138,6 +138,14 @@ replace-all() {
   return 1
 }
 
+# Sort lines in file(s) by length
+longest-lines() {
+  cat "$@" \
+    | awk '{ print length "\t" $0 }' \
+    | sort -nr \
+    | less --quit-if-one-screen --no-init
+}
+
 # Search dictionary
 dict() {
   if (( ! $# )); then
