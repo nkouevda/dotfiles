@@ -228,7 +228,7 @@ nnoremap yoh0 :setlocal textwidth=0<CR>
 
 " Yank file name relative to current dir, or full path (relative to ~ if applicable)
 nnoremap <Leader>yf :let @+ = expand('%:.') \| echomsg 'copied: ' . @+<CR>
-nnoremap <Leader>yF :let @+ = expand('%:~') \| echomsg 'copied: ' . @+<CR>
+nnoremap <Leader>yF :let @+ = expand('%:p:~') \| echomsg 'copied: ' . @+<CR>
 
 " Format JSON
 nnoremap <Leader>j :setfiletype json \| %!jq .<CR>
