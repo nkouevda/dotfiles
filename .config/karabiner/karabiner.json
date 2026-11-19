@@ -100,6 +100,48 @@
                         ]
                     },
                     {
+                        "description": "fn + o -> Switch audio output",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/Users/nkouevda/dev/sources/bin/bin/switch-audio-output"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "fn + equal_sign -> Switch listening mode",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "equal_sign",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "fn"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/Users/nkouevda/dev/sources/bin/bin/switch-listening-mode"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "fn + play_or_pause -> fastforward",
                         "manipulators": [
                             {
@@ -136,27 +178,6 @@
                                 "to": [
                                     {
                                         "key_code": "rewind"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "left_option + o -> Switch audio output",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "o",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "shell_command": "/Users/nkouevda/dev/sources/bin/bin/switch-audio-output"
                                     }
                                 ],
                                 "type": "basic"
