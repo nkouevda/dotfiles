@@ -142,7 +142,7 @@
                         ]
                     },
                     {
-                        "description": "fn + play_or_pause -> fastforward",
+                        "description": "fn + play_or_pause -> Next track",
                         "manipulators": [
                             {
                                 "from": {
@@ -155,7 +155,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "fastforward"
+                                        "shell_command": "osascript -e 'tell application \"Spotify\" to next track'"
                                     }
                                 ],
                                 "type": "basic"
@@ -163,7 +163,7 @@
                         ]
                     },
                     {
-                        "description": "fn + left_shift + play_or_pause -> rewind",
+                        "description": "fn + left_shift + play_or_pause -> Previous track",
                         "manipulators": [
                             {
                                 "from": {
@@ -177,7 +177,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "rewind"
+                                        "shell_command": "osascript -e 'tell application \"Spotify\" to previous track'"
                                     }
                                 ],
                                 "type": "basic"
